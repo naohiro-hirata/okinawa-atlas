@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>沖縄 地域データアトラス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#E3E1D9; --surface:#F7F6F2; --surface2:#EDEBE4;
+  --ink:#151F23; --ink2:#4E5A5F; --ink3:#7B857F;
+  --ai:#1D4E5F; --ai2:#2F7288; --kawara:#BE4F2D; --basho:#4C6B4A; --sand:#A79E90;
+  --line:#CDC9BE; --line2:#DDD9CF;
+  --jp:"Noto Sans JP",system-ui,sans-serif;
+  --num:"Roboto Condensed","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--ground); color:var(--ink);
+  font:400 14px/1.7 var(--jp);
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--ai2); outline-offset:2px}
+
+/* ---------- eyebrow / labels ---------- */
+.eyebrow{
+  font:700 10px/1 var(--num); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink3);
+}
+.num{font-family:var(--num); font-variant-numeric:tabular-nums}
+
+/* ---------- shell ---------- */
+.app{display:flex; flex-direction:column; height:100%}
+header.top{
+  border-bottom:1px solid var(--line); background:var(--surface);
+  padding:14px 20px 12px; display:flex; align-items:baseline; gap:20px; flex-wrap:wrap;
+}
+.brand{font-weight:700; font-size:15px; letter-spacing:.04em}
+.brand span{color:var(--ai)}
+nav.crumb{display:flex; align-items:center; gap:6px; font-family:var(--num); font-size:12px; letter-spacing:.06em}
+nav.crumb button{color:var(--ai); text-decoration:underline; text-underline-offset:3px}
+nav.crumb .sep{color:var(--ink3)}
+nav.crumb .cur{font-weight:700}
+
+.banner{
+  margin-left:auto; display:flex; align-items:center; gap:8px;
+  border:1px solid var(--kawara); border-left-width:4px; background:#F6EAE4;
+  padding:5px 10px; font-size:11.5px; line-height:1.45; max-width:390px; color:#6E2E19;
+}
+.banner b{font-family:var(--num); letter-spacing:.08em; text-transform:uppercase; font-size:10px}
+
+main{flex:1; display:grid; grid-template-columns:300px 1fr; min-height:0}
+
+/* ---------- rail ---------- */
+aside{
+  border-right:1px solid var(--line); background:var(--surface2);
+  display:flex; flex-direction:column; min-height:0;
+}
+.searchbox{padding:12px; border-bottom:1px solid var(--line2)}
+.searchbox input{
+  width:100%; padding:9px 11px; font:400 14px var(--jp);
+  background:var(--surface); border:1px solid var(--line); color:var(--ink);
+}
+.searchbox input::placeholder{color:var(--ink3)}
+.hint{margin-top:7px; font-size:11px; color:var(--ink3); line-height:1.5}
+.list{overflow-y:auto; flex:1; min-height:0}
+.row{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px;
+  width:100%; text-align:left; padding:8px 12px; border-bottom:1px solid var(--line2);
+}
+.row:hover{background:var(--surface)}
+.row[aria-current="true"]{background:var(--ai); color:#F7F6F2}
+.row[aria-current="true"] .rsub{color:#BCCDD3}
+.rname{font-size:13.5px; font-weight:500}
+.rsub{font-size:10.5px; color:var(--ink3); font-family:var(--num); letter-spacing:.05em}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:1px}
+.empty{padding:24px 14px; color:var(--ink3); font-size:12.5px}
+
+/* ---------- content ---------- */
+section.stage{overflow-y:auto; min-height:0; padding:22px 26px 60px}
+.stage-head{margin-bottom:18px}
+.stage-head h1{margin:4px 0 0; font-size:26px; letter-spacing:.02em; font-weight:700}
+.stage-head .meta{margin-top:6px; display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); font-family:var(--num); letter-spacing:.05em}
+
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:16px}
+.card{background:var(--surface); border:1px solid var(--line); padding:15px 16px 17px}
+.card > h2{margin:0 0 12px; font:700 11px/1 var(--num); letter-spacing:.14em; text-transform:uppercase; color:var(--ink2)}
+.card.wide{grid-column:1/-1}
+
+/* dummy overlay */
+.dummy{position:relative}
+.dummy::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent 0 9px,rgba(190,79,45,.07) 9px 18px);
+}
+.dummy-tag{
+  position:absolute; top:0; right:0; z-index:2;
+  background:var(--kawara); color:#fff; padding:2px 7px;
+  font:700 9px/1.5 var(--num); letter-spacing:.14em;
+}
+
+/* badges */
+.badges{display:flex; flex-wrap:wrap; gap:6px}
+.badge{
+  display:inline-flex; align-items:center; gap:5px;
+  border:1px solid var(--line); background:var(--surface2);
+  padding:4px 9px; font-size:11.5px; line-height:1.4;
+}
+.badge .k{font:700 9.5px/1 var(--num); letter-spacing:.1em; text-transform:uppercase; color:var(--ink3)}
+.badge.on{border-color:var(--basho); background:#E9EFE6; color:#2C4A2B}
+.badge.plan{border-color:var(--ai2); background:#E4EDF0; color:#154655}
+.badge.off{border-color:var(--line); background:var(--surface2); color:var(--ink3)}
+.badge.tbd{border-color:var(--sand); background:#EEEAE2; color:#6B6154}
+
+/* stat strip */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(112px,1fr)); gap:1px; background:var(--line2)}
+.stat{background:var(--surface); padding:10px 12px}
+.stat .v{font:700 24px/1.15 var(--num); font-variant-numeric:tabular-nums}
+.stat .v small{font-size:12px; font-weight:400; color:var(--ink2); margin-left:2px}
+.stat .l{font-size:10.5px; color:var(--ink3); margin-top:1px; line-height:1.4}
+.stat .v.na{color:var(--ink3); font-size:15px; font-weight:400}
+
+/* text blocks */
+dl.kv{margin:0; display:grid; grid-template-columns:auto 1fr; gap:7px 14px; font-size:12.5px}
+dl.kv dt{font:700 9.5px/1.7 var(--num); letter-spacing:.1em; text-transform:uppercase; color:var(--ink3); white-space:nowrap}
+dl.kv dd{margin:0}
+dl.kv dd.q{color:var(--ink3)}
+
+table.tbl{width:100%; border-collapse:collapse; font-size:12px}
+table.tbl th{
+  text-align:left; font:700 9.5px/1.6 var(--num); letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink3); border-bottom:1px solid var(--line); padding:5px 8px 5px 0; white-space:nowrap;
+}
+table.tbl td{border-bottom:1px solid var(--line2); padding:6px 8px 6px 0; vertical-align:top}
+table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-align:right; padding-right:14px}
+
+/* ---------- hanablock grid (signature) ---------- */
+.blockwrap{border:1px solid var(--line); background:var(--surface); padding:14px 15px 16px}
+.blockhead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px}
+.blockhead h2{margin:0; font:700 11px/1 var(--num); letter-spacing:.14em; text-transform:uppercase; color:var(--ink2)}
+.blockhead select{
+  font:400 12px var(--jp); padding:3px 6px; background:var(--surface2);
+  border:1px solid var(--line); color:var(--ink);
+}
+.hana{display:grid; grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:5px}
+.cell{position:relative; padding:0; border:1px solid var(--line2); background:var(--surface2); aspect-ratio:1/1}
+.cell:hover{border-color:var(--ai)}
+.cell svg{position:absolute; inset:0; width:100%; height:100%}
+.cell .cl{
+  position:absolute; left:0; right:0; bottom:5px; text-align:center;
+  font-size:10.5px; line-height:1.3; font-weight:500; padding:0 3px;
+  text-shadow:0 0 4px var(--surface2),0 0 4px var(--surface2);
+}
+.cell .cv{
+  position:absolute; left:0; right:0; top:6px; text-align:center;
+  font:700 11px/1 var(--num); color:var(--ink2);
+}
+.legend{margin-top:11px; display:flex; align-items:center; gap:8px; font-size:10.5px; color:var(--ink3)}
+.legend .bar{flex:1; height:7px; max-width:170px; background:linear-gradient(90deg,#E7E4DA,var(--ai))}
+
+/* ---------- map slot ---------- */
+.mapslot{
+  border:1px dashed var(--ai2); background:#E6EDEF; padding:16px;
+  display:flex; gap:14px; align-items:flex-start; font-size:12.5px; line-height:1.65;
+}
+.mapslot .ico{flex:0 0 auto; color:var(--ai)}
+.mapslot code{font-family:var(--num); background:var(--surface); padding:1px 5px; border:1px solid var(--line)}
+
+.note{font-size:11.5px; color:var(--ink3); line-height:1.6; margin-top:10px}
+.chartnote{font-size:11px; color:var(--ink3); margin-top:6px}
+
+@media (max-width:860px){
+  main{grid-template-columns:1fr; grid-template-rows:auto 1fr}
+  aside{border-right:0; border-bottom:1px solid var(--line)}
+  .list{max-height:34vh}
+  .banner{margin-left:0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .cell svg .petal{transition:fill .18s ease}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">沖縄 <span>地域データアトラス</span></div>
+    <nav class="crumb" id="crumb" aria-label="階層"></nav>
+    <div class="banner">
+      <div>
+        <b>データ状態</b><br>
+        施策・空き家（R7調査）は<strong>実データ</strong>。人口・字は<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside>
+      <div class="searchbox">
+        <input id="q" type="search" placeholder="市町村・字を検索" autocomplete="off" aria-label="市町村・字を検索">
+        <div class="hint" id="qhint"></div>
+      </div>
+      <div class="list" id="list"></div>
+    </aside>
+    <section class="stage" id="stage" tabindex="-1"></section>
+  </main>
+</div>
+
+<script>
+const DATA = {"municipalities":[{"code":"47201","name":"那覇市"},{"code":"47205","name":"宜野湾市"},{"code":"47207","name":"石垣市"},{"code":"47208","name":"浦添市"},{"code":"47209","name":"名護市"},{"code":"47210","name":"糸満市"},{"code":"47211","name":"沖縄市"},{"code":"47212","name":"豊見城市"},{"code":"47213","name":"うるま市"},{"code":"47214","name":"宮古島市"},{"code":"47215","name":"南城市"},{"code":"47301","name":"国頭村"},{"code":"47302","name":"大宜味村"},{"code":"47303","name":"東村"},{"code":"47306","name":"今帰仁村"},{"code":"47308","name":"本部町"},{"code":"47311","name":"恩納村"},{"code":"47313","name":"宜野座村"},{"code":"47314","name":"金武町"},{"code":"47315","name":"伊江村"},{"code":"47324","name":"読谷村"},{"code":"47325","name":"嘉手納町"},{"code":"47326","name":"北谷町"},{"code":"47327","name":"北中城村"},{"code":"47328","name":"中城村"},{"code":"47329","name":"西原町"},{"code":"47348","name":"与那原町"},{"code":"47350","name":"南風原町"},{"code":"47353","name":"渡嘉敷村"},{"code":"47354","name":"座間味村"},{"code":"47355","name":"粟国村"},{"code":"47356","name":"渡名喜村"},{"code":"47357","name":"南大東村"},{"code":"47358","name":"北大東村"},{"code":"47359","name":"伊平屋村"},{"code":"47360","name":"伊是名村"},{"code":"47361","name":"久米島町"},{"code":"47362","name":"八重瀬町"},{"code":"47375","name":"多良間村"},{"code":"47381","name":"竹富町"},{"code":"47382","name":"与那国町"}],"policy":[{"code":"47201","name":"那覇市","confirmed":true,"note":"R6更新事項無し","_row":5,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"現在のところ、他に優先する施策があるため。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"現在のところ、他に優先する施策があるため。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"現在のところ、他に優先する施策があるため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"現在のところ、他に優先する施策があるため。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":"宅地分譲は検討していない","new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47205","name":"宜野湾市","confirmed":true,"note":null,"_row":6,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"現時点では人口増加傾向であるため、他施策を優先している。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"現時点では人口増加傾向であるため、他施策を優先している。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"現時点では人口増加傾向であるため、他施策を優先している。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"現時点では人口増加傾向であるため、他施策を優先している。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47207","name":"石垣市","confirmed":true,"note":null,"_row":7,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"移住相談窓口（中間支援組織）の設置、移住体験ツアーの実施、市公式移住応援サイトの開設、都市圏での移住相談会への出展、空き家バンク制度、保育士・看護師等の移住支援金制度、移住定住促進住宅整備に向けた取組み等を行っている。","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"ふるさと創生課地域創生係 担当：平良 TEL：0980-87-9000","desk_none_reason":null,"intermediary_status":"あり","intermediary_other":null,"intermediary_detail":"一般社団法人ゆんたくガーデン 担当：大倉弘美 TEL：0980-87-0002","intermediary_none_reason":null,"jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"ハローワーク八重山への案内","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47208","name":"浦添市","confirmed":true,"note":null,"_row":8,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"現在のところ、他に優先する施策があるため。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"現在のところ、他に優先する施策があるため。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"現在のところ、他に優先する施策があるため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"現在のところ、他に優先する施策があるため。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47209","name":"名護市","confirmed":true,"note":null,"_row":9,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"市内全体としての取り組みではないが、移住に力を入れて取り組んでいる地域では移住体験ツアー等を実施している。","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"市主体の移住施策を実施していないため、企画政策課が相談窓口となり移住希望者の相談内容に応じて関係部署・関係機関等にご案内する形で対応している。","desk_contact":null,"desk_none_reason":null,"intermediary_status":"あり","intermediary_other":null,"intermediary_detail":"NPO法人久志地域観光交流協会","intermediary_none_reason":null,"jobinfo_status":"その他（右枠に記入）","jobinfo_other":"市担当から直接求人の紹介をすることはしていませんが、ハローワークを案内して相談するように助言をしています。ハローワークとの連携により、特に特区企業への就職案内の掲示等をしていただいているので、引き続き連携しながら進めていきたいと思っています。","jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47210","name":"糸満市","confirmed":false,"note":null,"_row":10,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"他業務で多忙のため具体的な検討なし","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"他業務で多忙のため具体的な検討なし","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"他業務で多忙のため具体的な検討なし","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"他業務で多忙のため具体的な検討なし","lot_sale_status":null,"lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47211","name":"沖縄市","confirmed":true,"note":"R6回答なし","_row":11,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"現在のところ、他に優先する施策があるため。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"現在のところ、他に優先する施策があるため。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"現在のところ、他に優先する施策があるため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"現在のところ、他に優先する施策があるため。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47212","name":"豊見城市","confirmed":false,"note":null,"_row":12,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"現在のところ、他に優先する施策があるため。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"現在のところ、他に優先する施策があるため。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"現在のところ、他に優先する施策があるため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"現在のところ、他に優先する施策があるため。","lot_sale_status":null,"lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47213","name":"うるま市","confirmed":true,"note":"R6回答なし","_row":13,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"・空き家改修補助金 / ・津堅島移住定住支援施設（整備中）※R9年度供用開始予定","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画政策課 / 政策調整第２係 / 098-973-5005","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47214","name":"宮古島市","confirmed":true,"note":"宅地分譲も含めた市有地の利活用について民間のサウンディングを行っている。","_row":14,"policy_status":"今後取り組む予定","policy_status_other":null,"policy_detail":"主にUターンの増加に資する施策を検討する","policy_none_reason":"本市としては積極的に移住者の受け入れ支援を必要としていない","desk_status":"あり","desk_status_other":null,"desk_contact":"地域振興課 地域振興係 担当：古謝、與那覇 0980-73-4905","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"検討していない","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"検討していない","lot_sale_status":"その他（備考欄に記入）","lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47215","name":"南城市","confirmed":true,"note":null,"_row":15,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"三世代同近居支援補助金、知念地域移住定住支援補助金、市移住サイトの運営、地域おこし協力隊制度の活用","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"移住関連の相談等があれば対応している。","desk_contact":"まちづくり推進課地域振興係/具志堅/098-917-5394","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":"その他（右枠に記入）","jobinfo_other":"市及び近隣自治体の求人情報を市移住サイトに掲載。","jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"宅地を分譲したことがある（区画数を右枠に記入）","lot_sale_units":"11","new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47301","name":"国頭村","confirmed":true,"note":null,"_row":16,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"移住体験住宅（2棟）の活用、空家等活用住宅（戸建て18戸・定住促進住宅2棟（集合住宅1等・戸建て1等））、専用Instagram・LINE","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"国頭村地域交流スペース / TEL：0980-43-8680","desk_none_reason":null,"intermediary_status":"その他（右枠に記入）","intermediary_other":"活動している団体はいるが、村が中間支援組織として認定していないため","intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"村内の事業者から求人依頼があった場合、Instagram・LINEにて情報発信を行っている。 / 地域交流スペースでの求人情報の掲示。","jobinfo_none_reason":null,"lot_sale_status":"宅地を分譲したことがある（区画数を右枠に記入）","lot_sale_units":"13区画","new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47302","name":"大宜味村","confirmed":true,"note":null,"_row":17,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"空き家を改修した移住定住住宅を整備し、地域と移住者の相互理解の向上促進（令和5年度実施→3戸9名入居）、移住定住促進の集落支援員の配置、移住者向けパンフレットの作成、県外移住相談会への参加、集落点検ワークショップの実施。","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画観光課 木下、比嘉 0980-44-3007","desk_none_reason":null,"intermediary_status":"あり","intermediary_other":null,"intermediary_detail":"くがに未来１７、 担当：企画観光課・木下 0980-44-3007","intermediary_none_reason":null,"jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"ハローワークの求人情報の提供。","jobinfo_none_reason":null,"lot_sale_status":"宅地を分譲したことがある（区画数を右枠に記入）","lot_sale_units":"結の浜 45区画 / 江洲 37区画","new_housing_plan":"検討中","new_housing_funding":null},{"code":"47303","name":"東村","confirmed":true,"note":"宅地分譲はまだしていないが、宅地分譲に向けて用地購入、測量設計業務を現在進めている。","_row":18,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"子育て田舎ぐらし体験事業（時期：通年）／地域おこし協力隊・インターン／宅地分譲整備／移住支援金／他施策詳細は支援ガイドのとおり","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画観光課 担当：金城 0980-43-2265","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"検討まで至っていないため","jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"村独自の求人情報の発信及びハーローワークの求人情報の提供","jobinfo_none_reason":null,"lot_sale_status":"その他（備考欄に記入）","lot_sale_units":null,"new_housing_plan":"具体的な計画がある（右枠に財源を記入）","new_housing_funding":"一般財源（過疎債）"},{"code":"47306","name":"今帰仁村","confirmed":true,"note":"（住宅施策）県有地の取得を打診中。住宅整備についてはPFIで検討中。移住者限定ではないが、多数受け入れる可能性は高い。","_row":19,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":null,"policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画財政課・仲原雅宏・0980-56-2114","desk_none_reason":null,"intermediary_status":"今後設立予定","intermediary_other":null,"intermediary_detail":"企画財政課・仲原雅宏・0980-56-2114","intermediary_none_reason":null,"jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"検討中","new_housing_funding":null},{"code":"47308","name":"本部町","confirmed":true,"note":null,"_row":20,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"・移住支援金 / ・空き家利活用定住促進事業 / ・移住相談員の設置（令和7年度4月～） / ・空き家調査（令和7年度4月～）","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画商工観光課 / 野崎 真 0980-47-2702","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"まだ検討まで至っていない","jobinfo_status":"今後行う予定","jobinfo_other":null,"jobinfo_detail":"移住者向け求人募集をしたい事業所を募集し、移住相談窓口で提供を検討中","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"検討中","new_housing_funding":"PPP/PFI方式による民間事業者の活用を検討"},{"code":"47311","name":"恩納村","confirmed":true,"note":"R6回答なし","_row":21,"policy_status":null,"policy_status_other":null,"policy_detail":"空家活用事業補助金 /","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":null,"desk_contact":null,"desk_none_reason":"必要に応じ検討する","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"必要に応じ検討する。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"その他（備考欄に記入）","lot_sale_units":null,"new_housing_plan":"検討中","new_housing_funding":null},{"code":"47313","name":"宜野座村","confirmed":false,"note":null,"_row":22,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"人口が微増傾向であるため、取り組む優先度として低めである。","desk_status":"あり","desk_status_other":null,"desk_contact":"企画課 事業振興係 担当：佐久川 098-968-5100","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"ニーズや必要な要件などが整えば設置の検討をする。","jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"庁内へ人材サポートセンター窓口の設置及びハローワーク等との連携","jobinfo_none_reason":null,"lot_sale_status":null,"lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47314","name":"金武町","confirmed":true,"note":null,"_row":23,"policy_status":"今後取り組む予定","policy_status_other":null,"policy_detail":"取組内容及び時期については未定","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"施策の展開に応じて設置の可能性有","desk_contact":null,"desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"体制が整っていないため","jobinfo_status":"その他（右枠に記入）","jobinfo_other":"町就活支援センターにて町民に対して各種事業や支援を実施","jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47315","name":"伊江村","confirmed":true,"note":null,"_row":24,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"移住コーディネーター設置と相談窓口開設／空き家実態調査／情報発信（ホームページ＆ＳＮＳ開設と運用・動画制作・外部媒体への発信／移住定住ガイドブック制作）／移住イベント（オンライン＆リアル）出展／個別オンライン相談／移住体験プログラム実施／移住後のサポート／地域コミュニティと移住者を繋ぐ（令和4～）／移住定住促進住宅整備（令和3-5）、運用（令和6～）／移住支援実施（令和6～）／空き家利活用の取り組み（令和5～）","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画課／山城・柴田（メールアドレスは非公開）","desk_none_reason":null,"intermediary_status":"あり","intermediary_other":null,"intermediary_detail":"企画課／山城・柴田（メールアドレスは非公開） ※中間支援機能として移住コーディネーターを設置。","intermediary_none_reason":null,"jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"村の事業者から聞き取りを行い、ホームページで発信したり、問い合わせのあった移住検討者に案内を実施。","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47324","name":"読谷村","confirmed":true,"note":"R6回答なし","_row":25,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"人口が微増傾向にあり、当面は移住支援の優先度は低いと判断している。","desk_status":"あり","desk_status_other":null,"desk_contact":"企画政策課・饒波 098-982-9205","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"相談実績が少なく課題化しておらず、体制整備に至っていない。","jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"庁内にサポートセンターを設置しており、移住者以外も利用可能としている。","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47325","name":"嘉手納町","confirmed":true,"note":null,"_row":26,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":null,"desk_status":"設置予定なし","desk_status_other":null,"desk_contact":"企画財政課 企画推進係","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"体制が整っていないため","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"体制が整っていないため","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47326","name":"北谷町","confirmed":false,"note":"R6回答なし","_row":27,"policy_status":null,"policy_status_other":null,"policy_detail":null,"policy_none_reason":null,"desk_status":null,"desk_status_other":null,"desk_contact":null,"desk_none_reason":null,"intermediary_status":null,"intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":null,"jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":null,"lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47327","name":"北中城村","confirmed":false,"note":"R6回答なし","_row":28,"policy_status":null,"policy_status_other":null,"policy_detail":null,"policy_none_reason":null,"desk_status":null,"desk_status_other":null,"desk_contact":null,"desk_none_reason":null,"intermediary_status":null,"intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":null,"jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":null,"lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47328","name":"中城村","confirmed":true,"note":"R6回答なし","_row":29,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"人口は増加傾向であり施策として優先順位が低い。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"人口は増加傾向であり施策として優先順位が低い。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"人口は増加傾向であり施策として優先順位が低い。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"人口は増加傾向であり施策として優先順位が低い。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47329","name":"西原町","confirmed":false,"note":"R6回答なし","_row":30,"policy_status":null,"policy_status_other":null,"policy_detail":null,"policy_none_reason":null,"desk_status":null,"desk_status_other":null,"desk_contact":null,"desk_none_reason":null,"intermediary_status":null,"intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":null,"jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":null,"lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47348","name":"与那原町","confirmed":true,"note":null,"_row":31,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"人口が増加傾向であること、移住希望者に案内できる物件がほぼないことなどから急務とはしていない。","desk_status":"その他（右枠に記入）","desk_status_other":"移住相談の専門窓口は設けていないが、相談があれば都度ブランド推進課にて相談に応じる体制をとっている。","desk_contact":"ブランド推進課 098-945-5323","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"体制が整っていないため","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"体制が整っていないため","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47350","name":"南風原町","confirmed":true,"note":"R6回答なし","_row":32,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"相談件数が少なく、現時点で、他に優先する施策があるため。","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"相談件数が少なく、現時点で、他に優先する施策があるため。","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"相談件数が少なく、現時点で、他に優先する施策があるため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"相談件数が少なく、現時点で、他に優先する施策があるため。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47353","name":"渡嘉敷村","confirmed":true,"note":"R6更新事項無し","_row":33,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"住居がないため。","desk_status":"あり","desk_status_other":null,"desk_contact":"総務課DX推進係","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"住居の確保ができないため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"住居が確保できないため。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47354","name":"座間味村","confirmed":true,"note":"検討に至っていない","_row":34,"policy_status":"今後取り組む予定","policy_status_other":null,"policy_detail":"空家の利活用","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"施策の展開に応じては設置する","desk_contact":null,"desk_none_reason":null,"intermediary_status":"その他（右枠に記入）","intermediary_other":"検討に至っていない","intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":"その他（右枠に記入）","jobinfo_other":"検討に至っていない","jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"その他（備考欄に記入）","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47355","name":"粟国村","confirmed":true,"note":"R6更新事項無し","_row":35,"policy_status":"今後取り組む予定","policy_status_other":null,"policy_detail":null,"policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"部署：総務課 / 担当者：企画担当 / 連絡先：098-988-2016","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":"今後行う予定","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47356","name":"渡名喜村","confirmed":true,"note":"R6回答なし","_row":36,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"・多用途住宅の整備 / ・空き家を活用した住居の整備 / ・地域おこし協力隊の募集","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"総務課にて兼務で対応している。","desk_contact":null,"desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"村内に対応可能な体制を有する組織が無いため。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"公務や地域おこし協力隊については役場HPにて周知。それ以外は、求人が無く予定なし。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"具体的な計画がある（右枠に財源を記入）","new_housing_funding":"沖縄振興一括交付金"},{"code":"47357","name":"南大東村","confirmed":true,"note":"宅地分譲は具体的な計画なし（話題に上がっている程度）R9以降、EIZENさんの物件増やす予定","_row":37,"policy_status":"取り組み予定なし","policy_status_other":null,"policy_detail":null,"policy_none_reason":"人材や財源の不足","desk_status":"設置予定なし","desk_status_other":null,"desk_contact":null,"desk_none_reason":"人材不足","intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"移住関係に取り組めていないため","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"移住関連まで手が回っていないため","lot_sale_status":"宅地分譲を検討している","lot_sale_units":null,"new_housing_plan":"具体的な計画がある（右枠に財源を記入）","new_housing_funding":"離島活性化推進事業費補助金 / 沖縄振興特別推進市町村交付金 / 過疎対策事業債"},{"code":"47358","name":"北大東村","confirmed":true,"note":null,"_row":38,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"定住住宅等の整備","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"総務課／移住・定住担当、09802-3-4001","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"組織をつくって対応するほど移住者が多くないため","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"仕事情報の収集まで手がまわらないため","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":null,"new_housing_funding":null},{"code":"47359","name":"伊平屋村","confirmed":true,"note":null,"_row":39,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"移住定住住宅の建築 ８戸（R7.9完成）","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画財政課/櫻井/0980-46-2005","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"現段階では必要でないと判断","jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"村HP、外部サイトやSNS等を活用中。","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"検討中","new_housing_funding":null},{"code":"47360","name":"伊是名村","confirmed":true,"note":null,"_row":40,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"定住定住促進住宅の整備や定住促進祝い金（結婚・出産）の給付等","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"その他（移住相談に特化した専門窓口は無いが、相談等があれば当課にて引き続き対応する。）","desk_contact":null,"desk_none_reason":null,"intermediary_status":"あり","intermediary_other":null,"intermediary_detail":"中間支援組織名称（H.Yマリン） 担当者（比嘉 陽子） 連絡先（非公開）","intermediary_none_reason":null,"jobinfo_status":"今後行う予定","jobinfo_other":null,"jobinfo_detail":"令和3年度に空き家の戸数や現状を把握するための実態調査を行った。今後は、対策計画を策定した上で、活用方法を検討していきたい。（ただし、所有者の理解が得られる前提）","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"検討中","new_housing_funding":null},{"code":"47361","name":"久米島町","confirmed":true,"note":null,"_row":41,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"第２次久米島町総合計画に基づき、交流人口・移住定住人口の拡大を図るため移住定住促進体制の充実に取り組んでいます。","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"移住定住ワンストップ相談窓口の設置 / 久米島 島ぐらしコンシェルジュ 連絡先：098-894-6488","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"移住定住相談窓口である「島ぐらしコンシェルジュ」の発足を行い、移住・定住の取り組みを推進しているため。","jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"内容：本町へ移住・Uターンを検討している人を対象に仕事・くらし・住まいの情報発信を推進しています。 / 提供方法：島ぐらしガイドHP、各種SNS（Instagram、Facebook、X(Twitter)）","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47362","name":"八重瀬町","confirmed":true,"note":null,"_row":42,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"地域おこし協力隊受入（令和5年4月～）","policy_none_reason":null,"desk_status":"その他（右枠に記入）","desk_status_other":"その他（移住へのニーズ、問合せ等が一定程度あれば設置を検討する。）","desk_contact":null,"desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":"その他（移住へのニーズ、問合せ等が一定程度あれば設置を検討する。）","intermediary_detail":null,"intermediary_none_reason":"現時点では人口増加傾向であるため、他施策を優先している。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"ハローワーク、民間の求人情報等で事足りているため","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"現時点では具体的な計画はない","new_housing_funding":null},{"code":"47375","name":"多良間村","confirmed":true,"note":"R6更新事項無し","_row":43,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"・定住促進住宅 1棟5部屋 整備済み / ・空家活用定住促進住宅 1軒 整備済み","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"総務財政課 大城 菜美 0980-79-2011","desk_none_reason":null,"intermediary_status":"予定なし","intermediary_other":null,"intermediary_detail":null,"intermediary_none_reason":"・施策内容を把握していないため。必要に応じ今後導入も検討する。","jobinfo_status":"予定なし","jobinfo_other":null,"jobinfo_detail":null,"jobinfo_none_reason":"・住居の確保が出来ていない状況にあるため。必要に応じ整理する。","lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"具体的な計画がある（右枠に財源を記入）","new_housing_funding":"国庫補助金の活用を検討中"},{"code":"47381","name":"竹富町","confirmed":true,"note":null,"_row":44,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"相談窓口の開設。ハローワークと連携体制を構築し移住希望者への仕事をサポート。住居不足問題への取り組み","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"商工観光課 担当：大泊 / R8年度より機構改革があるため、担当部署や担当者の変更の可能性があります。","desk_none_reason":null,"intermediary_status":"その他","intermediary_other":"有効性を踏まえてつくることの検討段階","intermediary_detail":null,"intermediary_none_reason":null,"jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"ハローワークとの連携","jobinfo_none_reason":null,"lot_sale_status":"宅地を分譲したことがある（区画数を右枠に記入）","lot_sale_units":"8","new_housing_plan":"具体的な計画がある（右枠に財源を記入）","new_housing_funding":"離島活性化推進事業費補助金"},{"code":"47382","name":"与那国町","confirmed":true,"note":null,"_row":45,"policy_status":"すでに取り組んでいる","policy_status_other":null,"policy_detail":"・移住コーディネーター設置と移住相談窓口開設 / ・移住定住促進住宅整備と運用 / ・移住イベント出展、個別オンライン移住相談、移住体験プログラム実施 / ・情報発信（ホームページ＆ＳＮＳ開設と運用・動画制作・外部媒体への発信／移住ガイドブック制作） / ・移住支援金（R8年度4月予定）","policy_none_reason":null,"desk_status":"あり","desk_status_other":null,"desk_contact":"企画財政課 川本、水沼","desk_none_reason":null,"intermediary_status":"今後設立予定","intermediary_other":null,"intermediary_detail":"移住定住交流ハウスとばるん（仮）企画財政課 川本、水沼 0980-87-3577","intermediary_none_reason":null,"jobinfo_status":"行っている","jobinfo_other":null,"jobinfo_detail":"移住サイト掲載 ハローワーク連携","jobinfo_none_reason":null,"lot_sale_status":"宅地分譲は検討していない","lot_sale_units":null,"new_housing_plan":"具体的な計画がある（右枠に財源を記入）","new_housing_funding":"国庫補助金（沖縄離島活性化推進事業補助金）"}],"housing":[{"code":"47207","municipality":"石垣市","confirmed":true,"note":null,"_row":5,"name":"伊原間地区移住定住促進住宅（仮）","property_type":"新築・集合住宅型","units":"3戸×1棟 / 2戸×1棟","floor_area_sqm":"240","completion_fy":"令和8年度","occupancy_conditions":"公民館活動への積極的な参加が望ましい","max_tenancy":"なし","funding":"民間資金 / ふるさと納税","total_cost_thousand_jpy":"未定","private_finance":"あり","site_origin":"個人・自治会等の所有地を貸借","operator":"入居者選定など：公民館（地区） / 維持管理：民間企業","floor_area_sqm_num":240.0,"total_cost_thousand_jpy_num":null},{"code":"47213","municipality":"うるま市","confirmed":true,"note":"国有地を購入 / 総事業費は基本計画・基本設計・実施設計・用地取得・工事費の合計（共有住宅含む）","_row":6,"name":"重量鉄骨造住宅（仮）","property_type":"新築・戸建て型","units":"7戸","floor_area_sqm":"456.42","completion_fy":"令和8年度","occupancy_conditions":"未定","max_tenancy":"未定","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"691311","private_finance":"なし","site_origin":"その他（国有地を購入）","operator":"うるま市","floor_area_sqm_num":456.42,"total_cost_thousand_jpy_num":691311.0},{"code":"47215","municipality":"南城市","confirmed":true,"note":null,"_row":7,"name":"久高島移住定住促進住宅","property_type":"新築・集合住宅型","units":"４戸","floor_area_sqm":"未定","completion_fy":"令和９年度","occupancy_conditions":"自治・文化の担い手 / 地域産業又は地域福祉の担い手","max_tenancy":"5年","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"233167","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"南城市","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":233167.0},{"code":"47301","municipality":"国頭村","confirmed":true,"note":null,"_row":8,"name":"比地定住促進住宅","property_type":"新築・集合住宅型","units":"6戸×1棟","floor_area_sqm":"291.10","completion_fy":"平成30年度","occupancy_conditions":"地域行事への積極的な参加","max_tenancy":"10年","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"170413","private_finance":"なし","site_origin":"既存の自治体所有地（宅地に転用）","operator":"国頭村","floor_area_sqm_num":291.1,"total_cost_thousand_jpy_num":170413.0},{"code":"47301","municipality":"国頭村","confirmed":true,"note":null,"_row":9,"name":"辺土名定住促進住宅","property_type":"中古・戸建て型","units":"1戸","floor_area_sqm":"不明（倉庫と一体型となっているため）","completion_fy":"令和6年度に移住体験住宅から用途変更","occupancy_conditions":"地域行事への積極的な参加","max_tenancy":"3年","funding":"沖縄県からの無償譲渡物件","total_cost_thousand_jpy":"54 / （備品購入費）","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"国頭村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47301","municipality":"国頭村","confirmed":true,"note":null,"_row":10,"name":"定住促進空家活用住宅","property_type":"中古・戸建て型","units":"1８戸","floor_area_sqm":"997.76","completion_fy":"平成29年度 / 令和元年度 / 令和4年度 / 令和6年度 / 令和7年度","occupancy_conditions":"世帯、地域行事への積極的な参加","max_tenancy":"所有者と行政が10年間の契約を行っている間の入居。入居の時期により期間は異なる。","funding":"国庫補助金 / (過疎地域等自律活性化交付金、地方創生推進交付金、過疎地域持続的発展支援交付金) / 一般財源（過疎対策事業債）","total_cost_thousand_jpy":"77739","private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"国頭村","floor_area_sqm_num":997.76,"total_cost_thousand_jpy_num":77739.0},{"code":"47302","municipality":"大宜味村","confirmed":true,"note":null,"_row":11,"name":"大宜味村移住定住促進住宅","property_type":"中古・戸建て型","units":"3戸","floor_area_sqm":"114.61","completion_fy":"令和６年5月（R5事業）","occupancy_conditions":"・地域活性化、地域文化や活動の担い手となる者 / ・本村に定住するために住宅を必要とする者で、住所を村に登録し、住宅を生活の本拠地とする者であること / ・U ターン者においては、村内の実家への入居が可能ではない状態であること / ・現に同居し、又は同居しようとする親族 婚姻の届出をしていないが事実上婚姻関係と同様の事情にある者その他婚姻の予約者を含む。があること / （※募集要項より）","max_tenancy":"2年（更新有）","funding":"国庫補助金（過疎地域持続的発展支援交付金）、 / 一般財源（過疎対策事業債）","total_cost_thousand_jpy":"12000","private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"大宜味村","floor_area_sqm_num":114.61,"total_cost_thousand_jpy_num":12000.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":12,"name":"平良定住促進住宅","property_type":"新築・戸建て型","units":"4戸","floor_area_sqm":"1戸あたり / 47.30","completion_fy":"1戸：平成21年度 / ３戸：平成23年度","occupancy_conditions":"満40歳未満又は中学生以下の子供を扶養する者","max_tenancy":"10年（延長有）","funding":"3戸は国庫補助金 / （地域活性化・生活対策臨時交付金) / 1戸は一般財源（過疎対策事業債）","total_cost_thousand_jpy":"47258","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"東村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":47258.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":13,"name":"有銘定住促進住宅","property_type":"新築・戸建て型","units":"4戸","floor_area_sqm":"1戸あたり49.56","completion_fy":"平成23年度","occupancy_conditions":"満40歳未満又は中学生以下の子供を扶養する者","max_tenancy":"10年（延長有）","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"29747","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"東村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":29747.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":14,"name":"川田定住促進住宅","property_type":"新築・戸建て型","units":"4戸","floor_area_sqm":"1戸あたり49.56","completion_fy":"平成25年度","occupancy_conditions":"満40歳未満又は中学生以下の子供を扶養する者","max_tenancy":"10年（延長有）","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"62989","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"東村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":62989.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":15,"name":"宮城定住促進住宅","property_type":"新築・戸建て型","units":"4戸","floor_area_sqm":"1戸あたり50.12","completion_fy":"平成27年度","occupancy_conditions":"満40歳未満又は中学生以下の子供を扶養する者","max_tenancy":"10年（延長有）","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"89512","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"東村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":89512.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":16,"name":"宮城産業支援住宅","property_type":"新築・戸建て型","units":"4戸","floor_area_sqm":"1戸あたり / 96.7","completion_fy":"令和2年度","occupancy_conditions":"50歳未満で第１次産業に就業する者（5年未満）他要件有","max_tenancy":"15年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"151791","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"東村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":151791.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":17,"name":"オアシスげさし","property_type":"新築・集合住宅型","units":"２１戸×1棟","floor_area_sqm":"1,006.14","completion_fy":"平成26年度","occupancy_conditions":"東村に住所を移すことを約束する者","max_tenancy":"なし","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"159990","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"民間企業","floor_area_sqm_num":1006.14,"total_cost_thousand_jpy_num":159990.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":18,"name":"キングス川田","property_type":"新築・集合住宅型","units":"２０戸×1棟","floor_area_sqm":"1,081.99","completion_fy":"平成30年度","occupancy_conditions":"東村に住所を移すことを約束する者","max_tenancy":"なし","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"211733","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"民間企業","floor_area_sqm_num":1081.99,"total_cost_thousand_jpy_num":211733.0},{"code":"47303","municipality":"東村","confirmed":true,"note":"うち1戸は移住体験住宅として活用","_row":19,"name":"アザレアたいら","property_type":"新築・集合住宅型","units":"１８戸×1棟","floor_area_sqm":"896.10","completion_fy":"令和2年度","occupancy_conditions":"東村に住所を移すことを約束する者","max_tenancy":"なし","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"215254","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"民間企業","floor_area_sqm_num":896.1,"total_cost_thousand_jpy_num":215254.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":20,"name":"シーサイドみやぎ","property_type":"新築・集合住宅型","units":"21戸×1棟","floor_area_sqm":"1,007.22","completion_fy":"令和７年度","occupancy_conditions":"東村に住所を移すことを約束する者","max_tenancy":"なし","funding":"一般財源（過疎対策事業債）","total_cost_thousand_jpy":"315375","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"民間企業","floor_area_sqm_num":1007.22,"total_cost_thousand_jpy_num":315375.0},{"code":"47303","municipality":"東村","confirmed":true,"note":null,"_row":21,"name":"有銘産業支援住宅","property_type":"新築・戸建て型","units":"3戸予定","floor_area_sqm":"未定","completion_fy":"未定","occupancy_conditions":"50歳未満で第１次産業に就業する者（5年未満）他要件有（※予定）","max_tenancy":"15年（予定）","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"未定","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"東村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47308","municipality":"本部町","confirmed":true,"note":null,"_row":22,"name":"農水産業担い手支援住宅","property_type":"新築・戸建て型","units":"4戸","floor_area_sqm":"住戸部のみ46.74 / 倉庫47.60 / 計94.34","completion_fy":"令和3年度","occupancy_conditions":"町で新たに農業／漁業に就業する者又は就業日から5年未満の者 / 年齢が50歳未満である者 / など","max_tenancy":"原則５年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"198636","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"本部町","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":198636.0},{"code":"47315","municipality":"伊江村","confirmed":true,"note":"うち1戸は移住体験住宅として活用","_row":23,"name":"伊江村移住定住促進住宅","property_type":"新築・集合住宅型","units":"12戸×1棟","floor_area_sqm":"548","completion_fy":"令和5年度","occupancy_conditions":"・5年以上の期間、村内に定住する見込みがある者 / ・申込み時に世帯主の年令が満50歳未満の者で、原則中学生以下の子供を扶養する者であること / ・期限付き移住定住促進住宅であることを理解し、賛同する者 / ・地域づくりの担い手となる者、あるいは地域の活性化に寄与する者 / ・住宅の所在地の行政区（阿良区）に加入し、各行事へ積極的に協力をする者 / （※村HPの入居資格より）","max_tenancy":"5年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"357","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"伊江村","floor_area_sqm_num":548.0,"total_cost_thousand_jpy_num":357.0},{"code":"47315","municipality":"伊江村","confirmed":true,"note":null,"_row":24,"name":"伊江村特定専門職定住促進住宅","property_type":"新築・集合住宅型","units":"12戸×1棟","floor_area_sqm":"835.98","completion_fy":"令和8年度（繰り越し）","occupancy_conditions":"特定専門職（看護師、保健師、保育士、介護士）に従事するもの（※補助金交付決定より抜粋）","max_tenancy":"無し","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"388.458","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"伊江村","floor_area_sqm_num":835.98,"total_cost_thousand_jpy_num":388.458},{"code":"47353","municipality":"渡嘉敷村","confirmed":true,"note":null,"_row":25,"name":"渡嘉敷アマンザ移住住宅(プレハブ)","property_type":"新築・戸建て型","units":"1戸","floor_area_sqm":"13.08","completion_fy":"令和4年度","occupancy_conditions":"島内就労の有資格者等","max_tenancy":"3年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地に転用）","operator":"渡嘉敷村","floor_area_sqm_num":13.08,"total_cost_thousand_jpy_num":null},{"code":"47353","municipality":"渡嘉敷村","confirmed":true,"note":null,"_row":26,"name":"渡嘉敷南移住住宅(プレハブ)","property_type":"新築・戸建て型","units":"3戸","floor_area_sqm":"57.60 / (19.20✕3戸)","completion_fy":"令和5年度","occupancy_conditions":"島内就労の有資格者等","max_tenancy":"3年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"渡嘉敷村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47353","municipality":"渡嘉敷村","confirmed":true,"note":null,"_row":27,"name":"渡嘉敷東移住住宅(木造)","property_type":"新築・集合住宅型","units":"4戸✕1棟","floor_area_sqm":"162.28 / (40.57✕4戸)","completion_fy":"令和6年度","occupancy_conditions":"島内就労の有資格者等","max_tenancy":"期限設定無し","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"渡嘉敷村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47354","municipality":"座間味村","confirmed":true,"note":"中古物件を改修したとのことですが、当該住宅の従来の用途を教えて下さい（教員住宅など）→民宿 / ⑨は③以外も含む","_row":28,"name":"阿嘉島定住促進住宅（以前は民宿）","property_type":"中古・集合住宅型","units":"6戸×1棟","floor_area_sqm":"326.01","completion_fy":"令和2年度","occupancy_conditions":"40歳未満 / 将来にわたり座間味村に定住し､村の行事や地域活動及び地域団体に積極的に参加し､村の発展及び地域の活性化に寄与する意思を有する者｡ /","max_tenancy":"10年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"95775","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"座間味村","floor_area_sqm_num":326.01,"total_cost_thousand_jpy_num":95775.0},{"code":"47354","municipality":"座間味村","confirmed":true,"note":null,"_row":29,"name":"座間味島定住促進住宅","property_type":"新築・集合住宅型","units":"6戸×1棟","floor_area_sqm":"335.52","completion_fy":"令和元年度","occupancy_conditions":"同上","max_tenancy":"10年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"210801","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"座間味村","floor_area_sqm_num":335.52,"total_cost_thousand_jpy_num":210801.0},{"code":"47355","municipality":"座間味村","confirmed":true,"note":"民間賃貸住宅部分を除いている","_row":30,"name":"座間味村官民連携住宅（就業者定住促進住宅）","property_type":"新築・集合住宅型","units":"10戸×1棟","floor_area_sqm":"380.54","completion_fy":"令和5年度","occupancy_conditions":"住民サービスを提供する上で必要不可欠な（福祉、教育等）に従事するもの","max_tenancy":"なし","funding":"国庫補助金 / （沖縄振興特定事業推進費補助金）、 / 民間資金","total_cost_thousand_jpy":"245490","private_finance":"あり","site_origin":"個人・自治会等の所有地を購入","operator":"座間味村","floor_area_sqm_num":380.54,"total_cost_thousand_jpy_num":245490.0},{"code":"47355","municipality":"粟国村","confirmed":true,"note":null,"_row":31,"name":"粟国村定住促進住宅","property_type":"新築・集合住宅型","units":"6戸×1棟","floor_area_sqm":"175.486","completion_fy":"平成26年度","occupancy_conditions":"55歳未満","max_tenancy":"5年","funding":"一般財源（地方債）、 / 国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"150700","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"粟国村","floor_area_sqm_num":175.486,"total_cost_thousand_jpy_num":150700.0},{"code":"47355","municipality":"粟国村","confirmed":true,"note":null,"_row":32,"name":"粟国村第2定住促進住宅","property_type":"新築・集合住宅型","units":"6戸×1棟","floor_area_sqm":"175.486","completion_fy":"令和6年度","occupancy_conditions":"55歳未満","max_tenancy":"5年","funding":"一般財源 / 国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"125027","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"粟国村","floor_area_sqm_num":175.486,"total_cost_thousand_jpy_num":125027.0},{"code":"47356","municipality":"渡名喜村","confirmed":true,"note":null,"_row":33,"name":"多用途住宅","property_type":"新築・戸建て型","units":"１戸×３棟 / ２戸×３棟 /","floor_area_sqm":null,"completion_fy":"平成25年度 /","occupancy_conditions":"満45歳未満の者又は中学生以下の子供を扶養する者であること / （面談時に地域行事への積極的な参加の意思等を確認）","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"渡名喜村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47356","municipality":"渡名喜村","confirmed":true,"note":null,"_row":34,"name":"多用途住宅","property_type":"新築・戸建て型","units":"２戸×2棟","floor_area_sqm":null,"completion_fy":"令和9年度予定","occupancy_conditions":"満45歳未満の者又は中学生以下の子供を扶養する者であること / （面談時に地域行事への積極的な参加の意思等を確認）","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"197000","private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"渡名喜村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":197000.0},{"code":"47356","municipality":"渡名喜村","confirmed":true,"note":null,"_row":35,"name":"定住促進空き家活用住宅","property_type":"中古・戸建て型","units":"1戸","floor_area_sqm":"44.28","completion_fy":"令和8年度予定","occupancy_conditions":"未定","max_tenancy":"未定","funding":"一般財源(過疎対策事業債)","total_cost_thousand_jpy":"9000","private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"渡名喜村","floor_area_sqm_num":44.28,"total_cost_thousand_jpy_num":9000.0},{"code":"47357","municipality":"南大東村","confirmed":true,"note":null,"_row":36,"name":"南大東村移住定住促進住宅","property_type":"新築・集合住宅型","units":"4戸","floor_area_sqm":"164.008 / （入居募集要項より抜粋）","completion_fy":"令和6年度","occupancy_conditions":"各字自治会に加入し、近隣住民と積極的に交流する意思がある者（入居募集要項より抜粋）","max_tenancy":"5年（入居募集要項より抜粋）","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"110,000 / (R6分のみ沖縄タイムスの記事より)","private_finance":"あり","site_origin":"個人・自治会等の所有地を購入","operator":"役場","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":37,"name":"定住住宅","property_type":"新築・集合住宅型","units":"４戸","floor_area_sqm":"196.00","completion_fy":"平成8年","occupancy_conditions":"なし","max_tenancy":"なし","funding":"一般財源のみ","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"北大東村","floor_area_sqm_num":196.0,"total_cost_thousand_jpy_num":null},{"code":"47358","municipality":"北大東村","confirmed":true,"note":"詳細は不明ですが、「１棟は月桃加工施設の従業員のために作り、もう１棟は施工管理技士など２，３年程度で出ていくような方を住ませることを想定していたのではないか」ということです。現在は村役場職員３名と施工管理技士１名が住んでいます。","_row":38,"name":"長期滞在施設","property_type":"新築・集合住宅型","units":"２戸×２棟","floor_area_sqm":"81.00","completion_fy":"平成21年","occupancy_conditions":"なし","max_tenancy":"なし","funding":"一般財源のみ","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"北大東村","floor_area_sqm_num":81.0,"total_cost_thousand_jpy_num":null},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":39,"name":"第２定住住宅","property_type":"新築・戸建て型","units":"１戸","floor_area_sqm":"40.40","completion_fy":"平成25年","occupancy_conditions":"なし","max_tenancy":"なし","funding":"一般財源のみ","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"北大東村","floor_area_sqm_num":40.4,"total_cost_thousand_jpy_num":null},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":40,"name":"第３定住住宅","property_type":"新築・集合住宅型","units":"４戸×1棟","floor_area_sqm":"207.83","completion_fy":"平成25年","occupancy_conditions":"なし","max_tenancy":"なし","funding":"国庫補助金 / （沖縄振興一括交付金）","total_cost_thousand_jpy":"94070","private_finance":"なし","site_origin":"既存の自治体所有地（宅地に転用）","operator":"北大東村","floor_area_sqm_num":207.83,"total_cost_thousand_jpy_num":94070.0},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":41,"name":"単身・少数世帯住宅","property_type":"新築・集合住宅型","units":"６戸×1棟","floor_area_sqm":"109.89","completion_fy":"平成27年","occupancy_conditions":"なし","max_tenancy":"なし","funding":"一般財源のみ","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"北大東村","floor_area_sqm_num":109.89,"total_cost_thousand_jpy_num":null},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":42,"name":"第４定住住宅","property_type":"新築・集合住宅型","units":"６戸×1棟","floor_area_sqm":"226.68","completion_fy":"平成29年","occupancy_conditions":"なし","max_tenancy":"なし","funding":"国庫補助金 / （沖縄振興一括交付金）","total_cost_thousand_jpy":"103680","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"北大東村","floor_area_sqm_num":226.68,"total_cost_thousand_jpy_num":103680.0},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":43,"name":"新規漁業従事者受入住宅","property_type":"新築・集合住宅型","units":"４戸×1棟","floor_area_sqm":"289.63","completion_fy":"平成30年","occupancy_conditions":"新規漁業従事者","max_tenancy":"原則５年","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"157221","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"北大東村","floor_area_sqm_num":289.63,"total_cost_thousand_jpy_num":157221.0},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":44,"name":"農業観光業新規就業者定住住宅（単身者用）","property_type":"新築・集合住宅型","units":"１４戸×1棟","floor_area_sqm":"403.32","completion_fy":"令和4年","occupancy_conditions":"農業観光業従事者","max_tenancy":"原則５年","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"300350","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"北大東村","floor_area_sqm_num":403.32,"total_cost_thousand_jpy_num":300350.0},{"code":"47358","municipality":"北大東村","confirmed":true,"note":null,"_row":45,"name":"農業観光業新規就業者定住住宅（家族用）","property_type":"新築・集合住宅型","units":"４戸×1棟","floor_area_sqm":"262.5","completion_fy":"令和4年","occupancy_conditions":"農業観光業従事者","max_tenancy":"原則５年","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"216885","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"北大東村","floor_area_sqm_num":262.5,"total_cost_thousand_jpy_num":216885.0},{"code":"47359","municipality":"伊平屋村","confirmed":true,"note":"一部は元々村有地 / 1～6号棟","_row":46,"name":"定住促進住宅","property_type":"新築・戸建て型","units":"６戸","floor_area_sqm":"237.06","completion_fy":"令和4年度","occupancy_conditions":"伊平屋村に移住（定住）を目的とし、一次産業（農業・漁業）等に従事する者","max_tenancy":"原則５年","funding":"国庫補助金（沖縄離島活性化推進事業補助金）R２～３","total_cost_thousand_jpy":"261049","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入（一部は元々村有地）","operator":"伊平屋村","floor_area_sqm_num":237.06,"total_cost_thousand_jpy_num":261049.0},{"code":"47359","municipality":"伊平屋村","confirmed":true,"note":"7号棟","_row":47,"name":"ギークハウス","property_type":"新築・集合住宅型","units":"8戸×1棟","floor_area_sqm":"295.40","completion_fy":"令和4年度","occupancy_conditions":"専門職（保健師、保育士、看護師、介護士、ICT技術者等）","max_tenancy":"特になし","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"171128","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"伊平屋村","floor_area_sqm_num":295.4,"total_cost_thousand_jpy_num":171128.0},{"code":"47359","municipality":"伊平屋村","confirmed":true,"note":"8号棟","_row":48,"name":"ギークハウス2号棟","property_type":"新築・集合住宅型","units":"8戸×１棟","floor_area_sqm":"393.93","completion_fy":"令和７年度","occupancy_conditions":"専門職（保健師、保育士、看護師、介護士、ICT技術者等）","max_tenancy":"特になし","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"207,350（見込）","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"伊平屋村","floor_area_sqm_num":393.93,"total_cost_thousand_jpy_num":null},{"code":"47360","municipality":"伊是名村","confirmed":true,"note":"補助金が下りなかったのでは？","_row":49,"name":"古民家等定住促進住宅（改修、旧山川家・旧名城家）","property_type":"中古・戸建て型","units":"２戸","floor_area_sqm":null,"completion_fy":"平成25年～27年 /","occupancy_conditions":"・申込み時、満 40 歳以下の者で 15 歳以下の同居者がいること。 / ・募集期間内に来島し、面接できる方 / ・集落の一員として活動に積極的に参加すること / ・敷地内・住宅周辺の環境整備（草刈、道路清掃等）に努めなければならない / ・入居後の住宅営繕（維持的な小修繕）を自己負担で行うこと / ・住宅の原状を変更するような大改修は行わないこと / ・地域の景観・観光資源として敷地内を開放し、来訪者がいつでも見学できるようにしなければならない / （※村HPの募集要領より）","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":null,"private_finance":"なし","site_origin":"既存の自治体所有地（宅地に転用）","operator":"伊是名村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47360","municipality":"伊是名村","confirmed":true,"note":null,"_row":50,"name":"古民家等定住促進住宅（復元、旧中本家）","property_type":"新築・戸建て型","units":"1戸","floor_area_sqm":null,"completion_fy":"平成27年","occupancy_conditions":"同上","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":null,"private_finance":null,"site_origin":null,"operator":"伊是名村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47360","municipality":"伊是名村","confirmed":true,"note":"入居条件の「独身」とは、「単身（既婚者含む）」ではなく、「現在結婚していない方」という解釈でよろしいですか？","_row":51,"name":"定住促進住宅 / （仲田区2棟・内花区2棟）","property_type":"新築・集合住宅型","units":"3戸×4棟","floor_area_sqm":null,"completion_fy":"令和2～3年度（仲田） / 令和3～4年度（内花）","occupancy_conditions":"40歳未満（独身）","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"126,010 / 80,250","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"内花区：伊是名村 / 仲田区：自治会","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47360","municipality":"伊是名村","confirmed":true,"note":"入居条件の「独身」とは、「単身（既婚者含む）」ではなく、「現在結婚していない方」という解釈でよろしいですか？","_row":52,"name":"定住促進住宅 / (勢理客区)","property_type":"新築・集合住宅型","units":"3戸×1棟","floor_area_sqm":null,"completion_fy":"令和5年度","occupancy_conditions":"40歳未満（独身）","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"745,11","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"自治会","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":74511.0},{"code":"47360","municipality":"伊是名村","confirmed":true,"note":null,"_row":53,"name":"定住促進住宅 / (伊是名区1棟) / （諸見区1棟）","property_type":"新築・集合住宅型","units":"3戸×1棟 / 3戸×1棟","floor_area_sqm":null,"completion_fy":"令和7年度 / 令和8年度","occupancy_conditions":"介護、福祉、保育等の資格者や一次産業の担い手 / 50歳未満（独身）","max_tenancy":"10年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"102,000 / 102,000","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"自治会","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47361","municipality":"久米島町","confirmed":true,"note":null,"_row":54,"name":"定住促進住宅","property_type":"新築・集合住宅型","units":"14戸×1棟","floor_area_sqm":"378.58","completion_fy":"令和8年度","occupancy_conditions":"教育・福祉関係従事者","max_tenancy":"５年","funding":"国庫補助金（離島活性化推進事業補助金）","total_cost_thousand_jpy":"388000","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"久米島町","floor_area_sqm_num":378.58,"total_cost_thousand_jpy_num":388000.0},{"code":"47375","municipality":"多良間村","confirmed":true,"note":null,"_row":55,"name":"定住促進住宅","property_type":"新築・集合住宅型","units":"5戸×1棟","floor_area_sqm":"224．50","completion_fy":"平成２８年度","occupancy_conditions":"専門職（具体的にどのような職種でしょうか）","max_tenancy":"10年","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"81129","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"多良間村","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":81129.0},{"code":"47375","municipality":"多良間村","confirmed":true,"note":"躯体を残し、間取りから変更したため事業費は高め","_row":56,"name":"定住促進空家活用住宅","property_type":"中古・戸建て型","units":"1戸","floor_area_sqm":"103.6","completion_fy":"令和2年度","occupancy_conditions":"本村に定住する意志があり、地域活性化の担い手となる者（募集要項より）","max_tenancy":"5年","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"34469","private_finance":"なし","site_origin":"個人・自治会等の所有地を貸借","operator":"多良間村","floor_area_sqm_num":103.6,"total_cost_thousand_jpy_num":34469.0},{"code":"47375","municipality":"多良間村","confirmed":true,"note":"総事業費には、同建物内にある研修施設・交流センターの工事費も含まれている","_row":57,"name":"移住定住促進住宅","property_type":"新築・集合住宅型","units":"12戸×1棟","floor_area_sqm":"2541.77","completion_fy":"令和11年度","occupancy_conditions":"（予定対象者）農業・福祉・観光分野への就労を条件とした移住者","max_tenancy":"未定","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"1107403","private_finance":"なし","site_origin":"個人・自治会等の所有地を購入","operator":"多良間村","floor_area_sqm_num":2541.77,"total_cost_thousand_jpy_num":1107403.0},{"code":"47381","municipality":"竹富町","confirmed":true,"note":null,"_row":58,"name":"ジャカコンハウス浦内 / （重量鉄骨造住宅）","property_type":"新築・集合住宅型","units":"5戸×1棟","floor_area_sqm":"約２２５（八重山日報の記事2021/11/23より）","completion_fy":"令和3年度","occupancy_conditions":"定住希望者","max_tenancy":"なし","funding":"民間資金","total_cost_thousand_jpy":"建設当時の坪単価は約1,40０","private_finance":"あり","site_origin":"既存の自治体所有地（宅地）","operator":"入居者選定など：公民館（地区） / 家賃回収など：民間企業","floor_area_sqm_num":null,"total_cost_thousand_jpy_num":null},{"code":"47381","municipality":"竹富町","confirmed":true,"note":null,"_row":59,"name":"移住定住住宅（美原地区）","property_type":"新築・集合住宅型","units":"4戸×1棟","floor_area_sqm":"299.46","completion_fy":"令和9年度","occupancy_conditions":"専門職（保健師、保育士、看護師、歯科衛生士、介護士、整備士、起業家人材、インフラ関係技術者、IT人材、観光事業者等）","max_tenancy":"入居条件の職についている間（期間の制限は無し）","funding":"国庫補助金（離島活性化推進事業費補助金）","total_cost_thousand_jpy":"222310","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"竹富町","floor_area_sqm_num":299.46,"total_cost_thousand_jpy_num":222310.0},{"code":"47382","municipality":"与那国町","confirmed":true,"note":"体験住宅含まず","_row":60,"name":"与那国移住定住促進住宅","property_type":"中古・戸建て型","units":"５戸","floor_area_sqm":"231.98","completion_fy":"令和4年度","occupancy_conditions":"地域行事等に積極的に参加するなど","max_tenancy":"２年","funding":"一般財源のみ","total_cost_thousand_jpy":"2500","private_finance":"なし","site_origin":"その他（国有財産）","operator":"与那国町","floor_area_sqm_num":231.98,"total_cost_thousand_jpy_num":2500.0},{"code":"47382","municipality":"与那国町","confirmed":true,"note":null,"_row":61,"name":"古民家活用定住促進住宅","property_type":"新築・戸建て型","units":"2戸","floor_area_sqm":"163.96","completion_fy":"平成30年度","occupancy_conditions":"地域行事等に積極的に参加するなど","max_tenancy":"１年（単身型） / ３年（家族型）","funding":"国庫補助金（沖縄振興一括交付金）","total_cost_thousand_jpy":"69000","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"与那国町","floor_area_sqm_num":163.96,"total_cost_thousand_jpy_num":69000.0},{"code":"47383","municipality":"与那国町","confirmed":true,"note":"⑨総事業費は予算額","_row":62,"name":"特定専門職住宅（仮）","property_type":"新築・戸建て型","units":"1戸","floor_area_sqm":"75.78","completion_fy":"令和８年度","occupancy_conditions":"医療・介護・福祉従事者（補助金交付決定より引用）","max_tenancy":"未定","funding":"国庫補助金（沖縄離島活性化推進事業補助金）","total_cost_thousand_jpy":"66000","private_finance":"なし","site_origin":"既存の自治体所有地（宅地）","operator":"与那国町","floor_area_sqm_num":75.78,"total_cost_thousand_jpy_num":66000.0}],"akiya":[{"municipality":"那覇市","confirmed":true,"surveys":[{"type":"特定空き家と思われる物件を対象に調査を実施","detail":"実施時期：平成28年度 / 担当組織：総務課 市民防災室"},{"type":"所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施","detail":"実施時期：随時 / 担当組織：那覇市まちなみ共創部まちなみ整備課"}],"_rows":[5,6],"consult_desk":"ある","consult_desk_org":"まちなみ共創部 / まちなみ整備課","akiya_plan":"策定済み","akiya_action_plan":"策定済み","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"設置する予定はない","support_corporation":"「指定しない」という方針を公表している","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"121戸","note":"①（令和7年度）過去の実態調査結果や水道の閉栓情報などを元に調査対象を抽出し、現地調査及び意向調査を実施した。 / ⑧全国版空き家バンク「LIFULL HOME'S」「at home」 / 累計登録0件","estimated_vacant":null,"bank_registered_total":0,"bank_deals_closed":null,"public_housing_vacant_num":121,"public_housing_vacant_raw":"121戸","code":"47201"},{"municipality":"宜野湾市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成３０年度/外部事業者（株式会社ゼンリンインターマップ）"}],"_rows":[7],"consult_desk":"ある","consult_desk_org":"建築指導課","akiya_plan":"策定済み","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"設置済み","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0件","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0件","code":"47205"},{"municipality":"石垣市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"①平成30年度/外部事業者 / （事業者名：ゼンリンインターマップ） / ②令和５年度/外部事業者 / （事業者名：ゼンリンインターマップ）"},{"type":"所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施","detail":"随時/石垣市建設部都市建設課"}],"_rows":[8,9],"consult_desk":"ある","consult_desk_org":"・空き家対策 / 都市建設課 TEL：0980-83-4207 / ・空き家バンク / ふるさと創生課 TEL;0980-87-9000","akiya_plan":"策定済み","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"設置済み","support_corporation":"募集する予定はない","subsidy_status":"設けている","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度","public_housing_vacant":"0","note":"石垣市公式移住定住応援サイト「南ぬ島らいふ」 / H29～R7 / 登録物件数 9件 / 移住世帯受入数 ９件 / 全て賃貸での登録、入居となります。","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47207"},{"municipality":"浦添市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"実施時期：令和6年8月～令和7年2月 / 担当組織：外部事業者（株式会社ゼンリンインターマップ）"}],"_rows":[10],"consult_desk":"ある","consult_desk_org":"都市建設部 建築営繕課","akiya_plan":"今後策定する予定","akiya_action_plan":"今後策定する予定","plan_timing":"令和9年度以降","akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"7戸（特殊空家2件含む）","note":"推定空家：198件R6調査","estimated_vacant":198,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":7,"public_housing_vacant_raw":"7戸（特殊空家2件含む）","code":"47208"},{"municipality":"名護市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"①平成29年度/外部事業者 / （事業者名：昭和株式会社沖縄支社・株式会社沖縄まちづくり連合 共同企業体） / ②令和４年度/外部事業者 / （事業者名：株式会社サーベイリサーチセンター沖縄事務所）"}],"_rows":[11],"consult_desk":"ある","consult_desk_org":"建築住宅課 建築相談係","akiya_plan":"策定済み","akiya_action_plan":"策定済み","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"指定している（備考欄に法人名をご記入ください）","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0件","note":"一般社団法人 全国空き家アドバイザー協議会","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0件","code":"47209"},{"municipality":"糸満市","confirmed":false,"surveys":[{"type":"全軒調査を実施","detail":"令和元年度/外部事業者 /"},{"type":"所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施","detail":"随時/糸満市まちづくり課"}],"_rows":[12,13],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"策定済み","akiya_action_plan":null,"plan_timing":null,"akiya_bank":null,"statutory_council":"設置済み","support_corporation":null,"subsidy_status":"設けている","subsidy_types":"（オ）家賃の一部を補助する制度（職種や年齢に制限を設けている場合を含む）","public_housing_vacant":null,"note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47210"},{"municipality":"沖縄市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成３０年度／外部事業者（ランドブレイン（株）沖縄事務所） / 令和7年度／外部事業者（（株）ゼンリンインターマップ）"}],"_rows":[14],"consult_desk":"ある","consult_desk_org":"建設部 住まい建築課","akiya_plan":"策定済み","akiya_action_plan":"策定済み","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"設置済み","support_corporation":"「指定しない」という方針を公表している","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"83","note":"全国版空き家バンク「LIFULL HOME'S」「at home」 / 累計登録物件数1件（その後取り下げ） / 令和7年度の調査結果はまだ取りまとめ中。5190件（H30調査より）","estimated_vacant":null,"bank_registered_total":1,"bank_deals_closed":null,"public_housing_vacant_num":83,"public_housing_vacant_raw":"83","code":"47211"},{"municipality":"豊見城市","confirmed":false,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[15],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"今後策定する予定","akiya_action_plan":"策定する予定はない","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"設置する予定はない","support_corporation":"募集する予定はない","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":null,"note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47212"},{"municipality":"うるま市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成28年度（特定の地域のみ）／外部事業者 / 令和6年度／外部事業者"}],"_rows":[16],"consult_desk":"ある","consult_desk_org":"企画部企画政策課 / 都市建設部建築行政課(※問題空き家担当）","akiya_plan":"今後策定する予定","akiya_action_plan":"今後策定する予定","plan_timing":"令和８年度中","akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設けている","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度","public_housing_vacant":"0件","note":"全国版空き家バンク「LIFULL HOME'S」 / >① 空き家バンク開始〜現在（令和8年1月末時点）までの「累計登録物件数」 / ⇒ 0件 / >② 上記①の内訳（成約済み件数、交渉中件数など） / ⇒ 該当なし / >③ 令和6年度に実施した空き家の全軒調査結果のうち、推定空家数 / ⇒ 881件","estimated_vacant":881,"bank_registered_total":0,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0件","code":"47213"},{"municipality":"宮古島市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成28年度／外部事業者（ﾗﾝﾄﾞﾌﾞﾚｲﾝ株式会社） / 令和6年度／外部事業者（株式会社ｾﾞﾝﾘﾝｲﾝﾀｰﾏｯﾌ）"}],"_rows":[17],"consult_desk":"ある","consult_desk_org":"宮古島市空家等管理活用支援法人（備考欄参照）","akiya_plan":"策定済み","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"指定している（備考欄に法人名をご記入ください）","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"空き家住戸数 / ５９戸 / （R7.12月末）","note":"①（一社）リノベーション沖縄 / ②公益社団法人沖縄県宅地建物取引業者会 / ③特定非営利活動法人空家・空地管理センター / 推定空家：813件","estimated_vacant":813,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":59,"public_housing_vacant_raw":"空き家住戸数 / ５９戸 / （R7.12月末）","code":"47214"},{"municipality":"南城市","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和2年度/南城市生活環境課 / 令和６年度/南城市まちづくり推進課"}],"_rows":[18],"consult_desk":"ある","consult_desk_org":"浜カフェリアルエステート株式会社","akiya_plan":"今後策定する予定","akiya_action_plan":"今後策定する予定","plan_timing":"時期未定","akiya_bank":"未定","statutory_council":"今後設置する予定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"10","note":"居住実態がない可能性が高い推定空き家等の数は360件（令和6年度調査より）","estimated_vacant":360,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":10,"public_housing_vacant_raw":"10","code":"47215"},{"municipality":"国頭村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和４年度／外部事業者"}],"_rows":[19],"consult_desk":"ある","consult_desk_org":"企画政策課","akiya_plan":"策定済み","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"設置済み","support_corporation":"未定","subsidy_status":"設けている","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度 / （カ） 空き家バンクの登録推奨に関する費用","public_housing_vacant":"0","note":"国頭村役場HP内 / ① 空き家バンク開始から現在（令和8年1月末時点）までの累計登録物件数 / 回答）登録物件５件 / ② ①の内訳（成約済み件数、交渉中件数など） / 実際に賃貸借物件として公表できた件数は２件（その内１件交渉中物件）空き家バンク登録5件のうちの3件「現在改修中物件」については、「掲載保留（改修して空き家バンクに掲載する等、今後の扱いについては所有者判断次第）」","estimated_vacant":null,"bank_registered_total":5,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47301"},{"municipality":"大宜味村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和３年度より毎年実施／大宜味村企画観光課"}],"_rows":[20],"consult_desk":"ある","consult_desk_org":"企画観光課","akiya_plan":"策定済み","akiya_action_plan":"今後策定する予定","plan_timing":"未定","akiya_bank":"未定","statutory_council":"設置済み","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"1戸","note":"空き家件数：200件","estimated_vacant":200,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":1,"public_housing_vacant_raw":"1戸","code":"47302"},{"municipality":"東村","confirmed":true,"surveys":[{"type":"その他（調査内容を備考欄にご記入ください）","detail":"令和４年度／各区長ヒアリング"},{"type":"全軒調査を実施","detail":"令和５年度アンケート実施/東村企画観光課"}],"_rows":[21,22],"consult_desk":"ある","consult_desk_org":"企画観光課","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"3戸","note":"東村役場HP内 / 推定空き家件数48件、空き家バンクは登録3件、うち1件取り下げ、2件成約済み","estimated_vacant":48,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":3,"public_housing_vacant_raw":"3戸","code":"47303"},{"municipality":"今帰仁村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成29年度/外部事業者 / （事業者名：不明？）"}],"_rows":[23],"consult_desk":"ある","consult_desk_org":"企画財政課","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"未定","support_corporation":"募集する予定はない","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":"追加質問（計画策定、調査事業者）への回答なし","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47306"},{"municipality":"本部町","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成28年度／本部町企画政策課 /"},{"type":"所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施","detail":"令和7年度/企画商工観光課"}],"_rows":[24,25],"consult_desk":"ある","consult_desk_org":"企画商工観光課 / 野崎 真 / 0980-47-2702","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"未定","support_corporation":"未定","subsidy_status":"今後設ける予定","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度 / ⇒開始時期が決まっている場合はご記入ください / R8.4～予定 / 制度名：本部町空き家再生支援事業 / 概要：補助率1/2 上限50万円（内10万円/家財整理・仏壇撤去に使用可） / 条件：空き家を町へ登録必須 / 上記は空き家利活用促進事業と併せて、5月に固定資産税納付書に封入し、所有者へ通知予定","public_housing_vacant":"０戸","note":"空き家バンクは未開設だが、情報提供のあった物件を町にてリスト化し、希望者へ紹介する「本部町空き家利活用定住促進事業」を実施 / ⇒問い合わせ：14件 / 登録件数：4件（R8.2時点） / 内1件入居準備中（R8.3入居） / R8.２～本部町空き家利活用協力事業者の募集を開始し、希望する町内不動産事業者との連携協定を行う予定（R8.3） / 追記：町内7事業者中、4～6事業者が参加見込み / R8.4～利活用希望のあった空き家を上記の事業者による媒介またはサブリース事業を予定 / 追記：町は情報提供およびHP等へ物件情報の公開を行う / 水道の閉栓情報および各集落区の区長さんへのヒアリング等による調査：推定300件ほど /","estimated_vacant":300,"bank_registered_total":4,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"０戸","code":"47308"},{"municipality":"恩納村","confirmed":true,"surveys":[{"type":"その他（調査内容を備考欄にご記入ください）","detail":"令和元年度〜令和2年度/外部事業者"}],"_rows":[26],"consult_desk":"ある","consult_desk_org":"定住促進室","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設けている","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度","public_housing_vacant":"7","note":"村内自治会長等の情報に基づき調査 / 推定空き家件数は132件","estimated_vacant":132,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":7,"public_housing_vacant_raw":"7","code":"47311"},{"municipality":"宜野座村","confirmed":false,"surveys":[{"type":"その他（調査内容を備考欄にご記入ください）","detail":"調査年度不明/宜野座村建設課"}],"_rows":[27],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":null,"note":"数年前各行政区の長への聞き取りなどを実施","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47313"},{"municipality":"金武町","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[28],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"18戸","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":18,"public_housing_vacant_raw":"18戸","code":"47314"},{"municipality":"伊江村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"①令和元年度～令和2年度／外部事業者（(株)パスコ） / ②令和5年度／伊江村企画課"}],"_rows":[29],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"策定済み","akiya_action_plan":"今後策定する予定","plan_timing":"時期未定","akiya_bank":"開設する予定はない","statutory_council":"設置済み","support_corporation":"未定","subsidy_status":"設けている","subsidy_types":"（オ）家賃の一部を補助する制度（職種や年齢に制限を設けている場合を含む）","public_housing_vacant":"空いてもすぐに満室になる","note":"移住定住応援給付金（住宅家賃給付金） / https://www.iejima.org/document/2023120500012/file_contents/ouenkinyoko_.pdf","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":"空いてもすぐに満室になる","code":"47315"},{"municipality":"読谷村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和5年度／読谷村都市計画課／外部委託（(株)ゼンリンインターマップ）"}],"_rows":[30],"consult_desk":"ある","consult_desk_org":"都市計画課 田盛／098-982-9220","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47324"},{"municipality":"嘉手納町","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和３年度／外部事業者"}],"_rows":[31],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"今後策定する予定","akiya_action_plan":"今後策定する予定","plan_timing":"R8年度","akiya_bank":"未定","statutory_council":"今後設置する予定","support_corporation":"未定","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"0","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47325"},{"municipality":"北谷町","confirmed":false,"surveys":[{"type":"全軒調査を実施","detail":"平成３０年度／北谷町都市計画課より外部委託にて実施"}],"_rows":[32],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"策定済み","akiya_action_plan":null,"plan_timing":null,"akiya_bank":null,"statutory_council":null,"support_corporation":null,"subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":null,"note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47326"},{"municipality":"北中城村","confirmed":false,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[33],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"策定する予定はない","akiya_action_plan":"策定する予定はない","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"設置する予定はない","support_corporation":"募集する予定はない","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":null,"note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47327"},{"municipality":"中城村","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[34],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"該当なし","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"該当なし","code":"47328"},{"municipality":"西原町","confirmed":false,"surveys":[{"type":"全軒調査を実施","detail":"令和５年度／西原町都市整備課（業務委託により実施）"}],"_rows":[35],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":null,"note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47329"},{"municipality":"与那原町","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[36],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47348"},{"municipality":"南風原町","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[37],"consult_desk":"ある","consult_desk_org":"まちづくり振興課","akiya_plan":"策定する予定はない","akiya_action_plan":"策定する予定はない","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"設置する予定はない","support_corporation":"募集する予定はない","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"該当なし","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"該当なし","code":"47350"},{"municipality":"渡嘉敷村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成29年度/外部事業者 / （事業者名：要確認）"}],"_rows":[38],"consult_desk":"ある","consult_desk_org":"総務課","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":"実施事業者と推定空き家件数の追加回答なし","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47353"},{"municipality":"座間味村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"実施時期：令和7年8月～11月 / 担当組織：座間味村役場 /"}],"_rows":[39],"consult_desk":"設置を検討中","consult_desk_org":null,"akiya_plan":"今後策定する予定","akiya_action_plan":"今後策定する予定","plan_timing":"2026-03-01","akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":"令和7年度調査の結果、推定空家は42戸","estimated_vacant":42,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47354"},{"municipality":"粟国村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"平成３０年度／外部事業者（（株）国建）"}],"_rows":[40],"consult_desk":"ある","consult_desk_org":"部署：総務課 / 事業名：空家対策","akiya_plan":"策定済み","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"設置済み","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":"粟国村役場HP内 / 空き家バンクの累計登録物件数：２件 / 利用者登録数：１人 / 成約済み件数：１件 / 交渉中件数：０件 / ※利用者登録を行っていないが、空き家バンクに登録された物件を交渉中","estimated_vacant":null,"bank_registered_total":2,"bank_deals_closed":1,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47355"},{"municipality":"渡名喜村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和３年度 / 渡名喜村総務課"},{"type":"特定空き家と思われる物件を対象に調査を実施","detail":"令和３年度 / 渡名喜村総務課"},{"type":"全軒調査を実施","detail":"令和7年度／外部事業者（株式会社ディープランニング沖縄）"}],"_rows":[41,42,43],"consult_desk":null,"consult_desk_org":null,"akiya_plan":"今後策定する予定","akiya_action_plan":"今後策定する予定","plan_timing":"令和8年3月","akiya_bank":"未定","statutory_council":"設置済み","support_corporation":"募集する予定はない","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":null,"note":"推定空き家件数は84件","estimated_vacant":84,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":null,"code":"47356"},{"municipality":"南大東村","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[44],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"策定する予定はない","akiya_action_plan":"策定する予定はない","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"不明","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":null,"public_housing_vacant_raw":"不明","code":"47357"},{"municipality":"北大東村","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[45],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"策定する予定はない","akiya_action_plan":"策定する予定はない","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"設置する予定はない","support_corporation":"募集する予定はない","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47358"},{"municipality":"伊平屋村","confirmed":true,"surveys":[{"type":"特定空き家と思われる物件を対象に調査を実施","detail":"平成28年度/外部事業者/永技研株式会社"},{"type":"全軒調査を実施","detail":"令和7年度／伊平屋村建設課"}],"_rows":[46,47],"consult_desk":"その他（内容を右枠に記入）","consult_desk_org":"相談窓口という名目での設置はないが企画財政課にて対応中","akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"今後設ける予定","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度 / （ウ）新築・中古住宅購入費用の一部を補助する制度 / 協力隊のみ対象の特交措置のこと。一般向けではないことから削除。","public_housing_vacant":"１戸（すぐに入居可能な物件） / その他回収が必要な部屋も複数個あり。","note":"R7の調査（活性化企業人）結果、43件","estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":1,"public_housing_vacant_raw":"１戸（すぐに入居可能な物件） / その他回収が必要な部屋も複数個あり。","code":"47359"},{"municipality":"伊是名村","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和3年度／ 外部事業者： / ライトブレイン（株） / 71件"}],"_rows":[48],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"6","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":6,"public_housing_vacant_raw":"6","code":"47360"},{"municipality":"久米島町","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和元年度／外部事業者 / （株式会社ゼンリンインターマップ）"},{"type":"その他（調査内容を備考欄にご記入ください）","detail":"令和４年度／久米島町企画財政課、集落支援員、区長"}],"_rows":[49,50],"consult_desk":"ある","consult_desk_org":"久米島町役場企画財政課","akiya_plan":"策定済み","akiya_action_plan":"策定済み","plan_timing":null,"akiya_bank":"開設済み（備考欄にサイト名をご記入ください）","statutory_council":"設置済み","support_corporation":"募集を検討している","subsidy_status":"設けている","subsidy_types":"（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度","public_housing_vacant":"0","note":"空き家バンク：久米島町移住ポータルサイト「島ぐらしガイド」内 / ① 空き家バンク開始〜現在（令和8年1月末時点）までの「累計登録物件数」 / 回答：24件 / ② 上記①の内訳（成約済み件数、交渉中件数など） / 回答：成約済み：19件（売買：4件、賃貸15件）、未成約（掲載中）4件、登録後 / 取り下げ：1件","estimated_vacant":null,"bank_registered_total":24,"bank_deals_closed":19,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47361"},{"municipality":"八重瀬町","confirmed":true,"surveys":[{"type":"空き家調査は実施していない","detail":null}],"_rows":[51],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"策定する予定はない","akiya_action_plan":"策定する予定はない","plan_timing":null,"akiya_bank":"未定","statutory_council":"設置する予定はない","support_corporation":"募集する予定はない","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"0","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"0","code":"47362"},{"municipality":"多良間村","confirmed":true,"surveys":[{"type":"特定空き家と思われる物件を対象に調査を実施","detail":"平成30年度/多良間村総務財政課"}],"_rows":[52],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"未定","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"なし","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":0,"public_housing_vacant_raw":"なし","code":"47375"},{"municipality":"竹富町","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和５年度/外部事業者（株式会社ランドブレイン）"}],"_rows":[53],"consult_desk":"ある","consult_desk_org":"移住関係：商工観光課 / 空家の取引関係：まちづくり課","akiya_plan":"策定済み","akiya_action_plan":"策定済み","plan_timing":null,"akiya_bank":"その他（備考欄参照）","statutory_council":"未定","support_corporation":"未定","subsidy_status":"設ける予定はない","subsidy_types":null,"public_housing_vacant":"4戸 ただし、本町の町営住宅は一定期間町内に在住歴がある町民向けであり、移住者受入れのためにすぐ使える住居ではありません。","note":"空き家バンクに類似するものとして町HP内に「竹富町空き家等掲示板」を設置 https://www.town.taketomi.lg.jp/soshiki/machizukuri/akiyakeijiban/ / ①累計掲載件数 5件 / ②成約済み件数 賃貸：1件、売買：2件","estimated_vacant":null,"bank_registered_total":5,"bank_deals_closed":null,"public_housing_vacant_num":4,"public_housing_vacant_raw":"4戸 ただし、本町の町営住宅は一定期間町内に在住歴がある町民向けであり、移住者受入れのためにすぐ使える住居ではありません。","code":"47381"},{"municipality":"与那国町","confirmed":true,"surveys":[{"type":"全軒調査を実施","detail":"令和３年/与那国町企画財政課"}],"_rows":[54],"consult_desk":"ない","consult_desk_org":null,"akiya_plan":"未定","akiya_action_plan":"未定","plan_timing":null,"akiya_bank":"開設する予定はない","statutory_council":"設置する予定はない","support_corporation":"未定","subsidy_status":"未定","subsidy_types":null,"public_housing_vacant":"6戸","note":null,"estimated_vacant":null,"bank_registered_total":null,"bank_deals_closed":null,"public_housing_vacant_num":6,"public_housing_vacant_raw":"6戸","code":"47382"}]};
+
+/* ============================ サンプル人口データ ============================
+   実データが入るまでのプレースホルダ。決定論的な擬似乱数で生成し、
+   画面上は必ず斜線＋「ダミー」タグ付きで表示する。
+   置き換え先: data/generated/population_muni.json / population_aza.json     */
+function seeded(str){let h=2166136261;for(const c of str)h=(h^c.charCodeAt(0))*16777619>>>0;
+  return()=>{h=(h*1103515245+12345)>>>0;return h/4294967296;};}
+const AGES=["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44",
+            "45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"];
+const CENSUS_YEARS=[1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
+const AZA_YEARS=[2011,2013,2015,2017,2019,2021,2023,2025];
+
+function demoMuni(code){
+  const r=seeded("m"+code), base=1500+Math.floor(r()*22000), aging=.5+r()*1.1;
+  const pyramid=AGES.map((a,i)=>{
+    const decay=Math.exp(-Math.pow((i-7)/9,2))*(1+aging*Math.max(0,i-9)/9);
+    const m=Math.round(base*decay*(.028+r()*.006));
+    return{age:a,male:m,female:Math.round(m*(1+(i>12?.12+r()*.2:r()*.06-.03)))};
+  });
+  const total=pyramid.reduce((s,p)=>s+p.male+p.female,0);
+  const trend=CENSUS_YEARS.map((y,i)=>({year:y,
+    pop:Math.round(total*(.72+i*.031+(r()-.5)*.05))}));
+  trend[trend.length-1].pop=total;
+  return{pyramid,trend,total};
+}
+function demoAza(code){
+  const r=seeded("a"+code), n=6+Math.floor(r()*10), out=[];
+  for(let i=1;i<=n;i++){
+    const rr=seeded("a"+code+"-"+i), base=120+Math.floor(rr()*2600);
+    const drift=rr()<.45?-1:1;
+    out.push({id:code+"-"+String(i).padStart(2,"0"),
+      name:"サンプル字"+String(i).padStart(2,"0"),
+      trend:AZA_YEARS.map((y,k)=>({year:y,
+        pop:Math.max(20,Math.round(base*(1+drift*k*(.012+rr()*.02))))})),
+      pyramid:AGES.map((a,k)=>{
+        const d=Math.exp(-Math.pow((k-8)/9,2));
+        const m=Math.round(base*d*(.03+rr()*.008));
+        return{age:a,male:m,female:Math.round(m*(1+rr()*.18))};
+      })});
+  }
+  return out;
+}
+
+/* ============================ 指標 ============================ */
+const INDICATORS={
+  estimated_vacant:{label:"推定空家数（R7調査・回答のみ）",
+    get:m=>m.akiya&&m.akiya.estimated_vacant, unit:"件", real:true},
+  bank_registered_total:{label:"空き家バンク累計登録",
+    get:m=>m.akiya&&m.akiya.bank_registered_total, unit:"件", real:true},
+  housing_count:{label:"定住促進住宅の物件数",
+    get:m=>m.housing.length||null, unit:"件", real:true},
+  pop_total:{label:"総人口（サンプル値）",
+    get:m=>demoMuni(m.code).total, unit:"人", real:false},
+};
+
+/* ============================ 索引の構築 ============================ */
+const MUNI=DATA.municipalities.map(m=>{
+  const policy=DATA.policy.find(p=>p.code===m.code)||null;
+  const akiya=DATA.akiya.find(a=>a.code===m.code)||null;
+  const housing=DATA.housing.filter(h=>h.code===m.code);
+  return{...m,policy,akiya,housing,aza:demoAza(m.code)};
+});
+const INDEX=[];
+for(const m of MUNI){
+  INDEX.push({kind:"muni",code:m.code,label:m.name,sub:m.code,muni:m});
+  for(const a of m.aza)
+    INDEX.push({kind:"aza",code:a.id,label:a.name,sub:m.name,muni:m,aza:a});
+}
+
+/* ============================ 描画ヘルパ ============================ */
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>n==null?"—":n.toLocaleString("ja-JP");
+
+/** 花ブロック1枚。v(0..1)で花弁が満ちる。 */
+let hanaSeq=0;
+function hanaSVG(v,color){
+  const t=Math.max(0,Math.min(1,v||0));
+  const fill=t===0?"var(--line2)":color;
+  const cid="hb"+(++hanaSeq);
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <rect x="4" y="4" width="92" height="92" fill="var(--surface)" stroke="var(--line2)"/>
+    <clipPath id="${cid}"><rect x="0" y="${100-100*t}" width="100" height="${100*t}"/></clipPath>
+    <g class="petal" fill="${fill}" opacity="${t===0?1:.28+.62*t}" clip-path="url(#${cid})">
+      <circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>
+      <circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>
+    </g>
+    <g fill="none" stroke="var(--line)" stroke-width="1.1">
+      <circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>
+      <circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>
+    </g></svg>`;
+}
+
+function pyramidSVG(rows){
+  const W=440,H=270,mid=W/2,gap=34,bh=(H-24)/rows.length-1.6;
+  const max=Math.max(...rows.map(r=>Math.max(r.male,r.female)))||1;
+  const sc=(mid-gap/2-14)/max;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="年齢5歳階級別の男女人口">`;
+  rows.forEach((r,i)=>{
+    const y=12+i*((H-24)/rows.length);
+    s+=`<rect x="${mid-gap/2-r.male*sc}" y="${y}" width="${r.male*sc}" height="${bh}" fill="var(--ai)" opacity=".82"/>`;
+    s+=`<rect x="${mid+gap/2}" y="${y}" width="${r.female*sc}" height="${bh}" fill="var(--kawara)" opacity=".72"/>`;
+    if(i%2===0)s+=`<text x="${mid}" y="${y+bh*.82}" text-anchor="middle" font-size="7.6" font-family="Roboto Condensed" fill="var(--ink3)">${r.age}</text>`;
+  });
+  s+=`<text x="${mid-gap/2-4}" y="8" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ai)">男</text>`;
+  s+=`<text x="${mid+gap/2+4}" y="8" font-size="8.4" font-family="Roboto Condensed" fill="var(--kawara)">女</text></svg>`;
+  return s;
+}
+
+function trendSVG(rows,label){
+  const W=440,H=190,L=44,R=10,T=14,B=26;
+  const xs=rows.map(r=>r.year),ys=rows.map(r=>r.pop);
+  const x0=Math.min(...xs),x1=Math.max(...xs);
+  const y1=Math.max(...ys)*1.06,y0=Math.min(...ys)*.9;
+  const px=y=>L+(W-L-R)*((y-x0)/((x1-x0)||1));
+  const py=v=>T+(H-T-B)*(1-(v-y0)/((y1-y0)||1));
+  const pts=rows.map(r=>`${px(r.year).toFixed(1)},${py(r.pop).toFixed(1)}`).join(" ");
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">`;
+  for(let k=0;k<=2;k++){
+    const v=y0+(y1-y0)*k/2,y=py(v);
+    s+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="var(--line2)"/>`;
+    s+=`<text x="${L-6}" y="${y+3}" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${Math.round(v).toLocaleString()}</text>`;
+  }
+  s+=`<polyline points="${pts}" fill="none" stroke="var(--ai)" stroke-width="2"/>`;
+  rows.forEach(r=>{s+=`<circle cx="${px(r.year)}" cy="${py(r.pop)}" r="2.6" fill="var(--ai)"/>`;});
+  rows.forEach((r,i)=>{if(i%2===0||i===rows.length-1)
+    s+=`<text x="${px(r.year)}" y="${H-8}" text-anchor="middle" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${r.year}</text>`;});
+  return s+"</svg>";
+}
+
+/** 選択式の値を色分けバッジに。 */
+function badge(key,val){
+  if(!val)return `<span class="badge off"><span class="k">${esc(key)}</span>未回答</span>`;
+  const v=val.replace(/（.*?）/g,"").trim();
+  let cls="tbd";
+  if(/^(策定済み|設置済み|開設済み|設けている|指定している|ある|行っている|すでに取り組んでいる|あり)/.test(v))cls="on";
+  else if(/(今後|予定$|検討)/.test(v)&&!/(予定はない)/.test(v))cls="plan";
+  else if(/(予定はない|していない|実施していない|ない$|指定しない)/.test(v))cls="off";
+  return `<span class="badge ${cls}"><span class="k">${esc(key)}</span>${esc(v)}</span>`;
+}
+
+/* ============================ 画面 ============================ */
+let view={layer:"pref",code:null,aza:null,indicator:"estimated_vacant"};
+
+function render(){
+  renderCrumb();renderList();
+  const st=document.getElementById("stage");
+  st.innerHTML = view.layer==="pref"?prefView()
+               : view.layer==="muni"?muniView(find(view.code))
+               : azaView(find(view.code),view.aza);
+  st.scrollTop=0;
+  bindStage();
+}
+const find=code=>MUNI.find(m=>m.code===code);
+
+function renderCrumb(){
+  const c=document.getElementById("crumb");
+  const m=view.code?find(view.code):null;
+  let h=view.layer==="pref"
+    ?`<span class="cur">沖縄県 41市町村</span>`
+    :`<button data-go="pref">沖縄県</button>`;
+  if(m)h+=`<span class="sep">›</span>`+(view.layer==="muni"
+    ?`<span class="cur">${esc(m.name)}</span>`
+    :`<button data-go="muni" data-code="${m.code}">${esc(m.name)}</button>`);
+  if(view.layer==="aza"){
+    const a=m.aza.find(x=>x.id===view.aza);
+    h+=`<span class="sep">›</span><span class="cur">${esc(a.name)}</span>`;
+  }
+  c.innerHTML=h;
+}
+
+function renderList(){
+  const q=document.getElementById("q").value.trim();
+  const hits=(q?INDEX.filter(i=>i.label.includes(q)||i.sub.includes(q)):
+              INDEX.filter(i=>i.kind==="muni")).slice(0,400);
+  document.getElementById("qhint").textContent = q
+    ? `${hits.length}件（市町村＋字を横断検索）`
+    : "字も同じ欄から検索できます";
+  const el=document.getElementById("list");
+  if(!hits.length){el.innerHTML=`<div class="empty">該当なし。市町村名か字名の一部を入力してください。</div>`;return;}
+  el.innerHTML=hits.map(i=>{
+    const cur=i.kind==="muni"?(view.layer==="muni"&&view.code===i.code)
+                             :(view.layer==="aza"&&view.aza===i.code);
+    const tag=i.kind==="aza"?`<span class="dot" style="background:var(--sand)"></span>`:"";
+    return `<button class="row" aria-current="${cur}" data-kind="${i.kind}" data-code="${i.code}" data-muni="${i.muni.code}">
+      <span class="rname">${tag}${esc(i.label)}</span>
+      <span class="rsub">${esc(i.sub)}</span></button>`;
+  }).join("");
+}
+
+function prefView(){
+  const ind=INDICATORS[view.indicator];
+  const vals=MUNI.map(m=>ind.get(m)).filter(v=>v!=null);
+  const max=Math.max(...vals,1);
+  const answered=vals.length;
+  const cells=MUNI.map(m=>{
+    const v=ind.get(m);
+    return `<button class="cell" data-kind="muni" data-code="${m.code}" title="${esc(m.name)}｜${ind.label}: ${fmt(v)}">
+      ${hanaSVG(v==null?0:v/max,"var(--ai)")}
+      <span class="cv">${v==null?"":fmt(v)}</span>
+      <span class="cl">${esc(m.name)}</span></button>`;}).join("");
+  return `
+  <div class="stage-head">
+    <div class="eyebrow">Layer 1 — 市町村</div>
+    <h1>沖縄県 41市町村</h1>
+    <div class="meta"><span>移住定住・空き家 取り組み状況調査（令和7年度）</span><span>定住促進住宅 ${DATA.housing.length}件</span></div>
+  </div>
+  <div class="blockwrap">
+    <div class="blockhead">
+      <h2>指標で見る</h2>
+      <select id="indsel">${Object.entries(INDICATORS).map(([k,v])=>
+        `<option value="${k}" ${k===view.indicator?"selected":""}>${esc(v.label)}</option>`).join("")}</select>
+      <span class="eyebrow">${ind.real?`回答あり ${answered}/41`:"サンプル値"}</span>
+    </div>
+    <div class="hana">${cells}</div>
+    <div class="legend"><span>0</span><span class="bar"></span><span class="num">${fmt(max)}${ind.unit}</span></div>
+    <p class="note">花ブロックの花弁が指標値。白いままの市町村は「回答なし／該当なし」で、ゼロとは区別しています。クリックで市町村レイヤーへ。</p>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card wide">
+      <h2>この位置に地図が入ります</h2>
+      <div class="mapslot">
+        <svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <div>
+          MapLibre GL JS + PMTiles で、この枠が<strong>市町村ポリゴン→字ポリゴン</strong>のズーム連動マップになります。<br>
+          必要な素材は e-Stat 統計地理情報システムの境界データ <code>r2ka47</code>（令和2年国勢調査 町丁・字等別）。
+          <code>scripts/build_tiles.sh</code> で tippecanoe に通し、<code>public/tiles/okinawa.pmtiles</code> に配置します。
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function muniView(m){
+  const d=demoMuni(m.code), p=m.policy||{}, a=m.akiya||{};
+  const azaCells=m.aza.map(z=>{
+    const last=z.trend[z.trend.length-1].pop, first=z.trend[0].pop;
+    const rate=(last-first)/first;
+    return `<button class="cell" data-kind="aza" data-code="${z.id}" data-muni="${m.code}"
+      title="${esc(z.name)}｜${fmt(last)}人（サンプル）">
+      ${hanaSVG(.15+Math.min(1,last/2800)*.85, rate>=0?"var(--basho)":"var(--kawara)")}
+      <span class="cv">${fmt(last)}</span><span class="cl">${esc(z.name)}</span></button>`;}).join("");
+
+  const desc=[["移住施策の内容",p.policy_detail],["取り組まない理由",p.policy_none_reason],
+              ["相談窓口",p.desk_contact||p.desk_status_other],["中間支援組織",p.intermediary_detail],
+              ["仕事情報",p.jobinfo_detail||p.jobinfo_other],["宅地分譲",p.lot_sale_units],
+              ["新規住宅整備の財源",p.new_housing_funding],["備考（施策）",p.note]]
+    .filter(([,v])=>v);
+  const akiyaDesc=[["空き家相談窓口",a.consult_desk_org],["策定予定時期",a.plan_timing],
+              ["助成制度の内容",a.subsidy_types],["市町村営住宅の空き住戸",a.public_housing_vacant_raw],
+              ["備考（空き家）",a.note]].filter(([,v])=>v);
+
+  return `
+  <div class="stage-head">
+    <div class="eyebrow">Layer 1 — 市町村</div>
+    <h1>${esc(m.name)}</h1>
+    <div class="meta">
+      <span>市町村コード ${esc(m.code)}</span>
+      <span>${m.policy?.confirmed?"R7回答 確認済み":"R7回答 未確認（R6以前の値が残っている可能性）"}</span>
+      <span>定住促進住宅 ${m.housing.length}件</span>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>年齢5歳階級別人口</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${pyramidSVG(d.pyramid)}</div>
+      <p class="chartnote">実データ差し替え元：令和2年国勢調査 人口等基本集計（R7確報は令和8年9月までに公表予定）</p>
+    </div>
+    <div class="card">
+      <h2>人口推移</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${trendSVG(d.trend,"人口推移")}</div>
+      <p class="chartnote">実データ差し替え元：国勢調査 1980–2020 ＋ 令和7年 人口速報集計</p>
+    </div>
+
+    <div class="card wide">
+      <h2>空き家利活用の取り組み（令和7年度調査・実データ）</h2>
+      <div class="stats">
+        <div class="stat"><div class="v ${a.estimated_vacant==null?"na":""}">${a.estimated_vacant==null?"回答なし":fmt(a.estimated_vacant)}<small>${a.estimated_vacant==null?"":"件"}</small></div><div class="l">推定空家数</div></div>
+        <div class="stat"><div class="v ${a.bank_registered_total==null?"na":""}">${a.bank_registered_total==null?"回答なし":fmt(a.bank_registered_total)}<small>${a.bank_registered_total==null?"":"件"}</small></div><div class="l">バンク累計登録</div></div>
+        <div class="stat"><div class="v ${a.bank_deals_closed==null?"na":""}">${a.bank_deals_closed==null?"回答なし":fmt(a.bank_deals_closed)}<small>${a.bank_deals_closed==null?"":"件"}</small></div><div class="l">うち成約</div></div>
+        <div class="stat"><div class="v ${a.public_housing_vacant_num==null?"na":""}">${a.public_housing_vacant_num==null?"要確認":fmt(a.public_housing_vacant_num)}<small>${a.public_housing_vacant_num==null?"":"戸"}</small></div><div class="l">町村営住宅の空き住戸</div></div>
+      </div>
+      <div class="badges" style="margin-top:13px">
+        ${badge("施策全般",p.policy_status)}${badge("移住相談窓口",p.desk_status)}
+        ${badge("中間支援",p.intermediary_status)}${badge("仕事情報",p.jobinfo_status)}
+        ${badge("空き家相談窓口",a.consult_desk)}${badge("空家等対策計画",a.akiya_plan)}
+        ${badge("総合実施計画",a.akiya_action_plan)}${badge("空き家バンク",a.akiya_bank)}
+        ${badge("法定協議会",a.statutory_council)}${badge("支援法人",a.support_corporation)}
+        ${badge("助成制度",a.subsidy_status)}${badge("宅地分譲",p.lot_sale_status)}
+        ${badge("新規住宅整備",p.new_housing_plan)}
+      </div>
+      ${a.surveys?.length?`<table class="tbl" style="margin-top:14px"><thead><tr><th>空き家調査の種別</th><th>実施時期・担当</th></tr></thead><tbody>
+        ${a.surveys.map(s=>`<tr><td>${esc(s.type||"—")}</td><td>${esc(s.detail||"—")}</td></tr>`).join("")}
+      </tbody></table>`:""}
+    </div>
+
+    ${m.housing.length?`<div class="card wide">
+      <h2>定住促進住宅 ${m.housing.length}件（実データ）</h2>
+      <table class="tbl"><thead><tr><th>名称</th><th>タイプ</th><th>戸数</th><th class="n">延床㎡</th><th>完了年度</th><th class="n">総事業費 千円</th><th>財源</th></tr></thead><tbody>
+      ${m.housing.map(h=>`<tr><td>${esc(h.name||"—")}</td><td>${esc(h.property_type||"—")}</td>
+        <td>${esc(h.units||"—")}</td><td class="n">${h.floor_area_sqm_num?fmt(h.floor_area_sqm_num):esc(h.floor_area_sqm||"—")}</td>
+        <td>${esc(h.completion_fy||"—")}</td><td class="n">${h.total_cost_thousand_jpy_num?fmt(h.total_cost_thousand_jpy_num):esc(h.total_cost_thousand_jpy||"—")}</td>
+        <td>${esc(h.funding||"—")}</td></tr>`).join("")}
+      </tbody></table></div>`:""}
+
+    ${desc.length||akiyaDesc.length?`<div class="card wide"><h2>記述回答（実データ）</h2>
+      <dl class="kv">${[...desc,...akiyaDesc].map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+    </div>`:""}
+  </div>
+
+  <div class="blockwrap" style="margin-top:16px">
+    <div class="blockhead">
+      <h2>Layer 2 — 字を選ぶ</h2>
+      <span class="eyebrow">${m.aza.length} 字（サンプル）</span>
+    </div>
+    <div class="hana">${azaCells}</div>
+    <p class="note">緑＝期間内で増加、赤瓦色＝減少。花弁の量は人口規模。実データ差し替え元は沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年の年次Excel）。</p>
+  </div>`;
+}
+
+function azaView(m,azaId){
+  const z=m.aza.find(x=>x.id===azaId);
+  const first=z.trend[0],last=z.trend[z.trend.length-1];
+  const diff=last.pop-first.pop, rate=diff/first.pop*100;
+  return `
+  <div class="stage-head">
+    <div class="eyebrow">Layer 2 — 字</div>
+    <h1>${esc(z.name)}</h1>
+    <div class="meta"><span>${esc(m.name)}（${esc(m.code)}）</span><span>字ID ${esc(z.id)}</span></div>
+  </div>
+  <div class="grid2">
+    <div class="card wide">
+      <h2>人口の動き</h2>
+      <div class="stats">
+        <div class="stat"><div class="v">${fmt(last.pop)}<small>人</small></div><div class="l">${last.year}年</div></div>
+        <div class="stat"><div class="v">${fmt(first.pop)}<small>人</small></div><div class="l">${first.year}年</div></div>
+        <div class="stat"><div class="v" style="color:${diff>=0?"var(--basho)":"var(--kawara)"}">${diff>=0?"+":""}${fmt(diff)}<small>人</small></div><div class="l">増減</div></div>
+        <div class="stat"><div class="v" style="color:${diff>=0?"var(--basho)":"var(--kawara)"}">${rate>=0?"+":""}${rate.toFixed(1)}<small>%</small></div><div class="l">増減率</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>人口推移（字）</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${trendSVG(z.trend,"字の人口推移")}</div>
+      <p class="chartnote">実データ差し替え元：沖縄県 町字別住民基本台帳人口（各年1月1日現在・2011–2025）</p>
+    </div>
+    <div class="card">
+      <h2>年齢構成（字）</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${pyramidSVG(z.pyramid)}</div>
+      <p class="chartnote">実データ差し替え元：令和2年国勢調査 小地域集計（町丁・字等別／5歳階級×男女）。R7調査の小地域は2027年以降の公表見込み。</p>
+    </div>
+  </div>
+  <p class="note">字レベルは境界・名称が住居表示と一致しないことがあるため、住基データと国勢調査小地域の名寄せ結果を <code>data/aza_crosswalk.csv</code> で管理します。</p>`;
+}
+
+/* ============================ イベント ============================ */
+function go(kind,code,muniCode){
+  if(kind==="muni"){view={...view,layer:"muni",code,aza:null};}
+  else{view={...view,layer:"aza",code:muniCode,aza:code};}
+  render();document.getElementById("stage").focus();
+}
+function bindStage(){
+  const sel=document.getElementById("indsel");
+  if(sel)sel.onchange=e=>{view.indicator=e.target.value;render();};
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-kind]");
+  if(b){go(b.dataset.kind,b.dataset.code,b.dataset.muni||b.dataset.code);return;}
+  const g=e.target.closest("[data-go]");
+  if(g){view=g.dataset.go==="pref"?{...view,layer:"pref",code:null,aza:null}
+                                  :{...view,layer:"muni",code:g.dataset.code,aza:null};render();}
+});
+document.getElementById("q").addEventListener("input",renderList);
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1318 @@
+[
+ {
+  "municipality": "那覇市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "特定空き家と思われる物件を対象に調査を実施",
+    "detail": "実施時期：平成28年度 / 担当組織：総務課 市民防災室"
+   },
+   {
+    "type": "所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施",
+    "detail": "実施時期：随時 / 担当組織：那覇市まちなみ共創部まちなみ整備課"
+   }
+  ],
+  "_rows": [
+   5,
+   6
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "まちなみ共創部 / まちなみ整備課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "策定済み",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "「指定しない」という方針を公表している",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "121戸",
+  "note": "①（令和7年度）過去の実態調査結果や水道の閉栓情報などを元に調査対象を抽出し、現地調査及び意向調査を実施した。 / ⑧全国版空き家バンク「LIFULL HOME'S」「at home」 / 累計登録0件",
+  "estimated_vacant": null,
+  "bank_registered_total": 0,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 121,
+  "public_housing_vacant_raw": "121戸",
+  "code": "47201"
+ },
+ {
+  "municipality": "宜野湾市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成３０年度/外部事業者（株式会社ゼンリンインターマップ）"
+   }
+  ],
+  "_rows": [
+   7
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "建築指導課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "設置済み",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0件",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0件",
+  "code": "47205"
+ },
+ {
+  "municipality": "石垣市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "①平成30年度/外部事業者 / （事業者名：ゼンリンインターマップ） / ②令和５年度/外部事業者 / （事業者名：ゼンリンインターマップ）"
+   },
+   {
+    "type": "所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施",
+    "detail": "随時/石垣市建設部都市建設課"
+   }
+  ],
+  "_rows": [
+   8,
+   9
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "・空き家対策 / 都市建設課 TEL：0980-83-4207 / ・空き家バンク / ふるさと創生課 TEL;0980-87-9000",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "設置済み",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "設けている",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度",
+  "public_housing_vacant": "0",
+  "note": "石垣市公式移住定住応援サイト「南ぬ島らいふ」 / H29～R7 / 登録物件数 9件 / 移住世帯受入数 ９件 / 全て賃貸での登録、入居となります。",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47207"
+ },
+ {
+  "municipality": "浦添市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "実施時期：令和6年8月～令和7年2月 / 担当組織：外部事業者（株式会社ゼンリンインターマップ）"
+   }
+  ],
+  "_rows": [
+   10
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "都市建設部 建築営繕課",
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "令和9年度以降",
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "7戸（特殊空家2件含む）",
+  "note": "推定空家：198件R6調査",
+  "estimated_vacant": 198,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 7,
+  "public_housing_vacant_raw": "7戸（特殊空家2件含む）",
+  "code": "47208"
+ },
+ {
+  "municipality": "名護市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "①平成29年度/外部事業者 / （事業者名：昭和株式会社沖縄支社・株式会社沖縄まちづくり連合 共同企業体） / ②令和４年度/外部事業者 / （事業者名：株式会社サーベイリサーチセンター沖縄事務所）"
+   }
+  ],
+  "_rows": [
+   11
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "建築住宅課 建築相談係",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "策定済み",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "指定している（備考欄に法人名をご記入ください）",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0件",
+  "note": "一般社団法人 全国空き家アドバイザー協議会",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0件",
+  "code": "47209"
+ },
+ {
+  "municipality": "糸満市",
+  "confirmed": false,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和元年度/外部事業者 /"
+   },
+   {
+    "type": "所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施",
+    "detail": "随時/糸満市まちづくり課"
+   }
+  ],
+  "_rows": [
+   12,
+   13
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": null,
+  "plan_timing": null,
+  "akiya_bank": null,
+  "statutory_council": "設置済み",
+  "support_corporation": null,
+  "subsidy_status": "設けている",
+  "subsidy_types": "（オ）家賃の一部を補助する制度（職種や年齢に制限を設けている場合を含む）",
+  "public_housing_vacant": null,
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47210"
+ },
+ {
+  "municipality": "沖縄市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成３０年度／外部事業者（ランドブレイン（株）沖縄事務所） / 令和7年度／外部事業者（（株）ゼンリンインターマップ）"
+   }
+  ],
+  "_rows": [
+   14
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "建設部 住まい建築課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "策定済み",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "設置済み",
+  "support_corporation": "「指定しない」という方針を公表している",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "83",
+  "note": "全国版空き家バンク「LIFULL HOME'S」「at home」 / 累計登録物件数1件（その後取り下げ） / 令和7年度の調査結果はまだ取りまとめ中。5190件（H30調査より）",
+  "estimated_vacant": null,
+  "bank_registered_total": 1,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 83,
+  "public_housing_vacant_raw": "83",
+  "code": "47211"
+ },
+ {
+  "municipality": "豊見城市",
+  "confirmed": false,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   15
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "策定する予定はない",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": null,
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47212"
+ },
+ {
+  "municipality": "うるま市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成28年度（特定の地域のみ）／外部事業者 / 令和6年度／外部事業者"
+   }
+  ],
+  "_rows": [
+   16
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "企画部企画政策課 / 都市建設部建築行政課(※問題空き家担当）",
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "令和８年度中",
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設けている",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度",
+  "public_housing_vacant": "0件",
+  "note": "全国版空き家バンク「LIFULL HOME'S」 / >① 空き家バンク開始〜現在（令和8年1月末時点）までの「累計登録物件数」 / ⇒ 0件 / >② 上記①の内訳（成約済み件数、交渉中件数など） / ⇒ 該当なし / >③ 令和6年度に実施した空き家の全軒調査結果のうち、推定空家数 / ⇒ 881件",
+  "estimated_vacant": 881,
+  "bank_registered_total": 0,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0件",
+  "code": "47213"
+ },
+ {
+  "municipality": "宮古島市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成28年度／外部事業者（ﾗﾝﾄﾞﾌﾞﾚｲﾝ株式会社） / 令和6年度／外部事業者（株式会社ｾﾞﾝﾘﾝｲﾝﾀｰﾏｯﾌ）"
+   }
+  ],
+  "_rows": [
+   17
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "宮古島市空家等管理活用支援法人（備考欄参照）",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "指定している（備考欄に法人名をご記入ください）",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "空き家住戸数 / ５９戸 / （R7.12月末）",
+  "note": "①（一社）リノベーション沖縄 / ②公益社団法人沖縄県宅地建物取引業者会 / ③特定非営利活動法人空家・空地管理センター / 推定空家：813件",
+  "estimated_vacant": 813,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 59,
+  "public_housing_vacant_raw": "空き家住戸数 / ５９戸 / （R7.12月末）",
+  "code": "47214"
+ },
+ {
+  "municipality": "南城市",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和2年度/南城市生活環境課 / 令和６年度/南城市まちづくり推進課"
+   }
+  ],
+  "_rows": [
+   18
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "浜カフェリアルエステート株式会社",
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "時期未定",
+  "akiya_bank": "未定",
+  "statutory_council": "今後設置する予定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "10",
+  "note": "居住実態がない可能性が高い推定空き家等の数は360件（令和6年度調査より）",
+  "estimated_vacant": 360,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 10,
+  "public_housing_vacant_raw": "10",
+  "code": "47215"
+ },
+ {
+  "municipality": "国頭村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和４年度／外部事業者"
+   }
+  ],
+  "_rows": [
+   19
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "企画政策課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "設置済み",
+  "support_corporation": "未定",
+  "subsidy_status": "設けている",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度 / （カ） 空き家バンクの登録推奨に関する費用",
+  "public_housing_vacant": "0",
+  "note": "国頭村役場HP内 / ① 空き家バンク開始から現在（令和8年1月末時点）までの累計登録物件数 / 回答）登録物件５件 / ② ①の内訳（成約済み件数、交渉中件数など） / 実際に賃貸借物件として公表できた件数は２件（その内１件交渉中物件）空き家バンク登録5件のうちの3件「現在改修中物件」については、「掲載保留（改修して空き家バンクに掲載する等、今後の扱いについては所有者判断次第）」",
+  "estimated_vacant": null,
+  "bank_registered_total": 5,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47301"
+ },
+ {
+  "municipality": "大宜味村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和３年度より毎年実施／大宜味村企画観光課"
+   }
+  ],
+  "_rows": [
+   20
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "企画観光課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "未定",
+  "akiya_bank": "未定",
+  "statutory_council": "設置済み",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "1戸",
+  "note": "空き家件数：200件",
+  "estimated_vacant": 200,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 1,
+  "public_housing_vacant_raw": "1戸",
+  "code": "47302"
+ },
+ {
+  "municipality": "東村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "その他（調査内容を備考欄にご記入ください）",
+    "detail": "令和４年度／各区長ヒアリング"
+   },
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和５年度アンケート実施/東村企画観光課"
+   }
+  ],
+  "_rows": [
+   21,
+   22
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "企画観光課",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "3戸",
+  "note": "東村役場HP内 / 推定空き家件数48件、空き家バンクは登録3件、うち1件取り下げ、2件成約済み",
+  "estimated_vacant": 48,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 3,
+  "public_housing_vacant_raw": "3戸",
+  "code": "47303"
+ },
+ {
+  "municipality": "今帰仁村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成29年度/外部事業者 / （事業者名：不明？）"
+   }
+  ],
+  "_rows": [
+   23
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "企画財政課",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "未定",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": "追加質問（計画策定、調査事業者）への回答なし",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47306"
+ },
+ {
+  "municipality": "本部町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成28年度／本部町企画政策課 /"
+   },
+   {
+    "type": "所有者や関係者、近隣住民などから相談があった場合にのみ対象の物件の調査を実施",
+    "detail": "令和7年度/企画商工観光課"
+   }
+  ],
+  "_rows": [
+   24,
+   25
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "企画商工観光課 / 野崎 真 / 0980-47-2702",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "今後設ける予定",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度 / ⇒開始時期が決まっている場合はご記入ください / R8.4～予定 / 制度名：本部町空き家再生支援事業 / 概要：補助率1/2 上限50万円（内10万円/家財整理・仏壇撤去に使用可） / 条件：空き家を町へ登録必須 / 上記は空き家利活用促進事業と併せて、5月に固定資産税納付書に封入し、所有者へ通知予定",
+  "public_housing_vacant": "０戸",
+  "note": "空き家バンクは未開設だが、情報提供のあった物件を町にてリスト化し、希望者へ紹介する「本部町空き家利活用定住促進事業」を実施 / ⇒問い合わせ：14件 / 登録件数：4件（R8.2時点） / 内1件入居準備中（R8.3入居） / R8.２～本部町空き家利活用協力事業者の募集を開始し、希望する町内不動産事業者との連携協定を行う予定（R8.3） / 追記：町内7事業者中、4～6事業者が参加見込み / R8.4～利活用希望のあった空き家を上記の事業者による媒介またはサブリース事業を予定 / 追記：町は情報提供およびHP等へ物件情報の公開を行う / 水道の閉栓情報および各集落区の区長さんへのヒアリング等による調査：推定300件ほど /",
+  "estimated_vacant": 300,
+  "bank_registered_total": 4,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "０戸",
+  "code": "47308"
+ },
+ {
+  "municipality": "恩納村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "その他（調査内容を備考欄にご記入ください）",
+    "detail": "令和元年度〜令和2年度/外部事業者"
+   }
+  ],
+  "_rows": [
+   26
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "定住促進室",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設けている",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度",
+  "public_housing_vacant": "7",
+  "note": "村内自治会長等の情報に基づき調査 / 推定空き家件数は132件",
+  "estimated_vacant": 132,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 7,
+  "public_housing_vacant_raw": "7",
+  "code": "47311"
+ },
+ {
+  "municipality": "宜野座村",
+  "confirmed": false,
+  "surveys": [
+   {
+    "type": "その他（調査内容を備考欄にご記入ください）",
+    "detail": "調査年度不明/宜野座村建設課"
+   }
+  ],
+  "_rows": [
+   27
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": null,
+  "note": "数年前各行政区の長への聞き取りなどを実施",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47313"
+ },
+ {
+  "municipality": "金武町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   28
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "18戸",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 18,
+  "public_housing_vacant_raw": "18戸",
+  "code": "47314"
+ },
+ {
+  "municipality": "伊江村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "①令和元年度～令和2年度／外部事業者（(株)パスコ） / ②令和5年度／伊江村企画課"
+   }
+  ],
+  "_rows": [
+   29
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "時期未定",
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "設置済み",
+  "support_corporation": "未定",
+  "subsidy_status": "設けている",
+  "subsidy_types": "（オ）家賃の一部を補助する制度（職種や年齢に制限を設けている場合を含む）",
+  "public_housing_vacant": "空いてもすぐに満室になる",
+  "note": "移住定住応援給付金（住宅家賃給付金） / https://www.iejima.org/document/2023120500012/file_contents/ouenkinyoko_.pdf",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": "空いてもすぐに満室になる",
+  "code": "47315"
+ },
+ {
+  "municipality": "読谷村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和5年度／読谷村都市計画課／外部委託（(株)ゼンリンインターマップ）"
+   }
+  ],
+  "_rows": [
+   30
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "都市計画課 田盛／098-982-9220",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47324"
+ },
+ {
+  "municipality": "嘉手納町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和３年度／外部事業者"
+   }
+  ],
+  "_rows": [
+   31
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "R8年度",
+  "akiya_bank": "未定",
+  "statutory_council": "今後設置する予定",
+  "support_corporation": "未定",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47325"
+ },
+ {
+  "municipality": "北谷町",
+  "confirmed": false,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成３０年度／北谷町都市計画課より外部委託にて実施"
+   }
+  ],
+  "_rows": [
+   32
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": null,
+  "plan_timing": null,
+  "akiya_bank": null,
+  "statutory_council": null,
+  "support_corporation": null,
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": null,
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47326"
+ },
+ {
+  "municipality": "北中城村",
+  "confirmed": false,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   33
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "策定する予定はない",
+  "akiya_action_plan": "策定する予定はない",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": null,
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47327"
+ },
+ {
+  "municipality": "中城村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   34
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "該当なし",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "該当なし",
+  "code": "47328"
+ },
+ {
+  "municipality": "西原町",
+  "confirmed": false,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和５年度／西原町都市整備課（業務委託により実施）"
+   }
+  ],
+  "_rows": [
+   35
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": null,
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47329"
+ },
+ {
+  "municipality": "与那原町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   36
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47348"
+ },
+ {
+  "municipality": "南風原町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   37
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "まちづくり振興課",
+  "akiya_plan": "策定する予定はない",
+  "akiya_action_plan": "策定する予定はない",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "該当なし",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "該当なし",
+  "code": "47350"
+ },
+ {
+  "municipality": "渡嘉敷村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成29年度/外部事業者 / （事業者名：要確認）"
+   }
+  ],
+  "_rows": [
+   38
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "総務課",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": "実施事業者と推定空き家件数の追加回答なし",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47353"
+ },
+ {
+  "municipality": "座間味村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "実施時期：令和7年8月～11月 / 担当組織：座間味村役場 /"
+   }
+  ],
+  "_rows": [
+   39
+  ],
+  "consult_desk": "設置を検討中",
+  "consult_desk_org": null,
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "2026-03-01",
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": "令和7年度調査の結果、推定空家は42戸",
+  "estimated_vacant": 42,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47354"
+ },
+ {
+  "municipality": "粟国村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "平成３０年度／外部事業者（（株）国建）"
+   }
+  ],
+  "_rows": [
+   40
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "部署：総務課 / 事業名：空家対策",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "設置済み",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": "粟国村役場HP内 / 空き家バンクの累計登録物件数：２件 / 利用者登録数：１人 / 成約済み件数：１件 / 交渉中件数：０件 / ※利用者登録を行っていないが、空き家バンクに登録された物件を交渉中",
+  "estimated_vacant": null,
+  "bank_registered_total": 2,
+  "bank_deals_closed": 1,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47355"
+ },
+ {
+  "municipality": "渡名喜村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和３年度 / 渡名喜村総務課"
+   },
+   {
+    "type": "特定空き家と思われる物件を対象に調査を実施",
+    "detail": "令和３年度 / 渡名喜村総務課"
+   },
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和7年度／外部事業者（株式会社ディープランニング沖縄）"
+   }
+  ],
+  "_rows": [
+   41,
+   42,
+   43
+  ],
+  "consult_desk": null,
+  "consult_desk_org": null,
+  "akiya_plan": "今後策定する予定",
+  "akiya_action_plan": "今後策定する予定",
+  "plan_timing": "令和8年3月",
+  "akiya_bank": "未定",
+  "statutory_council": "設置済み",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": null,
+  "note": "推定空き家件数は84件",
+  "estimated_vacant": 84,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": null,
+  "code": "47356"
+ },
+ {
+  "municipality": "南大東村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   44
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "策定する予定はない",
+  "akiya_action_plan": "策定する予定はない",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "不明",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": null,
+  "public_housing_vacant_raw": "不明",
+  "code": "47357"
+ },
+ {
+  "municipality": "北大東村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   45
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "策定する予定はない",
+  "akiya_action_plan": "策定する予定はない",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47358"
+ },
+ {
+  "municipality": "伊平屋村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "特定空き家と思われる物件を対象に調査を実施",
+    "detail": "平成28年度/外部事業者/永技研株式会社"
+   },
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和7年度／伊平屋村建設課"
+   }
+  ],
+  "_rows": [
+   46,
+   47
+  ],
+  "consult_desk": "その他（内容を右枠に記入）",
+  "consult_desk_org": "相談窓口という名目での設置はないが企画財政課にて対応中",
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "今後設ける予定",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度 / （ウ）新築・中古住宅購入費用の一部を補助する制度 / 協力隊のみ対象の特交措置のこと。一般向けではないことから削除。",
+  "public_housing_vacant": "１戸（すぐに入居可能な物件） / その他回収が必要な部屋も複数個あり。",
+  "note": "R7の調査（活性化企業人）結果、43件",
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 1,
+  "public_housing_vacant_raw": "１戸（すぐに入居可能な物件） / その他回収が必要な部屋も複数個あり。",
+  "code": "47359"
+ },
+ {
+  "municipality": "伊是名村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和3年度／ 外部事業者： / ライトブレイン（株） / 71件"
+   }
+  ],
+  "_rows": [
+   48
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "6",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 6,
+  "public_housing_vacant_raw": "6",
+  "code": "47360"
+ },
+ {
+  "municipality": "久米島町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和元年度／外部事業者 / （株式会社ゼンリンインターマップ）"
+   },
+   {
+    "type": "その他（調査内容を備考欄にご記入ください）",
+    "detail": "令和４年度／久米島町企画財政課、集落支援員、区長"
+   }
+  ],
+  "_rows": [
+   49,
+   50
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "久米島町役場企画財政課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "策定済み",
+  "plan_timing": null,
+  "akiya_bank": "開設済み（備考欄にサイト名をご記入ください）",
+  "statutory_council": "設置済み",
+  "support_corporation": "募集を検討している",
+  "subsidy_status": "設けている",
+  "subsidy_types": "（ア）物件の改修費用や家財道具の処分費用の一部を補助する制度",
+  "public_housing_vacant": "0",
+  "note": "空き家バンク：久米島町移住ポータルサイト「島ぐらしガイド」内 / ① 空き家バンク開始〜現在（令和8年1月末時点）までの「累計登録物件数」 / 回答：24件 / ② 上記①の内訳（成約済み件数、交渉中件数など） / 回答：成約済み：19件（売買：4件、賃貸15件）、未成約（掲載中）4件、登録後 / 取り下げ：1件",
+  "estimated_vacant": null,
+  "bank_registered_total": 24,
+  "bank_deals_closed": 19,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47361"
+ },
+ {
+  "municipality": "八重瀬町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "空き家調査は実施していない",
+    "detail": null
+   }
+  ],
+  "_rows": [
+   51
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "策定する予定はない",
+  "akiya_action_plan": "策定する予定はない",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "募集する予定はない",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "0",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "0",
+  "code": "47362"
+ },
+ {
+  "municipality": "多良間村",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "特定空き家と思われる物件を対象に調査を実施",
+    "detail": "平成30年度/多良間村総務財政課"
+   }
+  ],
+  "_rows": [
+   52
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "未定",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "なし",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 0,
+  "public_housing_vacant_raw": "なし",
+  "code": "47375"
+ },
+ {
+  "municipality": "竹富町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和５年度/外部事業者（株式会社ランドブレイン）"
+   }
+  ],
+  "_rows": [
+   53
+  ],
+  "consult_desk": "ある",
+  "consult_desk_org": "移住関係：商工観光課 / 空家の取引関係：まちづくり課",
+  "akiya_plan": "策定済み",
+  "akiya_action_plan": "策定済み",
+  "plan_timing": null,
+  "akiya_bank": "その他（備考欄参照）",
+  "statutory_council": "未定",
+  "support_corporation": "未定",
+  "subsidy_status": "設ける予定はない",
+  "subsidy_types": null,
+  "public_housing_vacant": "4戸 ただし、本町の町営住宅は一定期間町内に在住歴がある町民向けであり、移住者受入れのためにすぐ使える住居ではありません。",
+  "note": "空き家バンクに類似するものとして町HP内に「竹富町空き家等掲示板」を設置 https://www.town.taketomi.lg.jp/soshiki/machizukuri/akiyakeijiban/ / ①累計掲載件数 5件 / ②成約済み件数 賃貸：1件、売買：2件",
+  "estimated_vacant": null,
+  "bank_registered_total": 5,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 4,
+  "public_housing_vacant_raw": "4戸 ただし、本町の町営住宅は一定期間町内に在住歴がある町民向けであり、移住者受入れのためにすぐ使える住居ではありません。",
+  "code": "47381"
+ },
+ {
+  "municipality": "与那国町",
+  "confirmed": true,
+  "surveys": [
+   {
+    "type": "全軒調査を実施",
+    "detail": "令和３年/与那国町企画財政課"
+   }
+  ],
+  "_rows": [
+   54
+  ],
+  "consult_desk": "ない",
+  "consult_desk_org": null,
+  "akiya_plan": "未定",
+  "akiya_action_plan": "未定",
+  "plan_timing": null,
+  "akiya_bank": "開設する予定はない",
+  "statutory_council": "設置する予定はない",
+  "support_corporation": "未定",
+  "subsidy_status": "未定",
+  "subsidy_types": null,
+  "public_housing_vacant": "6戸",
+  "note": null,
+  "estimated_vacant": null,
+  "bank_registered_total": null,
+  "bank_deals_closed": null,
+  "public_housing_vacant_num": 6,
+  "public_housing_vacant_raw": "6戸",
+  "code": "47382"
+ }
+]

@@ -1,0 +1,3 @@
+municipality,aza_jyuki,aza_census,note
+# 住基Excelの字名 と 国勢調査小地域の字名 が食い違う場合の対応表。
+# fetch_aza_population.py の実行末尾に出る「年次が欠けている字」を手当てする。

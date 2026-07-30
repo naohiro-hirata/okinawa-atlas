@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>沖縄 地域データアトラス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#E3E1D9; --surface:#F7F6F2; --surface2:#EDEBE4;
+  --ink:#151F23; --ink2:#4E5A5F; --ink3:#7B857F;
+  --ai:#1D4E5F; --ai2:#2F7288; --kawara:#BE4F2D; --basho:#4C6B4A; --sand:#A79E90;
+  --line:#CDC9BE; --line2:#DDD9CF;
+  --jp:"Noto Sans JP",system-ui,sans-serif;
+  --num:"Roboto Condensed","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--ground); color:var(--ink);
+  font:400 14px/1.7 var(--jp);
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--ai2); outline-offset:2px}
+
+/* ---------- eyebrow / labels ---------- */
+.eyebrow{
+  font:700 10px/1 var(--num); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink3);
+}
+.num{font-family:var(--num); font-variant-numeric:tabular-nums}
+
+/* ---------- shell ---------- */
+.app{display:flex; flex-direction:column; height:100%}
+header.top{
+  border-bottom:1px solid var(--line); background:var(--surface);
+  padding:14px 20px 12px; display:flex; align-items:baseline; gap:20px; flex-wrap:wrap;
+}
+.brand{font-weight:700; font-size:15px; letter-spacing:.04em}
+.brand span{color:var(--ai)}
+nav.crumb{display:flex; align-items:center; gap:6px; font-family:var(--num); font-size:12px; letter-spacing:.06em}
+nav.crumb button{color:var(--ai); text-decoration:underline; text-underline-offset:3px}
+nav.crumb .sep{color:var(--ink3)}
+nav.crumb .cur{font-weight:700}
+
+.banner{
+  margin-left:auto; display:flex; align-items:center; gap:8px;
+  border:1px solid var(--kawara); border-left-width:4px; background:#F6EAE4;
+  padding:5px 10px; font-size:11.5px; line-height:1.45; max-width:390px; color:#6E2E19;
+}
+.banner b{font-family:var(--num); letter-spacing:.08em; text-transform:uppercase; font-size:10px}
+
+main{flex:1; display:grid; grid-template-columns:300px 1fr; min-height:0}
+
+/* ---------- rail ---------- */
+aside{
+  border-right:1px solid var(--line); background:var(--surface2);
+  display:flex; flex-direction:column; min-height:0;
+}
+.searchbox{padding:12px; border-bottom:1px solid var(--line2)}
+.searchbox input{
+  width:100%; padding:9px 11px; font:400 14px var(--jp);
+  background:var(--surface); border:1px solid var(--line); color:var(--ink);
+}
+.searchbox input::placeholder{color:var(--ink3)}
+.hint{margin-top:7px; font-size:11px; color:var(--ink3); line-height:1.5}
+.list{overflow-y:auto; flex:1; min-height:0}
+.row{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px;
+  width:100%; text-align:left; padding:8px 12px; border-bottom:1px solid var(--line2);
+}
+.row:hover{background:var(--surface)}
+.row[aria-current="true"]{background:var(--ai); color:#F7F6F2}
+.row[aria-current="true"] .rsub{color:#BCCDD3}
+.rname{font-size:13.5px; font-weight:500}
+.rsub{font-size:10.5px; color:var(--ink3); font-family:var(--num); letter-spacing:.05em}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:1px}
+.empty{padding:24px 14px; color:var(--ink3); font-size:12.5px}
+
+/* ---------- content ---------- */
+section.stage{overflow-y:auto; min-height:0; padding:22px 26px 60px}
+.stage-head{margin-bottom:18px}
+.stage-head h1{margin:4px 0 0; font-size:26px; letter-spacing:.02em; font-weight:700}
+.stage-head .meta{margin-top:6px; display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); font-family:var(--num); letter-spacing:.05em}
+
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:16px}
+.card{background:var(--surface); border:1px solid var(--line); padding:15px 16px 17px}
+.card > h2{margin:0 0 12px; font:700 11px/1 var(--num); letter-spacing:.14em; text-transform:uppercase; color:var(--ink2)}
+.card.wide{grid-column:1/-1}
+
+/* dummy overlay */
+.dummy{position:relative}
+.dummy::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent 0 9px,rgba(190,79,45,.07) 9px 18px);
+}
+.dummy-tag{
+  position:absolute; top:0; right:0; z-index:2;
+  background:var(--kawara); color:#fff; padding:2px 7px;
+  font:700 9px/1.5 var(--num); letter-spacing:.14em;
+}
+
+/* badges */
+.badges{display:flex; flex-wrap:wrap; gap:6px}
+.badge{
+  display:inline-flex; align-items:center; gap:5px;
+  border:1px solid var(--line); background:var(--surface2);
+  padding:4px 9px; font-size:11.5px; line-height:1.4;
+}
+.badge .k{font:700 9.5px/1 var(--num); letter-spacing:.1em; text-transform:uppercase; color:var(--ink3)}
+.badge.on{border-color:var(--basho); background:#E9EFE6; color:#2C4A2B}
+.badge.plan{border-color:var(--ai2); background:#E4EDF0; color:#154655}
+.badge.off{border-color:var(--line); background:var(--surface2); color:var(--ink3)}
+.badge.tbd{border-color:var(--sand); background:#EEEAE2; color:#6B6154}
+
+/* stat strip */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(112px,1fr)); gap:1px; background:var(--line2)}
+.stat{background:var(--surface); padding:10px 12px}
+.stat .v{font:700 24px/1.15 var(--num); font-variant-numeric:tabular-nums}
+.stat .v small{font-size:12px; font-weight:400; color:var(--ink2); margin-left:2px}
+.stat .l{font-size:10.5px; color:var(--ink3); margin-top:1px; line-height:1.4}
+.stat .v.na{color:var(--ink3); font-size:15px; font-weight:400}
+
+/* text blocks */
+dl.kv{margin:0; display:grid; grid-template-columns:auto 1fr; gap:7px 14px; font-size:12.5px}
+dl.kv dt{font:700 9.5px/1.7 var(--num); letter-spacing:.1em; text-transform:uppercase; color:var(--ink3); white-space:nowrap}
+dl.kv dd{margin:0}
+dl.kv dd.q{color:var(--ink3)}
+
+table.tbl{width:100%; border-collapse:collapse; font-size:12px}
+table.tbl th{
+  text-align:left; font:700 9.5px/1.6 var(--num); letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink3); border-bottom:1px solid var(--line); padding:5px 8px 5px 0; white-space:nowrap;
+}
+table.tbl td{border-bottom:1px solid var(--line2); padding:6px 8px 6px 0; vertical-align:top}
+table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-align:right; padding-right:14px}
+
+/* ---------- hanablock grid (signature) ---------- */
+.blockwrap{border:1px solid var(--line); background:var(--surface); padding:14px 15px 16px}
+.blockhead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px}
+.blockhead h2{margin:0; font:700 11px/1 var(--num); letter-spacing:.14em; text-transform:uppercase; color:var(--ink2)}
+.blockhead select{
+  font:400 12px var(--jp); padding:3px 6px; background:var(--surface2);
+  border:1px solid var(--line); color:var(--ink);
+}
+.hana{display:grid; grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:5px}
+.cell{position:relative; padding:0; border:1px solid var(--line2); background:var(--surface2); aspect-ratio:1/1}
+.cell:hover{border-color:var(--ai)}
+.cell svg{position:absolute; inset:0; width:100%; height:100%}
+.cell .cl{
+  position:absolute; left:0; right:0; bottom:5px; text-align:center;
+  font-size:10.5px; line-height:1.3; font-weight:500; padding:0 3px;
+  text-shadow:0 0 4px var(--surface2),0 0 4px var(--surface2);
+}
+.cell .cv{
+  position:absolute; left:0; right:0; top:6px; text-align:center;
+  font:700 11px/1 var(--num); color:var(--ink2);
+}
+.legend{margin-top:11px; display:flex; align-items:center; gap:8px; font-size:10.5px; color:var(--ink3)}
+.legend .bar{flex:1; height:7px; max-width:170px; background:linear-gradient(90deg,#E7E4DA,var(--ai))}
+
+/* ---------- map slot ---------- */
+.mapslot{
+  border:1px dashed var(--ai2); background:#E6EDEF; padding:16px;
+  display:flex; gap:14px; align-items:flex-start; font-size:12.5px; line-height:1.65;
+}
+.mapslot .ico{flex:0 0 auto; color:var(--ai)}
+.mapslot code{font-family:var(--num); background:var(--surface); padding:1px 5px; border:1px solid var(--line)}
+
+.note{font-size:11.5px; color:var(--ink3); line-height:1.6; margin-top:10px}
+.chartnote{font-size:11px; color:var(--ink3); margin-top:6px}
+
+@media (max-width:860px){
+  main{grid-template-columns:1fr; grid-template-rows:auto 1fr}
+  aside{border-right:0; border-bottom:1px solid var(--line)}
+  .list{max-height:34vh}
+  .banner{margin-left:0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .cell svg .petal{transition:fill .18s ease}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">沖縄 <span>地域データアトラス</span></div>
+    <nav class="crumb" id="crumb" aria-label="階層"></nav>
+    <div class="banner">
+      <div>
+        <b>データ状態</b><br>
+        施策・空き家（R7調査）は<strong>実データ</strong>。人口・字は<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside>
+      <div class="searchbox">
+        <input id="q" type="search" placeholder="市町村・字を検索" autocomplete="off" aria-label="市町村・字を検索">
+        <div class="hint" id="qhint"></div>
+      </div>
+      <div class="list" id="list"></div>
+    </aside>
+    <section class="stage" id="stage" tabindex="-1"></section>
+  </main>
+</div>
+
+<script>
+const DATA = /*__DATA__*/;
+
+/* ============================ サンプル人口データ ============================
+   実データが入るまでのプレースホルダ。決定論的な擬似乱数で生成し、
+   画面上は必ず斜線＋「ダミー」タグ付きで表示する。
+   置き換え先: data/generated/population_muni.json / population_aza.json     */
+function seeded(str){let h=2166136261;for(const c of str)h=(h^c.charCodeAt(0))*16777619>>>0;
+  return()=>{h=(h*1103515245+12345)>>>0;return h/4294967296;};}
+const AGES=["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44",
+            "45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"];
+const CENSUS_YEARS=[1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
+const AZA_YEARS=[2011,2013,2015,2017,2019,2021,2023,2025];
+
+function demoMuni(code){
+  const r=seeded("m"+code), base=1500+Math.floor(r()*22000), aging=.5+r()*1.1;
+  const pyramid=AGES.map((a,i)=>{
+    const decay=Math.exp(-Math.pow((i-7)/9,2))*(1+aging*Math.max(0,i-9)/9);
+    const m=Math.round(base*decay*(.028+r()*.006));
+    return{age:a,male:m,female:Math.round(m*(1+(i>12?.12+r()*.2:r()*.06-.03)))};
+  });
+  const total=pyramid.reduce((s,p)=>s+p.male+p.female,0);
+  const trend=CENSUS_YEARS.map((y,i)=>({year:y,
+    pop:Math.round(total*(.72+i*.031+(r()-.5)*.05))}));
+  trend[trend.length-1].pop=total;
+  return{pyramid,trend,total};
+}
+function demoAza(code){
+  const r=seeded("a"+code), n=6+Math.floor(r()*10), out=[];
+  for(let i=1;i<=n;i++){
+    const rr=seeded("a"+code+"-"+i), base=120+Math.floor(rr()*2600);
+    const drift=rr()<.45?-1:1;
+    out.push({id:code+"-"+String(i).padStart(2,"0"),
+      name:"サンプル字"+String(i).padStart(2,"0"),
+      trend:AZA_YEARS.map((y,k)=>({year:y,
+        pop:Math.max(20,Math.round(base*(1+drift*k*(.012+rr()*.02))))})),
+      pyramid:AGES.map((a,k)=>{
+        const d=Math.exp(-Math.pow((k-8)/9,2));
+        const m=Math.round(base*d*(.03+rr()*.008));
+        return{age:a,male:m,female:Math.round(m*(1+rr()*.18))};
+      })});
+  }
+  return out;
+}
+
+/* ============================ 指標 ============================ */
+const INDICATORS={
+  estimated_vacant:{label:"推定空家数（R7調査・回答のみ）",
+    get:m=>m.akiya&&m.akiya.estimated_vacant, unit:"件", real:true},
+  bank_registered_total:{label:"空き家バンク累計登録",
+    get:m=>m.akiya&&m.akiya.bank_registered_total, unit:"件", real:true},
+  housing_count:{label:"定住促進住宅の物件数",
+    get:m=>m.housing.length||null, unit:"件", real:true},
+  pop_total:{label:"総人口（サンプル値）",
+    get:m=>demoMuni(m.code).total, unit:"人", real:false},
+};
+
+/* ============================ 索引の構築 ============================ */
+const MUNI=DATA.municipalities.map(m=>{
+  const policy=DATA.policy.find(p=>p.code===m.code)||null;
+  const akiya=DATA.akiya.find(a=>a.code===m.code)||null;
+  const housing=DATA.housing.filter(h=>h.code===m.code);
+  return{...m,policy,akiya,housing,aza:demoAza(m.code)};
+});
+const INDEX=[];
+for(const m of MUNI){
+  INDEX.push({kind:"muni",code:m.code,label:m.name,sub:m.code,muni:m});
+  for(const a of m.aza)
+    INDEX.push({kind:"aza",code:a.id,label:a.name,sub:m.name,muni:m,aza:a});
+}
+
+/* ============================ 描画ヘルパ ============================ */
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>n==null?"—":n.toLocaleString("ja-JP");
+
+/** 花ブロック1枚。v(0..1)で花弁が満ちる。 */
+let hanaSeq=0;
+function hanaSVG(v,color){
+  const t=Math.max(0,Math.min(1,v||0));
+  const fill=t===0?"var(--line2)":color;
+  const cid="hb"+(++hanaSeq);
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <rect x="4" y="4" width="92" height="92" fill="var(--surface)" stroke="var(--line2)"/>
+    <clipPath id="${cid}"><rect x="0" y="${100-100*t}" width="100" height="${100*t}"/></clipPath>
+    <g class="petal" fill="${fill}" opacity="${t===0?1:.28+.62*t}" clip-path="url(#${cid})">
+      <circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>
+      <circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>
+    </g>
+    <g fill="none" stroke="var(--line)" stroke-width="1.1">
+      <circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>
+      <circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>
+    </g></svg>`;
+}
+
+function pyramidSVG(rows){
+  const W=440,H=270,mid=W/2,gap=34,bh=(H-24)/rows.length-1.6;
+  const max=Math.max(...rows.map(r=>Math.max(r.male,r.female)))||1;
+  const sc=(mid-gap/2-14)/max;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="年齢5歳階級別の男女人口">`;
+  rows.forEach((r,i)=>{
+    const y=12+i*((H-24)/rows.length);
+    s+=`<rect x="${mid-gap/2-r.male*sc}" y="${y}" width="${r.male*sc}" height="${bh}" fill="var(--ai)" opacity=".82"/>`;
+    s+=`<rect x="${mid+gap/2}" y="${y}" width="${r.female*sc}" height="${bh}" fill="var(--kawara)" opacity=".72"/>`;
+    if(i%2===0)s+=`<text x="${mid}" y="${y+bh*.82}" text-anchor="middle" font-size="7.6" font-family="Roboto Condensed" fill="var(--ink3)">${r.age}</text>`;
+  });
+  s+=`<text x="${mid-gap/2-4}" y="8" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ai)">男</text>`;
+  s+=`<text x="${mid+gap/2+4}" y="8" font-size="8.4" font-family="Roboto Condensed" fill="var(--kawara)">女</text></svg>`;
+  return s;
+}
+
+function trendSVG(rows,label){
+  const W=440,H=190,L=44,R=10,T=14,B=26;
+  const xs=rows.map(r=>r.year),ys=rows.map(r=>r.pop);
+  const x0=Math.min(...xs),x1=Math.max(...xs);
+  const y1=Math.max(...ys)*1.06,y0=Math.min(...ys)*.9;
+  const px=y=>L+(W-L-R)*((y-x0)/((x1-x0)||1));
+  const py=v=>T+(H-T-B)*(1-(v-y0)/((y1-y0)||1));
+  const pts=rows.map(r=>`${px(r.year).toFixed(1)},${py(r.pop).toFixed(1)}`).join(" ");
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">`;
+  for(let k=0;k<=2;k++){
+    const v=y0+(y1-y0)*k/2,y=py(v);
+    s+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="var(--line2)"/>`;
+    s+=`<text x="${L-6}" y="${y+3}" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${Math.round(v).toLocaleString()}</text>`;
+  }
+  s+=`<polyline points="${pts}" fill="none" stroke="var(--ai)" stroke-width="2"/>`;
+  rows.forEach(r=>{s+=`<circle cx="${px(r.year)}" cy="${py(r.pop)}" r="2.6" fill="var(--ai)"/>`;});
+  rows.forEach((r,i)=>{if(i%2===0||i===rows.length-1)
+    s+=`<text x="${px(r.year)}" y="${H-8}" text-anchor="middle" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${r.year}</text>`;});
+  return s+"</svg>";
+}
+
+/** 選択式の値を色分けバッジに。 */
+function badge(key,val){
+  if(!val)return `<span class="badge off"><span class="k">${esc(key)}</span>未回答</span>`;
+  const v=val.replace(/（.*?）/g,"").trim();
+  let cls="tbd";
+  if(/^(策定済み|設置済み|開設済み|設けている|指定している|ある|行っている|すでに取り組んでいる|あり)/.test(v))cls="on";
+  else if(/(今後|予定$|検討)/.test(v)&&!/(予定はない)/.test(v))cls="plan";
+  else if(/(予定はない|していない|実施していない|ない$|指定しない)/.test(v))cls="off";
+  return `<span class="badge ${cls}"><span class="k">${esc(key)}</span>${esc(v)}</span>`;
+}
+
+/* ============================ 画面 ============================ */
+let view={layer:"pref",code:null,aza:null,indicator:"estimated_vacant"};
+
+function render(){
+  renderCrumb();renderList();
+  const st=document.getElementById("stage");
+  st.innerHTML = view.layer==="pref"?prefView()
+               : view.layer==="muni"?muniView(find(view.code))
+               : azaView(find(view.code),view.aza);
+  st.scrollTop=0;
+  bindStage();
+}
+const find=code=>MUNI.find(m=>m.code===code);
+
+function renderCrumb(){
+  const c=document.getElementById("crumb");
+  const m=view.code?find(view.code):null;
+  let h=view.layer==="pref"
+    ?`<span class="cur">沖縄県 41市町村</span>`
+    :`<button data-go="pref">沖縄県</button>`;
+  if(m)h+=`<span class="sep">›</span>`+(view.layer==="muni"
+    ?`<span class="cur">${esc(m.name)}</span>`
+    :`<button data-go="muni" data-code="${m.code}">${esc(m.name)}</button>`);
+  if(view.layer==="aza"){
+    const a=m.aza.find(x=>x.id===view.aza);
+    h+=`<span class="sep">›</span><span class="cur">${esc(a.name)}</span>`;
+  }
+  c.innerHTML=h;
+}
+
+function renderList(){
+  const q=document.getElementById("q").value.trim();
+  const hits=(q?INDEX.filter(i=>i.label.includes(q)||i.sub.includes(q)):
+              INDEX.filter(i=>i.kind==="muni")).slice(0,400);
+  document.getElementById("qhint").textContent = q
+    ? `${hits.length}件（市町村＋字を横断検索）`
+    : "字も同じ欄から検索できます";
+  const el=document.getElementById("list");
+  if(!hits.length){el.innerHTML=`<div class="empty">該当なし。市町村名か字名の一部を入力してください。</div>`;return;}
+  el.innerHTML=hits.map(i=>{
+    const cur=i.kind==="muni"?(view.layer==="muni"&&view.code===i.code)
+                             :(view.layer==="aza"&&view.aza===i.code);
+    const tag=i.kind==="aza"?`<span class="dot" style="background:var(--sand)"></span>`:"";
+    return `<button class="row" aria-current="${cur}" data-kind="${i.kind}" data-code="${i.code}" data-muni="${i.muni.code}">
+      <span class="rname">${tag}${esc(i.label)}</span>
+      <span class="rsub">${esc(i.sub)}</span></button>`;
+  }).join("");
+}
+
+function prefView(){
+  const ind=INDICATORS[view.indicator];
+  const vals=MUNI.map(m=>ind.get(m)).filter(v=>v!=null);
+  const max=Math.max(...vals,1);
+  const answered=vals.length;
+  const cells=MUNI.map(m=>{
+    const v=ind.get(m);
+    return `<button class="cell" data-kind="muni" data-code="${m.code}" title="${esc(m.name)}｜${ind.label}: ${fmt(v)}">
+      ${hanaSVG(v==null?0:v/max,"var(--ai)")}
+      <span class="cv">${v==null?"":fmt(v)}</span>
+      <span class="cl">${esc(m.name)}</span></button>`;}).join("");
+  return `
+  <div class="stage-head">
+    <div class="eyebrow">Layer 1 — 市町村</div>
+    <h1>沖縄県 41市町村</h1>
+    <div class="meta"><span>移住定住・空き家 取り組み状況調査（令和7年度）</span><span>定住促進住宅 ${DATA.housing.length}件</span></div>
+  </div>
+  <div class="blockwrap">
+    <div class="blockhead">
+      <h2>指標で見る</h2>
+      <select id="indsel">${Object.entries(INDICATORS).map(([k,v])=>
+        `<option value="${k}" ${k===view.indicator?"selected":""}>${esc(v.label)}</option>`).join("")}</select>
+      <span class="eyebrow">${ind.real?`回答あり ${answered}/41`:"サンプル値"}</span>
+    </div>
+    <div class="hana">${cells}</div>
+    <div class="legend"><span>0</span><span class="bar"></span><span class="num">${fmt(max)}${ind.unit}</span></div>
+    <p class="note">花ブロックの花弁が指標値。白いままの市町村は「回答なし／該当なし」で、ゼロとは区別しています。クリックで市町村レイヤーへ。</p>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card wide">
+      <h2>この位置に地図が入ります</h2>
+      <div class="mapslot">
+        <svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <div>
+          MapLibre GL JS + PMTiles で、この枠が<strong>市町村ポリゴン→字ポリゴン</strong>のズーム連動マップになります。<br>
+          必要な素材は e-Stat 統計地理情報システムの境界データ <code>r2ka47</code>（令和2年国勢調査 町丁・字等別）。
+          <code>scripts/build_tiles.sh</code> で tippecanoe に通し、<code>public/tiles/okinawa.pmtiles</code> に配置します。
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function muniView(m){
+  const d=demoMuni(m.code), p=m.policy||{}, a=m.akiya||{};
+  const azaCells=m.aza.map(z=>{
+    const last=z.trend[z.trend.length-1].pop, first=z.trend[0].pop;
+    const rate=(last-first)/first;
+    return `<button class="cell" data-kind="aza" data-code="${z.id}" data-muni="${m.code}"
+      title="${esc(z.name)}｜${fmt(last)}人（サンプル）">
+      ${hanaSVG(.15+Math.min(1,last/2800)*.85, rate>=0?"var(--basho)":"var(--kawara)")}
+      <span class="cv">${fmt(last)}</span><span class="cl">${esc(z.name)}</span></button>`;}).join("");
+
+  const desc=[["移住施策の内容",p.policy_detail],["取り組まない理由",p.policy_none_reason],
+              ["相談窓口",p.desk_contact||p.desk_status_other],["中間支援組織",p.intermediary_detail],
+              ["仕事情報",p.jobinfo_detail||p.jobinfo_other],["宅地分譲",p.lot_sale_units],
+              ["新規住宅整備の財源",p.new_housing_funding],["備考（施策）",p.note]]
+    .filter(([,v])=>v);
+  const akiyaDesc=[["空き家相談窓口",a.consult_desk_org],["策定予定時期",a.plan_timing],
+              ["助成制度の内容",a.subsidy_types],["市町村営住宅の空き住戸",a.public_housing_vacant_raw],
+              ["備考（空き家）",a.note]].filter(([,v])=>v);
+
+  return `
+  <div class="stage-head">
+    <div class="eyebrow">Layer 1 — 市町村</div>
+    <h1>${esc(m.name)}</h1>
+    <div class="meta">
+      <span>市町村コード ${esc(m.code)}</span>
+      <span>${m.policy?.confirmed?"R7回答 確認済み":"R7回答 未確認（R6以前の値が残っている可能性）"}</span>
+      <span>定住促進住宅 ${m.housing.length}件</span>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>年齢5歳階級別人口</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${pyramidSVG(d.pyramid)}</div>
+      <p class="chartnote">実データ差し替え元：令和2年国勢調査 人口等基本集計（R7確報は令和8年9月までに公表予定）</p>
+    </div>
+    <div class="card">
+      <h2>人口推移</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${trendSVG(d.trend,"人口推移")}</div>
+      <p class="chartnote">実データ差し替え元：国勢調査 1980–2020 ＋ 令和7年 人口速報集計</p>
+    </div>
+
+    <div class="card wide">
+      <h2>空き家利活用の取り組み（令和7年度調査・実データ）</h2>
+      <div class="stats">
+        <div class="stat"><div class="v ${a.estimated_vacant==null?"na":""}">${a.estimated_vacant==null?"回答なし":fmt(a.estimated_vacant)}<small>${a.estimated_vacant==null?"":"件"}</small></div><div class="l">推定空家数</div></div>
+        <div class="stat"><div class="v ${a.bank_registered_total==null?"na":""}">${a.bank_registered_total==null?"回答なし":fmt(a.bank_registered_total)}<small>${a.bank_registered_total==null?"":"件"}</small></div><div class="l">バンク累計登録</div></div>
+        <div class="stat"><div class="v ${a.bank_deals_closed==null?"na":""}">${a.bank_deals_closed==null?"回答なし":fmt(a.bank_deals_closed)}<small>${a.bank_deals_closed==null?"":"件"}</small></div><div class="l">うち成約</div></div>
+        <div class="stat"><div class="v ${a.public_housing_vacant_num==null?"na":""}">${a.public_housing_vacant_num==null?"要確認":fmt(a.public_housing_vacant_num)}<small>${a.public_housing_vacant_num==null?"":"戸"}</small></div><div class="l">町村営住宅の空き住戸</div></div>
+      </div>
+      <div class="badges" style="margin-top:13px">
+        ${badge("施策全般",p.policy_status)}${badge("移住相談窓口",p.desk_status)}
+        ${badge("中間支援",p.intermediary_status)}${badge("仕事情報",p.jobinfo_status)}
+        ${badge("空き家相談窓口",a.consult_desk)}${badge("空家等対策計画",a.akiya_plan)}
+        ${badge("総合実施計画",a.akiya_action_plan)}${badge("空き家バンク",a.akiya_bank)}
+        ${badge("法定協議会",a.statutory_council)}${badge("支援法人",a.support_corporation)}
+        ${badge("助成制度",a.subsidy_status)}${badge("宅地分譲",p.lot_sale_status)}
+        ${badge("新規住宅整備",p.new_housing_plan)}
+      </div>
+      ${a.surveys?.length?`<table class="tbl" style="margin-top:14px"><thead><tr><th>空き家調査の種別</th><th>実施時期・担当</th></tr></thead><tbody>
+        ${a.surveys.map(s=>`<tr><td>${esc(s.type||"—")}</td><td>${esc(s.detail||"—")}</td></tr>`).join("")}
+      </tbody></table>`:""}
+    </div>
+
+    ${m.housing.length?`<div class="card wide">
+      <h2>定住促進住宅 ${m.housing.length}件（実データ）</h2>
+      <table class="tbl"><thead><tr><th>名称</th><th>タイプ</th><th>戸数</th><th class="n">延床㎡</th><th>完了年度</th><th class="n">総事業費 千円</th><th>財源</th></tr></thead><tbody>
+      ${m.housing.map(h=>`<tr><td>${esc(h.name||"—")}</td><td>${esc(h.property_type||"—")}</td>
+        <td>${esc(h.units||"—")}</td><td class="n">${h.floor_area_sqm_num?fmt(h.floor_area_sqm_num):esc(h.floor_area_sqm||"—")}</td>
+        <td>${esc(h.completion_fy||"—")}</td><td class="n">${h.total_cost_thousand_jpy_num?fmt(h.total_cost_thousand_jpy_num):esc(h.total_cost_thousand_jpy||"—")}</td>
+        <td>${esc(h.funding||"—")}</td></tr>`).join("")}
+      </tbody></table></div>`:""}
+
+    ${desc.length||akiyaDesc.length?`<div class="card wide"><h2>記述回答（実データ）</h2>
+      <dl class="kv">${[...desc,...akiyaDesc].map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+    </div>`:""}
+  </div>
+
+  <div class="blockwrap" style="margin-top:16px">
+    <div class="blockhead">
+      <h2>Layer 2 — 字を選ぶ</h2>
+      <span class="eyebrow">${m.aza.length} 字（サンプル）</span>
+    </div>
+    <div class="hana">${azaCells}</div>
+    <p class="note">緑＝期間内で増加、赤瓦色＝減少。花弁の量は人口規模。実データ差し替え元は沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年の年次Excel）。</p>
+  </div>`;
+}
+
+function azaView(m,azaId){
+  const z=m.aza.find(x=>x.id===azaId);
+  const first=z.trend[0],last=z.trend[z.trend.length-1];
+  const diff=last.pop-first.pop, rate=diff/first.pop*100;
+  return `
+  <div class="stage-head">
+    <div class="eyebrow">Layer 2 — 字</div>
+    <h1>${esc(z.name)}</h1>
+    <div class="meta"><span>${esc(m.name)}（${esc(m.code)}）</span><span>字ID ${esc(z.id)}</span></div>
+  </div>
+  <div class="grid2">
+    <div class="card wide">
+      <h2>人口の動き</h2>
+      <div class="stats">
+        <div class="stat"><div class="v">${fmt(last.pop)}<small>人</small></div><div class="l">${last.year}年</div></div>
+        <div class="stat"><div class="v">${fmt(first.pop)}<small>人</small></div><div class="l">${first.year}年</div></div>
+        <div class="stat"><div class="v" style="color:${diff>=0?"var(--basho)":"var(--kawara)"}">${diff>=0?"+":""}${fmt(diff)}<small>人</small></div><div class="l">増減</div></div>
+        <div class="stat"><div class="v" style="color:${diff>=0?"var(--basho)":"var(--kawara)"}">${rate>=0?"+":""}${rate.toFixed(1)}<small>%</small></div><div class="l">増減率</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>人口推移（字）</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${trendSVG(z.trend,"字の人口推移")}</div>
+      <p class="chartnote">実データ差し替え元：沖縄県 町字別住民基本台帳人口（各年1月1日現在・2011–2025）</p>
+    </div>
+    <div class="card">
+      <h2>年齢構成（字）</h2>
+      <div class="dummy"><span class="dummy-tag">ダミー</span>${pyramidSVG(z.pyramid)}</div>
+      <p class="chartnote">実データ差し替え元：令和2年国勢調査 小地域集計（町丁・字等別／5歳階級×男女）。R7調査の小地域は2027年以降の公表見込み。</p>
+    </div>
+  </div>
+  <p class="note">字レベルは境界・名称が住居表示と一致しないことがあるため、住基データと国勢調査小地域の名寄せ結果を <code>data/aza_crosswalk.csv</code> で管理します。</p>`;
+}
+
+/* ============================ イベント ============================ */
+function go(kind,code,muniCode){
+  if(kind==="muni"){view={...view,layer:"muni",code,aza:null};}
+  else{view={...view,layer:"aza",code:muniCode,aza:code};}
+  render();document.getElementById("stage").focus();
+}
+function bindStage(){
+  const sel=document.getElementById("indsel");
+  if(sel)sel.onchange=e=>{view.indicator=e.target.value;render();};
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-kind]");
+  if(b){go(b.dataset.kind,b.dataset.code,b.dataset.muni||b.dataset.code);return;}
+  const g=e.target.closest("[data-go]");
+  if(g){view=g.dataset.go==="pref"?{...view,layer:"pref",code:null,aza:null}
+                                  :{...view,layer:"muni",code:g.dataset.code,aza:null};render();}
+});
+document.getElementById("q").addEventListener("input",renderList);
+render();
+</script>
+</body>
+</html>

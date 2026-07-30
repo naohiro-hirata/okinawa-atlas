@@ -1,0 +1,48 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install openpyxl pandas xlrd
+      - name: 調査Excelを正規化（原本がコミットされている場合のみ）
+        run: python scripts/parse_survey.py data/raw/survey/latest.xlsx || echo "調査Excel未配置。スキップします。"
+      - name: 字別人口を正規化（原本がコミットされている場合のみ）
+        run: python scripts/fetch_aza_population.py --normalize-only || echo "字データ未配置。スキップします。"
+      - name: 単一HTMLをビルド
+        run: python scripts/build_app.py --outfile public/index.html
+      - name: 品質レポートをサマリに出す
+        run: |
+          echo '### データ品質' >> $GITHUB_STEP_SUMMARY
+          python -c "import json;q=json.load(open('data/generated/quality_report.json'));print('\n'.join(f'- {k}: {v if not isinstance(v,list) else len(v)}' for k,v in q.items()))" >> $GITHUB_STEP_SUMMARY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
