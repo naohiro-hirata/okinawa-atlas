@@ -31,8 +31,12 @@ jobs:
         run: python scripts/build_app.py --outfile public/index.html
       - name: 品質レポートをサマリに出す
         run: |
-          echo '### データ品質' >> $GITHUB_STEP_SUMMARY
+          echo '### データ品質（調査Excel）' >> $GITHUB_STEP_SUMMARY
           python -c "import json;q=json.load(open('data/generated/quality_report.json'));print('\n'.join(f'- {k}: {v if not isinstance(v,list) else len(v)}' for k,v in q.items()))" >> $GITHUB_STEP_SUMMARY
+          if [ -f data/generated/aza_quality_report.json ]; then
+            echo '### データ品質（字別人口）' >> $GITHUB_STEP_SUMMARY
+            python -c "import json;q=json.load(open('data/generated/aza_quality_report.json'))['counts'];print('\n'.join(f'- {k}: {v}' for k,v in q.items()))" >> $GITHUB_STEP_SUMMARY
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public

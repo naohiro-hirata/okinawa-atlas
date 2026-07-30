@@ -31,6 +31,10 @@ python -m http.server -d public 8000                         # 確認
 `parse_survey.py` は毎回 `data/generated/quality_report.json` を出す。作業後は必ずこれを読んで、
 `needs_manual_review` と `code_join_failures` が増えていないか確認する。
 
+`fetch_aza_population.py` は `data/generated/aza_quality_report.json` を出す。こちらは
+`unknown_municipalities` と `failures` が空であること、`muni_name_corrections` が
+想定どおり（現在8件）であることを確認する。
+
 ## 構成
 
 ```
@@ -60,6 +64,12 @@ public/                          Pages公開ディレクトリ
 字名は住基Excelと国勢調査小地域で切り方が揺れる。突き合わせは自動で閉じないので、
 対応付けは `data/aza_crosswalk.csv` に蓄積する。**推移が不連続な字を勝手に補間・結合しない。**
 判断が必要なものは crosswalk に載せる前に必ず確認を取る。
+
+住基Excelは**印刷ページごとに市町村名を再掲する**ため、見出しの誤字がそのページ以降の字を
+まるごと別市町村に吸わせる。県の原本に実在する誤字（2017〜2022年の「宜野湾志市」、
+2024年の「南大東」）は `fetch_aza_population.py` の `MUNI_TYPOS` で変換時にだけ補正する。
+**原本は加工しない。** 41市町村の正式名に無い市町村名が出たらその年の変換を失敗させる方針なので、
+新年度分で落ちたら、誤字か新表記かを確認してから `MUNI_TYPOS` に足す。
 
 ## 既知の未完了
 
