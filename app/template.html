@@ -192,7 +192,7 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
     <div class="banner">
       <div>
         <b>データ状態</b><br>
-        施策・空き家（R7調査）は<strong>実データ</strong>。人口・字は<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
+        施策・空き家（R7調査）と字の人口推移は<strong>実データ</strong>。市町村の人口・年齢構成と字の年齢構成は<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
       </div>
     </div>
   </header>
@@ -215,13 +215,14 @@ const DATA = /*__DATA__*/;
 /* ============================ サンプル人口データ ============================
    実データが入るまでのプレースホルダ。決定論的な擬似乱数で生成し、
    画面上は必ず斜線＋「ダミー」タグ付きで表示する。
-   置き換え先: data/generated/population_muni.json / population_aza.json     */
+   市町村の人口推移・年齢構成、字の年齢構成が対象。
+   字の人口推移は実データ（DATA.population_aza、置き換え元は
+   data/generated/population_aza.json）に切り替え済み。                     */
 function seeded(str){let h=2166136261;for(const c of str)h=(h^c.charCodeAt(0))*16777619>>>0;
   return()=>{h=(h*1103515245+12345)>>>0;return h/4294967296;};}
 const AGES=["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44",
             "45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"];
 const CENSUS_YEARS=[1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
-const AZA_YEARS=[2011,2013,2015,2017,2019,2021,2023,2025];
 
 function demoMuni(code){
   const r=seeded("m"+code), base=1500+Math.floor(r()*22000), aging=.5+r()*1.1;
@@ -236,22 +237,14 @@ function demoMuni(code){
   trend[trend.length-1].pop=total;
   return{pyramid,trend,total};
 }
-function demoAza(code){
-  const r=seeded("a"+code), n=6+Math.floor(r()*10), out=[];
-  for(let i=1;i<=n;i++){
-    const rr=seeded("a"+code+"-"+i), base=120+Math.floor(rr()*2600);
-    const drift=rr()<.45?-1:1;
-    out.push({id:code+"-"+String(i).padStart(2,"0"),
-      name:"サンプル字"+String(i).padStart(2,"0"),
-      trend:AZA_YEARS.map((y,k)=>({year:y,
-        pop:Math.max(20,Math.round(base*(1+drift*k*(.012+rr()*.02))))})),
-      pyramid:AGES.map((a,k)=>{
-        const d=Math.exp(-Math.pow((k-8)/9,2));
-        const m=Math.round(base*d*(.03+rr()*.008));
-        return{age:a,male:m,female:Math.round(m*(1+rr()*.18))};
-      })});
-  }
-  return out;
+/** 字の年齢構成（令和2年国勢調査 小地域集計が入るまでのダミー）。人口推移とは無関係。 */
+function demoAzaPyramid(seedKey,base){
+  const rr=seeded(seedKey);
+  return AGES.map((a,k)=>{
+    const d=Math.exp(-Math.pow((k-8)/9,2));
+    const m=Math.round(Math.max(20,base)*d*(.03+rr()*.008));
+    return{age:a,male:m,female:Math.round(m*(1+rr()*.18))};
+  });
 }
 
 /* ============================ 指標 ============================ */
@@ -267,11 +260,19 @@ const INDICATORS={
 };
 
 /* ============================ 索引の構築 ============================ */
+/** 字ID。市町村コード＋字名で作る（同名の字が別市町村にあっても衝突しない）。 */
+const azaId=(muniCode,azaName)=>muniCode+"／"+azaName;
+
 const MUNI=DATA.municipalities.map(m=>{
   const policy=DATA.policy.find(p=>p.code===m.code)||null;
   const akiya=DATA.akiya.find(a=>a.code===m.code)||null;
   const housing=DATA.housing.filter(h=>h.code===m.code);
-  return{...m,policy,akiya,housing,aza:demoAza(m.code)};
+  const aza=DATA.population_aza.filter(z=>z.municipality===m.name).map(z=>({
+    id:azaId(m.code,z.aza), name:z.aza,
+    trend:z.trend.map(t=>({year:t.year,date:t.date,pop:t.population,households:t.households})),
+    pyramid:demoAzaPyramid(m.code+"/"+z.aza,z.trend[z.trend.length-1].population),
+  }));
+  return{...m,policy,akiya,housing,aza};
 });
 const INDEX=[];
 for(const m of MUNI){
@@ -319,14 +320,24 @@ function pyramidSVG(rows){
   return s;
 }
 
+/** "YYYY-MM-DD" を小数年に変換する。基準日が年途中でずれている系列
+ *（住基データの2011〜2013年は3月31日、2014年以降は1月1日）を、横軸の
+ *間隔にそのまま反映させるため。date が無い行（市町村レイヤーのダミー
+ *データなど）は年番号をそのまま使う。 */
+function decimalYear(dateStr){
+  const [y,m,d]=dateStr.split("-").map(Number);
+  const start=Date.UTC(y,0,1),end=Date.UTC(y+1,0,1),cur=Date.UTC(y,m-1,d);
+  return y+(cur-start)/(end-start);
+}
 function trendSVG(rows,label){
   const W=440,H=190,L=44,R=10,T=14,B=26;
-  const xs=rows.map(r=>r.year),ys=rows.map(r=>r.pop);
+  const xval=r=>r.date?decimalYear(r.date):r.year;
+  const xs=rows.map(xval),ys=rows.map(r=>r.pop);
   const x0=Math.min(...xs),x1=Math.max(...xs);
   const y1=Math.max(...ys)*1.06,y0=Math.min(...ys)*.9;
-  const px=y=>L+(W-L-R)*((y-x0)/((x1-x0)||1));
+  const px=v=>L+(W-L-R)*((v-x0)/((x1-x0)||1));
   const py=v=>T+(H-T-B)*(1-(v-y0)/((y1-y0)||1));
-  const pts=rows.map(r=>`${px(r.year).toFixed(1)},${py(r.pop).toFixed(1)}`).join(" ");
+  const pts=rows.map(r=>`${px(xval(r)).toFixed(1)},${py(r.pop).toFixed(1)}`).join(" ");
   let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">`;
   for(let k=0;k<=2;k++){
     const v=y0+(y1-y0)*k/2,y=py(v);
@@ -334,9 +345,11 @@ function trendSVG(rows,label){
     s+=`<text x="${L-6}" y="${y+3}" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${Math.round(v).toLocaleString()}</text>`;
   }
   s+=`<polyline points="${pts}" fill="none" stroke="var(--ai)" stroke-width="2"/>`;
-  rows.forEach(r=>{s+=`<circle cx="${px(r.year)}" cy="${py(r.pop)}" r="2.6" fill="var(--ai)"/>`;});
+  rows.forEach(r=>{
+    const title=r.date?`${r.year}年（${r.date}現在）${fmt(r.pop)}人`:`${r.year}年 ${fmt(r.pop)}人`;
+    s+=`<circle cx="${px(xval(r))}" cy="${py(r.pop)}" r="2.6" fill="var(--ai)"><title>${esc(title)}</title></circle>`;});
   rows.forEach((r,i)=>{if(i%2===0||i===rows.length-1)
-    s+=`<text x="${px(r.year)}" y="${H-8}" text-anchor="middle" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${r.year}</text>`;});
+    s+=`<text x="${px(xval(r))}" y="${H-8}" text-anchor="middle" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${r.year}</text>`;});
   return s+"</svg>";
 }
 
@@ -446,12 +459,12 @@ function prefView(){
 function muniView(m){
   const d=demoMuni(m.code), p=m.policy||{}, a=m.akiya||{};
   const azaCells=m.aza.map(z=>{
-    const last=z.trend[z.trend.length-1].pop, first=z.trend[0].pop;
-    const rate=(last-first)/first;
+    const last=z.trend[z.trend.length-1], first=z.trend[0];
+    const rate=first.pop>0?(last.pop-first.pop)/first.pop:null;
     return `<button class="cell" data-kind="aza" data-code="${z.id}" data-muni="${m.code}"
-      title="${esc(z.name)}｜${fmt(last)}人（サンプル）">
-      ${hanaSVG(.15+Math.min(1,last/2800)*.85, rate>=0?"var(--basho)":"var(--kawara)")}
-      <span class="cv">${fmt(last)}</span><span class="cl">${esc(z.name)}</span></button>`;}).join("");
+      title="${esc(z.name)}｜${fmt(last.pop)}人（${last.year}年・${esc(last.date||"")}現在）">
+      ${hanaSVG(.15+Math.min(1,last.pop/2800)*.85, rate==null||rate>=0?"var(--basho)":"var(--kawara)")}
+      <span class="cv">${fmt(last.pop)}</span><span class="cl">${esc(z.name)}</span></button>`;}).join("");
 
   const desc=[["移住施策の内容",p.policy_detail],["取り組まない理由",p.policy_none_reason],
               ["相談窓口",p.desk_contact||p.desk_status_other],["中間支援組織",p.intermediary_detail],
@@ -524,37 +537,38 @@ function muniView(m){
   <div class="blockwrap" style="margin-top:16px">
     <div class="blockhead">
       <h2>Layer 2 — 字を選ぶ</h2>
-      <span class="eyebrow">${m.aza.length} 字（サンプル）</span>
+      <span class="eyebrow">${m.aza.length} 字</span>
     </div>
     <div class="hana">${azaCells}</div>
-    <p class="note">緑＝期間内で増加、赤瓦色＝減少。花弁の量は人口規模。実データ差し替え元は沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年の年次Excel）。</p>
+    <p class="note">緑＝期間内で増加、赤瓦色＝減少。花弁の量は人口規模。出典：沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年）。平成23〜25年は3月31日、平成26年以降は1月1日現在で基準日が異なる。年齢構成はまだサンプル値（字を開くと表示）。</p>
   </div>`;
 }
 
 function azaView(m,azaId){
   const z=m.aza.find(x=>x.id===azaId);
   const first=z.trend[0],last=z.trend[z.trend.length-1];
-  const diff=last.pop-first.pop, rate=diff/first.pop*100;
+  const diff=last.pop-first.pop;
+  const rate=first.pop>0?diff/first.pop*100:null;
   return `
   <div class="stage-head">
     <div class="eyebrow">Layer 2 — 字</div>
     <h1>${esc(z.name)}</h1>
-    <div class="meta"><span>${esc(m.name)}（${esc(m.code)}）</span><span>字ID ${esc(z.id)}</span></div>
+    <div class="meta"><span>${esc(m.name)}（${esc(m.code)}）</span><span>基準日 ${esc(first.date)} 〜 ${esc(last.date)}</span></div>
   </div>
   <div class="grid2">
     <div class="card wide">
       <h2>人口の動き</h2>
       <div class="stats">
-        <div class="stat"><div class="v">${fmt(last.pop)}<small>人</small></div><div class="l">${last.year}年</div></div>
-        <div class="stat"><div class="v">${fmt(first.pop)}<small>人</small></div><div class="l">${first.year}年</div></div>
+        <div class="stat"><div class="v">${fmt(last.pop)}<small>人</small></div><div class="l">${last.year}年（${esc(last.date)}現在）</div></div>
+        <div class="stat"><div class="v">${fmt(first.pop)}<small>人</small></div><div class="l">${first.year}年（${esc(first.date)}現在）</div></div>
         <div class="stat"><div class="v" style="color:${diff>=0?"var(--basho)":"var(--kawara)"}">${diff>=0?"+":""}${fmt(diff)}<small>人</small></div><div class="l">増減</div></div>
-        <div class="stat"><div class="v" style="color:${diff>=0?"var(--basho)":"var(--kawara)"}">${rate>=0?"+":""}${rate.toFixed(1)}<small>%</small></div><div class="l">増減率</div></div>
+        <div class="stat"><div class="v ${rate==null?"na":""}" style="color:${rate==null?"":(rate>=0?"var(--basho)":"var(--kawara)")}">${rate==null?"算出不可":(rate>=0?"+":"")+rate.toFixed(1)}<small>${rate==null?"":"%"}</small></div><div class="l">増減率</div></div>
       </div>
     </div>
     <div class="card">
       <h2>人口推移（字）</h2>
-      <div class="dummy"><span class="dummy-tag">ダミー</span>${trendSVG(z.trend,"字の人口推移")}</div>
-      <p class="chartnote">実データ差し替え元：沖縄県 町字別住民基本台帳人口（各年1月1日現在・2011–2025）</p>
+      ${trendSVG(z.trend,"字の人口推移")}
+      <p class="chartnote">出典：沖縄県「市町村の町字別住民基本台帳人口及び世帯数」。平成23〜25年（2011〜2013）は3月31日現在、平成26年（2014）以降は1月1日現在で基準日が異なるため、横軸はその実際の日付で描いている。点にカーソルを合わせると基準日と人口を表示。</p>
     </div>
     <div class="card">
       <h2>年齢構成（字）</h2>
@@ -562,7 +576,7 @@ function azaView(m,azaId){
       <p class="chartnote">実データ差し替え元：令和2年国勢調査 小地域集計（町丁・字等別／5歳階級×男女）。R7調査の小地域は2027年以降の公表見込み。</p>
     </div>
   </div>
-  <p class="note">字レベルは境界・名称が住居表示と一致しないことがあるため、住基データと国勢調査小地域の名寄せ結果を <code>data/aza_crosswalk.csv</code> で管理します。</p>`;
+  <p class="note">字の名称は年によって表記が揺れることがあり、住基Excel内の年次間の名寄せ方針は <code>docs/aza-matching-policy.md</code> で決定済みです。表記ゆれ・誤植は合算していますが、区画再編で区域そのものが変わった字はつないでいません（例：住居表示化前後で系列が分かれている字があります）。住基データと国勢調査小地域の対応付けは <code>data/aza_crosswalk.csv</code> で別途管理します。</p>`;
 }
 
 /* ============================ イベント ============================ */

@@ -1,11 +1,12 @@
 {
  "counts": {
-  "aza": 1780,
+  "aza": 1296,
   "municipalities": 41,
   "years_loaded": 15,
   "muni_name_corrections": 8,
   "unknown_municipalities": 0,
-  "thin_series": 611,
+  "normalized_groups": 480,
+  "thin_series": 67,
   "failures": 0
  },
  "records_per_year": {
@@ -143,961 +144,3859 @@
   }
  ],
  "unknown_municipalities": [],
+ "normalized_groups": [
+  {
+   "municipality": "うるま市",
+   "display": "みどり町一丁目",
+   "forms": [
+    "みどり町1丁目",
+    "みどり町一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "みどり町三丁目",
+   "forms": [
+    "みどり町3丁目",
+    "みどり町三丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "みどり町二丁目",
+   "forms": [
+    "みどり町2丁目",
+    "みどり町二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "みどり町五丁目",
+   "forms": [
+    "みどり町5丁目",
+    "みどり町五丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "みどり町六丁目",
+   "forms": [
+    "みどり町6丁目",
+    "みどり町六丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "みどり町四丁目",
+   "forms": [
+    "みどり町4丁目",
+    "みどり町四丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "上江洲",
+   "forms": [
+    "上江洲",
+    "字上江洲"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "仲嶺",
+   "forms": [
+    "仲嶺",
+    "字仲嶺"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "具志川",
+   "forms": [
+    "具志川",
+    "字具志川"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "兼箇段",
+   "forms": [
+    "兼箇段",
+    "字兼箇段"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "前原",
+   "forms": [
+    "前原",
+    "字前原"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "喜仲一丁目",
+   "forms": [
+    "喜仲1丁目",
+    "喜仲一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "喜仲三丁目",
+   "forms": [
+    "喜仲3丁目",
+    "喜仲三丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "喜仲二丁目",
+   "forms": [
+    "喜仲2丁目",
+    "喜仲二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "喜仲四丁目",
+   "forms": [
+    "喜仲4丁目",
+    "喜仲四丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "喜屋武",
+   "forms": [
+    "喜屋武",
+    "字喜屋武"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "塩屋",
+   "forms": [
+    "塩屋",
+    "字塩屋"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "大田",
+   "forms": [
+    "大田",
+    "字大田"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "天願",
+   "forms": [
+    "天願",
+    "字天願"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "宇堅",
+   "forms": [
+    "字宇堅",
+    "宇堅"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "安慶名",
+   "forms": [
+    "字安慶名",
+    "安慶名"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "宮里",
+   "forms": [
+    "字宮里",
+    "宮里"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "川崎",
+   "forms": [
+    "字川崎",
+    "川崎"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "川田",
+   "forms": [
+    "字川田",
+    "川田"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "州崎",
+   "forms": [
+    "字州崎",
+    "州崎"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "平良川",
+   "forms": [
+    "字平良川",
+    "平良川"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "昆布",
+   "forms": [
+    "字昆布",
+    "昆布"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "栄野比",
+   "forms": [
+    "字栄野比",
+    "栄野比"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "江洲",
+   "forms": [
+    "字江洲",
+    "江洲"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "田場",
+   "forms": [
+    "字田場",
+    "田場"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川一丁目",
+   "forms": [
+    "石川1丁目",
+    "石川一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川二丁目",
+   "forms": [
+    "石川2丁目",
+    "石川二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川曙一丁目",
+   "forms": [
+    "石川曙1丁目",
+    "石川曙一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川曙三丁目",
+   "forms": [
+    "石川曙3丁目",
+    "石川曙三丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川曙二丁目",
+   "forms": [
+    "石川曙2丁目",
+    "石川曙二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川東山一丁目",
+   "forms": [
+    "石川東山1丁目",
+    "石川東山一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川東山二丁目",
+   "forms": [
+    "石川東山2丁目",
+    "石川東山二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川東山本町一丁目",
+   "forms": [
+    "石川東山本町1丁目",
+    "石川東山本町一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川東山本町二丁目",
+   "forms": [
+    "石川東山本町2丁目",
+    "石川東山本町二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川白浜一丁目",
+   "forms": [
+    "石川白浜1丁目",
+    "石川白浜一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川白浜二丁目",
+   "forms": [
+    "石川白浜2丁目",
+    "石川白浜二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川石崎一丁目",
+   "forms": [
+    "石川石崎1丁目",
+    "石川石崎一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川石崎二丁目",
+   "forms": [
+    "石川石崎2丁目",
+    "石川石崎二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川赤崎一丁目",
+   "forms": [
+    "石川赤崎1丁目",
+    "石川赤崎一丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川赤崎三丁目",
+   "forms": [
+    "石川赤崎3丁目",
+    "石川赤崎三丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "石川赤崎二丁目",
+   "forms": [
+    "石川赤崎2丁目",
+    "石川赤崎二丁目"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "西原",
+   "forms": [
+    "字西原",
+    "西原"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "豊原",
+   "forms": [
+    "字豊原",
+    "豊原"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "赤道",
+   "forms": [
+    "字赤道",
+    "赤道"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "赤野",
+   "forms": [
+    "字赤野",
+    "赤野"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "display": "高江洲",
+   "forms": [
+    "字高江洲",
+    "高江洲"
+   ]
+  },
+  {
+   "municipality": "与那国町",
+   "display": "字与那国",
+   "forms": [
+    "与那国",
+    "字与那国"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字久場",
+   "forms": [
+    "久場",
+    "字久場"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字伊舎堂",
+   "forms": [
+    "伊舎堂",
+    "字伊舎堂"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字伊集",
+   "forms": [
+    "伊集",
+    "字伊集"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字北上原",
+   "forms": [
+    "北上原",
+    "字北上原"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字北浜",
+   "forms": [
+    "北浜",
+    "字北浜"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字南上原",
+   "forms": [
+    "南上原",
+    "字南上原"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字南浜",
+   "forms": [
+    "南浜",
+    "字南浜"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字和宇慶",
+   "forms": [
+    "和宇慶",
+    "字和宇慶"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字奥間",
+   "forms": [
+    "奥間",
+    "字奥間"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字安里",
+   "forms": [
+    "字安里",
+    "安里"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字屋宜",
+   "forms": [
+    "字屋宜",
+    "屋宜"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字当間",
+   "forms": [
+    "字当間",
+    "当間"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字新垣",
+   "forms": [
+    "字新垣",
+    "新垣"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字泊",
+   "forms": [
+    "字泊",
+    "泊"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字津覇",
+   "forms": [
+    "字津覇",
+    "津覇"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字浜",
+   "forms": [
+    "字浜",
+    "浜"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字添石",
+   "forms": [
+    "字添石",
+    "添石"
+   ]
+  },
+  {
+   "municipality": "中城村",
+   "display": "字登又",
+   "forms": [
+    "字登又",
+    "登又"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "上江洲",
+   "forms": [
+    "上江洲",
+    "字上江洲"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "仲地",
+   "forms": [
+    "仲地",
+    "字仲地"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "仲村渠",
+   "forms": [
+    "仲村渠",
+    "字仲村渠"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "仲泊",
+   "forms": [
+    "仲泊",
+    "字仲泊"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "儀間",
+   "forms": [
+    "儀間",
+    "字儀間"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "具志川",
+   "forms": [
+    "具志川",
+    "字具志川"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "兼城",
+   "forms": [
+    "兼城",
+    "字兼城"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "北原",
+   "forms": [
+    "北原",
+    "字北原"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "嘉手刈",
+   "forms": [
+    "嘉手刈",
+    "嘉手苅",
+    "字嘉手苅"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "大原",
+   "forms": [
+    "大原",
+    "字大原"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "大田",
+   "forms": [
+    "大田",
+    "字大田"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "奥武",
+   "forms": [
+    "奥武",
+    "字奥武"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "宇根",
+   "forms": [
+    "字宇根",
+    "宇根"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "宇江城",
+   "forms": [
+    "字宇江城",
+    "宇江城"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "宇江城山田原",
+   "forms": [
+    "字宇江城山田原",
+    "宇江城山田原"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "山城",
+   "forms": [
+    "字山城",
+    "山城"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "山里",
+   "forms": [
+    "字山里",
+    "山里"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "島尻",
+   "forms": [
+    "字島尻",
+    "島尻"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "比嘉",
+   "forms": [
+    "字比嘉",
+    "比嘉"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "比屋定",
+   "forms": [
+    "字比屋定",
+    "比屋定"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "真我里",
+   "forms": [
+    "字真我里",
+    "真我里"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "真謝",
+   "forms": [
+    "字真謝",
+    "真謝"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "西銘",
+   "forms": [
+    "字西銘",
+    "西銘"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "謝名堂",
+   "forms": [
+    "字謝名堂",
+    "謝名堂"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "銭田",
+   "forms": [
+    "字銭田",
+    "銭田"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "阿嘉",
+   "forms": [
+    "字阿嘉",
+    "阿嘉"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "display": "鳥島",
+   "forms": [
+    "字鳥島",
+    "鳥島"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "上運天",
+   "forms": [
+    "上運天",
+    "字上運天"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "与那嶺",
+   "forms": [
+    "与那嶺",
+    "字与那嶺"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "今泊",
+   "forms": [
+    "今泊",
+    "字今泊"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "仲宗根",
+   "forms": [
+    "仲宗根",
+    "字仲宗根"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "仲尾次",
+   "forms": [
+    "仲尾次",
+    "字仲尾次"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "兼次",
+   "forms": [
+    "兼次",
+    "字兼次"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "勢理客",
+   "forms": [
+    "勢理客",
+    "字勢理客"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "古宇利",
+   "forms": [
+    "古宇利",
+    "字古宇利"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "呉我山",
+   "forms": [
+    "呉我山",
+    "字呉我山"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "天底",
+   "forms": [
+    "天底",
+    "字天底"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "崎山",
+   "forms": [
+    "字崎山",
+    "崎山"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "平敷",
+   "forms": [
+    "字平敷",
+    "平敷"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "渡喜仁",
+   "forms": [
+    "字渡喜仁",
+    "渡喜仁"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "湧川",
+   "forms": [
+    "字湧川",
+    "湧川"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "玉城",
+   "forms": [
+    "字玉城",
+    "玉城",
+    "玉字城"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "諸志",
+   "forms": [
+    "字諸志",
+    "諸志"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "謝名",
+   "forms": [
+    "字謝名",
+    "謝名"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "越地",
+   "forms": [
+    "字越地",
+    "越地"
+   ]
+  },
+  {
+   "municipality": "今帰仁村",
+   "display": "運天",
+   "forms": [
+    "字運天",
+    "運天"
+   ]
+  },
+  {
+   "municipality": "伊平屋村",
+   "display": "前泊",
+   "forms": [
+    "前泊",
+    "字前泊"
+   ]
+  },
+  {
+   "municipality": "伊平屋村",
+   "display": "島尻",
+   "forms": [
+    "字島尻",
+    "島尻"
+   ]
+  },
+  {
+   "municipality": "伊平屋村",
+   "display": "我喜屋",
+   "forms": [
+    "字我喜屋",
+    "我喜屋"
+   ]
+  },
+  {
+   "municipality": "伊平屋村",
+   "display": "田名",
+   "forms": [
+    "字田名",
+    "田名"
+   ]
+  },
+  {
+   "municipality": "伊平屋村",
+   "display": "野甫",
+   "forms": [
+    "字野甫",
+    "野甫"
+   ]
+  },
+  {
+   "municipality": "伊是名村",
+   "display": "仲田",
+   "forms": [
+    "仲田",
+    "字仲田"
+   ]
+  },
+  {
+   "municipality": "伊是名村",
+   "display": "伊是名",
+   "forms": [
+    "伊是名",
+    "字伊是名"
+   ]
+  },
+  {
+   "municipality": "伊是名村",
+   "display": "内花",
+   "forms": [
+    "内花",
+    "字内花"
+   ]
+  },
+  {
+   "municipality": "伊是名村",
+   "display": "勢理客",
+   "forms": [
+    "勢理客",
+    "字勢理客"
+   ]
+  },
+  {
+   "municipality": "伊是名村",
+   "display": "諸見",
+   "forms": [
+    "字諸見",
+    "諸見"
+   ]
+  },
+  {
+   "municipality": "伊江村",
+   "display": "川平",
+   "forms": [
+    "字川平",
+    "川平"
+   ]
+  },
+  {
+   "municipality": "伊江村",
+   "display": "東江上",
+   "forms": [
+    "字東江上",
+    "東江上"
+   ]
+  },
+  {
+   "municipality": "伊江村",
+   "display": "東江前",
+   "forms": [
+    "字東江前",
+    "東江前"
+   ]
+  },
+  {
+   "municipality": "伊江村",
+   "display": "西江上",
+   "forms": [
+    "字西江上",
+    "西江上"
+   ]
+  },
+  {
+   "municipality": "伊江村",
+   "display": "西江前",
+   "forms": [
+    "字西江前",
+    "西江前"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "上田原",
+   "forms": [
+    "上田原",
+    "字上田原"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "与座",
+   "forms": [
+    "与座",
+    "字与座"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "世名城",
+   "forms": [
+    "世名城",
+    "字世名城"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "仲座",
+   "forms": [
+    "仲座",
+    "字仲座"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "伊覇",
+   "forms": [
+    "伊覇",
+    "字伊覇"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "具志頭",
+   "forms": [
+    "具志頭",
+    "字具志頭"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "友寄",
+   "forms": [
+    "友寄",
+    "字友寄"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "外間",
+   "forms": [
+    "外間",
+    "字外間"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "大頓",
+   "forms": [
+    "大頓",
+    "字大頓"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "安里",
+   "forms": [
+    "字安里",
+    "安里"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "宜次",
+   "forms": [
+    "字宜次",
+    "宜次"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "富盛",
+   "forms": [
+    "字富盛",
+    "富盛"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "小城",
+   "forms": [
+    "字小城",
+    "小城"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "屋宜原",
+   "forms": [
+    "字屋宜原",
+    "屋宜原"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "当銘",
+   "forms": [
+    "字当銘",
+    "当銘"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "後原",
+   "forms": [
+    "字後原",
+    "後原"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "志多伯",
+   "forms": [
+    "字志多伯",
+    "志多伯"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "新城",
+   "forms": [
+    "字新城",
+    "新城"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "東風平",
+   "forms": [
+    "字東風平",
+    "東風平"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "港川",
+   "forms": [
+    "字港川",
+    "港川"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "玻名城",
+   "forms": [
+    "字玻名城",
+    "玻名城"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "長毛",
+   "forms": [
+    "字長毛",
+    "長毛"
+   ]
+  },
+  {
+   "municipality": "八重瀬町",
+   "display": "高良",
+   "forms": [
+    "字高良",
+    "高良"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "仲順",
+   "forms": [
+    "仲順",
+    "字仲順"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "和仁屋",
+   "forms": [
+    "和仁屋",
+    "字和仁屋"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "喜舎場",
+   "forms": [
+    "喜舎場",
+    "字喜舎場"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "大城",
+   "forms": [
+    "大城",
+    "字大城"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "安谷屋",
+   "forms": [
+    "字安谷屋",
+    "安谷屋"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "屋宜原",
+   "forms": [
+    "字屋宜原",
+    "屋宜原"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "島袋",
+   "forms": [
+    "字島袋",
+    "島袋"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "比嘉",
+   "forms": [
+    "字比嘉",
+    "比嘉"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "渡口",
+   "forms": [
+    "字渡口",
+    "渡口"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "熱田",
+   "forms": [
+    "字熱田",
+    "熱田"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "瑞慶覧",
+   "forms": [
+    "字瑞慶覧",
+    "瑞慶覧"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "美崎",
+   "forms": [
+    "字美崎",
+    "美崎"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "display": "荻道",
+   "forms": [
+    "字荻道",
+    "荻道"
+   ]
+  },
+  {
+   "municipality": "北大東村",
+   "display": "中野",
+   "forms": [
+    "中野",
+    "字中野"
+   ]
+  },
+  {
+   "municipality": "北大東村",
+   "display": "南",
+   "forms": [
+    "南",
+    "字南"
+   ]
+  },
+  {
+   "municipality": "北大東村",
+   "display": "港",
+   "forms": [
+    "字港",
+    "港"
+   ]
+  },
+  {
+   "municipality": "南城市",
+   "display": "知念字吉富",
+   "forms": [
+    "知念字吉冨",
+    "知念字吉富"
+   ]
+  },
+  {
+   "municipality": "南城市",
+   "display": "知念字安座真",
+   "forms": [
+    "知念字安座真",
+    "知念字安座間"
+   ]
+  },
+  {
+   "municipality": "南大東村",
+   "display": "北",
+   "forms": [
+    "北",
+    "字北"
+   ]
+  },
+  {
+   "municipality": "南大東村",
+   "display": "南",
+   "forms": [
+    "南",
+    "字南"
+   ]
+  },
+  {
+   "municipality": "南大東村",
+   "display": "在所",
+   "forms": [
+    "在所",
+    "字在所"
+   ]
+  },
+  {
+   "municipality": "南大東村",
+   "display": "新東",
+   "forms": [
+    "字新東",
+    "新東"
+   ]
+  },
+  {
+   "municipality": "南大東村",
+   "display": "旧東",
+   "forms": [
+    "字旧東",
+    "旧東"
+   ]
+  },
+  {
+   "municipality": "南大東村",
+   "display": "池之沢",
+   "forms": [
+    "字池之沢",
+    "池之沢"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "与那覇",
+   "forms": [
+    "与那覇",
+    "字与那覇"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "兼城",
+   "forms": [
+    "兼城",
+    "字兼城"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "喜屋武",
+   "forms": [
+    "喜屋武",
+    "字喜屋武"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "大名",
+   "forms": [
+    "大名",
+    "字大名"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "宮城",
+   "forms": [
+    "字宮城",
+    "宮城"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "宮平",
+   "forms": [
+    "字宮平",
+    "宮平"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "山川",
+   "forms": [
+    "字山川",
+    "山川"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "新川",
+   "forms": [
+    "字新川",
+    "新川"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "本部",
+   "forms": [
+    "字本部",
+    "本部"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "津嘉山",
+   "forms": [
+    "字津嘉山",
+    "津嘉山"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "照屋",
+   "forms": [
+    "字照屋",
+    "照屋"
+   ]
+  },
+  {
+   "municipality": "南風原町",
+   "display": "神里",
+   "forms": [
+    "字神里",
+    "神里"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "城一丁目",
+   "forms": [
+    "城1丁目",
+    "城一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "城二丁目",
+   "forms": [
+    "城2丁目",
+    "城二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大中一丁目",
+   "forms": [
+    "大中1丁目",
+    "大中一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大中三丁目",
+   "forms": [
+    "大中3丁目",
+    "大中三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大中二丁目",
+   "forms": [
+    "大中2丁目",
+    "大中二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大中五丁目",
+   "forms": [
+    "大中5丁目",
+    "大中五丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大中四丁目",
+   "forms": [
+    "大中4丁目",
+    "大中四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大北一丁目",
+   "forms": [
+    "大北1丁目",
+    "大北一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大北三丁目",
+   "forms": [
+    "大北3丁目",
+    "大北三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大北二丁目",
+   "forms": [
+    "大北2丁目",
+    "大北二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大北五丁目",
+   "forms": [
+    "大北5丁目",
+    "大北五丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大北四丁目",
+   "forms": [
+    "大北4丁目",
+    "大北四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大南一丁目",
+   "forms": [
+    "大南1丁目",
+    "大南一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大南三丁目",
+   "forms": [
+    "大南3丁目",
+    "大南三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大南二丁目",
+   "forms": [
+    "大南2丁目",
+    "大南二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大南四丁目",
+   "forms": [
+    "大南4丁目",
+    "大南四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大東一丁目",
+   "forms": [
+    "大東1丁目",
+    "大東一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大東三丁目",
+   "forms": [
+    "大東3丁目",
+    "大東三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大東二丁目",
+   "forms": [
+    "大東2丁目",
+    "大東二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大東四丁目",
+   "forms": [
+    "大東4丁目",
+    "大東四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大西一丁目",
+   "forms": [
+    "大西1丁目",
+    "大西一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大西三丁目",
+   "forms": [
+    "大西3丁目",
+    "大西三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大西二丁目",
+   "forms": [
+    "大西2丁目",
+    "大西二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大西五丁目",
+   "forms": [
+    "大西5丁目",
+    "大西五丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "大西四丁目",
+   "forms": [
+    "大西4丁目",
+    "大西四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字三原",
+   "forms": [
+    "三原",
+    "字三原"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字世冨慶",
+   "forms": [
+    "世冨慶",
+    "字世冨慶"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字中山",
+   "forms": [
+    "中山",
+    "字中山"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字久志",
+   "forms": [
+    "久志",
+    "字久志"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字二見",
+   "forms": [
+    "二見",
+    "字二見"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字仲尾",
+   "forms": [
+    "仲尾",
+    "字中尾",
+    "字仲尾"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字仲尾次",
+   "forms": [
+    "仲尾次",
+    "字仲尾次"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字伊差川",
+   "forms": [
+    "伊差川",
+    "字伊差川"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字勝山",
+   "forms": [
+    "勝山",
+    "字勝山"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字古我知",
+   "forms": [
+    "古我知",
+    "字古我知"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字名護",
+   "forms": [
+    "名護",
+    "字名護"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字呉我",
+   "forms": [
+    "呉我",
+    "字呉我"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字喜瀬",
+   "forms": [
+    "喜瀬",
+    "字喜瀬"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字嘉陽",
+   "forms": [
+    "嘉陽",
+    "字嘉陽"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字大川",
+   "forms": [
+    "大川",
+    "字大川"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字大浦",
+   "forms": [
+    "大浦",
+    "字大浦"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字天仁屋",
+   "forms": [
+    "天仁屋",
+    "字天仁屋"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字宇茂佐",
+   "forms": [
+    "字宇茂佐",
+    "宇茂佐"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字安和",
+   "forms": [
+    "字安和",
+    "安和"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字安部",
+   "forms": [
+    "字安部",
+    "安部"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字宮里",
+   "forms": [
+    "字宮里",
+    "宮里"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字屋我",
+   "forms": [
+    "字屋我",
+    "屋我"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字屋部",
+   "forms": [
+    "字屋部",
+    "屋部"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字山入端",
+   "forms": [
+    "字山入端",
+    "山入端"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字川上",
+   "forms": [
+    "字川上",
+    "川上"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字幸喜",
+   "forms": [
+    "字幸喜",
+    "幸喜"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字我部",
+   "forms": [
+    "字我部",
+    "我部"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字我部祖河",
+   "forms": [
+    "字我部祖河",
+    "我部祖河"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字振慶名",
+   "forms": [
+    "字振慶名",
+    "振慶名"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字数久田",
+   "forms": [
+    "字数久田",
+    "数久田"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字旭川",
+   "forms": [
+    "字旭川",
+    "旭川"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字汀間",
+   "forms": [
+    "字汀間",
+    "汀間"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字済井出",
+   "forms": [
+    "字済井出",
+    "済井出"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字源河",
+   "forms": [
+    "字源河",
+    "源河"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字瀬嵩",
+   "forms": [
+    "字瀬嵩",
+    "瀬嵩"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字為又",
+   "forms": [
+    "字為又",
+    "為又"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字田井等",
+   "forms": [
+    "字田井等",
+    "田井等"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字真喜屋",
+   "forms": [
+    "字真喜屋",
+    "真喜屋"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字稲嶺",
+   "forms": [
+    "字稲嶺",
+    "稲嶺"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字親川",
+   "forms": [
+    "字親川",
+    "親川"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字許田",
+   "forms": [
+    "字許田",
+    "許田"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字豊原",
+   "forms": [
+    "字豊原",
+    "豊原"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字辺野古",
+   "forms": [
+    "字辺野古",
+    "辺野古"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字運天原",
+   "forms": [
+    "字運天原",
+    "運天原"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "字饒平名",
+   "forms": [
+    "字饒平名",
+    "饒平名"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宇茂佐の森一丁目",
+   "forms": [
+    "宇茂佐の森1丁目",
+    "宇茂佐の森一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宇茂佐の森三丁目",
+   "forms": [
+    "宇茂佐の森3丁目",
+    "宇茂佐の森三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宇茂佐の森二丁目",
+   "forms": [
+    "宇茂佐の森2丁目",
+    "宇茂佐の森二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宇茂佐の森五丁目",
+   "forms": [
+    "宇茂佐の森5丁目",
+    "宇茂佐の森五丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宇茂佐の森四丁目",
+   "forms": [
+    "宇茂佐の森4丁目",
+    "宇茂佐の森四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宮里一丁目",
+   "forms": [
+    "宮里1丁目",
+    "宮里一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宮里七丁目",
+   "forms": [
+    "宮里7丁目",
+    "宮里七丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宮里三丁目",
+   "forms": [
+    "宮里3丁目",
+    "宮里三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宮里五丁目",
+   "forms": [
+    "宮里5丁目",
+    "宮里五丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宮里六丁目",
+   "forms": [
+    "宮里6丁目",
+    "宮里六丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "宮里四丁目",
+   "forms": [
+    "宮里4丁目",
+    "宮里四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "東江一丁目",
+   "forms": [
+    "東江1丁目",
+    "東江一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "東江三丁目",
+   "forms": [
+    "東江3丁目",
+    "東江三丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "東江二丁目",
+   "forms": [
+    "東江2丁目",
+    "東江二丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "東江五丁目",
+   "forms": [
+    "東江5丁目",
+    "東江五丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "東江四丁目",
+   "forms": [
+    "東江4丁目",
+    "東江四丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "港一丁目",
+   "forms": [
+    "港1丁目",
+    "港一丁目"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "display": "港二丁目",
+   "forms": [
+    "港2丁目",
+    "港二丁目"
+   ]
+  },
+  {
+   "municipality": "嘉手納町",
+   "display": "屋良一丁目",
+   "forms": [
+    "屋良1丁目",
+    "屋良一丁目"
+   ]
+  },
+  {
+   "municipality": "嘉手納町",
+   "display": "水釜六丁目",
+   "forms": [
+    "水釜6丁目",
+    "水釜六丁目"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "与那",
+   "forms": [
+    "与那",
+    "字与那"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "伊地",
+   "forms": [
+    "伊地",
+    "字伊地"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "佐手",
+   "forms": [
+    "佐手",
+    "字佐手"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "半地",
+   "forms": [
+    "半地",
+    "字半地"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "奥",
+   "forms": [
+    "奥",
+    "字奥"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "奥間",
+   "forms": [
+    "奥間",
+    "字奥間"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "宇嘉",
+   "forms": [
+    "字宇嘉",
+    "宇嘉"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "宇良",
+   "forms": [
+    "字宇良",
+    "宇良"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "安波",
+   "forms": [
+    "字安波",
+    "安波"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "安田",
+   "forms": [
+    "字安田",
+    "安田"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "宜名真",
+   "forms": [
+    "字宜名真",
+    "宜名真"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "桃原",
+   "forms": [
+    "字桃原",
+    "桃原"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "楚洲",
+   "forms": [
+    "字楚洲",
+    "楚洲"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "比地",
+   "forms": [
+    "字比地",
+    "比地"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "浜",
+   "forms": [
+    "字浜",
+    "浜"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "謝敷",
+   "forms": [
+    "字謝敷",
+    "謝敷"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "辺土名",
+   "forms": [
+    "字辺土名",
+    "辺土名"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "辺戸",
+   "forms": [
+    "字辺戸",
+    "辺戸"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "辺野喜",
+   "forms": [
+    "字辺野喜",
+    "辺野喜"
+   ]
+  },
+  {
+   "municipality": "国頭村",
+   "display": "鏡地",
+   "forms": [
+    "字鏡地",
+    "鏡地"
+   ]
+  },
+  {
+   "municipality": "多良間村",
+   "display": "仲筋",
+   "forms": [
+    "仲筋",
+    "字仲筋"
+   ]
+  },
+  {
+   "municipality": "多良間村",
+   "display": "塩川",
+   "forms": [
+    "塩川",
+    "字塩川"
+   ]
+  },
+  {
+   "municipality": "多良間村",
+   "display": "水納",
+   "forms": [
+    "字水納",
+    "水納"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "上原",
+   "forms": [
+    "上原",
+    "字上原"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "喜如嘉",
+   "forms": [
+    "喜如嘉",
+    "字喜如嘉"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "塩屋",
+   "forms": [
+    "塩屋",
+    "字塩屋"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "大保",
+   "forms": [
+    "大保",
+    "字大保"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "大兼久",
+   "forms": [
+    "大兼久",
+    "字大兼久"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "大宜味",
+   "forms": [
+    "大宜味",
+    "字大宜味"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "宮城",
+   "forms": [
+    "字宮城",
+    "宮城"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "屋古",
+   "forms": [
+    "字屋古",
+    "屋古"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "押川",
+   "forms": [
+    "字押川",
+    "押川"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "根路銘",
+   "forms": [
+    "字根路銘",
+    "根路銘"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "津波",
+   "forms": [
+    "字津波",
+    "津波"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "田嘉里",
+   "forms": [
+    "字田嘉里",
+    "田嘉里"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "田港",
+   "forms": [
+    "字田港",
+    "田港"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "白浜",
+   "forms": [
+    "字白浜",
+    "白浜"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "謝名城",
+   "forms": [
+    "字謝名城",
+    "謝名城"
+   ]
+  },
+  {
+   "municipality": "大宜味村",
+   "display": "饒波",
+   "forms": [
+    "字饒波",
+    "饒波"
+   ]
+  },
+  {
+   "municipality": "宜野座村",
+   "display": "宜野座",
+   "forms": [
+    "字宜野座",
+    "宜野座"
+   ]
+  },
+  {
+   "municipality": "宜野座村",
+   "display": "惣慶",
+   "forms": [
+    "字惣慶",
+    "惣慶"
+   ]
+  },
+  {
+   "municipality": "宜野座村",
+   "display": "松田",
+   "forms": [
+    "字松田",
+    "松田"
+   ]
+  },
+  {
+   "municipality": "宜野座村",
+   "display": "漢那",
+   "forms": [
+    "字漢那",
+    "漢那"
+   ]
+  },
+  {
+   "municipality": "宮古島市",
+   "display": "下地来間",
+   "forms": [
+    "下地字来間",
+    "下地来間"
+   ]
+  },
+  {
+   "municipality": "座間味村",
+   "display": "座間味",
+   "forms": [
+    "字座間味",
+    "座間味"
+   ]
+  },
+  {
+   "municipality": "座間味村",
+   "display": "慶留間",
+   "forms": [
+    "字慶留間",
+    "慶留間"
+   ]
+  },
+  {
+   "municipality": "座間味村",
+   "display": "阿佐",
+   "forms": [
+    "字阿佐",
+    "阿佐"
+   ]
+  },
+  {
+   "municipality": "座間味村",
+   "display": "阿嘉",
+   "forms": [
+    "字阿嘉",
+    "阿嘉"
+   ]
+  },
+  {
+   "municipality": "座間味村",
+   "display": "阿真",
+   "forms": [
+    "字阿真",
+    "阿真"
+   ]
+  },
+  {
+   "municipality": "恩納村",
+   "display": "字安富祖",
+   "forms": [
+    "字安冨祖",
+    "字安富祖"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字並里",
+   "forms": [
+    "並里",
+    "字並里"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字伊豆味",
+   "forms": [
+    "伊豆味",
+    "字伊豆味"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字伊野波",
+   "forms": [
+    "伊野波",
+    "字伊野波"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字健堅",
+   "forms": [
+    "健堅",
+    "字健堅"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字備瀬",
+   "forms": [
+    "備瀬",
+    "字備瀬"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字具志堅",
+   "forms": [
+    "具志堅",
+    "字具志堅"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字北里",
+   "forms": [
+    "北里",
+    "字北里"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字古島",
+   "forms": [
+    "古島",
+    "字古島"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字嘉津宇",
+   "forms": [
+    "嘉津宇",
+    "字嘉津宇"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字大嘉陽",
+   "forms": [
+    "大嘉陽",
+    "字大嘉陽"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字大堂",
+   "forms": [
+    "大堂",
+    "字大堂"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字大浜",
+   "forms": [
+    "大浜",
+    "字大浜"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字山川",
+   "forms": [
+    "字山川",
+    "山川"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字山里",
+   "forms": [
+    "字山里",
+    "山里"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字崎本部",
+   "forms": [
+    "字崎本部",
+    "崎本部"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字新里",
+   "forms": [
+    "字新里",
+    "新里"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字東",
+   "forms": [
+    "字東",
+    "東"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字浜元",
+   "forms": [
+    "字浜元",
+    "浜元"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字浦崎",
+   "forms": [
+    "字浦崎",
+    "浦崎"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字渡久地",
+   "forms": [
+    "字渡久地",
+    "渡久地"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字瀬底",
+   "forms": [
+    "字瀬底",
+    "瀬底"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字石川",
+   "forms": [
+    "字石川",
+    "石川"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字謝花",
+   "forms": [
+    "字謝花",
+    "謝花"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字谷茶",
+   "forms": [
+    "字谷茶",
+    "谷茶"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字豊原",
+   "forms": [
+    "字豊原",
+    "豊原"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字辺名地",
+   "forms": [
+    "字辺名地",
+    "辺名地"
+   ]
+  },
+  {
+   "municipality": "本部町",
+   "display": "字野原",
+   "forms": [
+    "字野原",
+    "野原"
+   ]
+  },
+  {
+   "municipality": "東村",
+   "display": "宮城",
+   "forms": [
+    "字宮城",
+    "宮城"
+   ]
+  },
+  {
+   "municipality": "東村",
+   "display": "川田",
+   "forms": [
+    "字川田",
+    "川田"
+   ]
+  },
+  {
+   "municipality": "東村",
+   "display": "平良",
+   "forms": [
+    "字平良",
+    "平良"
+   ]
+  },
+  {
+   "municipality": "東村",
+   "display": "慶佐次",
+   "forms": [
+    "字慶佐次",
+    "慶佐次"
+   ]
+  },
+  {
+   "municipality": "東村",
+   "display": "有銘",
+   "forms": [
+    "字有銘",
+    "有銘"
+   ]
+  },
+  {
+   "municipality": "東村",
+   "display": "高江",
+   "forms": [
+    "字高江",
+    "高江"
+   ]
+  },
+  {
+   "municipality": "浦添市",
+   "display": "字屋富祖",
+   "forms": [
+    "字屋冨祖",
+    "字屋富祖"
+   ]
+  },
+  {
+   "municipality": "浦添市",
+   "display": "屋富祖1丁目",
+   "forms": [
+    "屋冨祖1丁目",
+    "屋富祖1丁目"
+   ]
+  },
+  {
+   "municipality": "浦添市",
+   "display": "屋富祖2丁目",
+   "forms": [
+    "屋冨祖2丁目",
+    "屋富祖2丁目"
+   ]
+  },
+  {
+   "municipality": "浦添市",
+   "display": "屋富祖3丁目",
+   "forms": [
+    "屋冨祖3丁目",
+    "屋富祖3丁目"
+   ]
+  },
+  {
+   "municipality": "浦添市",
+   "display": "屋富祖4丁目",
+   "forms": [
+    "屋冨祖4丁目",
+    "屋富祖4丁目"
+   ]
+  },
+  {
+   "municipality": "渡嘉敷村",
+   "display": "字前島",
+   "forms": [
+    "前島",
+    "字前島"
+   ]
+  },
+  {
+   "municipality": "渡嘉敷村",
+   "display": "字渡嘉敷",
+   "forms": [
+    "字渡嘉敷",
+    "渡嘉敷"
+   ]
+  },
+  {
+   "municipality": "渡嘉敷村",
+   "display": "字阿波連",
+   "forms": [
+    "字阿波連",
+    "阿波連"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字伊原間",
+   "forms": [
+    "伊原間",
+    "字伊原間"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字名蔵",
+   "forms": [
+    "名蔵",
+    "字名蔵"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字大川",
+   "forms": [
+    "大川",
+    "字大川"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字大浜",
+   "forms": [
+    "大浜",
+    "字大浜"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字宮良",
+   "forms": [
+    "字宮良",
+    "宮良"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字崎枝",
+   "forms": [
+    "字崎枝",
+    "崎枝"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字川平",
+   "forms": [
+    "字川平",
+    "川平"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字平久保",
+   "forms": [
+    "字平久保",
+    "平久保"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字平得",
+   "forms": [
+    "字平得",
+    "平得"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字新川",
+   "forms": [
+    "字新川",
+    "新川"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字桃里",
+   "forms": [
+    "字桃里",
+    "桃里"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字桴海",
+   "forms": [
+    "字桴海",
+    "桴海",
+    "浮海"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字登野城",
+   "forms": [
+    "字登野城",
+    "登野城"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字白保",
+   "forms": [
+    "字白保",
+    "白保"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字真栄里",
+   "forms": [
+    "字真栄里",
+    "真栄里"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字石垣",
+   "forms": [
+    "字石垣",
+    "石垣"
+   ]
+  },
+  {
+   "municipality": "石垣市",
+   "display": "字野底",
+   "forms": [
+    "字野底",
+    "野底"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "上原",
+   "forms": [
+    "上原",
+    "字上原"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "南風見",
+   "forms": [
+    "南風見",
+    "字南風見"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "南風見仲",
+   "forms": [
+    "南風見仲",
+    "字南風見仲"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "古見",
+   "forms": [
+    "古見",
+    "字古見"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "小浜",
+   "forms": [
+    "字小浜",
+    "小浜"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "崎山",
+   "forms": [
+    "字崎山",
+    "崎山"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "新城",
+   "forms": [
+    "字新城",
+    "新城"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "波照間",
+   "forms": [
+    "字波照間",
+    "波照間"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "竹富",
+   "forms": [
+    "字竹富",
+    "竹富"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "西表",
+   "forms": [
+    "字西表",
+    "西表"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "高那",
+   "forms": [
+    "字高那",
+    "高那"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "鳩間",
+   "forms": [
+    "字鳩間",
+    "鳩間"
+   ]
+  },
+  {
+   "municipality": "竹富町",
+   "display": "黒島",
+   "forms": [
+    "字黒島",
+    "黒島"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "与座",
+   "forms": [
+    "与座",
+    "字与座"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "伊原",
+   "forms": [
+    "伊原",
+    "字伊原"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "伊敷",
+   "forms": [
+    "伊敷",
+    "字伊敷"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "兼城",
+   "forms": [
+    "兼城",
+    "字兼城"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "北波平",
+   "forms": [
+    "北波平",
+    "字北波平"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "南波平",
+   "forms": [
+    "南波平",
+    "字南波平"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "名城",
+   "forms": [
+    "名城",
+    "字名城"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "喜屋武",
+   "forms": [
+    "喜屋武",
+    "字喜屋武"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "国吉",
+   "forms": [
+    "国吉",
+    "字国吉"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "大度",
+   "forms": [
+    "大度",
+    "字大度"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "大里",
+   "forms": [
+    "大里",
+    "字大里"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "宇江城",
+   "forms": [
+    "字宇江城",
+    "宇江城"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "小波蔵",
+   "forms": [
+    "字小波蔵",
+    "小波蔵"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "山城",
+   "forms": [
+    "字山城",
+    "山城"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "座波",
+   "forms": [
+    "字座波",
+    "座波"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "摩文仁",
+   "forms": [
+    "字摩文仁",
+    "摩文仁"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "新垣",
+   "forms": [
+    "字新垣",
+    "新垣"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "束里",
+   "forms": [
+    "字束里",
+    "束里"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "武富",
+   "forms": [
+    "字武富",
+    "武富"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "潮平",
+   "forms": [
+    "字潮平",
+    "潮平"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "照屋",
+   "forms": [
+    "字照屋",
+    "照屋"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "真壁",
+   "forms": [
+    "字真壁",
+    "真壁"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "真栄平",
+   "forms": [
+    "字真栄平",
+    "真栄平"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "真栄里",
+   "forms": [
+    "字真栄里",
+    "真栄里"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "福地",
+   "forms": [
+    "字福地",
+    "福地"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "米須",
+   "forms": [
+    "字米須",
+    "米須"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "糸洲",
+   "forms": [
+    "字糸洲",
+    "糸洲"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "糸満",
+   "forms": [
+    "字糸満",
+    "糸満"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "豊原",
+   "forms": [
+    "字豊原",
+    "豊原"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "賀数",
+   "forms": [
+    "字賀数",
+    "賀数"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "display": "阿波根",
+   "forms": [
+    "字阿波根",
+    "阿波根"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "上原",
+   "forms": [
+    "上原",
+    "字上原"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "与那城",
+   "forms": [
+    "与那城",
+    "字与那城"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "兼久",
+   "forms": [
+    "兼久",
+    "字兼久"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "内間",
+   "forms": [
+    "内間",
+    "字内間"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "千原",
+   "forms": [
+    "千原",
+    "字千原"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "呉屋",
+   "forms": [
+    "呉屋",
+    "字呉屋"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "嘉手苅",
+   "forms": [
+    "嘉手苅",
+    "字嘉手苅"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "安室",
+   "forms": [
+    "字安室",
+    "安室"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "小橋川",
+   "forms": [
+    "字小橋川",
+    "小橋川"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "小波津",
+   "forms": [
+    "字小波津",
+    "小波津"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "小那覇",
+   "forms": [
+    "字小那覇",
+    "小那覇"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "幸地",
+   "forms": [
+    "字幸地",
+    "幸地"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "徳佐田",
+   "forms": [
+    "字徳佐田",
+    "徳佐田"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "我謝",
+   "forms": [
+    "字我謝",
+    "我謝"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "掛保久",
+   "forms": [
+    "字掛保久",
+    "掛保久"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "東崎",
+   "forms": [
+    "字東崎",
+    "東崎"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "桃原",
+   "forms": [
+    "字桃原",
+    "桃原"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "棚原",
+   "forms": [
+    "字棚原",
+    "棚原"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "森川",
+   "forms": [
+    "字森川",
+    "森川"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "池田",
+   "forms": [
+    "字池田",
+    "池田"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "津花波",
+   "forms": [
+    "字津花波",
+    "津花波"
+   ]
+  },
+  {
+   "municipality": "西原町",
+   "display": "翁長",
+   "forms": [
+    "字翁長",
+    "翁長"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "上地",
+   "forms": [
+    "上地",
+    "字上地"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "伊良皆",
+   "forms": [
+    "伊良皆",
+    "字伊良皆"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "儀間",
+   "forms": [
+    "儀間",
+    "字儀間"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "古堅",
+   "forms": [
+    "古堅",
+    "字古堅"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "喜名",
+   "forms": [
+    "喜名",
+    "字喜名"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "大木",
+   "forms": [
+    "大木",
+    "字大木"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "大湾",
+   "forms": [
+    "大湾",
+    "字大湾"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "宇座",
+   "forms": [
+    "字宇座",
+    "宇座"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "座喜味",
+   "forms": [
+    "字座喜味",
+    "座喜味"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "楚辺",
+   "forms": [
+    "字楚辺",
+    "楚辺"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "比謝",
+   "forms": [
+    "字比謝",
+    "比謝"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "比謝矼",
+   "forms": [
+    "字比謝矼",
+    "比謝矼"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "波平",
+   "forms": [
+    "字波平",
+    "波平"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "渡具知",
+   "forms": [
+    "字渡具知",
+    "渡具知"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "渡慶次",
+   "forms": [
+    "字渡慶次",
+    "渡慶次"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "瀬名波",
+   "forms": [
+    "字瀬名波",
+    "瀬名波"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "牧原",
+   "forms": [
+    "字牧原",
+    "牧原"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "親志",
+   "forms": [
+    "字親志",
+    "親志"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "都屋",
+   "forms": [
+    "字都屋",
+    "都屋"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "長浜",
+   "forms": [
+    "字長浜",
+    "長浜"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "長田",
+   "forms": [
+    "字長田",
+    "長田"
+   ]
+  },
+  {
+   "municipality": "読谷村",
+   "display": "高志保",
+   "forms": [
+    "字高志保",
+    "高志保"
+   ]
+  },
+  {
+   "municipality": "豊見城市",
+   "display": "字金良",
+   "forms": [
+    "字金良",
+    "金良"
+   ]
+  },
+  {
+   "municipality": "金武町",
+   "display": "伊芸",
+   "forms": [
+    "伊芸",
+    "字伊芸"
+   ]
+  },
+  {
+   "municipality": "金武町",
+   "display": "屋嘉",
+   "forms": [
+    "字屋嘉",
+    "屋嘉"
+   ]
+  },
+  {
+   "municipality": "金武町",
+   "display": "金武",
+   "forms": [
+    "字金武",
+    "金武"
+   ]
+  }
+ ],
  "failures": [],
  "thin_series": [
-  {
-   "municipality": "うるま市",
-   "aza": "みどり町1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "みどり町2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "みどり町3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "みどり町4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "みどり町5丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "みどり町6丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
   {
    "municipality": "うるま市",
    "aza": "与那城宮平",
    "years": [
     2011
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "喜仲1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "喜仲2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "喜仲3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "喜仲4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字上江洲",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字仲嶺",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字具志川",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字兼箇段",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字前原",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字喜屋武",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字塩屋",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字大田",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字天願",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字宇堅",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字安慶名",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字宮里",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字川崎",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字川田",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字州崎",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字平良川",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字昆布",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字栄野比",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字江洲",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字田場",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字西原",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字豊原",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字赤道",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字赤野",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "字高江洲",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川曙1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川曙2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川曙3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川東山1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川東山2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川東山本町1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川東山本町2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川白浜1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川白浜2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川石崎1丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川石崎2丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川赤崎1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川赤崎2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "うるま市",
-   "aza": "石川赤崎3丁目",
-   "years": [
-    2013
-   ]
-  },
-  {
-   "municipality": "与那国町",
-   "aza": "与那国",
-   "years": [
-    2021
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "久場",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "伊舎堂",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "伊集",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "北上原",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "北浜",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "南上原",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "南浜",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "和宇慶",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "奥間",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字久場",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字伊舎堂",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字伊集",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字北上原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字北浜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字南上原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字南浜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字和宇慶",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字奥間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字安里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字屋宜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字当間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字新垣",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字泊",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字津覇",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字浜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字添石",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "字登又",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "安里",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "屋宜",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "当間",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "新垣",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "泊",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "津覇",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "浜",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "添石",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
-   ]
-  },
-  {
-   "municipality": "中城村",
-   "aza": "登又",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022
    ]
   },
   {
@@ -1130,363 +4029,6 @@
   },
   {
    "municipality": "久米島町",
-   "aza": "嘉手刈",
-   "years": [
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "嘉手苅",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "奥武",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字上江洲",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字仲地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字仲村渠",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字仲泊",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字儀間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字具志川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字兼城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字北原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字嘉手苅",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字大原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字大田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字奥武",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字宇根",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字宇江城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字宇江城山田原",
-   "years": [
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字山城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字山里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字島尻",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字比嘉",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字比屋定",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字真我里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字真謝",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字西銘",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字謝名堂",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字銭田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字阿嘉",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
-   "aza": "字鳥島",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "久米島町",
    "aza": "東奥武",
    "years": [
     2020
@@ -1514,728 +4056,6 @@
    ]
   },
   {
-   "municipality": "久米島町",
-   "aza": "阿嘉",
-   "years": [
-    2014,
-    2017,
-    2018,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字上運天",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字与那嶺",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字今泊",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字仲宗根",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字仲尾次",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字兼次",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字勢理客",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字古宇利",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字呉我山",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字天底",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字崎山",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字平敷",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字渡喜仁",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字湧川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字玉城",
-   "years": [
-    2011,
-    2012,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字諸志",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字謝名",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字越地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "字運天",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "今帰仁村",
-   "aza": "玉字城",
-   "years": [
-    2013
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "前泊",
-   "years": [
-    2017,
-    2018,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "字前泊",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "字島尻",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "字我喜屋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "字田名",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "字野甫",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "島尻",
-   "years": [
-    2017,
-    2018,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "我喜屋",
-   "years": [
-    2017,
-    2018,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "田名",
-   "years": [
-    2017,
-    2018,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "伊平屋村",
-   "aza": "野甫",
-   "years": [
-    2017,
-    2018,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "伊是名村",
-   "aza": "字仲田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "伊是名村",
-   "aza": "字伊是名",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "伊是名村",
-   "aza": "字内花",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "伊是名村",
-   "aza": "字勢理客",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "伊是名村",
-   "aza": "字諸見",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "伊江村",
-   "aza": "字川平",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "伊江村",
-   "aza": "字東江上",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "伊江村",
-   "aza": "字東江前",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "伊江村",
-   "aza": "字西江上",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "伊江村",
-   "aza": "字西江前",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字上田原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字与座",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字世名城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字仲座",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字伊覇",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字具志頭",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字友寄",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字外間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字大頓",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字安里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字宜次",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字富盛",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字小城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字屋宜原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字当銘",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字後原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字志多伯",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字新城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字東風平",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字港川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字玻名城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字長毛",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "八重瀬町",
-   "aza": "字高良",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
    "municipality": "北中城村",
    "aza": "アワセ土地区画",
    "years": [
@@ -2247,329 +4067,6 @@
    "municipality": "北中城村",
    "aza": "ライカム",
    "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "仲順",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "和仁屋",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "喜舎場",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "大城",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字仲順",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字和仁屋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字喜舎場",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字大城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字安谷屋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字屋宜原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字島袋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字比嘉",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字渡口",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字熱田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字瑞慶覧",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字美崎",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "字荻道",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "安谷屋",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "屋宜原",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "島袋",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "比嘉",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "渡口",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "熱田",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "瑞慶覧",
-   "years": [
-    2014,
-    2017,
     2020,
     2021,
     2022,
@@ -2597,63 +4094,8 @@
    ]
   },
   {
-   "municipality": "北中城村",
-   "aza": "美崎",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北中城村",
-   "aza": "荻道",
-   "years": [
-    2014,
-    2017,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
    "municipality": "北大東村",
    "aza": "ラサ",
-   "years": [
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北大東村",
-   "aza": "中野",
-   "years": [
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北大東村",
-   "aza": "南",
-   "years": [
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "北大東村",
-   "aza": "港",
    "years": [
     2023,
     2024,
@@ -2685,998 +4127,6 @@
     2023,
     2024,
     2025
-   ]
-  },
-  {
-   "municipality": "南城市",
-   "aza": "知念字吉冨",
-   "years": [
-    2011,
-    2012
-   ]
-  },
-  {
-   "municipality": "南城市",
-   "aza": "知念字安座間",
-   "years": [
-    2011
-   ]
-  },
-  {
-   "municipality": "南大東村",
-   "aza": "北",
-   "years": [
-    2014,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "南大東村",
-   "aza": "南",
-   "years": [
-    2014,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "南大東村",
-   "aza": "在所",
-   "years": [
-    2014,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "南大東村",
-   "aza": "新東",
-   "years": [
-    2014,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "南大東村",
-   "aza": "旧東",
-   "years": [
-    2014,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "南大東村",
-   "aza": "池之沢",
-   "years": [
-    2014,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字与那覇",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字兼城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字喜屋武",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字大名",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字宮城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字宮平",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字山川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字新川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字本部",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字津嘉山",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字照屋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "南風原町",
-   "aza": "字神里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "三原",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "世冨慶",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "中山",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "久志",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "二見",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "仲尾",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "仲尾次",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "伊差川",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "勝山",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "古我知",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "名護",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "呉我",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "喜瀬",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "嘉陽",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "城1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "城2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大中1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大中2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大中3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大中4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大中5丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大北1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大北2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大北3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大北4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大北5丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大南1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大南2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大南3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大南4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大川",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大東1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大東2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大東3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大東4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大浦",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大西1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大西2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大西3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大西4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "大西5丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "天仁屋",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "字中尾",
-   "years": [
-    2017,
-    2018,
-    2019
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宇茂佐",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宇茂佐の森1丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宇茂佐の森2丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宇茂佐の森3丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宇茂佐の森4丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宇茂佐の森5丁目",
-   "years": [
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "安和",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "安部",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里5丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里6丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "宮里7丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "屋我",
-   "years": [
-    2014,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "屋部",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "山入端",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "川上",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "幸喜",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "我部",
-   "years": [
-    2014,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "我部祖河",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "振慶名",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "数久田",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "旭川",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "東江1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "東江2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "東江3丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "東江4丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "東江5丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "汀間",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "済井出",
-   "years": [
-    2014,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "港1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "港2丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "源河",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "瀬嵩",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "為又",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "田井等",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "真喜屋",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "稲嶺",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "親川",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "許田",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "豊原",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "辺野古",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "運天原",
-   "years": [
-    2014,
-    2016
-   ]
-  },
-  {
-   "municipality": "名護市",
-   "aza": "饒平名",
-   "years": [
-    2014,
-    2016
    ]
   },
   {
@@ -3732,525 +4182,11 @@
    ]
   },
   {
-   "municipality": "嘉手納町",
-   "aza": "屋良1丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "嘉手納町",
-   "aza": "水釜6丁目",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字与那",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字伊地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字佐手",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字半地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字奥",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字奥間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字宇嘉",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字宇良",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字安波",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字安田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字宜名真",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字桃原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字楚洲",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字比地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字浜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字謝敷",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字辺土名",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字辺戸",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字辺野喜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "国頭村",
-   "aza": "字鏡地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "多良間村",
-   "aza": "仲筋",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2021,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "多良間村",
-   "aza": "塩川",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2021,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "多良間村",
-   "aza": "水納",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2021,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字上原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字喜如嘉",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字塩屋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字大保",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字大兼久",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字大宜味",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字宮城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字屋古",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字押川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字根路銘",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字津波",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字田嘉里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字田港",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字白浜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字謝名城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
-   "municipality": "大宜味村",
-   "aza": "字饒波",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2019
-   ]
-  },
-  {
    "municipality": "大宜味村",
    "aza": "江洲",
    "years": [
     2017,
     2018,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "宜野座村",
-   "aza": "宜野座",
-   "years": [
-    2014,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "宜野座村",
-   "aza": "惣慶",
-   "years": [
-    2014,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "宜野座村",
-   "aza": "松田",
-   "years": [
-    2014,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "宜野座村",
-   "aza": "漢那",
-   "years": [
-    2014,
-    2021,
     2022,
     2023,
     2024,
@@ -4287,371 +4223,6 @@
    "years": [
     2024,
     2025
-   ]
-  },
-  {
-   "municipality": "宮古島市",
-   "aza": "下地来間",
-   "years": [
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "座間味村",
-   "aza": "座間味",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "座間味村",
-   "aza": "慶留間",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "座間味村",
-   "aza": "阿佐",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "座間味村",
-   "aza": "阿嘉",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "座間味村",
-   "aza": "阿真",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "恩納村",
-   "aza": "字安冨祖",
-   "years": [
-    2014
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "並里",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "伊豆味",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "伊野波",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "健堅",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "備瀬",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "具志堅",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "北里",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "古島",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "嘉津宇",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "大嘉陽",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "大堂",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "大浜",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "山川",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "山里",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "崎本部",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "新里",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "東",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "浜元",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "浦崎",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "渡久地",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "瀬底",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "石川",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "謝花",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "谷茶",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "豊原",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "辺名地",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "本部町",
-   "aza": "野原",
-   "years": [
-    2017,
-    2018
-   ]
-  },
-  {
-   "municipality": "東村",
-   "aza": "字宮城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2021
-   ]
-  },
-  {
-   "municipality": "東村",
-   "aza": "字川田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2021
-   ]
-  },
-  {
-   "municipality": "東村",
-   "aza": "字平良",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2021
-   ]
-  },
-  {
-   "municipality": "東村",
-   "aza": "字慶佐次",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2021
-   ]
-  },
-  {
-   "municipality": "東村",
-   "aza": "字有銘",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2021
-   ]
-  },
-  {
-   "municipality": "東村",
-   "aza": "字高江",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016,
-    2021
    ]
   },
   {
@@ -4853,41 +4424,6 @@
   },
   {
    "municipality": "浦添市",
-   "aza": "字屋冨祖",
-   "years": [
-    2020
-   ]
-  },
-  {
-   "municipality": "浦添市",
-   "aza": "屋冨祖1丁目",
-   "years": [
-    2020
-   ]
-  },
-  {
-   "municipality": "浦添市",
-   "aza": "屋冨祖2丁目",
-   "years": [
-    2020
-   ]
-  },
-  {
-   "municipality": "浦添市",
-   "aza": "屋冨祖3丁目",
-   "years": [
-    2020
-   ]
-  },
-  {
-   "municipality": "浦添市",
-   "aza": "屋冨祖4丁目",
-   "years": [
-    2020
-   ]
-  },
-  {
-   "municipality": "浦添市",
    "aza": "西洲3丁目",
    "years": [
     2020,
@@ -4896,101 +4432,6 @@
     2023,
     2024,
     2025
-   ]
-  },
-  {
-   "municipality": "渡嘉敷村",
-   "aza": "前島",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023
-   ]
-  },
-  {
-   "municipality": "渡嘉敷村",
-   "aza": "字前島",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "渡嘉敷村",
-   "aza": "字渡嘉敷",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "渡嘉敷村",
-   "aza": "字阿波連",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "渡嘉敷村",
-   "aza": "渡嘉敷",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023
-   ]
-  },
-  {
-   "municipality": "渡嘉敷村",
-   "aza": "阿波連",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "伊原間",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
    ]
   },
   {
@@ -5011,217 +4452,6 @@
   },
   {
    "municipality": "石垣市",
-   "aza": "名蔵",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "大川",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "大浜",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字伊原間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字名蔵",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字大川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字大浜",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字宮良",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字崎枝",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字川平",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字平久保",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字平得",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字新川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字桃里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字桴海",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字登野城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
    "aza": "字登野城尖閣",
    "years": [
     2022,
@@ -5232,737 +4462,8 @@
   },
   {
    "municipality": "石垣市",
-   "aza": "字白保",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
    "aza": "字盛山",
    "years": [
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字真栄里",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字石垣",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "字野底",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "宮良",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "崎枝",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "川平",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "平久保",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "平得",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "新川",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "桃里",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "桴海",
-   "years": [
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "浮海",
-   "years": [
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "登野城",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "白保",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "真栄里",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "石垣",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "石垣市",
-   "aza": "野底",
-   "years": [
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "上原",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "南風見",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "南風見仲",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "古見",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "字崎山",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2018
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "小浜",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "崎山",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "新城",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "波照間",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "竹富",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "西表",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "高那",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "鳩間",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "竹富町",
-   "aza": "黒島",
-   "years": [
-    2014,
-    2017,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "与座",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "伊原",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "伊敷",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "兼城",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "北波平",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "南波平",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "名城",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "喜屋武",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "国吉",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "大度",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "大里",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "宇江城",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "小波蔵",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "山城",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "座波",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "摩文仁",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "新垣",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "束里",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "武富",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "潮平",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "照屋",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "真壁",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "真栄平",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "真栄里",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "福地",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "米須",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "糸洲",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "糸満",
-   "years": [
-    2020,
-    2021,
     2022,
     2023,
     2024,
@@ -5984,507 +4485,12 @@
    ]
   },
   {
-   "municipality": "糸満市",
-   "aza": "豊原",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "賀数",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "糸満市",
-   "aza": "阿波根",
-   "years": [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字上原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字与那城",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字兼久",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字内間",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字千原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字呉屋",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字嘉手苅",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字安室",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字小橋川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字小波津",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字小那覇",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字幸地",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字徳佐田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字我謝",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字掛保久",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字東崎",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字桃原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字棚原",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字森川",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字池田",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字津花波",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "西原町",
-   "aza": "字翁長",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字上地",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字伊良皆",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字儀間",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字古堅",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字喜名",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字大木",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字大湾",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字宇座",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字座喜味",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字楚辺",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字比謝",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字比謝矼",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字波平",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字渡具知",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字渡慶次",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字瀬名波",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字牧原",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字親志",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字都屋",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字長浜",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字長田",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
-   "municipality": "読谷村",
-   "aza": "字高志保",
-   "years": [
-    2011,
-    2012,
-    2013
-   ]
-  },
-  {
    "municipality": "読谷村",
    "aza": "牧原",
    "years": [
+    2011,
+    2012,
+    2013,
     2014,
     2015,
     2016,
@@ -6495,6 +4501,9 @@
    "municipality": "読谷村",
    "aza": "親志",
    "years": [
+    2011,
+    2012,
+    2013,
     2014,
     2015,
     2016,
@@ -6505,6 +4514,9 @@
    "municipality": "読谷村",
    "aza": "長田",
    "years": [
+    2011,
+    2012,
+    2013,
     2014,
     2015,
     2016,
@@ -6577,13 +4589,6 @@
    ]
   },
   {
-   "municipality": "豊見城市",
-   "aza": "金良",
-   "years": [
-    2013
-   ]
-  },
-  {
    "municipality": "那覇市",
    "aza": "垣花町1丁目",
    "years": [
@@ -6646,39 +4651,68 @@
     2013,
     2014
    ]
-  },
-  {
-   "municipality": "金武町",
-   "aza": "字伊芸",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "金武町",
-   "aza": "字屋嘉",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
-  },
-  {
-   "municipality": "金武町",
-   "aza": "字金武",
-   "years": [
-    2011,
-    2012,
-    2013,
-    2015,
-    2016
-   ]
   }
+ ],
+ "crosswalk_candidates": [
+  "うるま市,与那城宮平,,,,,,1年分（要確認）",
+  "久米島町,イーフ,,,,,,1年分（要確認）",
+  "久米島町,上阿嘉,,,,,,1年分（要確認）",
+  "久米島町,下阿嘉,,,,,,1年分（要確認）",
+  "久米島町,久間地,,,,,,1年分（要確認）",
+  "久米島町,東奥武,,,,,,1年分（要確認）",
+  "久米島町,泊,,,,,,1年分（要確認）",
+  "久米島町,真泊,,,,,,1年分（要確認）",
+  "久米島町,西奥武,,,,,,1年分（要確認）",
+  "北中城村,県営北中城団地,,,,,,3年分（要確認）",
+  "北中城村,石平,,,,,,3年分（要確認）",
+  "北大東村,ラサ,,,,,,3年分（要確認）",
+  "北谷町,伊平1丁目,,,,,,3年分（要確認）",
+  "北谷町,伊平2丁目,,,,,,3年分（要確認）",
+  "北谷町,桑江1丁目,,,,,,3年分（要確認）",
+  "嘉手納町,字国直,,,,,,7年分（要確認）",
+  "嘉手納町,字東,,,,,,7年分（要確認）",
+  "嘉手納町,字野国,,,,,,7年分（要確認）",
+  "嘉手納町,字野里,,,,,,7年分（要確認）",
+  "大宜味村,江洲,,,,,,6年分（要確認）",
+  "宜野湾市,宇地泊1丁目,,,,,,2年分（要確認）",
+  "宜野湾市,宇地泊2丁目,,,,,,2年分（要確認）",
+  "宜野湾市,宇地泊3丁目,,,,,,2年分（要確認）",
+  "宜野湾市,真志喜5丁目,,,,,,2年分（要確認）",
+  "沖縄市,CAMPSHIELDS,,,,,,4年分（要確認）",
+  "沖縄市,KADENAAIRBASE,,,,,,4年分（要確認）",
+  "沖縄市,シールズ基地,,,,,,4年分（要確認）",
+  "沖縄市,ライカム基地,,,,,,4年分（要確認）",
+  "沖縄市,字与儀,,,,,,5年分（要確認）",
+  "沖縄市,字仲宗根,,,,,,4年分（要確認）",
+  "沖縄市,字嘉間良,,,,,,4年分（要確認）",
+  "沖縄市,字安慶田,,,,,,4年分（要確認）",
+  "沖縄市,字宮里,,,,,,8年分（要確認）",
+  "沖縄市,字山里,,,,,,4年分（要確認）",
+  "沖縄市,字照屋,,,,,,4年分（要確認）",
+  "沖縄市,字胡屋,,,,,,4年分（要確認）",
+  "沖縄市,字越来,,,,,,4年分（要確認）",
+  "沖縄市,字高原,,,,,,8年分（要確認）",
+  "沖縄市,潮乃森,,,,,,6年分（要確認）",
+  "沖縄市,知花エリア内,,,,,,2年分（要確認）",
+  "沖縄市,知花ハウジングエリア,,,,,,2年分（要確認）",
+  "浦添市,西洲3丁目,,,,,,6年分（要確認）",
+  "石垣市,南ぬ島町,,,,,,3年分（要確認）",
+  "石垣市,南ぬ浜町,,,,,,1年分（要確認）",
+  "石垣市,字登野城尖閣,,,,,,4年分（要確認）",
+  "石垣市,字盛山,,,,,,4年分（要確認）",
+  "糸満市,西崎町1丁目,,,,,,8年分（要確認）",
+  "読谷村,牧原,,,,,,7年分（要確認）",
+  "読谷村,親志,,,,,,7年分（要確認）",
+  "読谷村,長田,,,,,,7年分（要確認）",
+  "豊見城市,宜保1丁目,,,,,,7年分（要確認）",
+  "豊見城市,宜保2丁目,,,,,,7年分（要確認）",
+  "豊見城市,宜保3丁目,,,,,,7年分（要確認）",
+  "豊見城市,宜保4丁目,,,,,,7年分（要確認）",
+  "豊見城市,宜保5丁目,,,,,,7年分（要確認）",
+  "那覇市,垣花町1丁目,,,,,,2年分（要確認）",
+  "那覇市,垣花町2丁目,,,,,,2年分（要確認）",
+  "那覇市,垣花町3丁目,,,,,,2年分（要確認）",
+  "那覇市,字二中前,,,,,,1年分（要確認）",
+  "那覇市,字壺川,,,,,,1年分（要確認）"
  ]
 }

@@ -19,6 +19,7 @@ GitHub Actions 上で実行してください。
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -51,6 +52,15 @@ FILES = {
 RAW = Path("data/raw/aza")
 OUT = Path("data/generated/population_aza.json")
 REPORT = Path("data/generated/aza_quality_report.json")
+CROSSWALK = Path("data/aza_crosswalk.csv")
+
+# 年次間で合算してよい relation。それ以外（succeeded_by / split_into /
+# merged_from / separate / 空欄）は関係の記録のみで、系列は合算しない。
+MERGE_RELATIONS = {"same", "typo"}
+
+# 丁目の漢数字 -> 算用数字。分類Bの正規化に使う。
+CHOME_DIGITS = {"一": "1", "二": "2", "三": "3", "四": "4", "五": "5",
+                "六": "6", "七": "7", "八": "8", "九": "9", "十": "10"}
 
 # 平成23〜25年は3月31日現在、平成26年以降は1月1日現在。基準日が違う点に注意。
 REFERENCE_DATE = {2011: "03-31", 2012: "03-31", 2013: "03-31"}
@@ -91,6 +101,65 @@ class UnknownMunicipality(ValueError):
             f"市町村名 {value!r} が41市町村の正式名に一致しません。"
             f"県の原本の誤記であれば MUNI_TYPOS に追加してください。"
         )
+
+
+class AzaNameCollision(ValueError):
+    """年次間名寄せの正規化キーが、同一年・同一市町村内で衝突した。
+
+    docs/aza-matching-policy.md 論点1の決定どおり、推測で片方を選ばず
+    その年の変換ごと失敗させる。crosswalk（typo/same）を適用したあとの
+    表記どうしが、同じ年に同じ正規化キーへ集まった場合に発生する。
+    """
+
+    def __init__(self, year, municipality, key, forms):
+        self.year, self.municipality, self.key, self.forms = year, municipality, key, forms
+        super().__init__(
+            f"{year}年 {municipality}: 正規化キー {key!r} に複数の表記が同じ年に存在します "
+            f"({', '.join(forms)})。合算すると二重計上になるため、この年の変換を失敗させます。"
+            f"別の実体なら data/aza_crosswalk.csv に relation=separate で明示してください。"
+        )
+
+
+def load_crosswalk():
+    """data/aza_crosswalk.csv を読む。# で始まる行と空行はコメントとして無視する。"""
+    if not CROSSWALK.exists():
+        return []
+    rows = []
+    with CROSSWALK.open(encoding="utf-8", newline="") as f:
+        reader = csv.reader(f)
+        header = None
+        for raw_row in reader:
+            if not raw_row or raw_row[0].startswith("#"):
+                continue
+            if header is None:
+                header = raw_row
+                continue
+            row = dict(zip(header, raw_row))
+            row["years"] = {int(y) for y in row.get("years", "").split(",") if y.strip()}
+            rows.append(row)
+    return rows
+
+
+def crosswalk_rename_map(crosswalk):
+    """(municipality, name_from, year) -> name_to。relation が合算対象のものだけ。"""
+    m = {}
+    for row in crosswalk:
+        if row.get("relation") not in MERGE_RELATIONS:
+            continue
+        years = row["years"]
+        m[(row["municipality"], row["name_from"])] = (row["name_to"], years)
+    return m
+
+
+def normalize_key(aza: str) -> str:
+    """分類A・Bの正規化キー。先頭の「字」を落とし、丁目の漢数字を算用数字にする。"""
+    s = aza[1:] if aza.startswith("字") else aza
+    m = re.match(r"^(.*?)([一二三四五六七八九十]+)丁目$", s)
+    if m:
+        digits = CHOME_DIGITS.get(m.group(2))
+        if digits:
+            s = m.group(1) + digits + "丁目"
+    return s
 
 
 def download(years):
@@ -266,6 +335,17 @@ def read_year(path: Path, year: int):
 
 
 def normalize(years):
+    """年次間の名寄せ方針（docs/aza-matching-policy.md）を適用して系列を作る。
+
+    1. crosswalk の relation=same/typo で該当年の表記を寄せ先に置き換える
+    2. 先頭の「字」を落とし丁目の漢数字を算用数字にした正規化キーでまとめる
+    3. 同一年・同一市町村で正規化キーが衝突したら、その年の変換を失敗させる
+       （どちらが正しいか推測しない。合算すると二重計上になるため）
+    4. 表示名はグループが最後に現れた年の表記をそのまま使う
+    """
+    crosswalk = load_crosswalk()
+    rename_map = crosswalk_rename_map(crosswalk)
+
     series, problems = {}, []
     corrections, unknown, per_year = [], [], {}
     for y in years:
@@ -284,15 +364,41 @@ def normalize(years):
             problems.append(f"{y}: {ex}")
             continue
 
+        # crosswalk（same/typo）は「合算するかどうか」の判断材料であって、
+        # 表示名の選び方とは別。表示名は常に、その年に県が実際に書いた
+        # 表記（rec["aza"]）を使う。合算用のキーだけ、読み替えたうえで
+        # 分類A/Bの正規化にかける。
+        renamed = []
+        for rec in recs:
+            name_to, apply_years = rename_map.get(
+                (rec["municipality"], rec["aza"]), (None, None))
+            grouping_name = rec["aza"]
+            if name_to and (not apply_years or rec["year"] in apply_years):
+                grouping_name = name_to
+            renamed.append({**rec, "key": normalize_key(grouping_name)})
+
+        by_muni_key = {}
+        for rec in renamed:
+            by_muni_key.setdefault((rec["municipality"], rec["key"]), []).append(rec)
+        collisions = [(muni, key, sorted({r["aza"] for r in items}))
+                      for (muni, key), items in by_muni_key.items()
+                      if len({r["aza"] for r in items}) > 1]
+        if collisions:
+            for muni, key, forms in collisions:
+                ex = AzaNameCollision(y, muni, key, forms)
+                problems.append(f"{y}: {ex}")
+            continue
+
         corrections.extend(corr)
         per_year[y] = len(recs)
-        for rec in recs:
-            key = f'{rec["municipality"]}／{rec["aza"]}'
-            e = series.setdefault(key, {"municipality": rec["municipality"],
-                                        "aza": rec["aza"], "trend": []})
+        for rec in renamed:
+            gkey = f'{rec["municipality"]}／{rec["key"]}'
+            e = series.setdefault(gkey, {"municipality": rec["municipality"],
+                                         "key": rec["key"], "trend": [], "forms": {}})
             e["trend"].append({"year": rec["year"], "date": rec["date"],
                                "population": rec["population"],
                                "households": rec["households"]})
+            e["forms"][rec["year"]] = rec["aza"]
 
     # 1年も読めなかったときに空のJSONで既存の出力を上書きすると、画面上は
     # 「データなし」ではなく静かに全滅する。書かずに失敗として返す。
@@ -302,16 +408,31 @@ def normalize(years):
             print("  -", p, file=sys.stderr)
         return False
 
-    out = sorted(series.values(), key=lambda e: (e["municipality"], e["aza"]))
-    for e in out:
-        e["trend"].sort(key=lambda t: t["year"])
+    out, normalized_groups = [], []
+    for e in series.values():
+        trend = sorted(e["trend"], key=lambda t: t["year"])
+        forms = e["forms"]
+        display_name = forms[max(forms)]
+        out.append({"municipality": e["municipality"], "aza": display_name, "trend": trend})
+        distinct = sorted(set(forms.values()))
+        if len(distinct) > 1:
+            normalized_groups.append({"municipality": e["municipality"],
+                                      "display": display_name, "forms": distinct})
+    out.sort(key=lambda e: (e["municipality"], e["aza"]))
+    normalized_groups.sort(key=lambda g: (g["municipality"], g["display"]))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"\nwrote {OUT}  字数={len(out)}")
+    print(f"\nwrote {OUT}  字数={len(out)}（名寄せ後。表記ゆれの吸収 {len(normalized_groups)}グループ）")
 
     thin = [e for e in out if len(e["trend"]) < len(years) * 0.6]
     munis = sorted({e["municipality"] for e in out})
+
+    crosswalk_names = {r["name_from"] for r in crosswalk} | {r["name_to"] for r in crosswalk}
+    crosswalk_candidates = [
+        f'{e["municipality"]},{e["aza"]},,,,,,{len(e["trend"])}年分（要確認）'
+        for e in thin if e["aza"] not in crosswalk_names
+    ]
 
     report = {
         "counts": {
@@ -320,6 +441,7 @@ def normalize(years):
             "years_loaded": len(per_year),
             "muni_name_corrections": len(corrections),
             "unknown_municipalities": len(unknown),
+            "normalized_groups": len(normalized_groups),
             "thin_series": len(thin),
             "failures": len(problems),
         },
@@ -327,9 +449,11 @@ def normalize(years):
         "municipalities": munis,
         "muni_name_corrections": corrections,
         "unknown_municipalities": unknown,
+        "normalized_groups": normalized_groups,
         "failures": problems,
         "thin_series": [{"municipality": e["municipality"], "aza": e["aza"],
                          "years": [t["year"] for t in e["trend"]]} for e in thin],
+        "crosswalk_candidates": crosswalk_candidates,
     }
     REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"wrote {REPORT}")
@@ -348,6 +472,11 @@ def normalize(years):
               f"data/aza_crosswalk.csv で対応付けを管理してください）")
         for e in thin[:15]:
             print(f"  - {e['municipality']}／{e['aza']}  ({len(e['trend'])}年分)")
+        if crosswalk_candidates:
+            print(f"\ncrosswalk 未登録の候補 {len(crosswalk_candidates)}件"
+                  "（data/aza_crosswalk.csv にそのまま貼れる形）:")
+            for c in crosswalk_candidates[:10]:
+                print(f"  {c}")
     return True
 
 
