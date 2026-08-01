@@ -192,7 +192,7 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
     <div class="banner">
       <div>
         <b>データ状態</b><br>
-        施策・空き家（R7調査）と字の人口推移は<strong>実データ</strong>。市町村の人口・年齢構成と字の年齢構成は<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
+        施策・空き家（R7調査）、市町村の人口推移・年齢構成、字の人口推移は<strong>実データ</strong>。字の年齢構成のみ<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
       </div>
     </div>
   </header>
@@ -214,29 +214,15 @@ const DATA = /*__DATA__*/;
 
 /* ============================ サンプル人口データ ============================
    実データが入るまでのプレースホルダ。決定論的な擬似乱数で生成し、
-   画面上は必ず斜線＋「ダミー」タグ付きで表示する。
-   市町村の人口推移・年齢構成、字の年齢構成が対象。
-   字の人口推移は実データ（DATA.population_aza、置き換え元は
-   data/generated/population_aza.json）に切り替え済み。                     */
+   画面上は必ず斜線＋「ダミー」タグ付きで表示する。字の年齢構成が対象
+   （令和2年国勢調査 小地域集計はe-Stat API経由での取得元が見つからず、
+   Phase 5で改めて扱う）。
+   市町村の人口推移・年齢構成、字の人口推移は実データに切り替え済み。       */
 function seeded(str){let h=2166136261;for(const c of str)h=(h^c.charCodeAt(0))*16777619>>>0;
   return()=>{h=(h*1103515245+12345)>>>0;return h/4294967296;};}
 const AGES=["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44",
             "45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"];
-const CENSUS_YEARS=[1980,1985,1990,1995,2000,2005,2010,2015,2020,2025];
 
-function demoMuni(code){
-  const r=seeded("m"+code), base=1500+Math.floor(r()*22000), aging=.5+r()*1.1;
-  const pyramid=AGES.map((a,i)=>{
-    const decay=Math.exp(-Math.pow((i-7)/9,2))*(1+aging*Math.max(0,i-9)/9);
-    const m=Math.round(base*decay*(.028+r()*.006));
-    return{age:a,male:m,female:Math.round(m*(1+(i>12?.12+r()*.2:r()*.06-.03)))};
-  });
-  const total=pyramid.reduce((s,p)=>s+p.male+p.female,0);
-  const trend=CENSUS_YEARS.map((y,i)=>({year:y,
-    pop:Math.round(total*(.72+i*.031+(r()-.5)*.05))}));
-  trend[trend.length-1].pop=total;
-  return{pyramid,trend,total};
-}
 /** 字の年齢構成（令和2年国勢調査 小地域集計が入るまでのダミー）。人口推移とは無関係。 */
 function demoAzaPyramid(seedKey,base){
   const rr=seeded(seedKey);
@@ -255,8 +241,8 @@ const INDICATORS={
     get:m=>m.akiya&&m.akiya.bank_registered_total, unit:"件", real:true},
   housing_count:{label:"定住促進住宅の物件数",
     get:m=>m.housing.length||null, unit:"件", real:true},
-  pop_total:{label:"総人口（サンプル値）",
-    get:m=>demoMuni(m.code).total, unit:"人", real:false},
+  pop_total:{label:"総人口（令和7年国勢調査 速報値）",
+    get:m=>m.pop&&m.pop.trend[m.pop.trend.length-1].pop, unit:"人", real:true},
 };
 
 /* ============================ 索引の構築 ============================ */
@@ -272,7 +258,13 @@ const MUNI=DATA.municipalities.map(m=>{
     trend:z.trend.map(t=>({year:t.year,date:t.date,pop:t.population,households:t.households})),
     pyramid:demoAzaPyramid(m.code+"/"+z.aza,z.trend[z.trend.length-1].population),
   }));
-  return{...m,policy,akiya,housing,aza};
+  const pm=DATA.population_muni.find(p=>p.code===m.code)||null;
+  const pop=pm&&{
+    pyramidYear:pm.pyramid_year, pyramid:pm.pyramid,
+    trend:pm.trend.map(t=>({year:t.year,date:t.date,pop:t.population,
+      households:t.households,boundary:t.boundary,provisional:t.provisional})),
+  };
+  return{...m,policy,akiya,housing,aza,pop};
 });
 const INDEX=[];
 for(const m of MUNI){
@@ -305,6 +297,7 @@ function hanaSVG(v,color){
 }
 
 function pyramidSVG(rows){
+  if(!rows||!rows.length)return `<p class="note">データなし</p>`;
   const W=440,H=270,mid=W/2,gap=34,bh=(H-24)/rows.length-1.6;
   const max=Math.max(...rows.map(r=>Math.max(r.male,r.female)))||1;
   const sc=(mid-gap/2-14)/max;
@@ -332,22 +325,34 @@ function decimalYear(dateStr){
 function trendSVG(rows,label){
   const W=440,H=190,L=44,R=10,T=14,B=26;
   const xval=r=>r.date?decimalYear(r.date):r.year;
-  const xs=rows.map(xval),ys=rows.map(r=>r.pop);
+  const known=rows.filter(r=>r.pop!=null);
+  if(!known.length)return `<p class="note">データなし</p>`;
+  const xs=known.map(xval),ys=known.map(r=>r.pop);
   const x0=Math.min(...xs),x1=Math.max(...xs);
   const y1=Math.max(...ys)*1.06,y0=Math.min(...ys)*.9;
   const px=v=>L+(W-L-R)*((v-x0)/((x1-x0)||1));
   const py=v=>T+(H-T-B)*(1-(v-y0)/((y1-y0)||1));
-  const pts=rows.map(r=>`${px(xval(r)).toFixed(1)},${py(r.pop).toFixed(1)}`).join(" ");
   let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">`;
   for(let k=0;k<=2;k++){
     const v=y0+(y1-y0)*k/2,y=py(v);
     s+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="var(--line2)"/>`;
     s+=`<text x="${L-6}" y="${y+3}" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${Math.round(v).toLocaleString()}</text>`;
   }
-  s+=`<polyline points="${pts}" fill="none" stroke="var(--ai)" stroke-width="2"/>`;
-  rows.forEach(r=>{
-    const title=r.date?`${r.year}年（${r.date}現在）${fmt(r.pop)}人`:`${r.year}年 ${fmt(r.pop)}人`;
-    s+=`<circle cx="${px(xval(r))}" cy="${py(r.pop)}" r="2.6" fill="var(--ai)"><title>${esc(title)}</title></circle>`;});
+  // 合併前の旧市町村を合算した年（boundary==="reconciled"）は、実体の population
+  // ではなく境界を組み替えた推計値なので、区間を破線・薄い色にして区別する。
+  for(let i=0;i<known.length-1;i++){
+    const a=known[i],b=known[i+1],reconciled=a.boundary==="reconciled"||b.boundary==="reconciled";
+    s+=`<line x1="${px(xval(a)).toFixed(1)}" y1="${py(a.pop).toFixed(1)}" x2="${px(xval(b)).toFixed(1)}" y2="${py(b.pop).toFixed(1)}"
+      stroke="var(--ai)" stroke-width="2"${reconciled?' stroke-dasharray="3 3" opacity=".5"':""}/>`;
+  }
+  known.forEach(r=>{
+    const rec=r.boundary==="reconciled";
+    const bits=[r.date?`${r.year}年（${r.date}現在）`:`${r.year}年`,`${fmt(r.pop)}人`];
+    if(rec)bits.push("旧市町村の合算値（境界を組み替えた推計）");
+    if(r.provisional)bits.push("速報値・年齢別データなし");
+    s+=`<circle cx="${px(xval(r))}" cy="${py(r.pop)}" r="${rec?2.2:2.6}"
+      fill="${rec?"var(--surface)":"var(--ai)"}" stroke="var(--ai)" stroke-width="${rec?1.3:0}"
+      opacity="${rec?.75:1}"><title>${esc(bits.join(" ／ "))}</title></circle>`;});
   rows.forEach((r,i)=>{if(i%2===0||i===rows.length-1)
     s+=`<text x="${px(xval(r))}" y="${H-8}" text-anchor="middle" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${r.year}</text>`;});
   return s+"</svg>";
@@ -457,7 +462,8 @@ function prefView(){
 }
 
 function muniView(m){
-  const d=demoMuni(m.code), p=m.policy||{}, a=m.akiya||{};
+  const d=m.pop||{pyramid:null,pyramidYear:null,trend:[]}, p=m.policy||{}, a=m.akiya||{};
+  const reconciledYears=d.trend.filter(t=>t.boundary==="reconciled").map(t=>t.year);
   const azaCells=m.aza.map(z=>{
     const last=z.trend[z.trend.length-1], first=z.trend[0];
     const rate=first.pop>0?(last.pop-first.pop)/first.pop:null;
@@ -489,13 +495,14 @@ function muniView(m){
   <div class="grid2">
     <div class="card">
       <h2>年齢5歳階級別人口</h2>
-      <div class="dummy"><span class="dummy-tag">ダミー</span>${pyramidSVG(d.pyramid)}</div>
-      <p class="chartnote">実データ差し替え元：令和2年国勢調査 人口等基本集計（R7確報は令和8年9月までに公表予定）</p>
+      ${pyramidSVG(d.pyramid)}
+      <p class="chartnote">出典：${d.pyramidYear||2020}年（令和2年）国勢調査 人口等基本集計。R7確報の年齢別は令和8年9月までに公表予定。</p>
     </div>
     <div class="card">
       <h2>人口推移</h2>
-      <div class="dummy"><span class="dummy-tag">ダミー</span>${trendSVG(d.trend,"人口推移")}</div>
-      <p class="chartnote">実データ差し替え元：国勢調査 1980–2020 ＋ 令和7年 人口速報集計</p>
+      ${trendSVG(d.trend,"人口推移")}
+      <p class="chartnote">出典：国勢調査 1980〜2020年（各回10月1日現在）＋令和7年国勢調査 速報集計（2025年・2026-05-29公表、男女別人口のみ・年齢別なし）。
+      ${reconciledYears.length?`薄い破線区間（${reconciledYears.join("・")}年）は現在の市域に含まれる旧市町村の人口を単純合算した推計値。`:""}</p>
     </div>
 
     <div class="card wide">

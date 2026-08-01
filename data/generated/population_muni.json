@@ -1,0 +1,6603 @@
+[
+ {
+  "code": "47201",
+  "name": "那覇市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 295778,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 303674,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 304836,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 301890,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 301032,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 312393,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 315954,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 319435,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 317625,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 311073,
+    "households": 151259,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 7182,
+    "female": 6810
+   },
+   {
+    "age": "5-9",
+    "male": 8068,
+    "female": 7827
+   },
+   {
+    "age": "10-14",
+    "male": 8257,
+    "female": 8022
+   },
+   {
+    "age": "15-19",
+    "male": 8205,
+    "female": 8077
+   },
+   {
+    "age": "20-24",
+    "male": 7717,
+    "female": 7425
+   },
+   {
+    "age": "25-29",
+    "male": 7966,
+    "female": 7904
+   },
+   {
+    "age": "30-34",
+    "male": 8840,
+    "female": 8868
+   },
+   {
+    "age": "35-39",
+    "male": 9495,
+    "female": 9891
+   },
+   {
+    "age": "40-44",
+    "male": 10473,
+    "female": 10636
+   },
+   {
+    "age": "45-49",
+    "male": 12075,
+    "female": 12159
+   },
+   {
+    "age": "50-54",
+    "male": 10884,
+    "female": 10948
+   },
+   {
+    "age": "55-59",
+    "male": 9677,
+    "female": 9829
+   },
+   {
+    "age": "60-64",
+    "male": 8935,
+    "female": 9532
+   },
+   {
+    "age": "65-69",
+    "male": 9552,
+    "female": 10441
+   },
+   {
+    "age": "70-74",
+    "male": 7753,
+    "female": 8887
+   },
+   {
+    "age": "75-79",
+    "male": 4989,
+    "female": 6770
+   },
+   {
+    "age": "80-84",
+    "male": 4528,
+    "female": 6881
+   },
+   {
+    "age": "85+",
+    "male": 3953,
+    "female": 8533
+   }
+  ]
+ },
+ {
+  "code": "47205",
+  "name": "宜野湾市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 62549,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 69206,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 75905,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 82862,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 86744,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 89769,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 91928,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 96243,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 100125,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 100158,
+    "households": 46720,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 2841,
+    "female": 2699
+   },
+   {
+    "age": "5-9",
+    "male": 2760,
+    "female": 2847
+   },
+   {
+    "age": "10-14",
+    "male": 2797,
+    "female": 2707
+   },
+   {
+    "age": "15-19",
+    "male": 2764,
+    "female": 2547
+   },
+   {
+    "age": "20-24",
+    "male": 2965,
+    "female": 2618
+   },
+   {
+    "age": "25-29",
+    "male": 2790,
+    "female": 2862
+   },
+   {
+    "age": "30-34",
+    "male": 2854,
+    "female": 3123
+   },
+   {
+    "age": "35-39",
+    "male": 3235,
+    "female": 3303
+   },
+   {
+    "age": "40-44",
+    "male": 3386,
+    "female": 3493
+   },
+   {
+    "age": "45-49",
+    "male": 3621,
+    "female": 3824
+   },
+   {
+    "age": "50-54",
+    "male": 3043,
+    "female": 3304
+   },
+   {
+    "age": "55-59",
+    "male": 2719,
+    "female": 2817
+   },
+   {
+    "age": "60-64",
+    "male": 2536,
+    "female": 2688
+   },
+   {
+    "age": "65-69",
+    "male": 2696,
+    "female": 2885
+   },
+   {
+    "age": "70-74",
+    "male": 2011,
+    "female": 2364
+   },
+   {
+    "age": "75-79",
+    "male": 1375,
+    "female": 1722
+   },
+   {
+    "age": "80-84",
+    "male": 1213,
+    "female": 1708
+   },
+   {
+    "age": "85+",
+    "male": 964,
+    "female": 1987
+   }
+  ]
+ },
+ {
+  "code": "47207",
+  "name": "石垣市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 38819,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 41177,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 41245,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 41777,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 43302,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 45183,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 46922,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 47564,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 47637,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 47735,
+    "households": 23734,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1379,
+    "female": 1286
+   },
+   {
+    "age": "5-9",
+    "male": 1394,
+    "female": 1406
+   },
+   {
+    "age": "10-14",
+    "male": 1385,
+    "female": 1312
+   },
+   {
+    "age": "15-19",
+    "male": 1018,
+    "female": 953
+   },
+   {
+    "age": "20-24",
+    "male": 752,
+    "female": 764
+   },
+   {
+    "age": "25-29",
+    "male": 1191,
+    "female": 1138
+   },
+   {
+    "age": "30-34",
+    "male": 1432,
+    "female": 1409
+   },
+   {
+    "age": "35-39",
+    "male": 1675,
+    "female": 1763
+   },
+   {
+    "age": "40-44",
+    "male": 1744,
+    "female": 1729
+   },
+   {
+    "age": "45-49",
+    "male": 1726,
+    "female": 1611
+   },
+   {
+    "age": "50-54",
+    "male": 1581,
+    "female": 1375
+   },
+   {
+    "age": "55-59",
+    "male": 1570,
+    "female": 1398
+   },
+   {
+    "age": "60-64",
+    "male": 1740,
+    "female": 1603
+   },
+   {
+    "age": "65-69",
+    "male": 1755,
+    "female": 1586
+   },
+   {
+    "age": "70-74",
+    "male": 1231,
+    "female": 1199
+   },
+   {
+    "age": "75-79",
+    "male": 691,
+    "female": 776
+   },
+   {
+    "age": "80-84",
+    "male": 599,
+    "female": 826
+   },
+   {
+    "age": "85+",
+    "male": 587,
+    "female": 1232
+   }
+  ]
+ },
+ {
+  "code": "47208",
+  "name": "浦添市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 70282,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 81611,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 89994,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 96002,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 102734,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 106049,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 110351,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 114232,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 115690,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 115716,
+    "households": 49152,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 3162,
+    "female": 2978
+   },
+   {
+    "age": "5-9",
+    "male": 3313,
+    "female": 3302
+   },
+   {
+    "age": "10-14",
+    "male": 3560,
+    "female": 3407
+   },
+   {
+    "age": "15-19",
+    "male": 3415,
+    "female": 3223
+   },
+   {
+    "age": "20-24",
+    "male": 3033,
+    "female": 2950
+   },
+   {
+    "age": "25-29",
+    "male": 3093,
+    "female": 3055
+   },
+   {
+    "age": "30-34",
+    "male": 3336,
+    "female": 3496
+   },
+   {
+    "age": "35-39",
+    "male": 3577,
+    "female": 3839
+   },
+   {
+    "age": "40-44",
+    "male": 3847,
+    "female": 4034
+   },
+   {
+    "age": "45-49",
+    "male": 4436,
+    "female": 4597
+   },
+   {
+    "age": "50-54",
+    "male": 3818,
+    "female": 4052
+   },
+   {
+    "age": "55-59",
+    "male": 3373,
+    "female": 3673
+   },
+   {
+    "age": "60-64",
+    "male": 3177,
+    "female": 3262
+   },
+   {
+    "age": "65-69",
+    "male": 3148,
+    "female": 3543
+   },
+   {
+    "age": "70-74",
+    "male": 2653,
+    "female": 2811
+   },
+   {
+    "age": "75-79",
+    "male": 1751,
+    "female": 2171
+   },
+   {
+    "age": "80-84",
+    "male": 1523,
+    "female": 2056
+   },
+   {
+    "age": "85+",
+    "male": 1134,
+    "female": 2390
+   }
+  ]
+ },
+ {
+  "code": "47209",
+  "name": "名護市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 45991,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 49038,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 51154,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 53955,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 56606,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 59463,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 60231,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 61674,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 63554,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 66084,
+    "households": 31441,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1727,
+    "female": 1707
+   },
+   {
+    "age": "5-9",
+    "male": 1826,
+    "female": 1777
+   },
+   {
+    "age": "10-14",
+    "male": 1845,
+    "female": 1654
+   },
+   {
+    "age": "15-19",
+    "male": 2134,
+    "female": 1800
+   },
+   {
+    "age": "20-24",
+    "male": 1595,
+    "female": 1737
+   },
+   {
+    "age": "25-29",
+    "male": 1563,
+    "female": 1592
+   },
+   {
+    "age": "30-34",
+    "male": 1744,
+    "female": 1814
+   },
+   {
+    "age": "35-39",
+    "male": 1991,
+    "female": 2066
+   },
+   {
+    "age": "40-44",
+    "male": 2033,
+    "female": 2038
+   },
+   {
+    "age": "45-49",
+    "male": 2143,
+    "female": 1996
+   },
+   {
+    "age": "50-54",
+    "male": 1703,
+    "female": 1715
+   },
+   {
+    "age": "55-59",
+    "male": 1810,
+    "female": 1803
+   },
+   {
+    "age": "60-64",
+    "male": 2025,
+    "female": 1950
+   },
+   {
+    "age": "65-69",
+    "male": 2095,
+    "female": 2023
+   },
+   {
+    "age": "70-74",
+    "male": 1636,
+    "female": 1645
+   },
+   {
+    "age": "75-79",
+    "male": 1041,
+    "female": 1117
+   },
+   {
+    "age": "80-84",
+    "male": 869,
+    "female": 1072
+   },
+   {
+    "age": "85+",
+    "male": 789,
+    "female": 1614
+   }
+  ]
+ },
+ {
+  "code": "47210",
+  "name": "糸満市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 42239,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 45921,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 49636,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 53496,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 54974,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 55816,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 57320,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 58547,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 61007,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 60664,
+    "households": 24389,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1872,
+    "female": 1788
+   },
+   {
+    "age": "5-9",
+    "male": 1908,
+    "female": 1891
+   },
+   {
+    "age": "10-14",
+    "male": 1779,
+    "female": 1722
+   },
+   {
+    "age": "15-19",
+    "male": 1724,
+    "female": 1590
+   },
+   {
+    "age": "20-24",
+    "male": 1498,
+    "female": 1371
+   },
+   {
+    "age": "25-29",
+    "male": 1665,
+    "female": 1541
+   },
+   {
+    "age": "30-34",
+    "male": 1789,
+    "female": 1886
+   },
+   {
+    "age": "35-39",
+    "male": 2079,
+    "female": 1995
+   },
+   {
+    "age": "40-44",
+    "male": 2102,
+    "female": 1860
+   },
+   {
+    "age": "45-49",
+    "male": 2105,
+    "female": 1927
+   },
+   {
+    "age": "50-54",
+    "male": 1684,
+    "female": 1663
+   },
+   {
+    "age": "55-59",
+    "male": 1836,
+    "female": 1736
+   },
+   {
+    "age": "60-64",
+    "male": 2041,
+    "female": 1977
+   },
+   {
+    "age": "65-69",
+    "male": 2168,
+    "female": 2074
+   },
+   {
+    "age": "70-74",
+    "male": 1708,
+    "female": 1527
+   },
+   {
+    "age": "75-79",
+    "male": 924,
+    "female": 1020
+   },
+   {
+    "age": "80-84",
+    "male": 872,
+    "female": 1102
+   },
+   {
+    "age": "85+",
+    "male": 722,
+    "female": 1405
+   }
+  ]
+ },
+ {
+  "code": "47211",
+  "name": "沖縄市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 94851,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 101210,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 105845,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 115336,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 119686,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 126400,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 130249,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 139279,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 142752,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 141894,
+    "households": 63504,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 3945,
+    "female": 3646
+   },
+   {
+    "age": "5-9",
+    "male": 4111,
+    "female": 3924
+   },
+   {
+    "age": "10-14",
+    "male": 4127,
+    "female": 4076
+   },
+   {
+    "age": "15-19",
+    "male": 4107,
+    "female": 3955
+   },
+   {
+    "age": "20-24",
+    "male": 3679,
+    "female": 3519
+   },
+   {
+    "age": "25-29",
+    "male": 3913,
+    "female": 3953
+   },
+   {
+    "age": "30-34",
+    "male": 4038,
+    "female": 4112
+   },
+   {
+    "age": "35-39",
+    "male": 4197,
+    "female": 4421
+   },
+   {
+    "age": "40-44",
+    "male": 4655,
+    "female": 4888
+   },
+   {
+    "age": "45-49",
+    "male": 5140,
+    "female": 5377
+   },
+   {
+    "age": "50-54",
+    "male": 4488,
+    "female": 4749
+   },
+   {
+    "age": "55-59",
+    "male": 4107,
+    "female": 4246
+   },
+   {
+    "age": "60-64",
+    "male": 3924,
+    "female": 4205
+   },
+   {
+    "age": "65-69",
+    "male": 4025,
+    "female": 4296
+   },
+   {
+    "age": "70-74",
+    "male": 3296,
+    "female": 3516
+   },
+   {
+    "age": "75-79",
+    "male": 1991,
+    "female": 2495
+   },
+   {
+    "age": "80-84",
+    "male": 1768,
+    "female": 2644
+   },
+   {
+    "age": "85+",
+    "male": 1553,
+    "female": 3270
+   }
+  ]
+ },
+ {
+  "code": "47212",
+  "name": "豊見城市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 33075,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 37965,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 40777,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 45253,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 50198,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 52516,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 57261,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 61119,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 64612,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 65669,
+    "households": 26087,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 2047,
+    "female": 1960
+   },
+   {
+    "age": "5-9",
+    "male": 2207,
+    "female": 2204
+   },
+   {
+    "age": "10-14",
+    "male": 2093,
+    "female": 2015
+   },
+   {
+    "age": "15-19",
+    "male": 1817,
+    "female": 1700
+   },
+   {
+    "age": "20-24",
+    "male": 1462,
+    "female": 1515
+   },
+   {
+    "age": "25-29",
+    "male": 1662,
+    "female": 1666
+   },
+   {
+    "age": "30-34",
+    "male": 1970,
+    "female": 2013
+   },
+   {
+    "age": "35-39",
+    "male": 2249,
+    "female": 2322
+   },
+   {
+    "age": "40-44",
+    "male": 2289,
+    "female": 2431
+   },
+   {
+    "age": "45-49",
+    "male": 2452,
+    "female": 2340
+   },
+   {
+    "age": "50-54",
+    "male": 1917,
+    "female": 2007
+   },
+   {
+    "age": "55-59",
+    "male": 1704,
+    "female": 1775
+   },
+   {
+    "age": "60-64",
+    "male": 1694,
+    "female": 1774
+   },
+   {
+    "age": "65-69",
+    "male": 1856,
+    "female": 1883
+   },
+   {
+    "age": "70-74",
+    "male": 1445,
+    "female": 1621
+   },
+   {
+    "age": "75-79",
+    "male": 970,
+    "female": 1119
+   },
+   {
+    "age": "80-84",
+    "male": 805,
+    "female": 1030
+   },
+   {
+    "age": "85+",
+    "male": 581,
+    "female": 1419
+   }
+  ]
+ },
+ {
+  "code": "47213",
+  "name": "うるま市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 91285,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 98539,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 101911,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 105228,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 109992,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 113535,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 116979,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 118898,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 125303,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 128437,
+    "households": 53987,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 3557,
+    "female": 3265
+   },
+   {
+    "age": "5-9",
+    "male": 3678,
+    "female": 3432
+   },
+   {
+    "age": "10-14",
+    "male": 3695,
+    "female": 3557
+   },
+   {
+    "age": "15-19",
+    "male": 3687,
+    "female": 3472
+   },
+   {
+    "age": "20-24",
+    "male": 3384,
+    "female": 3106
+   },
+   {
+    "age": "25-29",
+    "male": 3411,
+    "female": 3227
+   },
+   {
+    "age": "30-34",
+    "male": 3668,
+    "female": 3482
+   },
+   {
+    "age": "35-39",
+    "male": 3973,
+    "female": 3829
+   },
+   {
+    "age": "40-44",
+    "male": 4168,
+    "female": 3973
+   },
+   {
+    "age": "45-49",
+    "male": 4614,
+    "female": 4426
+   },
+   {
+    "age": "50-54",
+    "male": 3960,
+    "female": 3779
+   },
+   {
+    "age": "55-59",
+    "male": 3896,
+    "female": 3647
+   },
+   {
+    "age": "60-64",
+    "male": 4125,
+    "female": 3852
+   },
+   {
+    "age": "65-69",
+    "male": 4250,
+    "female": 3937
+   },
+   {
+    "age": "70-74",
+    "male": 3362,
+    "female": 3305
+   },
+   {
+    "age": "75-79",
+    "male": 2123,
+    "female": 2184
+   },
+   {
+    "age": "80-84",
+    "male": 1756,
+    "female": 2364
+   },
+   {
+    "age": "85+",
+    "male": 1494,
+    "female": 3275
+   }
+  ]
+ },
+ {
+  "code": "47214",
+  "name": "宮古島市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 58797,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 58535,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 55429,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 54326,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 54249,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 53493,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 52039,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 51186,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 52931,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 52012,
+    "households": 25737,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1390,
+    "female": 1325
+   },
+   {
+    "age": "5-9",
+    "male": 1526,
+    "female": 1421
+   },
+   {
+    "age": "10-14",
+    "male": 1434,
+    "female": 1306
+   },
+   {
+    "age": "15-19",
+    "male": 1028,
+    "female": 987
+   },
+   {
+    "age": "20-24",
+    "male": 712,
+    "female": 718
+   },
+   {
+    "age": "25-29",
+    "male": 1127,
+    "female": 1084
+   },
+   {
+    "age": "30-34",
+    "male": 1465,
+    "female": 1355
+   },
+   {
+    "age": "35-39",
+    "male": 1766,
+    "female": 1684
+   },
+   {
+    "age": "40-44",
+    "male": 1789,
+    "female": 1667
+   },
+   {
+    "age": "45-49",
+    "male": 1752,
+    "female": 1531
+   },
+   {
+    "age": "50-54",
+    "male": 1567,
+    "female": 1403
+   },
+   {
+    "age": "55-59",
+    "male": 1840,
+    "female": 1727
+   },
+   {
+    "age": "60-64",
+    "male": 2203,
+    "female": 2108
+   },
+   {
+    "age": "65-69",
+    "male": 2114,
+    "female": 2119
+   },
+   {
+    "age": "70-74",
+    "male": 1476,
+    "female": 1466
+   },
+   {
+    "age": "75-79",
+    "male": 1015,
+    "female": 1048
+   },
+   {
+    "age": "80-84",
+    "male": 790,
+    "female": 1101
+   },
+   {
+    "age": "85+",
+    "male": 1015,
+    "female": 1935
+   }
+  ]
+ },
+ {
+  "code": "47215",
+  "name": "南城市",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 34124,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 36062,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 36836,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 38173,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 39130,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 39651,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 39758,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 42016,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 44043,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 45350,
+    "households": 17097,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1307,
+    "female": 1188
+   },
+   {
+    "age": "5-9",
+    "male": 1350,
+    "female": 1289
+   },
+   {
+    "age": "10-14",
+    "male": 1317,
+    "female": 1283
+   },
+   {
+    "age": "15-19",
+    "male": 1122,
+    "female": 1095
+   },
+   {
+    "age": "20-24",
+    "male": 996,
+    "female": 892
+   },
+   {
+    "age": "25-29",
+    "male": 1039,
+    "female": 989
+   },
+   {
+    "age": "30-34",
+    "male": 1169,
+    "female": 1129
+   },
+   {
+    "age": "35-39",
+    "male": 1374,
+    "female": 1373
+   },
+   {
+    "age": "40-44",
+    "male": 1369,
+    "female": 1310
+   },
+   {
+    "age": "45-49",
+    "male": 1495,
+    "female": 1360
+   },
+   {
+    "age": "50-54",
+    "male": 1342,
+    "female": 1182
+   },
+   {
+    "age": "55-59",
+    "male": 1276,
+    "female": 1276
+   },
+   {
+    "age": "60-64",
+    "male": 1539,
+    "female": 1430
+   },
+   {
+    "age": "65-69",
+    "male": 1747,
+    "female": 1486
+   },
+   {
+    "age": "70-74",
+    "male": 1290,
+    "female": 1263
+   },
+   {
+    "age": "75-79",
+    "male": 923,
+    "female": 923
+   },
+   {
+    "age": "80-84",
+    "male": 777,
+    "female": 946
+   },
+   {
+    "age": "85+",
+    "male": 646,
+    "female": 1408
+   }
+  ]
+ },
+ {
+  "code": "47301",
+  "name": "国頭村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 6873,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 6510,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 6114,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 6015,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 5825,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 5546,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 5188,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 4908,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 4517,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 4131,
+    "households": 2010,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 86,
+    "female": 82
+   },
+   {
+    "age": "5-9",
+    "male": 115,
+    "female": 84
+   },
+   {
+    "age": "10-14",
+    "male": 100,
+    "female": 120
+   },
+   {
+    "age": "15-19",
+    "male": 91,
+    "female": 102
+   },
+   {
+    "age": "20-24",
+    "male": 94,
+    "female": 75
+   },
+   {
+    "age": "25-29",
+    "male": 82,
+    "female": 61
+   },
+   {
+    "age": "30-34",
+    "male": 127,
+    "female": 114
+   },
+   {
+    "age": "35-39",
+    "male": 104,
+    "female": 114
+   },
+   {
+    "age": "40-44",
+    "male": 117,
+    "female": 100
+   },
+   {
+    "age": "45-49",
+    "male": 129,
+    "female": 113
+   },
+   {
+    "age": "50-54",
+    "male": 143,
+    "female": 110
+   },
+   {
+    "age": "55-59",
+    "male": 148,
+    "female": 146
+   },
+   {
+    "age": "60-64",
+    "male": 218,
+    "female": 192
+   },
+   {
+    "age": "65-69",
+    "male": 265,
+    "female": 188
+   },
+   {
+    "age": "70-74",
+    "male": 182,
+    "female": 140
+   },
+   {
+    "age": "75-79",
+    "male": 104,
+    "female": 109
+   },
+   {
+    "age": "80-84",
+    "male": 91,
+    "female": 124
+   },
+   {
+    "age": "85+",
+    "male": 121,
+    "female": 226
+   }
+  ]
+ },
+ {
+  "code": "47302",
+  "name": "大宜味村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 3626,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 3567,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 3513,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 3437,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 3281,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 3371,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 3221,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 3060,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 3092,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 2842,
+    "households": 1284,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 53,
+    "female": 52
+   },
+   {
+    "age": "5-9",
+    "male": 64,
+    "female": 56
+   },
+   {
+    "age": "10-14",
+    "male": 56,
+    "female": 70
+   },
+   {
+    "age": "15-19",
+    "male": 86,
+    "female": 68
+   },
+   {
+    "age": "20-24",
+    "male": 48,
+    "female": 38
+   },
+   {
+    "age": "25-29",
+    "male": 64,
+    "female": 52
+   },
+   {
+    "age": "30-34",
+    "male": 62,
+    "female": 54
+   },
+   {
+    "age": "35-39",
+    "male": 91,
+    "female": 76
+   },
+   {
+    "age": "40-44",
+    "male": 93,
+    "female": 77
+   },
+   {
+    "age": "45-49",
+    "male": 83,
+    "female": 51
+   },
+   {
+    "age": "50-54",
+    "male": 74,
+    "female": 74
+   },
+   {
+    "age": "55-59",
+    "male": 103,
+    "female": 97
+   },
+   {
+    "age": "60-64",
+    "male": 162,
+    "female": 141
+   },
+   {
+    "age": "65-69",
+    "male": 206,
+    "female": 122
+   },
+   {
+    "age": "70-74",
+    "male": 150,
+    "female": 98
+   },
+   {
+    "age": "75-79",
+    "male": 80,
+    "female": 67
+   },
+   {
+    "age": "80-84",
+    "male": 69,
+    "female": 60
+   },
+   {
+    "age": "85+",
+    "male": 95,
+    "female": 199
+   }
+  ]
+ },
+ {
+  "code": "47303",
+  "name": "東村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 2067,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 2134,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 1891,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1963,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1867,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1825,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 1794,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 1720,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 1598,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 1512,
+    "households": 695,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 33,
+    "female": 35
+   },
+   {
+    "age": "5-9",
+    "male": 35,
+    "female": 28
+   },
+   {
+    "age": "10-14",
+    "male": 41,
+    "female": 26
+   },
+   {
+    "age": "15-19",
+    "male": 30,
+    "female": 18
+   },
+   {
+    "age": "20-24",
+    "male": 26,
+    "female": 13
+   },
+   {
+    "age": "25-29",
+    "male": 26,
+    "female": 17
+   },
+   {
+    "age": "30-34",
+    "male": 42,
+    "female": 36
+   },
+   {
+    "age": "35-39",
+    "male": 43,
+    "female": 29
+   },
+   {
+    "age": "40-44",
+    "male": 49,
+    "female": 40
+   },
+   {
+    "age": "45-49",
+    "male": 57,
+    "female": 44
+   },
+   {
+    "age": "50-54",
+    "male": 41,
+    "female": 35
+   },
+   {
+    "age": "55-59",
+    "male": 67,
+    "female": 44
+   },
+   {
+    "age": "60-64",
+    "male": 85,
+    "female": 71
+   },
+   {
+    "age": "65-69",
+    "male": 100,
+    "female": 73
+   },
+   {
+    "age": "70-74",
+    "male": 82,
+    "female": 63
+   },
+   {
+    "age": "75-79",
+    "male": 40,
+    "female": 33
+   },
+   {
+    "age": "80-84",
+    "male": 38,
+    "female": 35
+   },
+   {
+    "age": "85+",
+    "male": 49,
+    "female": 74
+   }
+  ]
+ },
+ {
+  "code": "47306",
+  "name": "今帰仁村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 9593,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 9465,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 9165,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 9486,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 9492,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 9476,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 9257,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 9531,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 8894,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 8761,
+    "households": 3631,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 192,
+    "female": 200
+   },
+   {
+    "age": "5-9",
+    "male": 238,
+    "female": 231
+   },
+   {
+    "age": "10-14",
+    "male": 235,
+    "female": 239
+   },
+   {
+    "age": "15-19",
+    "male": 235,
+    "female": 219
+   },
+   {
+    "age": "20-24",
+    "male": 124,
+    "female": 114
+   },
+   {
+    "age": "25-29",
+    "male": 126,
+    "female": 118
+   },
+   {
+    "age": "30-34",
+    "male": 179,
+    "female": 190
+   },
+   {
+    "age": "35-39",
+    "male": 215,
+    "female": 254
+   },
+   {
+    "age": "40-44",
+    "male": 274,
+    "female": 243
+   },
+   {
+    "age": "45-49",
+    "male": 235,
+    "female": 243
+   },
+   {
+    "age": "50-54",
+    "male": 222,
+    "female": 225
+   },
+   {
+    "age": "55-59",
+    "male": 300,
+    "female": 253
+   },
+   {
+    "age": "60-64",
+    "male": 422,
+    "female": 347
+   },
+   {
+    "age": "65-69",
+    "male": 489,
+    "female": 354
+   },
+   {
+    "age": "70-74",
+    "male": 366,
+    "female": 276
+   },
+   {
+    "age": "75-79",
+    "male": 201,
+    "female": 191
+   },
+   {
+    "age": "80-84",
+    "male": 191,
+    "female": 194
+   },
+   {
+    "age": "85+",
+    "male": 222,
+    "female": 535
+   }
+  ]
+ },
+ {
+  "code": "47308",
+  "name": "本部町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 15307,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 15116,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 15043,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 14718,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 14522,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 14383,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 13870,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 13536,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 12530,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 11825,
+    "households": 5303,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 251,
+    "female": 277
+   },
+   {
+    "age": "5-9",
+    "male": 332,
+    "female": 325
+   },
+   {
+    "age": "10-14",
+    "male": 323,
+    "female": 288
+   },
+   {
+    "age": "15-19",
+    "male": 252,
+    "female": 249
+   },
+   {
+    "age": "20-24",
+    "male": 198,
+    "female": 249
+   },
+   {
+    "age": "25-29",
+    "male": 235,
+    "female": 236
+   },
+   {
+    "age": "30-34",
+    "male": 308,
+    "female": 276
+   },
+   {
+    "age": "35-39",
+    "male": 328,
+    "female": 353
+   },
+   {
+    "age": "40-44",
+    "male": 378,
+    "female": 355
+   },
+   {
+    "age": "45-49",
+    "male": 346,
+    "female": 330
+   },
+   {
+    "age": "50-54",
+    "male": 313,
+    "female": 266
+   },
+   {
+    "age": "55-59",
+    "male": 445,
+    "female": 374
+   },
+   {
+    "age": "60-64",
+    "male": 550,
+    "female": 506
+   },
+   {
+    "age": "65-69",
+    "male": 720,
+    "female": 540
+   },
+   {
+    "age": "70-74",
+    "male": 531,
+    "female": 398
+   },
+   {
+    "age": "75-79",
+    "male": 289,
+    "female": 283
+   },
+   {
+    "age": "80-84",
+    "male": 239,
+    "female": 255
+   },
+   {
+    "age": "85+",
+    "male": 256,
+    "female": 596
+   }
+  ]
+ },
+ {
+  "code": "47311",
+  "name": "恩納村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 8013,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 8268,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 8486,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 8685,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 9064,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 9635,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 10144,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 10652,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 10869,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 11215,
+    "households": 5911,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 241,
+    "female": 234
+   },
+   {
+    "age": "5-9",
+    "male": 257,
+    "female": 291
+   },
+   {
+    "age": "10-14",
+    "male": 267,
+    "female": 295
+   },
+   {
+    "age": "15-19",
+    "male": 276,
+    "female": 230
+   },
+   {
+    "age": "20-24",
+    "male": 347,
+    "female": 410
+   },
+   {
+    "age": "25-29",
+    "male": 339,
+    "female": 305
+   },
+   {
+    "age": "30-34",
+    "male": 330,
+    "female": 299
+   },
+   {
+    "age": "35-39",
+    "male": 338,
+    "female": 306
+   },
+   {
+    "age": "40-44",
+    "male": 371,
+    "female": 350
+   },
+   {
+    "age": "45-49",
+    "male": 399,
+    "female": 377
+   },
+   {
+    "age": "50-54",
+    "male": 323,
+    "female": 312
+   },
+   {
+    "age": "55-59",
+    "male": 361,
+    "female": 300
+   },
+   {
+    "age": "60-64",
+    "male": 391,
+    "female": 299
+   },
+   {
+    "age": "65-69",
+    "male": 435,
+    "female": 345
+   },
+   {
+    "age": "70-74",
+    "male": 325,
+    "female": 276
+   },
+   {
+    "age": "75-79",
+    "male": 194,
+    "female": 187
+   },
+   {
+    "age": "80-84",
+    "male": 158,
+    "female": 201
+   },
+   {
+    "age": "85+",
+    "male": 145,
+    "female": 355
+   }
+  ]
+ },
+ {
+  "code": "47313",
+  "name": "宜野座村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 4022,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 4414,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 4630,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 4651,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 4749,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 5042,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 5331,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 5597,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 5833,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 6319,
+    "households": 2518,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 165,
+    "female": 194
+   },
+   {
+    "age": "5-9",
+    "male": 193,
+    "female": 200
+   },
+   {
+    "age": "10-14",
+    "male": 211,
+    "female": 194
+   },
+   {
+    "age": "15-19",
+    "male": 171,
+    "female": 140
+   },
+   {
+    "age": "20-24",
+    "male": 134,
+    "female": 99
+   },
+   {
+    "age": "25-29",
+    "male": 119,
+    "female": 127
+   },
+   {
+    "age": "30-34",
+    "male": 162,
+    "female": 144
+   },
+   {
+    "age": "35-39",
+    "male": 168,
+    "female": 174
+   },
+   {
+    "age": "40-44",
+    "male": 181,
+    "female": 196
+   },
+   {
+    "age": "45-49",
+    "male": 232,
+    "female": 216
+   },
+   {
+    "age": "50-54",
+    "male": 155,
+    "female": 136
+   },
+   {
+    "age": "55-59",
+    "male": 146,
+    "female": 133
+   },
+   {
+    "age": "60-64",
+    "male": 185,
+    "female": 161
+   },
+   {
+    "age": "65-69",
+    "male": 215,
+    "female": 204
+   },
+   {
+    "age": "70-74",
+    "male": 184,
+    "female": 164
+   },
+   {
+    "age": "75-79",
+    "male": 112,
+    "female": 126
+   },
+   {
+    "age": "80-84",
+    "male": 94,
+    "female": 103
+   },
+   {
+    "age": "85+",
+    "male": 76,
+    "female": 213
+   }
+  ]
+ },
+ {
+  "code": "47314",
+  "name": "金武町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 9745,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 10005,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 9525,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 9911,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 10106,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 10619,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 11066,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 11232,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 10806,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 11152,
+    "households": 4967,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 321,
+    "female": 294
+   },
+   {
+    "age": "5-9",
+    "male": 328,
+    "female": 318
+   },
+   {
+    "age": "10-14",
+    "male": 297,
+    "female": 316
+   },
+   {
+    "age": "15-19",
+    "male": 271,
+    "female": 279
+   },
+   {
+    "age": "20-24",
+    "male": 270,
+    "female": 220
+   },
+   {
+    "age": "25-29",
+    "male": 239,
+    "female": 217
+   },
+   {
+    "age": "30-34",
+    "male": 268,
+    "female": 235
+   },
+   {
+    "age": "35-39",
+    "male": 314,
+    "female": 298
+   },
+   {
+    "age": "40-44",
+    "male": 339,
+    "female": 312
+   },
+   {
+    "age": "45-49",
+    "male": 393,
+    "female": 343
+   },
+   {
+    "age": "50-54",
+    "male": 338,
+    "female": 323
+   },
+   {
+    "age": "55-59",
+    "male": 341,
+    "female": 278
+   },
+   {
+    "age": "60-64",
+    "male": 336,
+    "female": 306
+   },
+   {
+    "age": "65-69",
+    "male": 381,
+    "female": 360
+   },
+   {
+    "age": "70-74",
+    "male": 344,
+    "female": 341
+   },
+   {
+    "age": "75-79",
+    "male": 226,
+    "female": 287
+   },
+   {
+    "age": "80-84",
+    "male": 201,
+    "female": 265
+   },
+   {
+    "age": "85+",
+    "male": 159,
+    "female": 442
+   }
+  ]
+ },
+ {
+  "code": "47315",
+  "name": "伊江村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 5039,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 5055,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 5127,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 5131,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 5112,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 5110,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 4737,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 4260,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 4118,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 3727,
+    "households": 1813,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 114,
+    "female": 110
+   },
+   {
+    "age": "5-9",
+    "male": 99,
+    "female": 100
+   },
+   {
+    "age": "10-14",
+    "male": 115,
+    "female": 85
+   },
+   {
+    "age": "15-19",
+    "male": 37,
+    "female": 37
+   },
+   {
+    "age": "20-24",
+    "male": 37,
+    "female": 38
+   },
+   {
+    "age": "25-29",
+    "male": 45,
+    "female": 47
+   },
+   {
+    "age": "30-34",
+    "male": 95,
+    "female": 96
+   },
+   {
+    "age": "35-39",
+    "male": 130,
+    "female": 94
+   },
+   {
+    "age": "40-44",
+    "male": 115,
+    "female": 124
+   },
+   {
+    "age": "45-49",
+    "male": 131,
+    "female": 87
+   },
+   {
+    "age": "50-54",
+    "male": 92,
+    "female": 105
+   },
+   {
+    "age": "55-59",
+    "male": 174,
+    "female": 142
+   },
+   {
+    "age": "60-64",
+    "male": 238,
+    "female": 207
+   },
+   {
+    "age": "65-69",
+    "male": 233,
+    "female": 199
+   },
+   {
+    "age": "70-74",
+    "male": 141,
+    "female": 130
+   },
+   {
+    "age": "75-79",
+    "male": 83,
+    "female": 112
+   },
+   {
+    "age": "80-84",
+    "male": 104,
+    "female": 133
+   },
+   {
+    "age": "85+",
+    "male": 91,
+    "female": 198
+   }
+  ]
+ },
+ {
+  "code": "47324",
+  "name": "読谷村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 26516,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 28536,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 30750,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 32912,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 36115,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 37306,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 38200,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 39504,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 41206,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 41532,
+    "households": 16577,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 989,
+    "female": 1037
+   },
+   {
+    "age": "5-9",
+    "male": 1311,
+    "female": 1246
+   },
+   {
+    "age": "10-14",
+    "male": 1285,
+    "female": 1205
+   },
+   {
+    "age": "15-19",
+    "male": 1205,
+    "female": 1129
+   },
+   {
+    "age": "20-24",
+    "male": 1023,
+    "female": 1001
+   },
+   {
+    "age": "25-29",
+    "male": 943,
+    "female": 1010
+   },
+   {
+    "age": "30-34",
+    "male": 1070,
+    "female": 1159
+   },
+   {
+    "age": "35-39",
+    "male": 1241,
+    "female": 1301
+   },
+   {
+    "age": "40-44",
+    "male": 1384,
+    "female": 1486
+   },
+   {
+    "age": "45-49",
+    "male": 1607,
+    "female": 1542
+   },
+   {
+    "age": "50-54",
+    "male": 1335,
+    "female": 1330
+   },
+   {
+    "age": "55-59",
+    "male": 1257,
+    "female": 1325
+   },
+   {
+    "age": "60-64",
+    "male": 1299,
+    "female": 1303
+   },
+   {
+    "age": "65-69",
+    "male": 1445,
+    "female": 1312
+   },
+   {
+    "age": "70-74",
+    "male": 969,
+    "female": 1001
+   },
+   {
+    "age": "75-79",
+    "male": 671,
+    "female": 756
+   },
+   {
+    "age": "80-84",
+    "male": 614,
+    "female": 749
+   },
+   {
+    "age": "85+",
+    "male": 526,
+    "female": 1007
+   }
+  ]
+ },
+ {
+  "code": "47325",
+  "name": "嘉手納町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 14094,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 14126,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 13865,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 13752,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 13661,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 13629,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 13827,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 13685,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 13521,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 13229,
+    "households": 5267,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 357,
+    "female": 374
+   },
+   {
+    "age": "5-9",
+    "male": 389,
+    "female": 402
+   },
+   {
+    "age": "10-14",
+    "male": 422,
+    "female": 363
+   },
+   {
+    "age": "15-19",
+    "male": 423,
+    "female": 353
+   },
+   {
+    "age": "20-24",
+    "male": 315,
+    "female": 326
+   },
+   {
+    "age": "25-29",
+    "male": 344,
+    "female": 331
+   },
+   {
+    "age": "30-34",
+    "male": 331,
+    "female": 366
+   },
+   {
+    "age": "35-39",
+    "male": 367,
+    "female": 406
+   },
+   {
+    "age": "40-44",
+    "male": 421,
+    "female": 437
+   },
+   {
+    "age": "45-49",
+    "male": 460,
+    "female": 446
+   },
+   {
+    "age": "50-54",
+    "male": 403,
+    "female": 421
+   },
+   {
+    "age": "55-59",
+    "male": 432,
+    "female": 409
+   },
+   {
+    "age": "60-64",
+    "male": 433,
+    "female": 438
+   },
+   {
+    "age": "65-69",
+    "male": 433,
+    "female": 422
+   },
+   {
+    "age": "70-74",
+    "male": 309,
+    "female": 353
+   },
+   {
+    "age": "75-79",
+    "male": 231,
+    "female": 284
+   },
+   {
+    "age": "80-84",
+    "male": 223,
+    "female": 313
+   },
+   {
+    "age": "85+",
+    "male": 218,
+    "female": 487
+   }
+  ]
+ },
+ {
+  "code": "47326",
+  "name": "北谷町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 16014,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 19008,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 20730,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 23737,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 25554,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 26848,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 27264,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 28308,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 28201,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 28436,
+    "households": 12403,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 764,
+    "female": 740
+   },
+   {
+    "age": "5-9",
+    "male": 860,
+    "female": 756
+   },
+   {
+    "age": "10-14",
+    "male": 810,
+    "female": 850
+   },
+   {
+    "age": "15-19",
+    "male": 825,
+    "female": 782
+   },
+   {
+    "age": "20-24",
+    "male": 719,
+    "female": 685
+   },
+   {
+    "age": "25-29",
+    "male": 643,
+    "female": 745
+   },
+   {
+    "age": "30-34",
+    "male": 759,
+    "female": 808
+   },
+   {
+    "age": "35-39",
+    "male": 854,
+    "female": 978
+   },
+   {
+    "age": "40-44",
+    "male": 953,
+    "female": 1071
+   },
+   {
+    "age": "45-49",
+    "male": 1045,
+    "female": 1083
+   },
+   {
+    "age": "50-54",
+    "male": 916,
+    "female": 995
+   },
+   {
+    "age": "55-59",
+    "male": 762,
+    "female": 858
+   },
+   {
+    "age": "60-64",
+    "male": 710,
+    "female": 784
+   },
+   {
+    "age": "65-69",
+    "male": 817,
+    "female": 822
+   },
+   {
+    "age": "70-74",
+    "male": 648,
+    "female": 671
+   },
+   {
+    "age": "75-79",
+    "male": 434,
+    "female": 543
+   },
+   {
+    "age": "80-84",
+    "male": 374,
+    "female": 547
+   },
+   {
+    "age": "85+",
+    "male": 299,
+    "female": 610
+   }
+  ]
+ },
+ {
+  "code": "47327",
+  "name": "北中城村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 12210,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 13011,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 13707,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 15023,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 15745,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 15790,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 15951,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 16148,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 17969,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 18052,
+    "households": 7076,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 469,
+    "female": 447
+   },
+   {
+    "age": "5-9",
+    "male": 499,
+    "female": 567
+   },
+   {
+    "age": "10-14",
+    "male": 506,
+    "female": 485
+   },
+   {
+    "age": "15-19",
+    "male": 489,
+    "female": 475
+   },
+   {
+    "age": "20-24",
+    "male": 402,
+    "female": 428
+   },
+   {
+    "age": "25-29",
+    "male": 381,
+    "female": 425
+   },
+   {
+    "age": "30-34",
+    "male": 442,
+    "female": 518
+   },
+   {
+    "age": "35-39",
+    "male": 542,
+    "female": 578
+   },
+   {
+    "age": "40-44",
+    "male": 575,
+    "female": 629
+   },
+   {
+    "age": "45-49",
+    "male": 693,
+    "female": 686
+   },
+   {
+    "age": "50-54",
+    "male": 576,
+    "female": 591
+   },
+   {
+    "age": "55-59",
+    "male": 509,
+    "female": 533
+   },
+   {
+    "age": "60-64",
+    "male": 547,
+    "female": 509
+   },
+   {
+    "age": "65-69",
+    "male": 571,
+    "female": 550
+   },
+   {
+    "age": "70-74",
+    "male": 461,
+    "female": 465
+   },
+   {
+    "age": "75-79",
+    "male": 293,
+    "female": 364
+   },
+   {
+    "age": "80-84",
+    "male": 303,
+    "female": 366
+   },
+   {
+    "age": "85+",
+    "male": 297,
+    "female": 624
+   }
+  ]
+ },
+ {
+  "code": "47328",
+  "name": "中城村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 10346,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 10765,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 12060,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 13832,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 14987,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 15798,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 17680,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 19454,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 22157,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 22910,
+    "households": 9451,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 661,
+    "female": 656
+   },
+   {
+    "age": "5-9",
+    "male": 692,
+    "female": 638
+   },
+   {
+    "age": "10-14",
+    "male": 613,
+    "female": 605
+   },
+   {
+    "age": "15-19",
+    "male": 586,
+    "female": 582
+   },
+   {
+    "age": "20-24",
+    "male": 719,
+    "female": 653
+   },
+   {
+    "age": "25-29",
+    "male": 608,
+    "female": 568
+   },
+   {
+    "age": "30-34",
+    "male": 647,
+    "female": 617
+   },
+   {
+    "age": "35-39",
+    "male": 675,
+    "female": 714
+   },
+   {
+    "age": "40-44",
+    "male": 713,
+    "female": 769
+   },
+   {
+    "age": "45-49",
+    "male": 764,
+    "female": 770
+   },
+   {
+    "age": "50-54",
+    "male": 638,
+    "female": 605
+   },
+   {
+    "age": "55-59",
+    "male": 606,
+    "female": 547
+   },
+   {
+    "age": "60-64",
+    "male": 634,
+    "female": 606
+   },
+   {
+    "age": "65-69",
+    "male": 613,
+    "female": 624
+   },
+   {
+    "age": "70-74",
+    "male": 463,
+    "female": 428
+   },
+   {
+    "age": "75-79",
+    "male": 274,
+    "female": 319
+   },
+   {
+    "age": "80-84",
+    "male": 262,
+    "female": 340
+   },
+   {
+    "age": "85+",
+    "male": 256,
+    "female": 534
+   }
+  ]
+ },
+ {
+  "code": "47329",
+  "name": "西原町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 16305,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 21981,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 25489,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 28516,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 32777,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 33733,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 34766,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 34508,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 34984,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 35280,
+    "households": 14331,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 864,
+    "female": 791
+   },
+   {
+    "age": "5-9",
+    "male": 1029,
+    "female": 940
+   },
+   {
+    "age": "10-14",
+    "male": 999,
+    "female": 1014
+   },
+   {
+    "age": "15-19",
+    "male": 1136,
+    "female": 1072
+   },
+   {
+    "age": "20-24",
+    "male": 1342,
+    "female": 998
+   },
+   {
+    "age": "25-29",
+    "male": 984,
+    "female": 833
+   },
+   {
+    "age": "30-34",
+    "male": 911,
+    "female": 898
+   },
+   {
+    "age": "35-39",
+    "male": 1106,
+    "female": 1042
+   },
+   {
+    "age": "40-44",
+    "male": 1089,
+    "female": 1057
+   },
+   {
+    "age": "45-49",
+    "male": 1195,
+    "female": 1253
+   },
+   {
+    "age": "50-54",
+    "male": 1030,
+    "female": 1110
+   },
+   {
+    "age": "55-59",
+    "male": 1050,
+    "female": 984
+   },
+   {
+    "age": "60-64",
+    "male": 1113,
+    "female": 1148
+   },
+   {
+    "age": "65-69",
+    "male": 1150,
+    "female": 1193
+   },
+   {
+    "age": "70-74",
+    "male": 924,
+    "female": 933
+   },
+   {
+    "age": "75-79",
+    "male": 576,
+    "female": 624
+   },
+   {
+    "age": "80-84",
+    "male": 491,
+    "female": 546
+   },
+   {
+    "age": "85+",
+    "male": 377,
+    "female": 700
+   }
+  ]
+ },
+ {
+  "code": "47348",
+  "name": "与那原町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 12752,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 13311,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 14009,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 14850,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 15109,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 15343,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 16318,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 18410,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 19695,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 19267,
+    "households": 7985,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 681,
+    "female": 601
+   },
+   {
+    "age": "5-9",
+    "male": 643,
+    "female": 614
+   },
+   {
+    "age": "10-14",
+    "male": 621,
+    "female": 590
+   },
+   {
+    "age": "15-19",
+    "male": 512,
+    "female": 510
+   },
+   {
+    "age": "20-24",
+    "male": 425,
+    "female": 472
+   },
+   {
+    "age": "25-29",
+    "male": 536,
+    "female": 540
+   },
+   {
+    "age": "30-34",
+    "male": 623,
+    "female": 686
+   },
+   {
+    "age": "35-39",
+    "male": 684,
+    "female": 695
+   },
+   {
+    "age": "40-44",
+    "male": 647,
+    "female": 692
+   },
+   {
+    "age": "45-49",
+    "male": 708,
+    "female": 702
+   },
+   {
+    "age": "50-54",
+    "male": 560,
+    "female": 550
+   },
+   {
+    "age": "55-59",
+    "male": 516,
+    "female": 547
+   },
+   {
+    "age": "60-64",
+    "male": 488,
+    "female": 572
+   },
+   {
+    "age": "65-69",
+    "male": 594,
+    "female": 606
+   },
+   {
+    "age": "70-74",
+    "male": 456,
+    "female": 482
+   },
+   {
+    "age": "75-79",
+    "male": 293,
+    "female": 346
+   },
+   {
+    "age": "80-84",
+    "male": 237,
+    "female": 322
+   },
+   {
+    "age": "85+",
+    "male": 179,
+    "female": 387
+   }
+  ]
+ },
+ {
+  "code": "47350",
+  "name": "南風原町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 20679,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 24937,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 28616,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 30249,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 32099,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 33537,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 35244,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 37502,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 40440,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 41513,
+    "households": 15874,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1441,
+    "female": 1422
+   },
+   {
+    "age": "5-9",
+    "male": 1422,
+    "female": 1363
+   },
+   {
+    "age": "10-14",
+    "male": 1299,
+    "female": 1214
+   },
+   {
+    "age": "15-19",
+    "male": 1129,
+    "female": 1097
+   },
+   {
+    "age": "20-24",
+    "male": 845,
+    "female": 913
+   },
+   {
+    "age": "25-29",
+    "male": 1047,
+    "female": 1103
+   },
+   {
+    "age": "30-34",
+    "male": 1332,
+    "female": 1432
+   },
+   {
+    "age": "35-39",
+    "male": 1439,
+    "female": 1509
+   },
+   {
+    "age": "40-44",
+    "male": 1419,
+    "female": 1430
+   },
+   {
+    "age": "45-49",
+    "male": 1439,
+    "female": 1392
+   },
+   {
+    "age": "50-54",
+    "male": 1091,
+    "female": 1138
+   },
+   {
+    "age": "55-59",
+    "male": 1039,
+    "female": 1048
+   },
+   {
+    "age": "60-64",
+    "male": 1118,
+    "female": 1151
+   },
+   {
+    "age": "65-69",
+    "male": 1175,
+    "female": 1172
+   },
+   {
+    "age": "70-74",
+    "male": 894,
+    "female": 937
+   },
+   {
+    "age": "75-79",
+    "male": 604,
+    "female": 663
+   },
+   {
+    "age": "80-84",
+    "male": 542,
+    "female": 604
+   },
+   {
+    "age": "85+",
+    "male": 413,
+    "female": 858
+   }
+  ]
+ },
+ {
+  "code": "47353",
+  "name": "渡嘉敷村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 830,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 888,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 710,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 725,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 730,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 790,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 760,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 730,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 718,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 621,
+    "households": 383,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 24,
+    "female": 14
+   },
+   {
+    "age": "5-9",
+    "male": 20,
+    "female": 26
+   },
+   {
+    "age": "10-14",
+    "male": 30,
+    "female": 24
+   },
+   {
+    "age": "15-19",
+    "male": 1,
+    "female": 4
+   },
+   {
+    "age": "20-24",
+    "male": 17,
+    "female": 10
+   },
+   {
+    "age": "25-29",
+    "male": 17,
+    "female": 15
+   },
+   {
+    "age": "30-34",
+    "male": 30,
+    "female": 35
+   },
+   {
+    "age": "35-39",
+    "male": 28,
+    "female": 33
+   },
+   {
+    "age": "40-44",
+    "male": 32,
+    "female": 30
+   },
+   {
+    "age": "45-49",
+    "male": 21,
+    "female": 12
+   },
+   {
+    "age": "50-54",
+    "male": 26,
+    "female": 18
+   },
+   {
+    "age": "55-59",
+    "male": 35,
+    "female": 16
+   },
+   {
+    "age": "60-64",
+    "male": 28,
+    "female": 26
+   },
+   {
+    "age": "65-69",
+    "male": 24,
+    "female": 10
+   },
+   {
+    "age": "70-74",
+    "male": 25,
+    "female": 14
+   },
+   {
+    "age": "75-79",
+    "male": 9,
+    "female": 8
+   },
+   {
+    "age": "80-84",
+    "male": 12,
+    "female": 15
+   },
+   {
+    "age": "85+",
+    "male": 8,
+    "female": 21
+   }
+  ]
+ },
+ {
+  "code": "47354",
+  "name": "座間味村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 761,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 812,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 853,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1018,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1026,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1077,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 865,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 870,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 892,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 830,
+    "households": 477,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 28,
+    "female": 17
+   },
+   {
+    "age": "5-9",
+    "male": 34,
+    "female": 23
+   },
+   {
+    "age": "10-14",
+    "male": 32,
+    "female": 26
+   },
+   {
+    "age": "15-19",
+    "male": 4,
+    "female": 0
+   },
+   {
+    "age": "20-24",
+    "male": 12,
+    "female": 8
+   },
+   {
+    "age": "25-29",
+    "male": 27,
+    "female": 31
+   },
+   {
+    "age": "30-34",
+    "male": 41,
+    "female": 28
+   },
+   {
+    "age": "35-39",
+    "male": 33,
+    "female": 43
+   },
+   {
+    "age": "40-44",
+    "male": 26,
+    "female": 27
+   },
+   {
+    "age": "45-49",
+    "male": 40,
+    "female": 44
+   },
+   {
+    "age": "50-54",
+    "male": 40,
+    "female": 23
+   },
+   {
+    "age": "55-59",
+    "male": 35,
+    "female": 35
+   },
+   {
+    "age": "60-64",
+    "male": 34,
+    "female": 14
+   },
+   {
+    "age": "65-69",
+    "male": 40,
+    "female": 25
+   },
+   {
+    "age": "70-74",
+    "male": 29,
+    "female": 14
+   },
+   {
+    "age": "75-79",
+    "male": 13,
+    "female": 11
+   },
+   {
+    "age": "80-84",
+    "male": 9,
+    "female": 16
+   },
+   {
+    "age": "85+",
+    "male": 9,
+    "female": 21
+   }
+  ]
+ },
+ {
+  "code": "47355",
+  "name": "粟国村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 1086,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 930,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 930,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 968,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 960,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 936,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 863,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 759,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 683,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 612,
+    "households": 364,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 11,
+    "female": 12
+   },
+   {
+    "age": "5-9",
+    "male": 13,
+    "female": 18
+   },
+   {
+    "age": "10-14",
+    "male": 14,
+    "female": 14
+   },
+   {
+    "age": "15-19",
+    "male": 6,
+    "female": 4
+   },
+   {
+    "age": "20-24",
+    "male": 7,
+    "female": 6
+   },
+   {
+    "age": "25-29",
+    "male": 12,
+    "female": 14
+   },
+   {
+    "age": "30-34",
+    "male": 15,
+    "female": 9
+   },
+   {
+    "age": "35-39",
+    "male": 21,
+    "female": 15
+   },
+   {
+    "age": "40-44",
+    "male": 25,
+    "female": 25
+   },
+   {
+    "age": "45-49",
+    "male": 22,
+    "female": 18
+   },
+   {
+    "age": "50-54",
+    "male": 31,
+    "female": 11
+   },
+   {
+    "age": "55-59",
+    "male": 22,
+    "female": 17
+   },
+   {
+    "age": "60-64",
+    "male": 44,
+    "female": 22
+   },
+   {
+    "age": "65-69",
+    "male": 54,
+    "female": 21
+   },
+   {
+    "age": "70-74",
+    "male": 29,
+    "female": 11
+   },
+   {
+    "age": "75-79",
+    "male": 15,
+    "female": 9
+   },
+   {
+    "age": "80-84",
+    "male": 20,
+    "female": 22
+   },
+   {
+    "age": "85+",
+    "male": 20,
+    "female": 47
+   }
+  ]
+ },
+ {
+  "code": "47356",
+  "name": "渡名喜村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 609,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 529,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 560,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 616,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 523,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 531,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 452,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 430,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 346,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 234,
+    "households": 150,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 5,
+    "female": 3
+   },
+   {
+    "age": "5-9",
+    "male": 6,
+    "female": 4
+   },
+   {
+    "age": "10-14",
+    "male": 9,
+    "female": 2
+   },
+   {
+    "age": "15-19",
+    "male": 1,
+    "female": 5
+   },
+   {
+    "age": "20-24",
+    "male": 1,
+    "female": 4
+   },
+   {
+    "age": "25-29",
+    "male": 9,
+    "female": 6
+   },
+   {
+    "age": "30-34",
+    "male": 7,
+    "female": 4
+   },
+   {
+    "age": "35-39",
+    "male": 13,
+    "female": 6
+   },
+   {
+    "age": "40-44",
+    "male": 13,
+    "female": 3
+   },
+   {
+    "age": "45-49",
+    "male": 9,
+    "female": 5
+   },
+   {
+    "age": "50-54",
+    "male": 11,
+    "female": 12
+   },
+   {
+    "age": "55-59",
+    "male": 19,
+    "female": 12
+   },
+   {
+    "age": "60-64",
+    "male": 28,
+    "female": 6
+   },
+   {
+    "age": "65-69",
+    "male": 24,
+    "female": 13
+   },
+   {
+    "age": "70-74",
+    "male": 17,
+    "female": 12
+   },
+   {
+    "age": "75-79",
+    "male": 10,
+    "female": 5
+   },
+   {
+    "age": "80-84",
+    "male": 14,
+    "female": 17
+   },
+   {
+    "age": "85+",
+    "male": 10,
+    "female": 21
+   }
+  ]
+ },
+ {
+  "code": "47357",
+  "name": "南大東村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 1640,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 1504,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 1399,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1473,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1445,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1448,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 1442,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 1329,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 1285,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 1172,
+    "households": 676,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 31,
+    "female": 30
+   },
+   {
+    "age": "5-9",
+    "male": 32,
+    "female": 40
+   },
+   {
+    "age": "10-14",
+    "male": 35,
+    "female": 34
+   },
+   {
+    "age": "15-19",
+    "male": 18,
+    "female": 23
+   },
+   {
+    "age": "20-24",
+    "male": 22,
+    "female": 17
+   },
+   {
+    "age": "25-29",
+    "male": 38,
+    "female": 28
+   },
+   {
+    "age": "30-34",
+    "male": 44,
+    "female": 27
+   },
+   {
+    "age": "35-39",
+    "male": 49,
+    "female": 34
+   },
+   {
+    "age": "40-44",
+    "male": 48,
+    "female": 23
+   },
+   {
+    "age": "45-49",
+    "male": 46,
+    "female": 35
+   },
+   {
+    "age": "50-54",
+    "male": 48,
+    "female": 33
+   },
+   {
+    "age": "55-59",
+    "male": 84,
+    "female": 34
+   },
+   {
+    "age": "60-64",
+    "male": 71,
+    "female": 45
+   },
+   {
+    "age": "65-69",
+    "male": 67,
+    "female": 32
+   },
+   {
+    "age": "70-74",
+    "male": 31,
+    "female": 24
+   },
+   {
+    "age": "75-79",
+    "male": 30,
+    "female": 28
+   },
+   {
+    "age": "80-84",
+    "male": 30,
+    "female": 22
+   },
+   {
+    "age": "85+",
+    "male": 20,
+    "female": 32
+   }
+  ]
+ },
+ {
+  "code": "47358",
+  "name": "北大東村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 658,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 584,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 519,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 575,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 671,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 588,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 665,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 629,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 590,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 560,
+    "households": 345,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 24,
+    "female": 11
+   },
+   {
+    "age": "5-9",
+    "male": 21,
+    "female": 15
+   },
+   {
+    "age": "10-14",
+    "male": 13,
+    "female": 14
+   },
+   {
+    "age": "15-19",
+    "male": 2,
+    "female": 5
+   },
+   {
+    "age": "20-24",
+    "male": 11,
+    "female": 4
+   },
+   {
+    "age": "25-29",
+    "male": 16,
+    "female": 15
+   },
+   {
+    "age": "30-34",
+    "male": 20,
+    "female": 15
+   },
+   {
+    "age": "35-39",
+    "male": 29,
+    "female": 16
+   },
+   {
+    "age": "40-44",
+    "male": 14,
+    "female": 11
+   },
+   {
+    "age": "45-49",
+    "male": 22,
+    "female": 13
+   },
+   {
+    "age": "50-54",
+    "male": 28,
+    "female": 20
+   },
+   {
+    "age": "55-59",
+    "male": 41,
+    "female": 16
+   },
+   {
+    "age": "60-64",
+    "male": 47,
+    "female": 20
+   },
+   {
+    "age": "65-69",
+    "male": 38,
+    "female": 12
+   },
+   {
+    "age": "70-74",
+    "male": 18,
+    "female": 10
+   },
+   {
+    "age": "75-79",
+    "male": 11,
+    "female": 7
+   },
+   {
+    "age": "80-84",
+    "male": 6,
+    "female": 12
+   },
+   {
+    "age": "85+",
+    "male": 6,
+    "female": 7
+   }
+  ]
+ },
+ {
+  "code": "47359",
+  "name": "伊平屋村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 1501,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 1391,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 1456,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1434,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1530,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1547,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 1385,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 1238,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 1126,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 1050,
+    "households": 505,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 27,
+    "female": 22
+   },
+   {
+    "age": "5-9",
+    "male": 23,
+    "female": 43
+   },
+   {
+    "age": "10-14",
+    "male": 44,
+    "female": 36
+   },
+   {
+    "age": "15-19",
+    "male": 9,
+    "female": 10
+   },
+   {
+    "age": "20-24",
+    "male": 15,
+    "female": 10
+   },
+   {
+    "age": "25-29",
+    "male": 11,
+    "female": 15
+   },
+   {
+    "age": "30-34",
+    "male": 34,
+    "female": 31
+   },
+   {
+    "age": "35-39",
+    "male": 34,
+    "female": 25
+   },
+   {
+    "age": "40-44",
+    "male": 30,
+    "female": 39
+   },
+   {
+    "age": "45-49",
+    "male": 35,
+    "female": 32
+   },
+   {
+    "age": "50-54",
+    "male": 44,
+    "female": 26
+   },
+   {
+    "age": "55-59",
+    "male": 51,
+    "female": 32
+   },
+   {
+    "age": "60-64",
+    "male": 71,
+    "female": 44
+   },
+   {
+    "age": "65-69",
+    "male": 60,
+    "female": 36
+   },
+   {
+    "age": "70-74",
+    "male": 50,
+    "female": 25
+   },
+   {
+    "age": "75-79",
+    "male": 24,
+    "female": 19
+   },
+   {
+    "age": "80-84",
+    "male": 19,
+    "female": 23
+   },
+   {
+    "age": "85+",
+    "male": 26,
+    "female": 51
+   }
+  ]
+ },
+ {
+  "code": "47360",
+  "name": "伊是名村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 2144,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 2003,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 1892,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1895,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1897,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1762,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 1589,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 1517,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 1322,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 1130,
+    "households": 626,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 27,
+    "female": 39
+   },
+   {
+    "age": "5-9",
+    "male": 41,
+    "female": 36
+   },
+   {
+    "age": "10-14",
+    "male": 34,
+    "female": 30
+   },
+   {
+    "age": "15-19",
+    "male": 23,
+    "female": 19
+   },
+   {
+    "age": "20-24",
+    "male": 32,
+    "female": 11
+   },
+   {
+    "age": "25-29",
+    "male": 35,
+    "female": 27
+   },
+   {
+    "age": "30-34",
+    "male": 32,
+    "female": 24
+   },
+   {
+    "age": "35-39",
+    "male": 28,
+    "female": 32
+   },
+   {
+    "age": "40-44",
+    "male": 37,
+    "female": 36
+   },
+   {
+    "age": "45-49",
+    "male": 44,
+    "female": 38
+   },
+   {
+    "age": "50-54",
+    "male": 46,
+    "female": 28
+   },
+   {
+    "age": "55-59",
+    "male": 46,
+    "female": 31
+   },
+   {
+    "age": "60-64",
+    "male": 91,
+    "female": 47
+   },
+   {
+    "age": "65-69",
+    "male": 70,
+    "female": 59
+   },
+   {
+    "age": "70-74",
+    "male": 49,
+    "female": 29
+   },
+   {
+    "age": "75-79",
+    "male": 33,
+    "female": 21
+   },
+   {
+    "age": "80-84",
+    "male": 23,
+    "female": 32
+   },
+   {
+    "age": "85+",
+    "male": 27,
+    "female": 65
+   }
+  ]
+ },
+ {
+  "code": "47361",
+  "name": "久米島町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 10187,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 10238,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 10309,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 9819,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 9359,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 9177,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 8519,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 7755,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 7192,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 6417,
+    "households": 3134,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 173,
+    "female": 155
+   },
+   {
+    "age": "5-9",
+    "male": 194,
+    "female": 187
+   },
+   {
+    "age": "10-14",
+    "male": 201,
+    "female": 165
+   },
+   {
+    "age": "15-19",
+    "male": 162,
+    "female": 164
+   },
+   {
+    "age": "20-24",
+    "male": 114,
+    "female": 80
+   },
+   {
+    "age": "25-29",
+    "male": 138,
+    "female": 104
+   },
+   {
+    "age": "30-34",
+    "male": 213,
+    "female": 201
+   },
+   {
+    "age": "35-39",
+    "male": 208,
+    "female": 202
+   },
+   {
+    "age": "40-44",
+    "male": 209,
+    "female": 190
+   },
+   {
+    "age": "45-49",
+    "male": 228,
+    "female": 188
+   },
+   {
+    "age": "50-54",
+    "male": 228,
+    "female": 177
+   },
+   {
+    "age": "55-59",
+    "male": 309,
+    "female": 239
+   },
+   {
+    "age": "60-64",
+    "male": 363,
+    "female": 248
+   },
+   {
+    "age": "65-69",
+    "male": 355,
+    "female": 266
+   },
+   {
+    "age": "70-74",
+    "male": 259,
+    "female": 180
+   },
+   {
+    "age": "75-79",
+    "male": 163,
+    "female": 143
+   },
+   {
+    "age": "80-84",
+    "male": 116,
+    "female": 150
+   },
+   {
+    "age": "85+",
+    "male": 186,
+    "female": 327
+   }
+  ]
+ },
+ {
+  "code": "47362",
+  "name": "八重瀬町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 18990,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 19918,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 20718,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 23033,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 24626,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 25121,
+    "boundary": "reconciled"
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 26681,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 29066,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 30941,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 32688,
+    "households": 11550,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 1013,
+    "female": 1003
+   },
+   {
+    "age": "5-9",
+    "male": 1106,
+    "female": 1014
+   },
+   {
+    "age": "10-14",
+    "male": 928,
+    "female": 913
+   },
+   {
+    "age": "15-19",
+    "male": 853,
+    "female": 814
+   },
+   {
+    "age": "20-24",
+    "male": 653,
+    "female": 676
+   },
+   {
+    "age": "25-29",
+    "male": 745,
+    "female": 763
+   },
+   {
+    "age": "30-34",
+    "male": 903,
+    "female": 875
+   },
+   {
+    "age": "35-39",
+    "male": 1001,
+    "female": 1070
+   },
+   {
+    "age": "40-44",
+    "male": 1003,
+    "female": 994
+   },
+   {
+    "age": "45-49",
+    "male": 1029,
+    "female": 955
+   },
+   {
+    "age": "50-54",
+    "male": 879,
+    "female": 845
+   },
+   {
+    "age": "55-59",
+    "male": 924,
+    "female": 992
+   },
+   {
+    "age": "60-64",
+    "male": 1013,
+    "female": 1003
+   },
+   {
+    "age": "65-69",
+    "male": 1038,
+    "female": 1025
+   },
+   {
+    "age": "70-74",
+    "male": 793,
+    "female": 733
+   },
+   {
+    "age": "75-79",
+    "male": 510,
+    "female": 525
+   },
+   {
+    "age": "80-84",
+    "male": 400,
+    "female": 592
+   },
+   {
+    "age": "85+",
+    "male": 432,
+    "female": 877
+   }
+  ]
+ },
+ {
+  "code": "47375",
+  "name": "多良間村",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 1667,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 1632,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 1463,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1409,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1338,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1370,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 1231,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 1194,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 1058,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 938,
+    "households": 479,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 20,
+    "female": 14
+   },
+   {
+    "age": "5-9",
+    "male": 34,
+    "female": 24
+   },
+   {
+    "age": "10-14",
+    "male": 26,
+    "female": 32
+   },
+   {
+    "age": "15-19",
+    "male": 37,
+    "female": 38
+   },
+   {
+    "age": "20-24",
+    "male": 21,
+    "female": 15
+   },
+   {
+    "age": "25-29",
+    "male": 9,
+    "female": 6
+   },
+   {
+    "age": "30-34",
+    "male": 21,
+    "female": 13
+   },
+   {
+    "age": "35-39",
+    "male": 29,
+    "female": 26
+   },
+   {
+    "age": "40-44",
+    "male": 22,
+    "female": 29
+   },
+   {
+    "age": "45-49",
+    "male": 39,
+    "female": 29
+   },
+   {
+    "age": "50-54",
+    "male": 40,
+    "female": 27
+   },
+   {
+    "age": "55-59",
+    "male": 48,
+    "female": 40
+   },
+   {
+    "age": "60-64",
+    "male": 62,
+    "female": 34
+   },
+   {
+    "age": "65-69",
+    "male": 55,
+    "female": 38
+   },
+   {
+    "age": "70-74",
+    "male": 38,
+    "female": 36
+   },
+   {
+    "age": "75-79",
+    "male": 35,
+    "female": 24
+   },
+   {
+    "age": "80-84",
+    "male": 26,
+    "female": 23
+   },
+   {
+    "age": "85+",
+    "male": 13,
+    "female": 35
+   }
+  ]
+ },
+ {
+  "code": "47381",
+  "name": "竹富町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 3376,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 3467,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 3468,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 3508,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 3551,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 4192,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 3859,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 3998,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 3942,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 3963,
+    "households": 2317,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 124,
+    "female": 115
+   },
+   {
+    "age": "5-9",
+    "male": 114,
+    "female": 116
+   },
+   {
+    "age": "10-14",
+    "male": 124,
+    "female": 114
+   },
+   {
+    "age": "15-19",
+    "male": 29,
+    "female": 27
+   },
+   {
+    "age": "20-24",
+    "male": 65,
+    "female": 70
+   },
+   {
+    "age": "25-29",
+    "male": 105,
+    "female": 110
+   },
+   {
+    "age": "30-34",
+    "male": 112,
+    "female": 128
+   },
+   {
+    "age": "35-39",
+    "male": 152,
+    "female": 173
+   },
+   {
+    "age": "40-44",
+    "male": 168,
+    "female": 143
+   },
+   {
+    "age": "45-49",
+    "male": 131,
+    "female": 164
+   },
+   {
+    "age": "50-54",
+    "male": 134,
+    "female": 86
+   },
+   {
+    "age": "55-59",
+    "male": 133,
+    "female": 89
+   },
+   {
+    "age": "60-64",
+    "male": 165,
+    "female": 124
+   },
+   {
+    "age": "65-69",
+    "male": 169,
+    "female": 119
+   },
+   {
+    "age": "70-74",
+    "male": 126,
+    "female": 75
+   },
+   {
+    "age": "75-79",
+    "male": 63,
+    "female": 51
+   },
+   {
+    "age": "80-84",
+    "male": 53,
+    "female": 61
+   },
+   {
+    "age": "85+",
+    "male": 52,
+    "female": 136
+   }
+  ]
+ },
+ {
+  "code": "47382",
+  "name": "与那国町",
+  "trend": [
+   {
+    "year": 1980,
+    "date": "1980-10-01",
+    "population": 2119,
+    "boundary": null
+   },
+   {
+    "year": 1985,
+    "date": "1985-10-01",
+    "population": 2054,
+    "boundary": null
+   },
+   {
+    "year": 1990,
+    "date": "1990-10-01",
+    "population": 1833,
+    "boundary": null
+   },
+   {
+    "year": 1995,
+    "date": "1995-10-01",
+    "population": 1801,
+    "boundary": null
+   },
+   {
+    "year": 2000,
+    "date": "2000-10-01",
+    "population": 1852,
+    "boundary": null
+   },
+   {
+    "year": 2005,
+    "date": "2005-10-01",
+    "population": 1796,
+    "boundary": null
+   },
+   {
+    "year": 2010,
+    "date": "2010-10-01",
+    "population": 1657,
+    "boundary": null
+   },
+   {
+    "year": 2015,
+    "date": "2015-10-01",
+    "population": 1843,
+    "boundary": null
+   },
+   {
+    "year": 2020,
+    "date": "2020-10-01",
+    "population": 1676,
+    "boundary": null
+   },
+   {
+    "year": 2025,
+    "date": "2025-10-01",
+    "population": 1510,
+    "households": 755,
+    "boundary": null,
+    "provisional": true
+   }
+  ],
+  "pyramid_year": 2020,
+  "pyramid": [
+   {
+    "age": "0-4",
+    "male": 46,
+    "female": 57
+   },
+   {
+    "age": "5-9",
+    "male": 50,
+    "female": 57
+   },
+   {
+    "age": "10-14",
+    "male": 52,
+    "female": 40
+   },
+   {
+    "age": "15-19",
+    "male": 10,
+    "female": 9
+   },
+   {
+    "age": "20-24",
+    "male": 23,
+    "female": 17
+   },
+   {
+    "age": "25-29",
+    "male": 30,
+    "female": 30
+   },
+   {
+    "age": "30-34",
+    "male": 79,
+    "female": 40
+   },
+   {
+    "age": "35-39",
+    "male": 74,
+    "female": 71
+   },
+   {
+    "age": "40-44",
+    "male": 95,
+    "female": 57
+   },
+   {
+    "age": "45-49",
+    "male": 86,
+    "female": 48
+   },
+   {
+    "age": "50-54",
+    "male": 64,
+    "female": 52
+   },
+   {
+    "age": "55-59",
+    "male": 61,
+    "female": 44
+   },
+   {
+    "age": "60-64",
+    "male": 76,
+    "female": 48
+   },
+   {
+    "age": "65-69",
+    "male": 57,
+    "female": 57
+   },
+   {
+    "age": "70-74",
+    "male": 57,
+    "female": 44
+   },
+   {
+    "age": "75-79",
+    "male": 29,
+    "female": 19
+   },
+   {
+    "age": "80-84",
+    "male": 15,
+    "female": 27
+   },
+   {
+    "age": "85+",
+    "male": 19,
+    "female": 36
+   }
+  ]
+ }
+]

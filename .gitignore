@@ -2,3 +2,4 @@ __pycache__/
 node_modules/
 data/raw/aza/
 data/raw/survey/latest.xlsx
+data/raw/census/

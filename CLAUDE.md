@@ -24,6 +24,8 @@ pip install openpyxl pandas xlrd
 python scripts/parse_survey.py data/raw/survey/latest.xlsx   # 調査Excel → JSON
 python scripts/fetch_aza_population.py                       # 県Excel取得 → 字別人口JSON
 python scripts/fetch_aza_population.py --normalize-only      # 再ダウンロードなしで再変換
+python scripts/fetch_census.py                               # e-Stat API取得 → 市町村人口JSON
+python scripts/fetch_census.py --normalize-only              # 再取得なしでキャッシュから再構築
 python scripts/build_app.py --outfile public/index.html      # 単一HTMLをビルド
 python -m http.server -d public 8000                         # 確認
 ```
@@ -35,12 +37,18 @@ python -m http.server -d public 8000                         # 確認
 `unknown_municipalities` と `failures` が空であること、`muni_name_corrections` が
 想定どおり（現在8件）であることを確認する。
 
+`fetch_census.py` は e-Stat API の appId を環境変数 `ESTAT_APP_ID` から読む。**コードにも
+コミットにも値を残さないこと。** 実行には自分のe-Stat APIキーが必要。出力は
+`data/generated/census_quality_report.json`。`failures` が空であることを確認する。
+APIレスポンスは `data/raw/census/`（gitignore対象）にキャッシュされる。
+
 ## 構成
 
 ```
 data/raw/survey/latest.xlsx      毎年の調査Excel（差し替えるだけで更新）
 data/raw/aza/                    県の町字別人口Excel（gitignore）
-data/generated/                  正規化済みJSON（Actionsが生成）
+data/raw/census/                 e-Stat APIレスポンスのキャッシュ（gitignore）
+data/generated/                  正規化済みJSON（Actionsが生成／population_muni.jsonは手元で生成しコミット）
 data/aza_crosswalk.csv           字名の名寄せ辞書（手で育てる）
 app/template.html                UI本体。1ファイル、外部JSライブラリなし、SVGは自前描画
 scripts/                         ETLとビルド
@@ -53,13 +61,22 @@ public/                          Pages公開ディレクトリ
 
 | データ | 出典 | 注意 |
 |---|---|---|
-| 市町村別人口推移 | 国勢調査 1920–2020（e-Stat） | — |
-| 同・最新値 | 令和7年国勢調査 人口速報集計（2026-05-29公表） | 男女別人口と世帯総数のみ。年齢別はない |
-| 市町村別ピラミッド | 令和2年国勢調査 人口等基本集計 | R7確報は令和8年9月までに公表予定 |
+| 市町村別人口推移 | 国勢調査 1980–2020（e-Stat、回ごとに別統計表） | **合併市町村は境界が年で変わる**（下記）。横軸は基準日（毎回10月1日）の実日付 |
+| 同・最新値 | 令和7年国勢調査 速報集計（2026-05-29公表、統計表ID `0004050397`/`0004050417`） | 男女別人口と世帯総数のみ。年齢別はない |
+| 市町村別ピラミッド | 令和2年国勢調査 人口等基本集計（統計表ID `0003445162`） | R7確報は令和8年9月までに公表予定 |
 | 字別人口・世帯数 | 沖縄県「市町村の町字別住民基本台帳人口及び世帯数」 | **平成23〜25年は3月31日現在、平成26年以降は1月1日現在。基準日が違う**。推移グラフの横軸は年番号ではなく `date` の実日付で描く |
-| 字別 年齢×男女 | 令和2年国勢調査 小地域集計 | R7分は2027年以降の見込み。当面2020年が最新 |
+| 字別 年齢×男女 | 令和2年国勢調査 小地域集計 | **e-Stat APIに統計表IDが見つからず未実装**（`docs/handoff.md` Phase 5）。ファイルダウンロード形式の可能性 |
 | 字の境界 | e-Stat 統計地理情報システム `r2ka47` | **調査区ベースなので住居表示上の町丁・字と一致しないことがある** |
 | 施策・空き家 | 自社ヒアリング調査（年次） | 「最終確認状況」がFALSEの行は過年度回答が残っている可能性 |
+
+**市町村別人口推移は、e-Statの`getStatsList`実測に基づき年ごとに異なる統計表IDを使う**
+（`fetch_census.py` の `CENSUS_TABLES` を参照。単一の長期時系列表は存在しない）。
+**宮古島市・うるま市・久米島町（1980〜2000年）、南城市・八重瀬町（1980〜2005年）は
+合併前の旧市町村コードの実測値を単純合算**しており、その区間は推移グラフを破線・淡色で
+区別する（`boundary:"reconciled"`）。豊見城市は村→市のコード変更のみ（境界不変）なので
+区別せず同一系列としてつなぐ。2020年の県計は1,467,480人で県公表値と一致を確認済み。
+e-Statのマーカー `-`／`***` は「値がないもの」＝**実測値の0**（`fetch_census.py`の
+`ZERO_MARKERS`）であり、取得失敗とは別に扱う。
 
 **住基Excel内の年次間の名寄せ方針は `docs/aza-matching-policy.md` で決定済み（2026-07-31）・
 実装済み（Phase 3）。** 変更前に必ず読むこと。要点は4つ。(1) 先頭の「字」を落とし丁目の漢数字を
@@ -72,7 +89,7 @@ public/                          Pages公開ディレクトリ
 久米島町の2011/2015/2020/2025年で突き合わせ済み（差0）。
 
 `data/aza_crosswalk.csv` は上記の年次間名寄せ用。字名は住基Excelと国勢調査小地域でも
-切り方が揺れるが、そちらは別ファイル `data/aza_census_crosswalk.csv` に分ける（Phase 4）。
+切り方が揺れるが、そちらは別ファイル `data/aza_census_crosswalk.csv` に分ける（Phase 5）。
 **推移が不連続な字を勝手に補間・結合しない。** 判断が必要なものは crosswalk に載せる前に
 必ず確認を取る。
 
@@ -85,8 +102,9 @@ public/                          Pages公開ディレクトリ
 ## 既知の未完了
 
 - 字の人口推移は実データに切り替え済み（`population_aza.json`。名寄せ後1,296字、`aza_crosswalk.csv`
-  に38行登録）。市町村の人口推移・年齢構成、字の年齢構成はまだサンプル値。
-  `app/template.html` の `demoMuni` / `demoAzaPyramid` が生成元
+  に38行登録）。市町村の人口推移・年齢ピラミッドも実データ化済み（`population_muni.json`）。
+  **字の年齢構成のみサンプル値**（令和2年国勢調査 小地域集計の統計表IDが見つからず未実装。
+  `docs/handoff.md` Phase 5）。`app/template.html` の `demoAzaPyramid` が生成元
 - 字別人口に原因未確認の異常が1つ。**2019→2020 で県計が +1.57%**（他の年は ±0.5% 程度）、
   しかも全市町村で一様。那覇市・宜野湾市・久米島町では字合計と県公表の市町村計が
   全年一致しているため二重計上ではない。原因未確認のため注記は付けていない

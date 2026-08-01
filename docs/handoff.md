@@ -117,7 +117,7 @@ docs/aza-matching-policy.md で確定した方針どおりに実装してくだ�
 
 ---
 
-## Phase 4 — 国勢調査データ投入（Sonnet）
+## Phase 4 — 市町村の人口データ投入（Sonnet）実施済み（2026-08-01）
 
 ```
 /model sonnet
@@ -130,20 +130,60 @@ docs/aza-matching-policy.md で確定した方針どおりに実装してくだ�
 必要なもの:
 - 市町村別人口推移: 国勢調査 1980–2020 + 令和7年 人口速報集計（2026-05-29公表）
 - 市町村別ピラミッド: 令和2年国勢調査 人口等基本集計（5歳階級×男女）
-- 字別年齢構成: 令和2年国勢調査 小地域集計 沖縄県分
 
 進め方:
-1. scripts/fetch_census.py を新規に作る。e-Stat の appId は環境変数 ESTAT_APP_ID から読み、
+1. まず小さく1件だけ、e-Stat APIから実際にデータが取得できるかテストする
+2. scripts/fetch_census.py を新規に作る。e-Stat の appId は環境変数 ESTAT_APP_ID から読み、
    コードにもコミット履歴にも残さないこと
-2. data/generated/population_muni.json と population_aza_age.json を出す
-3. app/template.html の demoMuni を削除して差し替え、対応する .dummy を外す
-4. 令和7年速報は男女別人口と世帯総数のみで年齢別がない。推移グラフには載せるが、
+3. data/generated/population_muni.json を出す
+4. app/template.html の demoMuni を削除して差し替え、対応する .dummy を外す
+5. 令和7年速報は男女別人口と世帯総数のみで年齢別がない。推移グラフには載せるが、
    ピラミッドには使わず、出典年を画面に明記すること
+```
+
+**実施結果**: 統計表IDは市町村別人口推移が国勢調査の回ごとに別表（1980〜2020年で9種類、
+`scripts/fetch_census.py` の `CENSUS_TABLES` に記載）、市町村別ピラミッドは
+`0003445162`（令和2年国勢調査 人口等基本集計）、令和7年速報は `0004050397`（男女別人口）
+＋ `0004050417`（世帯数）。宮古島市・うるま市・久米島町（1980〜2000年）、南城市・八重瀬町
+（1980〜2005年）は合併前の旧市町村コードの実測値を単純合算し、その区間は推移グラフを
+破線・淡色で区別している（豊見城市は村→市のコード変更のみで合併ではないため区別しない）。
+2020年の県計は1,467,480人で県公表値と一致を確認済み。
+
+字別年齢構成（令和2年国勢調査 小地域集計）はe-Stat APIの `getStatsList` で
+統計表IDが見つからず、今回のスコープから外した。Phase 5 を参照。
+
+---
+
+## Phase 5 — 字別年齢構成（小地域集計）投入（未着手）
+
+```
+/model sonnet
+/clear
+```
+
+```
+字レイヤーの年齢構成（app/template.html の demoAzaPyramid）を、令和2年国勢調査
+小地域集計の実データに差し替えてください。
+
+背景: Phase 4 でe-Statの通常のgetStatsList検索（「小地域集計」「町丁・字等」などの
+語）を試したが、統計表IDが1件もヒットしなかった。小地域集計はAPI経由のデータベース表
+としては公開されておらず、政府統計の総合窓口のファイルダウンロード（Excel/CSV）
+形式でのみ提供されている可能性が高い。
+
+進め方:
+1. e-Statのファイル配布ページ（政府統計の総合窓口）で、沖縄県の小地域集計
+   Excel/CSVが個別ダウンロードできるか確認する。見つかった統計表番号を先に報告する
+2. 見つかれば、fetch_aza_population.py と同様の自前パーサーを書く
+   （scripts/fetch_census_aza_age.py など）。見つからなければ代替手段
+   （国土数値情報や他の公開データ）を検討し、判断を仰ぐ
+3. data/generated/population_aza_age.json を出す
+4. app/template.html の demoAzaPyramid を削除して差し替え、字レイヤーの
+   年齢構成についてのみ .dummy / .dummy-tag を外す（人口推移は既に実データ）
 ```
 
 ---
 
-## Phase 5 — マップ（Sonnet）
+## Phase 6 — マップ（Sonnet）
 
 ```
 /model sonnet
@@ -166,7 +206,7 @@ PMTiles はリポジトリに入れると重い。100MB/ファイル、1GB/リ�
 
 ---
 
-## Phase 6 — 公開前レビュー（Opus）
+## Phase 7 — 公開前レビュー（Opus）
 
 数字の出所と誤読リスクを見る。ここは安く済ませない。
 
@@ -191,7 +231,7 @@ PMTiles はリポジトリに入れると重い。100MB/ファイル、1GB/リ�
 
 ---
 
-## Phase 7 — 公開と運用
+## Phase 8 — 公開と運用
 
 公開の前に [publish-checklist.md](publish-checklist.md) を自分の目で通してください。
 ここはClaudeに委任しないこと。ETLが壊れていても画面は正常に見えます。
