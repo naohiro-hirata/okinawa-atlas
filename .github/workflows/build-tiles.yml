@@ -1,0 +1,41 @@
+name: 境界タイルを生成（手動）
+
+# public/tiles/okinawa.pmtiles を作るための手動実行専用ワークフロー。
+# pages.yml には含めない。境界データは国勢調査のタイミング（次は令和7年
+# 国勢調査、2027年以降見込み）でしか変わらないため、pushのたびに
+# tippecanoeのビルドとe-Statへのダウンロードを走らせる必要が無い。
+#
+# 生成物は自動コミットしない。artifactとして出すので、ダウンロードして
+# ブラウザで地図を目視確認してから、人が public/tiles/okinawa.pmtiles を
+# 手でリポジトリにコミットすること（境界がずれるとサイト全体の信頼性に
+# 関わるため、バイナリ差分レビューの代わりに目視確認を必須にしている）。
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: GDAL（ogr2ogr）をインストール
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gdal-bin libsqlite3-dev zlib1g-dev
+
+      - name: tippecanoeをソースからビルド（apt配布が無いため）
+        run: |
+          git clone --depth 1 https://github.com/felt/tippecanoe.git /tmp/tippecanoe
+          cd /tmp/tippecanoe
+          make -j"$(nproc)"
+          sudo make install
+          tippecanoe --version
+
+      - name: public/tiles/okinawa.pmtiles を生成
+        run: bash scripts/build_tiles.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: okinawa-pmtiles
+          path: public/tiles/okinawa.pmtiles
+          retention-days: 14

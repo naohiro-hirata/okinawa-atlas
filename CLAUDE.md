@@ -52,6 +52,15 @@ python scripts/fetch_aza_census.py --normalize-only # 再ダウンロードな�
 `data/generated/aza_census_quality_report.json`。`collisions`が0件であることと、
 `level_validation_mismatches`（丁目に見える名前が字全体を尽くしていないケース）を確認する。
 
+```bash
+scripts/build_tiles.sh   # 境界Shapefile取得 → public/tiles/okinawa.pmtiles（要ogr2ogr・tippecanoe・tile-join）
+```
+
+`build_tiles.sh` はWindows単体では動かない（tippecanoeにWindows公式バイナリが無い）ため、
+`.github/workflows/build-tiles.yml`（`workflow_dispatch`専用、`pages.yml`には含めない）上で
+実行する運用。生成物は自動コミットせず artifact として出すので、ダウンロードしてブラウザで
+地図を目視確認してから、`public/tiles/okinawa.pmtiles` を人が手でコミットする。
+
 ## 構成
 
 ```
@@ -62,8 +71,10 @@ data/raw/census_aza/             小地域集計CSVのキャッシュ（gitignor
 data/generated/                  正規化済みJSON（Actionsが生成／population_muni.json・population_aza_age.jsonは手元で生成しコミット）
 data/aza_crosswalk.csv           字名の名寄せ辞書（手で育てる）
 data/aza_census_crosswalk.csv    住基側の字と国勢調査小地域の対応表（fetch_aza_census.pyが機械的に生成）
-app/template.html                UI本体。1ファイル、外部JSライブラリなし、SVGは自前描画
+app/template.html                UI本体。1ファイル。花ブロック等の図はSVG自前描画（外部ライブラリなし）。
+                                  マップのみMapLibre GL JS + pmtiles（CDN経由）を使う
 scripts/                         ETLとビルド
+public/tiles/okinawa.pmtiles     地図タイル（build_tiles.shの生成物。artifactを人が確認してコミット）
 public/                          Pages公開ディレクトリ
 ```
 
@@ -78,7 +89,7 @@ public/                          Pages公開ディレクトリ
 | 市町村別ピラミッド | 令和2年国勢調査 人口等基本集計（統計表ID `0003445162`） | R7確報は令和8年9月までに公表予定 |
 | 字別人口・世帯数 | 沖縄県「市町村の町字別住民基本台帳人口及び世帯数」 | **平成23〜25年は3月31日現在、平成26年以降は1月1日現在。基準日が違う**。推移グラフの横軸は年番号ではなく `date` の実日付で描く |
 | 字別 年齢×男女 | 令和2年国勢調査 小地域集計（統計表ID `000032163785`、CSV直接配布） | **APIではなくファイル配布**。1,296字中1,155字が対応、7字は秘匿処理、120字は未対応、14字は対象外の可能性（推定・下記） |
-| 字の境界 | e-Stat 統計地理情報システム `r2ka47` | **調査区ベースなので住居表示上の町丁・字と一致しないことがある** |
+| 字の境界 | e-Stat 統計地理情報システム、令和2年国勢調査 小地域（町丁・字等）（JGD2000）、`r2ka47`（`serveyId=A002005212020`） | **調査区ベースなので住居表示上の町丁・字と一致しないことがある**。市町村ポリゴンはこの字ポリゴンをCITYコードでdissolveして作る（別ソースは使わない）。**次の境界更新は令和7年国勢調査の境界データ公表後**（2027年以降見込み）。更新時は`scripts/build_tiles.sh`の`BOUNDARY_URL`の`serveyId`を新しい年の値に差し替えて`build-tiles.yml`を手動実行する |
 | 施策・空き家 | 自社ヒアリング調査（年次） | 「最終確認状況」がFALSEの行は過年度回答が残っている可能性 |
 
 **市町村別人口推移は、e-Statの`getStatsList`実測に基づき年ごとに異なる統計表IDを使う**
@@ -140,7 +151,8 @@ e-Statのマーカー `-`／`***` は「値がないもの」＝**実測値の0*
 - 字別人口に原因未確認の異常が1つ。**2019→2020 で県計が +1.57%**（他の年は ±0.5% 程度）、
   しかも全市町村で一様。那覇市・宜野湾市・久米島町では字合計と県公表の市町村計が
   全年一致しているため二重計上ではない。原因未確認のため注記は付けていない
-- マップ未実装。`prefView()` 内の `.mapslot` が差し込み位置
+- マップはコード実装済みだが動作未確認（`public/tiles/okinawa.pmtiles` がまだリポジトリに
+  無いため）。`build-tiles.yml` を手動実行してartifactを目視確認後、コミットしてから確認する
 - 推定空家数は41市町村中16件しか数値化できていない。基準年も混在（沖縄市の5190件はH30調査値）
 - 「最終確認状況」FALSE: 糸満市・豊見城市・宜野座村・北谷町・北中城村・西原町
 
@@ -148,4 +160,6 @@ e-Statのマーカー `-`／`***` は「値がないもの」＝**実測値の0*
 
 配色・書体は決定済みで、`:root` のCSS変数から外れないこと。琉球藍 `--ai`、赤瓦 `--kawara`、
 石灰岩の地色 `--ground`。花ブロック（`hanaSVG`）がこのサイトの識別要素なので、
-汎用のカード並べや棒グラフ一覧に置き換えない。SVGは外部ライブラリを使わず自前で描く方針を維持する。
+汎用のカード並べや棒グラフ一覧に置き換えない。花ブロック・人口ピラミッド・人口推移グラフの
+SVGは外部ライブラリを使わず自前で描く方針を維持する（マップのみMapLibre GL JS + pmtilesを
+CDNから読み込む例外。地図の配色も`:root`のCSS変数から取得しズレないようにする）。

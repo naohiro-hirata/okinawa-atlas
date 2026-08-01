@@ -172,26 +172,34 @@ CSVファイル配布（統計表ID `000032163785`、Shift-JIS）だった。`sc
 
 ---
 
-## Phase 6 — マップ（Sonnet）
+## Phase 6 — マップ（Sonnet）着手済み（2026-08-01）。動作確認が未完了
 
-```
-/model sonnet
-/clear
-```
+**実施結果**: 環境確認とサイズ実測は使い捨てワークフローで実施し、削除済み。
+tippecanoeはWindowsに公式バイナリが無いため、ローカルではなくGitHub Actions
+（Ubuntuランナー）上でソースからビルドする方針にした。市町村ポリゴンは
+別ソースを使わず、字ポリゴン（r2ka47）をCITYコードでdissolveして作る
+（基準時点を字と完全に揃えるため）。実測サイズは字4.13MB／市町村0.12MB
+（GitHub上限100MB/1GBに対して十分小さい）。
 
-```
-prefView() の .mapslot を実際のマップに置き換えてください。
+- `scripts/build_tiles.sh` — ogr2ogr(dissolve) → tippecanoe×2（字/市町村） →
+  tile-join で `public/tiles/okinawa.pmtiles` を作る
+- `.github/workflows/build-tiles.yml` — `workflow_dispatch`専用。`pages.yml`には
+  含めない。生成物は**自動コミットせずartifactとして出す**。人がダウンロードして
+  ブラウザで目視確認してからコミットする運用（バイナリでPRの差分レビューが
+  しにくいため）
+- `app/template.html` — `.mapslot`をMapLibre GL JS 4.7.1 + pmtiles 4.4.1（CDN）の
+  実マップに置き換え済み。ズームで市町村/字レイヤーを切り替え、クリックで
+  `go()`に接続（市町村はCITYコードで確実に一致、字は境界ポリゴンのS_NAMEと
+  住基側の字名をその場で正規化して突合。一致しないものはクリックしても
+  遷移しない）
 
-- 境界データは e-Stat 統計地理情報システムの r2ka47（令和2年国勢調査 町丁・字等別）
-- scripts/build_tiles.sh で ogr2ogr + tippecanoe を通し public/tiles/okinawa.pmtiles を作る
-- MapLibre GL JS + pmtiles プロトコル。ズームで市町村ポリゴンと字ポリゴンを切り替える
-- 市町村クリックで Layer 1、字クリックで Layer 2 に遷移。既存の go() を再利用する
-- 現在の指標セレクタでコロプレス塗り分け。「回答なし」はハッチングにして、値ゼロと区別する
-- 配色は :root のCSS変数から出ないこと
-
-PMTiles はリポジトリに入れると重い。100MB/ファイル、1GB/リポジトリの上限を確認し、
-超えるなら Releases か Actions 生成に回す判断を先に報告してください。
-```
+**未完了**:
+- `public/tiles/okinawa.pmtiles` がまだリポジトリに無いため、地図の動作確認が
+  できていない。`build-tiles.yml`を手動実行→artifactをダウンロード→
+  `python -m http.server -d public 8000`で目視確認→問題なければ
+  `public/tiles/okinawa.pmtiles`をコミット、という手順が必要
+- 指標セレクタに連動したコロプレス塗り分け（「回答なし」のハッチング表現）は
+  未実装。地図の表示自体が確認できてから着手する想定
 
 ---
 

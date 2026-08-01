@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<!-- マップのみの例外。花ブロック等の図はSVG自前描画（外部ライブラリなし）を維持する -->
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/pmtiles@4.4.1/dist/pmtiles.js"></script>
 <style>
 :root{
   --ground:#E3E1D9; --surface:#F7F6F2; --surface2:#EDEBE4;
@@ -169,6 +173,11 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
 }
 .mapslot .ico{flex:0 0 auto; color:var(--ai)}
 .mapslot code{font-family:var(--num); background:var(--surface); padding:1px 5px; border:1px solid var(--line)}
+
+/* ---------- map (MapLibre) ---------- */
+#map{height:480px; border:1px solid var(--line); background:var(--ground)}
+.maplibregl-ctrl-attrib{font-size:10px}
+.maplibregl-ctrl-attrib a{color:var(--ai2)}
 
 .note{font-size:11.5px; color:var(--ink3); line-height:1.6; margin-top:10px}
 .chartnote{font-size:11px; color:var(--ink3); margin-top:6px}
@@ -396,6 +405,10 @@ let view={layer:"pref",code:null,aza:null,indicator:"estimated_vacant"};
 
 function render(){
   renderCrumb();renderList();
+  // 地図はDOMの外側でWebGLコンテキスト等を持つため、innerHTMLで
+  // #map ごと消してしまう前に明示的に破棄する（コンテナが外れた後に
+  // remove()を呼ぶと内部で例外になりうるため）。
+  if(mapInstance){try{mapInstance.remove();}catch(e){/* noop */}mapInstance=null;}
   const st=document.getElementById("stage");
   st.innerHTML = view.layer==="pref"?prefView()
                : view.layer==="muni"?muniView(find(view.code))
@@ -470,15 +483,9 @@ function prefView(){
   </div>
   <div class="grid2" style="margin-top:16px">
     <div class="card wide">
-      <h2>この位置に地図が入ります</h2>
-      <div class="mapslot">
-        <svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
-        <div>
-          MapLibre GL JS + PMTiles で、この枠が<strong>市町村ポリゴン→字ポリゴン</strong>のズーム連動マップになります。<br>
-          必要な素材は e-Stat 統計地理情報システムの境界データ <code>r2ka47</code>（令和2年国勢調査 町丁・字等別）。
-          <code>scripts/build_tiles.sh</code> で tippecanoe に通し、<code>public/tiles/okinawa.pmtiles</code> に配置します。
-        </div>
-      </div>
+      <h2>地図で見る</h2>
+      <div id="map" role="img" aria-label="沖縄県の市町村・字の境界地図"></div>
+      <p class="chartnote">出典：e-Stat 統計地理情報システム 令和2年国勢調査 小地域（町丁・字等）（JGD2000）。市町村ポリゴンは同じデータをCITYコードでdissolveして作成。ズームアウトで市町村、ズームインで字の境界が見えます。クリックで各レイヤーに遷移。</p>
     </div>
   </div>`;
 }
@@ -613,6 +620,95 @@ function azaView(m,azaId){
   <p class="note">字の名称は年によって表記が揺れることがあり、住基Excel内の年次間の名寄せ方針は <code>docs/aza-matching-policy.md</code> で決定済みです。表記ゆれ・誤植は合算していますが、区画再編で区域そのものが変わった字はつないでいません（例：住居表示化前後で系列が分かれている字があります）。住基データと国勢調査小地域（年齢構成）の対応付けは <code>data/aza_census_crosswalk.csv</code> で管理しています。丁目表記・「字」の有無を揃えたうえでの完全一致のみを対応とし、一致しないものは推測せず未対応のままにしています。</p>`;
 }
 
+/* ============================ 地図 ============================ */
+/** 境界ポリゴンの町丁字名（S_NAME）と、住基側の字表示名を突合するためのキー。
+ *  scripts/fetch_aza_census.py の match_key() と同じ考え方（丁目の漢数字を
+ *  算用数字に揃え、先頭の「字」は完全一致で見つからないときだけ落とす）を
+ *  クライアント側でも使う。境界ポリゴン専用のゆるい突合であり、
+ *  data/aza_census_crosswalk.csv のような永続的な対応表ではない。 */
+const MAP_KANJI_DIGIT={"〇":0,"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9};
+function mapKanjiNumToInt(s){
+  if(s==="十")return 10;
+  if(s.includes("十")){
+    const [left,right]=s.split("十");
+    const tens=left?MAP_KANJI_DIGIT[left]:1, ones=right?MAP_KANJI_DIGIT[right]:0;
+    if((left&&tens==null)||(right&&ones==null))return null;
+    return tens*10+ones;
+  }
+  return MAP_KANJI_DIGIT[s];
+}
+function mapCanonicalChome(name){
+  const m=String(name||"").match(/^(.*?)([一二三四五六七八九十]+)丁目$/);
+  if(!m)return name;
+  const n=mapKanjiNumToInt(m[2]);
+  return n==null?name:`${m[1]}${n}丁目`;
+}
+const mapStripJi=s=>s.startsWith("字")?s.slice(1):s;
+/** 境界ポリゴンのS_NAMEから、その市町村内の住基側の字（表示名）を探す。
+ *  完全一致を優先し、「字」を落とした形は一意に決まるときだけ使う
+ *  （那覇市の「字上之屋」と「上之屋」のように別実体が両方あると衝突するため）。
+ *  見つからなければnull（=クリックしても遷移しない）。 */
+function matchAzaName(m,sname){
+  const raw=mapCanonicalChome(sname);
+  const exact=m.aza.find(a=>mapCanonicalChome(a.name)===raw);
+  if(exact)return exact.name;
+  const strippedTarget=mapStripJi(raw);
+  const candidates=m.aza.filter(a=>mapStripJi(mapCanonicalChome(a.name))===strippedTarget);
+  return candidates.length===1?candidates[0].name:null;
+}
+
+let mapInstance=null, mapProtocolRegistered=false;
+function initMap(){
+  const el=document.getElementById("map");
+  if(!el)return;
+  if(typeof maplibregl==="undefined"||typeof pmtiles==="undefined"){
+    el.outerHTML=`<div class="mapslot"><div>地図ライブラリを読み込めませんでした（オフライン、または広告ブロッカー等でCDNがブロックされている可能性があります）。</div></div>`;
+    return;
+  }
+  if(!mapProtocolRegistered){
+    const protocol=new pmtiles.Protocol();
+    maplibregl.addProtocol("pmtiles",protocol.tile);
+    mapProtocolRegistered=true;
+  }
+  const cv=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const style={
+    version:8,
+    sources:{okinawa:{type:"vector",url:"pmtiles://tiles/okinawa.pmtiles"}},
+    layers:[
+      {id:"bg",type:"background",paint:{"background-color":cv("--ground")}},
+      {id:"muni-fill",type:"fill",source:"okinawa","source-layer":"muni",maxzoom:10,
+        paint:{"fill-color":cv("--surface2"),"fill-opacity":0.9}},
+      {id:"muni-line",type:"line",source:"okinawa","source-layer":"muni",maxzoom:10,
+        paint:{"line-color":cv("--ai"),"line-width":1}},
+      {id:"aza-fill",type:"fill",source:"okinawa","source-layer":"aza",minzoom:9,
+        paint:{"fill-color":cv("--surface2"),"fill-opacity":0.85}},
+      {id:"aza-line",type:"line",source:"okinawa","source-layer":"aza",minzoom:9,
+        paint:{"line-color":cv("--line"),"line-width":0.6}},
+    ],
+  };
+  mapInstance=new maplibregl.Map({
+    container:"map",style,center:[127.7,26.35],zoom:9,minZoom:8,maxZoom:16,
+    attributionControl:true,
+  });
+  mapInstance.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
+  for(const layer of ["muni-fill","aza-fill"]){
+    mapInstance.on("mouseenter",layer,()=>{mapInstance.getCanvas().style.cursor="pointer";});
+    mapInstance.on("mouseleave",layer,()=>{mapInstance.getCanvas().style.cursor="";});
+  }
+  mapInstance.on("click","muni-fill",e=>{
+    const f=e.features&&e.features[0];if(!f)return;
+    const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
+    if(find(code))go("muni",code);
+  });
+  mapInstance.on("click","aza-fill",e=>{
+    const f=e.features&&e.features[0];if(!f)return;
+    const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
+    const m=find(code);if(!m)return;
+    const name=matchAzaName(m,f.properties.S_NAME);
+    if(name)go("aza",azaId(m.code,name),m.code);
+  });
+}
+
 /* ============================ イベント ============================ */
 function go(kind,code,muniCode){
   if(kind==="muni"){view={...view,layer:"muni",code,aza:null};}
@@ -622,6 +718,7 @@ function go(kind,code,muniCode){
 function bindStage(){
   const sel=document.getElementById("indsel");
   if(sel)sel.onchange=e=>{view.indicator=e.target.value;render();};
+  if(view.layer==="pref")initMap();
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-kind]");
