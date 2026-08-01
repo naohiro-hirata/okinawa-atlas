@@ -223,6 +223,20 @@ function seeded(str){let h=2166136261;for(const c of str)h=(h^c.charCodeAt(0))*1
 const AGES=["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44",
             "45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"];
 
+/** 字の年齢構成が実データに対応できなかった理由（data/aza_census_crosswalk.csv のstatus）。
+ *「対象外」系は米軍基地関連などの推測であり、公式な確証（total_of_scope）が
+ *  取れるまでは必ず「可能性・推定」と書く。 */
+const AGE_STATUS_TEXT={
+  suppressed:{tag:"秘匿処理",
+    note:"令和2年国勢調査 小地域集計では、この字は人口が少なく近隣の町丁・字に合算されており（秘匿処理）、年齢構成を復元できません。下は実データではなくサンプル値です。"},
+  possibly_out_of_scope:{tag:"対象外の可能性（推定）",
+    note:"この字に該当する国勢調査 小地域集計の町丁・字が見つからず、名前のある区域の合計だけで市町村計と一致することから、米軍基地関連の区域など国勢調査の対象区域に含まれていない可能性があります。総務省統計局による公式な説明は確認できておらず、推定にとどまります。下は実データではなくサンプル値です。"},
+  out_of_scope:{tag:"対象外（確定）",
+    note:"この字は国勢調査 小地域集計の対象区域に含まれないことが確認されています。下は実データではなくサンプル値です。"},
+  unmatched:{tag:"未対応",
+    note:"令和2年国勢調査 小地域集計の町丁・字区分と、この字の名称が一致しないため対応できていません（新設・字名の表記差など）。下は実データではなくサンプル値です。"},
+};
+
 /** 字の年齢構成（令和2年国勢調査 小地域集計が入るまでのダミー）。人口推移とは無関係。 */
 function demoAzaPyramid(seedKey,base){
   const rr=seeded(seedKey);
@@ -249,15 +263,23 @@ const INDICATORS={
 /** 字ID。市町村コード＋字名で作る（同名の字が別市町村にあっても衝突しない）。 */
 const azaId=(muniCode,azaName)=>muniCode+"／"+azaName;
 
+const azaAgeKey=(muni,aza)=>muni+"／"+aza;
+const AZA_AGE=new Map(DATA.population_aza_age.map(e=>[azaAgeKey(e.municipality,e.aza),e]));
+
 const MUNI=DATA.municipalities.map(m=>{
   const policy=DATA.policy.find(p=>p.code===m.code)||null;
   const akiya=DATA.akiya.find(a=>a.code===m.code)||null;
   const housing=DATA.housing.filter(h=>h.code===m.code);
-  const aza=DATA.population_aza.filter(z=>z.municipality===m.name).map(z=>({
-    id:azaId(m.code,z.aza), name:z.aza,
-    trend:z.trend.map(t=>({year:t.year,date:t.date,pop:t.population,households:t.households})),
-    pyramid:demoAzaPyramid(m.code+"/"+z.aza,z.trend[z.trend.length-1].population),
-  }));
+  const aza=DATA.population_aza.filter(z=>z.municipality===m.name).map(z=>{
+    const age=AZA_AGE.get(azaAgeKey(m.name,z.aza));
+    const ageStatus=age?age.status:"unmatched";
+    return{
+      id:azaId(m.code,z.aza), name:z.aza,
+      trend:z.trend.map(t=>({year:t.year,date:t.date,pop:t.population,households:t.households})),
+      ageStatus,
+      pyramid:ageStatus==="matched"?age.pyramid:demoAzaPyramid(m.code+"/"+z.aza,z.trend[z.trend.length-1].population),
+    };
+  });
   const pm=DATA.population_muni.find(p=>p.code===m.code)||null;
   const pop=pm&&{
     pyramidYear:pm.pyramid_year, pyramid:pm.pyramid,
@@ -579,11 +601,16 @@ function azaView(m,azaId){
     </div>
     <div class="card">
       <h2>年齢構成（字）</h2>
-      <div class="dummy"><span class="dummy-tag">ダミー</span>${pyramidSVG(z.pyramid)}</div>
-      <p class="chartnote">実データ差し替え元：令和2年国勢調査 小地域集計（町丁・字等別／5歳階級×男女）。R7調査の小地域は2027年以降の公表見込み。</p>
+      ${z.ageStatus==="matched"?pyramidSVG(z.pyramid)
+        :`<div class="dummy"><span class="dummy-tag">${AGE_STATUS_TEXT[z.ageStatus].tag}</span>${pyramidSVG(z.pyramid)}</div>`}
+      <p class="chartnote">${
+        z.ageStatus==="matched"
+          ?"出典：令和2年国勢調査 小地域集計（町丁・字等別／5歳階級×男女）。R7調査の小地域は2027年以降の公表見込み。"
+          :AGE_STATUS_TEXT[z.ageStatus].note
+      }</p>
     </div>
   </div>
-  <p class="note">字の名称は年によって表記が揺れることがあり、住基Excel内の年次間の名寄せ方針は <code>docs/aza-matching-policy.md</code> で決定済みです。表記ゆれ・誤植は合算していますが、区画再編で区域そのものが変わった字はつないでいません（例：住居表示化前後で系列が分かれている字があります）。住基データと国勢調査小地域の対応付けは <code>data/aza_crosswalk.csv</code> で別途管理します。</p>`;
+  <p class="note">字の名称は年によって表記が揺れることがあり、住基Excel内の年次間の名寄せ方針は <code>docs/aza-matching-policy.md</code> で決定済みです。表記ゆれ・誤植は合算していますが、区画再編で区域そのものが変わった字はつないでいません（例：住居表示化前後で系列が分かれている字があります）。住基データと国勢調査小地域（年齢構成）の対応付けは <code>data/aza_census_crosswalk.csv</code> で管理しています。丁目表記・「字」の有無を揃えたうえでの完全一致のみを対応とし、一致しないものは推測せず未対応のままにしています。</p>`;
 }
 
 /* ============================ イベント ============================ */

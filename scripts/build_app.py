@@ -15,7 +15,8 @@ a = ap.parse_args()
 
 d = Path(a.datadir)
 payload = {k: json.loads((d / f"{k}.json").read_text(encoding="utf-8"))
-           for k in ("municipalities", "policy", "housing", "akiya", "population_aza", "population_muni")}
+           for k in ("municipalities", "policy", "housing", "akiya", "population_aza",
+                     "population_muni", "population_aza_age")}
 
 html = Path(a.template).read_text(encoding="utf-8")
 token = "/*__DATA__*/"
