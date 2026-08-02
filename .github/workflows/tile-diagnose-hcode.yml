@@ -15,7 +15,15 @@ jobs:
       - name: GDAL（ogrinfo/ogr2ogr）をインストール
         run: |
           sudo apt-get update
-          sudo apt-get install -y gdal-bin
+          sudo apt-get install -y gdal-bin libsqlite3-dev zlib1g-dev
+
+      - name: tippecanoeをソースからビルド（apt配布が無いため）
+        run: |
+          git clone --depth 1 https://github.com/felt/tippecanoe.git /tmp/tippecanoe
+          cd /tmp/tippecanoe
+          make -j"$(nproc)"
+          sudo make install
+          tippecanoe --version
 
       - name: 境界データを取得
         run: |
@@ -40,12 +48,23 @@ jobs:
         run: |
           set -x
           ogrinfo muni.geojson -al -so
-          echo "---個別市町村のジオメトリタイプ・パーツ数---"
+          echo "---個別市町村のジオメトリタイプ・パーツ数（レイヤー名はogr2ogrがSELECTと命名）---"
           ogrinfo muni.geojson -dialect sqlite -sql \
-            "SELECT CITY, CITY_NAME, GeometryType(geometry) AS gtype, ST_NumGeometries(geometry) AS n_parts FROM muni WHERE CITY IN ('213','215','306','208')"
+            "SELECT CITY, CITY_NAME, GeometryType(geometry) AS gtype, ST_NumGeometries(geometry) AS n_parts FROM \"SELECT\" WHERE CITY IN ('213','215','306','208')"
 
       - name: "D) 参考（全41市町村のGeometryType・パーツ数一覧）"
         run: |
           set -x
-          ogrinfo muni.geojson -dialect sqlite -sql \
-            "SELECT CITY, CITY_NAME, GeometryType(geometry) AS gtype, ST_NumGeometries(geometry) AS n_parts FROM muni ORDER BY CITY"
+          ogrinfo r2ka47.shp -dialect sqlite -sql \
+            "SELECT CITY, CITY_NAME, GeometryType(ST_Union(geometry)) AS gtype, ST_NumGeometries(ST_Union(geometry)) AS n_parts FROM r2ka47 WHERE HCODE <> 8154 GROUP BY PREF, CITY, CITY_NAME ORDER BY CITY"
+
+      - name: "E) muni.pmtilesをdrop-densest-as-needed無しで単体生成（tippecanoe側の切り分け用）"
+        run: |
+          set -x
+          tippecanoe -o muni-nodrop.pmtiles -l muni -Z0 -z10 --force muni.geojson
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: muni-nodrop-pmtiles
+          path: muni-nodrop.pmtiles
+          retention-days: 7
