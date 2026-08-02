@@ -44,7 +44,7 @@ jobs:
           ogrinfo muni.geojson -dialect sqlite -sql \
             "SELECT CITY, CITY_NAME, GeometryType(geometry) AS gtype, ST_NumGeometries(geometry) AS n_parts FROM muni WHERE CITY IN ('213','215','306','208')"
 
-      - name: D) 参考: 全41市町村のGeometryType/パーツ数一覧
+      - name: "D) 参考（全41市町村のGeometryType・パーツ数一覧）"
         run: |
           set -x
           ogrinfo muni.geojson -dialect sqlite -sql \
