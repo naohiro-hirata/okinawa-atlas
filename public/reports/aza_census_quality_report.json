@@ -1,0 +1,295 @@
+{
+ "counts": {
+  "aza_total": 1296,
+  "matched": 1155,
+  "suppressed": 7,
+  "unmatched": 120,
+  "possibly_out_of_scope": 14,
+  "out_of_scope_confirmed": 0,
+  "collisions": 0
+ },
+ "level_validation_sample": [
+  {
+   "municipality": "那覇市",
+   "oaza": "曙",
+   "parent_total": 4673,
+   "children_sum": 4673,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "安謝",
+   "parent_total": 5076,
+   "children_sum": 5076,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "天久",
+   "parent_total": 5140,
+   "children_sum": 5140,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "泉崎",
+   "parent_total": 2943,
+   "children_sum": 2943,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "久米",
+   "parent_total": 3071,
+   "children_sum": 3071,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "久茂地",
+   "parent_total": 1635,
+   "children_sum": 1635,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "楚辺",
+   "parent_total": 4526,
+   "children_sum": 4526,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "辻",
+   "parent_total": 2341,
+   "children_sum": 2341,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "壷川",
+   "parent_total": 3645,
+   "children_sum": 3645,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "壷屋",
+   "parent_total": 3879,
+   "children_sum": 3879,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "泊",
+   "parent_total": 6025,
+   "children_sum": 6025,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "西",
+   "parent_total": 4064,
+   "children_sum": 4064,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "樋川",
+   "parent_total": 3778,
+   "children_sum": 3778,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "前島",
+   "parent_total": 3915,
+   "children_sum": 3915,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "牧志",
+   "parent_total": 5414,
+   "children_sum": 5414,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "松尾",
+   "parent_total": 4248,
+   "children_sum": 4248,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "松山",
+   "parent_total": 1942,
+   "children_sum": 1942,
+   "children": [
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "港町",
+   "parent_total": 253,
+   "children_sum": 253,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目",
+    "四丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "銘苅",
+   "parent_total": 5731,
+   "children_sum": 5731,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  },
+  {
+   "municipality": "那覇市",
+   "oaza": "若狭",
+   "parent_total": 4165,
+   "children_sum": 4165,
+   "children": [
+    "一丁目",
+    "二丁目",
+    "三丁目"
+   ]
+  }
+ ],
+ "level_validation_mismatches": [
+  {
+   "municipality": "名護市",
+   "oaza": "字古我知",
+   "parent_total": 381,
+   "children_sum": 62,
+   "children": [
+    "内原区"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "oaza": "字田井等",
+   "parent_total": 1016,
+   "children_sum": 278,
+   "children": [
+    "山田区"
+   ]
+  },
+  {
+   "municipality": "名護市",
+   "oaza": "字天仁屋",
+   "parent_total": 129,
+   "children_sum": 46,
+   "children": [
+    "底仁屋区"
+   ]
+  },
+  {
+   "municipality": "糸満市",
+   "oaza": "字潮平",
+   "parent_total": 5639,
+   "children_sum": 357,
+   "children": [
+    "県営団地"
+   ]
+  },
+  {
+   "municipality": "うるま市",
+   "oaza": "石川",
+   "parent_total": 2967,
+   "children_sum": 3660,
+   "children": [
+    "宮前区",
+    "東山区",
+    "一丁目",
+    "二丁目"
+   ]
+  },
+  {
+   "municipality": "北中城村",
+   "oaza": "字安谷屋",
+   "parent_total": 2188,
+   "children_sum": 360,
+   "children": [
+    "石平行政区"
+   ]
+  },
+  {
+   "municipality": "久米島町",
+   "oaza": "字鳥島",
+   "parent_total": 339,
+   "children_sum": 0,
+   "children": [
+    "硫黄鳥島"
+   ]
+  }
+ ],
+ "collisions": []
+}

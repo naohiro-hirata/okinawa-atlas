@@ -29,6 +29,8 @@ jobs:
         run: python scripts/fetch_aza_population.py --normalize-only || echo "字データ未配置。スキップします。"
       - name: 単一HTMLをビルド
         run: python scripts/build_app.py --outfile public/index.html
+      - name: 品質レポートの案内ページをビルド
+        run: python scripts/build_quality_page.py --outfile public/quality.html
       - name: 品質レポートをサマリに出す
         run: |
           echo '### データ品質（調査Excel）' >> $GITHUB_STEP_SUMMARY

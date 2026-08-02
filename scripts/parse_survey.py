@@ -29,14 +29,40 @@ FIRST_DATA_ROW = 5          # 3行目が見出し、4行目は「選択肢保存
 
 
 # ---------------------------------------------------------------- utilities
+# 個人の連絡先は公開しない。原本 data/raw/survey/latest.xlsx には担当者の携帯番号と
+# メールアドレスが入っており、そのまま data/generated/ に出ると GitHub Pages で
+# 公開されてしまう。初回コミット(6a5294b)では policy.json を手で伏せ字にしていたが、
+# parse_survey.py を再実行すると元に戻ってしまうため変換側に移した。
+# **この処理を外さないこと。**
+# 括弧でくくられた連絡先だけを対象にする（本部町の「企画商工観光課 / 野崎 真 /
+# 0980-47-2702」のような窓口の代表番号は公開してよいので触らない）。
+REDACTIONS = [
+    (re.compile(r"（\s*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\s*[)）]"),
+     "（メールアドレスは非公開）"),
+    (re.compile(r"（\s*0\d{1,4}-\d{1,4}-\d{4}\s*[)）]"), "（非公開）"),
+]
+# 伏せ字にできなかった個人情報を拾う網。quality_report に出して人が気づけるようにする。
+LEAK_PATTERNS = [
+    ("email", re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")),
+    ("mobile", re.compile(r"0[789]0-\d{4}-\d{4}")),
+]
+
+
+def redact(s):
+    """個人の連絡先を伏せる。"""
+    for pat, repl in REDACTIONS:
+        s = pat.sub(repl, s)
+    return s
+
+
 def norm_text(v):
-    """セル値を1行テキストに正規化。空欄はNone。"""
+    """セル値を1行テキストに正規化。空欄はNone。個人の連絡先はここで伏せる。"""
     if v is None:
         return None
     s = str(v).replace("\u3000", " ")
     s = re.sub(r"[\r\n]+", " / ", s)
     s = re.sub(r"\s+", " ", s).strip()
-    return s or None
+    return redact(s) or None
 
 
 def norm_choice(v):
@@ -130,6 +156,39 @@ def extract_int(text, patterns):
         if m:
             return int(m.group(1).replace(",", ""))
     return None
+
+
+# 推定空家数の「基準年」。備考欄には無関係の年（助成制度の開始予定など）が
+# 混ざるので、拾った数値のすぐ近くだけを見る。範囲内に年が2つ以上あるときは
+# どれが基準年か決められないので None（画面では「基準年不明」）に倒す。
+# 正規表現を緩めて誤検出を作らないこと（CLAUDE.md 原則4）。
+ERA_RE = re.compile(r"(令和|平成|[RH])\s*([0-9]{1,2})\s*年?度?")
+ERA_BASE = {"令和": 2018, "R": 2018, "平成": 1988, "H": 1988}
+BEFORE_WINDOW, AFTER_WINDOW = 40, 15
+
+
+def extract_base_year(text, patterns):
+    """数値の近傍にある年号を1つだけ拾う。決められなければ None。
+
+    戻り値は (表示用ラベル, 西暦) の組。例: ("令和6年度", 2024)
+    """
+    text = ascii_digits(text)
+    if not text:
+        return None, None
+    for p in patterns:
+        m = re.search(p, text)
+        if not m:
+            continue
+        window = text[max(0, m.start() - BEFORE_WINDOW): m.end() + AFTER_WINDOW]
+        found = ERA_RE.findall(window)
+        years = {(ERA_BASE[era[0]] if era in ("R", "H") else ERA_BASE[era]) + int(num)
+                 for era, num in found}
+        if len(years) != 1:      # 0件＝書かれていない、2件以上＝どれか決められない
+            return None, None
+        era, num = found[0]
+        wa = "令和" if era in ("令和", "R") else "平成"
+        return f"{wa}{int(num)}年度", years.pop()
+    return None, None
 
 
 def extract_count_field(text):
@@ -230,6 +289,9 @@ def parse_c(ws):
         rec["note"] = " / ".join(rec.pop("notes")) or None
         note = rec["note"]
         rec["estimated_vacant"] = extract_int(note, VACANT_PATTERNS)
+        label, west = extract_base_year(note, VACANT_PATTERNS)
+        rec["estimated_vacant_base_year"] = label          # 例 "令和6年度"。取れなければ None
+        rec["estimated_vacant_base_year_west"] = west      # 例 2024
         rec["bank_registered_total"] = extract_int(note, BANK_TOTAL_PATTERNS)
         rec["bank_deals_closed"] = extract_int(note, DEAL_PATTERNS)
         n, raw = extract_count_field(rec.get("public_housing_vacant"))
@@ -268,6 +330,26 @@ def main():
         rec["code"] = name2code.get(rec["municipality"])
         if not rec["code"]:
             unmatched.append({"sheet": "C", "name": rec["municipality"], "rows": rec["_rows"]})
+
+    # 伏せ字の網から漏れた個人情報が無いか、出力全体を最後にもう一度さらう。
+    # 新年度の原本で書式が変われば REDACTIONS が効かないことがあるため、
+    # 気づかないまま公開しないよう必ず落とす。
+    leaks = []
+    for label, dataset in (("policy", policy), ("housing", housing), ("akiya", akiya)):
+        for rec in dataset:
+            for key, val in rec.items():
+                if not isinstance(val, str):
+                    continue
+                for kind, pat in LEAK_PATTERNS:
+                    if pat.search(val):
+                        leaks.append({"dataset": label, "municipality": rec.get("municipality"),
+                                      "field": key, "kind": kind})
+    if leaks:
+        for x in leaks:
+            print(f"  {x['dataset']}.{x['field']} ({x['municipality']}) に{x['kind']}が残っています",
+                  file=sys.stderr)
+        sys.exit(f"個人情報が伏せられていません（{len(leaks)}件）。"
+                 f"REDACTIONS を原本の書式に合わせてから再実行してください。")
 
     needs_review = []
     for rec in akiya:

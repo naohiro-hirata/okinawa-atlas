@@ -56,6 +56,7 @@ nav.crumb .cur{font-weight:700}
   padding:5px 10px; font-size:11.5px; line-height:1.45; max-width:390px; color:#6E2E19;
 }
 .banner b{font-family:var(--num); letter-spacing:.08em; text-transform:uppercase; font-size:10px}
+.banner a{color:#6E2E19; text-decoration:underline; text-underline-offset:2px; white-space:nowrap}
 
 main{flex:1; display:grid; grid-template-columns:300px 1fr; min-height:0}
 
@@ -127,6 +128,14 @@ section.stage{overflow-y:auto; min-height:0; padding:22px 26px 60px}
 .stat .v small{font-size:12px; font-weight:400; color:var(--ink2); margin-left:2px}
 .stat .l{font-size:10.5px; color:var(--ink3); margin-top:1px; line-height:1.4}
 .stat .v.na{color:var(--ink3); font-size:15px; font-weight:400}
+.stat .l .yr{display:inline-block; margin-top:2px; font-size:10px; color:var(--ink2);
+  border:1px solid var(--line); background:var(--surface2); padding:0 5px; line-height:1.6}
+.stat .l .yr.unk{color:#6E2E19; border-color:var(--kawara); background:#F6EAE4}
+
+/* 原因未確認の断りなど、読み違えを防ぐための注意書き */
+.caveat{margin-top:10px; border:1px solid var(--kawara); border-left-width:4px;
+  background:#F6EAE4; color:#6E2E19; padding:7px 10px; font-size:11.5px; line-height:1.6}
+.caveat b{font-family:var(--num); letter-spacing:.06em}
 
 /* text blocks */
 dl.kv{margin:0; display:grid; grid-template-columns:auto 1fr; gap:7px 14px; font-size:12.5px}
@@ -153,6 +162,23 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
 .hana{display:grid; grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:5px}
 .cell{position:relative; padding:0; border:1px solid var(--line2); background:var(--surface2); aspect-ratio:1/1}
 .cell:hover{border-color:var(--ai)}
+/* 最終確認状況が未確認の市町村。花ブロック内の点線は「回答なし」に使っているので、
+   混同しないようセットの枠と左上の角で示す。 */
+.cell.unconf{border-style:dashed; border-color:var(--sand)}
+.cell.unconf::before{
+  content:""; position:absolute; top:0; left:0; z-index:1;
+  border-width:9px 9px 0 0; border-style:solid;
+  border-color:var(--sand) transparent transparent transparent;
+}
+.unconf-key{
+  display:inline-block; width:15px; height:15px; vertical-align:-3px; margin:0 1px 0 5px;
+  position:relative; border:1px dashed var(--sand); background:var(--surface);
+}
+.unconf-key::before{
+  content:""; position:absolute; top:0; left:0;
+  border-width:6px 6px 0 0; border-style:solid;
+  border-color:var(--sand) transparent transparent transparent;
+}
 .cell svg{position:absolute; inset:0; width:100%; height:100%}
 .cell .cl{
   position:absolute; left:0; right:0; bottom:5px; text-align:center;
@@ -165,6 +191,9 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
 }
 .legend{margin-top:11px; display:flex; align-items:center; gap:8px; font-size:10.5px; color:var(--ink3)}
 .legend .bar{flex:1; height:7px; max-width:170px; background:linear-gradient(90deg,#E7E4DA,var(--ai))}
+/* 注記に埋め込む花ブロックの見本（回答なし／実測0の描き分けを文章の中で示す） */
+.lgd{display:inline-block; width:19px; height:19px; vertical-align:-5px; margin:0 1px 0 5px}
+.lgd svg{width:100%; height:100%; display:block}
 
 /* ---------- map slot ---------- */
 .mapslot{
@@ -178,6 +207,12 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
 #map{height:480px; border:1px solid var(--line); background:var(--ground)}
 .maplibregl-ctrl-attrib{font-size:10px}
 .maplibregl-ctrl-attrib a{color:var(--ai2)}
+.mapnotice .maplibregl-popup-content{
+  background:var(--surface); border:1px solid var(--kawara); border-left-width:4px;
+  border-radius:0; padding:10px 24px 11px 12px; font:400 11.5px/1.6 var(--jp); color:var(--ink);
+}
+.mapnotice .maplibregl-popup-content b{color:#6E2E19}
+.mapnotice .maplibregl-popup-tip{border-top-color:var(--kawara); border-bottom-color:var(--kawara)}
 
 .note{font-size:11.5px; color:var(--ink3); line-height:1.6; margin-top:10px}
 .chartnote{font-size:11px; color:var(--ink3); margin-top:6px}
@@ -201,7 +236,8 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
     <div class="banner">
       <div>
         <b>データ状態</b><br>
-        施策・空き家（R7調査）、市町村の人口推移・年齢構成、字の人口推移は<strong>実データ</strong>。字の年齢構成のみ<strong>サンプル値</strong>で、斜線がかかった図はすべて架空です。
+        <span id="datastate">施策・空き家、市町村の人口推移・年齢構成、字の人口推移は<strong>実データ</strong>です。</span>
+        <a href="quality.html">データの品質と限界</a>
       </div>
     </div>
   </header>
@@ -257,15 +293,28 @@ function demoAzaPyramid(seedKey,base){
 }
 
 /* ============================ 指標 ============================ */
+/** unconfirmed: その指標の出どころが「最終確認状況＝未確認」かどうか。
+ *  未確認だと令和6年度以前の回答が残っている可能性がある。出どころごとに
+ *  判定する（総人口は国勢調査なので、調査票の確認状況とは無関係＝常にfalse）。 */
 const INDICATORS={
-  estimated_vacant:{label:"推定空家数（R7調査・回答のみ）",
-    get:m=>m.akiya&&m.akiya.estimated_vacant, unit:"件", real:true},
-  bank_registered_total:{label:"空き家バンク累計登録",
-    get:m=>m.akiya&&m.akiya.bank_registered_total, unit:"件", real:true},
-  housing_count:{label:"定住促進住宅の物件数",
-    get:m=>m.housing.length||null, unit:"件", real:true},
+  // 既定の指標。41市町村すべてに値があり基準日も揃っているので最初に出す。
+  // 出どころが国勢調査なので、ヒアリング調査の確認状況とは無関係。
   pop_total:{label:"総人口（令和7年国勢調査 速報値）",
-    get:m=>m.pop&&m.pop.trend[m.pop.trend.length-1].pop, unit:"人", real:true},
+    get:m=>m.pop&&m.pop.trend[m.pop.trend.length-1].pop, unit:"人", real:true,
+    unconfirmed:()=>false},
+  // 「R7調査」とは書かない。ヒアリング調査の実施年であって、数値そのものの
+  // 基準年ではない（回答10件のうち令和6年度が3件、令和7年度が1件、残り6件は不明）。
+  // 基準年は市町村ページで1件ずつ出す。
+  estimated_vacant:{label:"推定空家数（ヒアリング調査・回答のみ）",
+    get:m=>m.akiya&&m.akiya.estimated_vacant, unit:"件", real:true,
+    unconfirmed:m=>m.akiya?m.akiya.confirmed===false:false},
+  bank_registered_total:{label:"空き家バンク累計登録",
+    get:m=>m.akiya&&m.akiya.bank_registered_total, unit:"件", real:true,
+    unconfirmed:m=>m.akiya?m.akiya.confirmed===false:false},
+  // ?? であって || ではない。0件は「回答なし」ではなく実測のゼロ（41市町村中21件）。
+  housing_count:{label:"定住促進住宅の物件数",
+    get:m=>m.housing.length??null, unit:"件", real:true,
+    unconfirmed:m=>m.housing.some(h=>h.confirmed===false)},
 };
 
 /* ============================ 索引の構築 ============================ */
@@ -308,23 +357,31 @@ for(const m of MUNI){
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>n==null?"—":n.toLocaleString("ja-JP");
 
-/** 花ブロック1枚。v(0..1)で花弁が満ちる。 */
+/** 花ブロック1枚。CLAUDE.md原則3のとおり「回答なし」と「実測0」を見た目で必ず分ける。
+ *   t == null → 回答なし。点線の輪郭だけ（形が確定していないことを示す）
+ *   t === 0   → 実測ゼロ。実線の輪郭＋中央の小さな点（形はあるが花弁がゼロ）
+ *   t > 0     → 花弁が t(0..1) の割合だけ下から満ちる
+ *  この3状態は凡例・注記の文言と必ず対応させること。 */
 let hanaSeq=0;
-function hanaSVG(v,color){
-  const t=Math.max(0,Math.min(1,v||0));
-  const fill=t===0?"var(--line2)":color;
+const HANA_PETALS=`<circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>`+
+                  `<circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>`;
+const HANA_FRAME=`<rect x="4" y="4" width="92" height="92" fill="var(--surface)" stroke="var(--line2)"/>`;
+/* zeroColor を渡すと、実測ゼロの中央の点にその色を使う。花弁が無いと増減の向きが
+   消えてしまうため（500人→0 と ずっと0 が同じ見た目になる）、字の一覧で使う。
+   指標の一覧では向きの概念が無いので渡さず、灰色のままにする。 */
+function hanaSVG(t,color,zeroColor){
+  if(t==null)return `<svg viewBox="0 0 100 100" aria-hidden="true">${HANA_FRAME}
+    <g fill="none" stroke="var(--line)" stroke-width="1.1" stroke-dasharray="2.5 3.5"
+       opacity=".55">${HANA_PETALS}</g></svg>`;
+  const v=Math.max(0,Math.min(1,t));
+  if(v===0)return `<svg viewBox="0 0 100 100" aria-hidden="true">${HANA_FRAME}
+    <g fill="none" stroke="var(--line)" stroke-width="1.1">${HANA_PETALS}</g>
+    <circle cx="50" cy="50" r="3.6" fill="${zeroColor||"var(--ink3)"}" opacity=".75"/></svg>`;
   const cid="hb"+(++hanaSeq);
-  return `<svg viewBox="0 0 100 100" aria-hidden="true">
-    <rect x="4" y="4" width="92" height="92" fill="var(--surface)" stroke="var(--line2)"/>
-    <clipPath id="${cid}"><rect x="0" y="${100-100*t}" width="100" height="${100*t}"/></clipPath>
-    <g class="petal" fill="${fill}" opacity="${t===0?1:.28+.62*t}" clip-path="url(#${cid})">
-      <circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>
-      <circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>
-    </g>
-    <g fill="none" stroke="var(--line)" stroke-width="1.1">
-      <circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>
-      <circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>
-    </g></svg>`;
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">${HANA_FRAME}
+    <clipPath id="${cid}"><rect x="0" y="${100-100*v}" width="100" height="${100*v}"/></clipPath>
+    <g class="petal" fill="${color}" opacity="${.28+.62*v}" clip-path="url(#${cid})">${HANA_PETALS}</g>
+    <g fill="none" stroke="var(--line)" stroke-width="1.1">${HANA_PETALS}</g></svg>`;
 }
 
 function pyramidSVG(rows){
@@ -369,8 +426,9 @@ function trendSVG(rows,label){
     s+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="var(--line2)"/>`;
     s+=`<text x="${L-6}" y="${y+3}" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ink3)">${Math.round(v).toLocaleString()}</text>`;
   }
-  // 合併前の旧市町村を合算した年（boundary==="reconciled"）は、実体の population
-  // ではなく境界を組み替えた推計値なので、区間を破線・薄い色にして区別する。
+  // 合併前の旧市町村を合算した年（boundary==="reconciled"）。値そのものは国勢調査の
+  // 実測値で、それを現在の市域に含まれる旧市町村ぶん足し合わせたもの（推計ではない）。
+  // ただし当時の市域は今と違うので、区間を破線・薄い色にして区別する。
   for(let i=0;i<known.length-1;i++){
     const a=known[i],b=known[i+1],reconciled=a.boundary==="reconciled"||b.boundary==="reconciled";
     s+=`<line x1="${px(xval(a)).toFixed(1)}" y1="${py(a.pop).toFixed(1)}" x2="${px(xval(b)).toFixed(1)}" y2="${py(b.pop).toFixed(1)}"
@@ -379,7 +437,7 @@ function trendSVG(rows,label){
   known.forEach(r=>{
     const rec=r.boundary==="reconciled";
     const bits=[r.date?`${r.year}年（${r.date}現在）`:`${r.year}年`,`${fmt(r.pop)}人`];
-    if(rec)bits.push("旧市町村の合算値（境界を組み替えた推計）");
+    if(rec)bits.push("旧市町村の実測値を合算（当時の市域は現在と異なる）");
     if(r.provisional)bits.push("速報値・年齢別データなし");
     s+=`<circle cx="${px(xval(r))}" cy="${py(r.pop)}" r="${rec?2.2:2.6}"
       fill="${rec?"var(--surface)":"var(--ai)"}" stroke="var(--ai)" stroke-width="${rec?1.3:0}"
@@ -400,15 +458,23 @@ function badge(key,val){
   return `<span class="badge ${cls}"><span class="k">${esc(key)}</span>${esc(v)}</span>`;
 }
 
+/** 住基（字別人口）の2019→2020だけ、県計が他の年より大きく伸びている。
+ *  原因が確認できていないので「2020年に急増した」と読まれないよう、住基の推移を
+ *  見せている場所には必ずこの断りを出す。原因が判明したら文言を差し替えること。 */
+const JUKI_2020_CAVEAT=`<p class="caveat"><b>注意</b>　2019→2020年にかけて、県全体で
+  他の年より大きな増加（約1.6%。他の年はおおむね±0.7%以内）が出ています。
+  <strong>原因を確認中で、実際の人口の動きを表しているとは限りません。</strong>
+  この区間の増減はそのまま読まないでください。</p>`;
+
 /* ============================ 画面 ============================ */
-let view={layer:"pref",code:null,aza:null,indicator:"estimated_vacant"};
+let view={layer:"pref",code:null,aza:null,indicator:"pop_total"};
 
 function render(){
   renderCrumb();renderList();
   // 地図はDOMの外側でWebGLコンテキスト等を持つため、innerHTMLで
   // #map ごと消してしまう前に明示的に破棄する（コンテナが外れた後に
   // remove()を呼ぶと内部で例外になりうるため）。
-  if(mapInstance){try{mapInstance.remove();}catch(e){/* noop */}mapInstance=null;}
+  if(mapInstance){try{mapInstance.remove();}catch(e){/* noop */}mapInstance=null;mapPopup=null;}
   const st=document.getElementById("stage");
   st.innerHTML = view.layer==="pref"?prefView()
                : view.layer==="muni"?muniView(find(view.code))
@@ -455,13 +521,22 @@ function renderList(){
 
 function prefView(){
   const ind=INDICATORS[view.indicator];
-  const vals=MUNI.map(m=>ind.get(m)).filter(v=>v!=null);
+  // 回答あり＝nullでないもの。実測0は「回答あり」に数える（0と未回答は別物）。
+  const all=MUNI.map(m=>ind.get(m));
+  const vals=all.filter(v=>v!=null);
+  const zeros=vals.filter(v=>v===0).length;
   const max=Math.max(...vals,1);
   const answered=vals.length;
+  // 最終確認状況が未確認の市町村は、値そのものが古い可能性があるのでセットに印を付ける。
+  // 花ブロック側の点線は「回答なし」に使っているので、印はセットの枠と角の三角で出す。
+  const unconf=MUNI.filter(m=>ind.unconfirmed(m)).length;
   const cells=MUNI.map(m=>{
     const v=ind.get(m);
-    return `<button class="cell" data-kind="muni" data-code="${m.code}" title="${esc(m.name)}｜${ind.label}: ${fmt(v)}">
-      ${hanaSVG(v==null?0:v/max,"var(--ai)")}
+    const u=ind.unconfirmed(m);
+    const state=v==null?"回答なし":v===0?"0（実測）":fmt(v)+ind.unit;
+    return `<button class="cell${u?" unconf":""}" data-kind="muni" data-code="${m.code}"
+      title="${esc(m.name)}｜${ind.label}: ${esc(state)}${u?"｜R7回答 未確認（R6以前の値が残っている可能性）":""}">
+      ${hanaSVG(v==null?null:v/max,"var(--ai)")}
       <span class="cv">${v==null?"":fmt(v)}</span>
       <span class="cl">${esc(m.name)}</span></button>`;}).join("");
   return `
@@ -475,17 +550,23 @@ function prefView(){
       <h2>指標で見る</h2>
       <select id="indsel">${Object.entries(INDICATORS).map(([k,v])=>
         `<option value="${k}" ${k===view.indicator?"selected":""}>${esc(v.label)}</option>`).join("")}</select>
-      <span class="eyebrow">${ind.real?`回答あり ${answered}/41`:"サンプル値"}</span>
+      <span class="eyebrow">${ind.real?`回答あり ${answered}/41${zeros?`（うち実測0が${zeros}）`:""}`:"サンプル値"}</span>
     </div>
     <div class="hana">${cells}</div>
     <div class="legend"><span>0</span><span class="bar"></span><span class="num">${fmt(max)}${ind.unit}</span></div>
-    <p class="note">花ブロックの花弁が指標値。白いままの市町村は「回答なし／該当なし」で、ゼロとは区別しています。クリックで市町村レイヤーへ。</p>
+    <p class="note">花ブロックの花弁が指標値。
+      <span class="lgd">${hanaSVG(null)}</span><b>点線の輪郭</b>＝回答なし（値が分かっていない）、
+      <span class="lgd">${hanaSVG(0)}</span><b>中央に点</b>＝実測のゼロ。この2つは別のものとして扱っています。
+      ${unconf?`<span class="unconf-key"></span><b>破線の枠＋角の印</b>＝最終確認状況が未確認の${unconf}市町村。
+        令和6年度以前の回答が残っている可能性があります。`:""}
+      クリックで市町村レイヤーへ。</p>
   </div>
   <div class="grid2" style="margin-top:16px">
     <div class="card wide">
       <h2>地図で見る</h2>
       <div id="map" role="img" aria-label="沖縄県の市町村・字の境界地図"></div>
-      <p class="chartnote">出典：e-Stat 統計地理情報システム 令和2年国勢調査 小地域（町丁・字等）（JGD2000）。市町村ポリゴンは同じデータをCITYコードでdissolveして作成。ズームアウトで市町村、ズームインで字の境界が見えます。クリックで各レイヤーに遷移。</p>
+      <p class="chartnote">出典：e-Stat 統計地理情報システム 令和2年国勢調査 小地域（町丁・字等）（JGD2000）。市町村ポリゴンは同じデータをCITYコードでdissolveして作成。ズームアウトで市町村、ズームインで字の境界が見えます。クリックで各レイヤーに遷移。<br>
+      <strong>境界は国勢調査の調査区をもとにしているため、住居表示上の町丁・字と一致しないことがあります。</strong>また境界は令和2年（2020年）時点のもので、人口データ（令和7年住民基本台帳）より古いため、2020年より後に新設された丁目には対応する区域がありません。</p>
     </div>
   </div>`;
 }
@@ -495,10 +576,18 @@ function muniView(m){
   const reconciledYears=d.trend.filter(t=>t.boundary==="reconciled").map(t=>t.year);
   const azaCells=m.aza.map(z=>{
     const last=z.trend[z.trend.length-1], first=z.trend[0];
-    const rate=first.pop>0?(last.pop-first.pop)/first.pop:null;
+    // 増減の向きは差で判断する。初年も最終年も0なら「変化なし」であって増加ではない
+    // （以前はrate=nullを増加色にフォールバックし、人口0の字を緑で塗っていた）。
+    const known=first.pop!=null&&last.pop!=null;
+    const diff=known?last.pop-first.pop:null;
+    const color=diff==null?"var(--ink3)"
+               :diff>0?"var(--basho)":diff<0?"var(--kawara)":"var(--ink3)";
+    // 人口0の字は花弁を塗らず、実測ゼロとして空で見せる。人口不明はnull（点線）。
+    const t=last.pop==null?null:last.pop>0?.15+Math.min(1,last.pop/2800)*.85:0;
+    const dirText=diff==null?"増減不明":diff>0?`増加 +${fmt(diff)}人`:diff<0?`減少 ${fmt(diff)}人`:"変化なし";
     return `<button class="cell" data-kind="aza" data-code="${z.id}" data-muni="${m.code}"
-      title="${esc(z.name)}｜${fmt(last.pop)}人（${last.year}年・${esc(last.date||"")}現在）">
-      ${hanaSVG(.15+Math.min(1,last.pop/2800)*.85, rate==null||rate>=0?"var(--basho)":"var(--kawara)")}
+      title="${esc(z.name)}｜${last.pop==null?"人口不明":fmt(last.pop)+"人"}（${last.year}年・${esc(last.date||"")}現在）｜${esc(first.year)}年比 ${esc(dirText)}">
+      ${hanaSVG(t,color,color)}
       <span class="cv">${fmt(last.pop)}</span><span class="cl">${esc(z.name)}</span></button>`;}).join("");
 
   const desc=[["移住施策の内容",p.policy_detail],["取り組まない理由",p.policy_none_reason],
@@ -531,13 +620,21 @@ function muniView(m){
       <h2>人口推移</h2>
       ${trendSVG(d.trend,"人口推移")}
       <p class="chartnote">出典：国勢調査 1980〜2020年（各回10月1日現在）＋令和7年国勢調査 速報集計（2025年・2026-05-29公表、男女別人口のみ・年齢別なし）。
-      ${reconciledYears.length?`薄い破線区間（${reconciledYears.join("・")}年）は現在の市域に含まれる旧市町村の人口を単純合算した推計値。`:""}</p>
+      ${reconciledYears.length?`薄い破線区間（${reconciledYears.join("・")}年）は、現在の市域に含まれる旧市町村の<strong>国勢調査の実測値を合算</strong>した値（推計ではありません）。当時の市域は現在と異なります。`:""}</p>
     </div>
 
     <div class="card wide">
-      <h2>空き家利活用の取り組み（令和7年度調査・実データ）</h2>
+      <h2>空き家利活用の取り組み（${a.confirmed===false
+        ?"調査回答・最終確認が取れていません"
+        :"令和7年度調査・実データ"}）</h2>
+      ${a.confirmed===false?`<p class="caveat"><b>未確認</b>　この市町村は令和7年度の調査票で最終確認が取れていません。
+        以下の回答は<strong>令和6年度以前のものが残っている可能性があります</strong>。</p>`:""}
       <div class="stats">
-        <div class="stat"><div class="v ${a.estimated_vacant==null?"na":""}">${a.estimated_vacant==null?"回答なし":fmt(a.estimated_vacant)}<small>${a.estimated_vacant==null?"":"件"}</small></div><div class="l">推定空家数</div></div>
+        <div class="stat"><div class="v ${a.estimated_vacant==null?"na":""}">${a.estimated_vacant==null?"回答なし":fmt(a.estimated_vacant)}<small>${a.estimated_vacant==null?"":"件"}</small></div><div class="l">推定空家数${
+          a.estimated_vacant==null?"":`<br><span class="yr${a.estimated_vacant_base_year?"":" unk"}">${
+            a.estimated_vacant_base_year
+              ?`基準 ${esc(a.estimated_vacant_base_year)}${a.estimated_vacant_base_year_west?`（${a.estimated_vacant_base_year_west}年度）`:""}`
+              :"基準年不明"}</span>`}</div></div>
         <div class="stat"><div class="v ${a.bank_registered_total==null?"na":""}">${a.bank_registered_total==null?"回答なし":fmt(a.bank_registered_total)}<small>${a.bank_registered_total==null?"":"件"}</small></div><div class="l">バンク累計登録</div></div>
         <div class="stat"><div class="v ${a.bank_deals_closed==null?"na":""}">${a.bank_deals_closed==null?"回答なし":fmt(a.bank_deals_closed)}<small>${a.bank_deals_closed==null?"":"件"}</small></div><div class="l">うち成約</div></div>
         <div class="stat"><div class="v ${a.public_housing_vacant_num==null?"na":""}">${a.public_housing_vacant_num==null?"要確認":fmt(a.public_housing_vacant_num)}<small>${a.public_housing_vacant_num==null?"":"戸"}</small></div><div class="l">町村営住宅の空き住戸</div></div>
@@ -576,7 +673,10 @@ function muniView(m){
       <span class="eyebrow">${m.aza.length} 字</span>
     </div>
     <div class="hana">${azaCells}</div>
-    <p class="note">緑＝期間内で増加、赤瓦色＝減少。花弁の量は人口規模。出典：沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年）。平成23〜25年は3月31日、平成26年以降は1月1日現在で基準日が異なる。年齢構成はまだサンプル値（字を開くと表示）。</p>
+    ${JUKI_2020_CAVEAT}
+    <p class="note">緑＝期間内で増加、赤瓦色＝減少、灰＝変化なし。花弁の量は人口規模で、
+      <span class="lgd">${hanaSVG(0)}</span><b>中央に点だけ</b>の字は人口が0（実測）です。
+      出典：沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年）。平成23〜25年は3月31日、平成26年以降は1月1日現在で基準日が異なる。年齢構成は対応が取れた字のみ実データ（字を開くと表示）。</p>
   </div>`;
 }
 
@@ -604,6 +704,7 @@ function azaView(m,azaId){
     <div class="card">
       <h2>人口推移（字）</h2>
       ${trendSVG(z.trend,"字の人口推移")}
+      ${JUKI_2020_CAVEAT}
       <p class="chartnote">出典：沖縄県「市町村の町字別住民基本台帳人口及び世帯数」。平成23〜25年（2011〜2013）は3月31日現在、平成26年（2014）以降は1月1日現在で基準日が異なるため、横軸はその実際の日付で描いている。点にカーソルを合わせると基準日と人口を表示。</p>
     </div>
     <div class="card">
@@ -699,14 +800,33 @@ function initMap(){
     const f=e.features&&e.features[0];if(!f)return;
     const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
     if(find(code))go("muni",code);
+    else mapNotice(e.lngLat,`この区域（コード ${esc(code)}）に対応する市町村データがありません。`);
   });
   mapInstance.on("click","aza-fill",e=>{
     const f=e.features&&e.features[0];if(!f)return;
     const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
-    const m=find(code);if(!m)return;
+    const m=find(code);
+    if(!m){mapNotice(e.lngLat,`この区域（コード ${esc(code)}）に対応する市町村データがありません。`);return;}
     const name=matchAzaName(m,f.properties.S_NAME);
-    if(name)go("aza",azaId(m.code,name),m.code);
+    if(name){go("aza",azaId(m.code,name),m.code);return;}
+    // 境界（令和2年国勢調査の調査区）と住基の字は区分が一致しないことがある。
+    // 推測で近い字に飛ばすと別の字の数値を見せてしまうので、遷移せずに理由を出す。
+    const sname=String(f.properties.S_NAME||"").trim();
+    mapNotice(e.lngLat,
+      `<b>${esc(m.name)}${sname?"／"+esc(sname):""}</b><br>`+
+      `この区域はまだ字データとの対応付けができていません。`+
+      `境界は令和2年国勢調査の調査区にもとづくため、住居表示上の町丁・字と一致しないこと`+
+      `（2020年より後に新設された丁目など）があります。`+
+      `<br>左の検索欄から字名で探すと、人口データがある場合は開けます。`);
   });
+}
+/** 遷移できないときに、その場で理由を出す。推測で別の字に飛ばさないための代替。 */
+let mapPopup=null;
+function mapNotice(lngLat,html){
+  if(!mapInstance)return;
+  if(mapPopup)mapPopup.remove();
+  mapPopup=new maplibregl.Popup({closeButton:true,maxWidth:"280px",className:"mapnotice"})
+    .setLngLat(lngLat).setHTML(html).addTo(mapInstance);
 }
 
 /* ============================ イベント ============================ */
@@ -728,6 +848,20 @@ document.addEventListener("click",e=>{
                                   :{...view,layer:"muni",code:g.dataset.code,aza:null};render();}
 });
 document.getElementById("q").addEventListener("input",renderList);
+
+/* バナーの件数はデータから数える。実データの割合を書き換え忘れて
+   「字の年齢構成はサンプル値」と実態より低く見せないため（89%は実データ）。 */
+(function(){
+  const aza=MUNI.flatMap(m=>m.aza);
+  const total=aza.length, real=aza.filter(a=>a.ageStatus==="matched").length;
+  const sample=total-real;
+  document.getElementById("datastate").innerHTML=
+    `施策・空き家、市町村の人口推移・年齢構成、字の人口推移は<strong>実データ</strong>です。`+
+    `字の年齢構成も${fmt(total)}字中<strong>${fmt(real)}字（${Math.round(real/total*100)}%）が実データ</strong>で、`+
+    `国勢調査との対応が確認できなかった${fmt(sample)}字だけが<strong>サンプル値</strong>です`+
+    `（斜線とタグが付いた図は架空の数値）。`;
+})();
+
 render();
 </script>
 </body>
