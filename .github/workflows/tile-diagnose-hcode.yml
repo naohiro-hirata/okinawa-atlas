@@ -1,0 +1,51 @@
+name: 境界タイル diagnose（検証専用・手動）
+
+# うるま市などで dissolve 後に離島が本土と地続きに見える問題の切り分け用。
+# HCODE=8154（水面調査区）除外後もパーツ数が増えないように見える原因が、
+# SpatiaLiteのST_Union自体の挙動か、OGRのGeoJSON書き出し段階かを
+# ogrinfoで直接確認する。検証専用のためpages.ymlには含めず、
+# 確認が終わったら削除するか手動実行のみに留める。
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GDAL（ogrinfo/ogr2ogr）をインストール
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gdal-bin
+
+      - name: 境界データを取得
+        run: |
+          set -euo pipefail
+          BOUNDARY_URL="https://www.e-stat.go.jp/gis/statmap-search/data?dlserveyId=A002005212020&code=47&coordSys=1&format=shape&downloadType=5&datum=2000"
+          curl -sL "$BOUNDARY_URL" -o r2ka47.zip
+          unzip -o r2ka47.zip
+
+      - name: A) SpatiaLiteのST_Unionを直接ogrinfoで確認（GeoJSON書き出しを経由しない）
+        run: |
+          set -x
+          ogrinfo r2ka47.shp -dialect sqlite -sql \
+            "SELECT CITY, CITY_NAME, GeometryType(ST_Union(geometry)) AS gtype, ST_NumGeometries(ST_Union(geometry)) AS n_parts FROM r2ka47 WHERE HCODE <> 8154 AND CITY IN ('213','215','306','208') GROUP BY CITY, CITY_NAME"
+
+      - name: B) build_tiles.shと同じogr2ogrでmuni.geojsonを実際に生成
+        run: |
+          set -x
+          ogr2ogr -f GeoJSON muni.geojson r2ka47.shp -t_srs EPSG:4326 \
+            -dialect sqlite -sql "SELECT PREF, CITY, CITY_NAME, ST_Union(geometry) AS geometry FROM r2ka47 WHERE HCODE <> 8154 GROUP BY PREF, CITY, CITY_NAME"
+
+      - name: C) 書き出したmuni.geojsonを再度ogrinfoで確認
+        run: |
+          set -x
+          ogrinfo muni.geojson -al -so
+          echo "---個別市町村のジオメトリタイプ・パーツ数---"
+          ogrinfo muni.geojson -dialect sqlite -sql \
+            "SELECT CITY, CITY_NAME, GeometryType(geometry) AS gtype, ST_NumGeometries(geometry) AS n_parts FROM muni WHERE CITY IN ('213','215','306','208')"
+
+      - name: D) 参考: 全41市町村のGeometryType/パーツ数一覧
+        run: |
+          set -x
+          ogrinfo muni.geojson -dialect sqlite -sql \
+            "SELECT CITY, CITY_NAME, GeometryType(geometry) AS gtype, ST_NumGeometries(geometry) AS n_parts FROM muni ORDER BY CITY"
