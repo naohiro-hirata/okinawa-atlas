@@ -30,13 +30,21 @@ mkdir -p public/tiles
 curl -sL "$BOUNDARY_URL" -o "$WORK/r2ka47.zip"
 (cd "$WORK" && unzip -o r2ka47.zip)
 
+# HCODE=8154 は「水面調査区」（港湾・湾など、県内18件・全件JINKO=SETAI=0、
+# 例: "水面調査区、中城湾港湾"）で、実在する字ではない。海岸線を挟んで本土側と
+# 離島側の両方に接することがあり、除外しないままdissolveすると水面ごと同じ色で
+# 塗られて陸地同士が地続きに見える不具合になる（うるま市・南城市・今帰仁村・
+# 浦添市で確認、2026-08時点）。字レイヤーにも実在しない「字」として出てしまう
+# ため、両方のogr2ogrで除外する。
+
 # 字ポリゴン（WGS84へ変換。JGD2000とはサブメートル差で実務上ほぼ同一）
-ogr2ogr -f GeoJSON "$WORK/aza.geojson" "$WORK/r2ka47.shp" -t_srs EPSG:4326
+ogr2ogr -f GeoJSON "$WORK/aza.geojson" "$WORK/r2ka47.shp" -t_srs EPSG:4326 \
+  -where "HCODE <> 8154"
 
 # 市町村ポリゴン（PREF+CITYでdissolve。PREFは沖縄県なら常に"47"だが、
 # app/template.html 側の市町村コード=PREF+CITY の組み立てと対応させるため残す）
 ogr2ogr -f GeoJSON "$WORK/muni.geojson" "$WORK/r2ka47.shp" -t_srs EPSG:4326 \
-  -dialect sqlite -sql "SELECT PREF, CITY, CITY_NAME, ST_Union(geometry) AS geometry FROM r2ka47 GROUP BY PREF, CITY, CITY_NAME"
+  -dialect sqlite -sql "SELECT PREF, CITY, CITY_NAME, ST_Union(geometry) AS geometry FROM r2ka47 WHERE HCODE <> 8154 GROUP BY PREF, CITY, CITY_NAME"
 
 # 字・市町村を別々にPMTiles化してから1本にまとめる（tile-joinはズーム範囲が
 # 異なる複数タイルセットの結合を想定したツールなので、layerごとに個別の
