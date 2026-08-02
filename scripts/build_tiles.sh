@@ -49,8 +49,17 @@ ogr2ogr -f GeoJSON "$WORK/muni.geojson" "$WORK/r2ka47.shp" -t_srs EPSG:4326 \
 # 字・市町村を別々にPMTiles化してから1本にまとめる（tile-joinはズーム範囲が
 # 異なる複数タイルセットの結合を想定したツールなので、layerごとに個別の
 # tippecanoe呼び出しにする方が挙動が読める）
+#
+# muniは--drop-densest-as-neededを付けない。うるま市・南城市・今帰仁村・
+# 浦添市で、離島を含むdissolve後のMultiPolygonがこのオプションによって
+# 簡略化され、地物数がわずか41件しかないにもかかわらず離島が本土と
+# 地続きに見える不具合が確認された（2026-08、ogrinfoでST_Union自体は
+# 正しいこと、--drop-densest-as-needed無しのtippecanoe単体生成で
+# 直ることを確認済み）。azaは約1,453件の個別レコードがあり、この
+# オプション本来の「密集した地物を間引いてファイルサイズを抑える」
+# 目的が有効なため維持する。
 tippecanoe -o "$WORK/aza.pmtiles" -l aza -Z0 -z14 --drop-densest-as-needed --force "$WORK/aza.geojson"
-tippecanoe -o "$WORK/muni.pmtiles" -l muni -Z0 -z10 --drop-densest-as-needed --force "$WORK/muni.geojson"
+tippecanoe -o "$WORK/muni.pmtiles" -l muni -Z0 -z10 --force "$WORK/muni.geojson"
 tile-join -o "$OUT" --force "$WORK/aza.pmtiles" "$WORK/muni.pmtiles"
 
 ls -la "$OUT"
