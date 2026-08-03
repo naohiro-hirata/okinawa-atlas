@@ -81325,102 +81325,6 @@
  },
  {
   "municipality": "渡名喜村",
-  "aza": "※",
-  "trend": [
-   {
-    "year": 2011,
-    "date": "2011-03-31",
-    "population": 393,
-    "households": 218
-   },
-   {
-    "year": 2012,
-    "date": "2012-03-31",
-    "population": 388,
-    "households": 215
-   },
-   {
-    "year": 2013,
-    "date": "2013-03-31",
-    "population": 390,
-    "households": 213
-   },
-   {
-    "year": 2014,
-    "date": "2014-01-01",
-    "population": 390,
-    "households": 216
-   },
-   {
-    "year": 2015,
-    "date": "2015-01-01",
-    "population": 394,
-    "households": 220
-   },
-   {
-    "year": 2016,
-    "date": "2016-01-01",
-    "population": 377,
-    "households": 213
-   },
-   {
-    "year": 2017,
-    "date": "2017-01-01",
-    "population": 374,
-    "households": 210
-   },
-   {
-    "year": 2018,
-    "date": "2018-01-01",
-    "population": 367,
-    "households": 209
-   },
-   {
-    "year": 2019,
-    "date": "2019-01-01",
-    "population": 367,
-    "households": 211
-   },
-   {
-    "year": 2020,
-    "date": "2020-01-01",
-    "population": 348,
-    "households": 213
-   },
-   {
-    "year": 2021,
-    "date": "2021-01-01",
-    "population": 338,
-    "households": 209
-   },
-   {
-    "year": 2022,
-    "date": "2022-01-01",
-    "population": 334,
-    "households": 211
-   },
-   {
-    "year": 2023,
-    "date": "2023-01-01",
-    "population": 310,
-    "households": 203
-   },
-   {
-    "year": 2024,
-    "date": "2024-01-01",
-    "population": 292,
-    "households": 197
-   },
-   {
-    "year": 2025,
-    "date": "2025-01-01",
-    "population": 283,
-    "households": 197
-   }
-  ]
- },
- {
-  "municipality": "渡名喜村",
   "aza": "字粟苅",
   "trend": [
    {
@@ -81704,6 +81608,102 @@
     "date": "2025-01-01",
     "population": 2,
     "households": 1
+   }
+  ]
+ },
+ {
+  "municipality": "渡名喜村",
+  "aza": "町字名がない地域",
+  "trend": [
+   {
+    "year": 2011,
+    "date": "2011-03-31",
+    "population": 393,
+    "households": 218
+   },
+   {
+    "year": 2012,
+    "date": "2012-03-31",
+    "population": 388,
+    "households": 215
+   },
+   {
+    "year": 2013,
+    "date": "2013-03-31",
+    "population": 390,
+    "households": 213
+   },
+   {
+    "year": 2014,
+    "date": "2014-01-01",
+    "population": 390,
+    "households": 216
+   },
+   {
+    "year": 2015,
+    "date": "2015-01-01",
+    "population": 394,
+    "households": 220
+   },
+   {
+    "year": 2016,
+    "date": "2016-01-01",
+    "population": 377,
+    "households": 213
+   },
+   {
+    "year": 2017,
+    "date": "2017-01-01",
+    "population": 374,
+    "households": 210
+   },
+   {
+    "year": 2018,
+    "date": "2018-01-01",
+    "population": 367,
+    "households": 209
+   },
+   {
+    "year": 2019,
+    "date": "2019-01-01",
+    "population": 367,
+    "households": 211
+   },
+   {
+    "year": 2020,
+    "date": "2020-01-01",
+    "population": 348,
+    "households": 213
+   },
+   {
+    "year": 2021,
+    "date": "2021-01-01",
+    "population": 338,
+    "households": 209
+   },
+   {
+    "year": 2022,
+    "date": "2022-01-01",
+    "population": 334,
+    "households": 211
+   },
+   {
+    "year": 2023,
+    "date": "2023-01-01",
+    "population": 310,
+    "households": 203
+   },
+   {
+    "year": 2024,
+    "date": "2024-01-01",
+    "population": 292,
+    "households": 197
+   },
+   {
+    "year": 2025,
+    "date": "2025-01-01",
+    "population": 283,
+    "households": 197
    }
   ]
  },

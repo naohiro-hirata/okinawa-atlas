@@ -87,6 +87,20 @@ MUNI_TYPOS = {
     "南大東": "南大東村",
 }
 
+# 字名ではなく記号が入っている欄の表示名。原本の脚注が意味を明記しているものだけを
+# 対象にする（推測での言い換えはしない）。表示名だけを差し替え、系列をまとめるキーは
+# 原本の表記のままにするので、名寄せの挙動には影響しない。
+#
+#   渡名喜村「※」: 全15年に1行ずつあり、同じシートの脚注に
+#     「※（注１）町字名がない地域である為空欄で表示する」と定義されている。
+#     村の人口291人中283人（令和7年）がこの区域で、原本の「渡名喜村 合計」行とも一致する。
+#     記号のまま画面に出すと意味が伝わらないので、脚注の文言をそのまま表示名にする。
+#     国勢調査 小地域には町字名のない区域に相当する区分が無いため、年齢構成は
+#     「未対応」のままになる（これは正しい状態）。
+DISPLAY_ALIASES = {
+    ("渡名喜村", "※"): "町字名がない地域",
+}
+
 
 class UnknownMunicipality(ValueError):
     """41市町村の正式名にも MUNI_TYPOS にも一致しない市町村名を見つけた。
@@ -413,6 +427,9 @@ def normalize(years):
         trend = sorted(e["trend"], key=lambda t: t["year"])
         forms = e["forms"]
         display_name = forms[max(forms)]
+        # 字名ではなく記号の欄だけ、原本の脚注が定義している文言に置き換える。
+        # 系列をまとめるキー（e["key"]）は原本の表記のままなので名寄せには影響しない。
+        display_name = DISPLAY_ALIASES.get((e["municipality"], display_name), display_name)
         out.append({"municipality": e["municipality"], "aza": display_name, "trend": trend})
         distinct = sorted(set(forms.values()))
         if len(distinct) > 1:

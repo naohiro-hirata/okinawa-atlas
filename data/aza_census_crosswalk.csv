@@ -903,10 +903,10 @@ municipality,aza_juki,census_name,status,reason
 浦添市,西洲1丁目,西洲一丁目,matched,
 浦添市,西洲2丁目,西洲二丁目,matched,
 浦添市,西洲3丁目,西洲三丁目,matched,
-渡名喜村,※,,unmatched,国勢調査(令和2年)の町丁・字と一致しません
 渡名喜村,字粟苅,,unmatched,国勢調査(令和2年)の町丁・字と一致しません
 渡名喜村,字西ノ底,,unmatched,国勢調査(令和2年)の町丁・字と一致しません
 渡名喜村,字西兼久,,unmatched,国勢調査(令和2年)の町丁・字と一致しません
+渡名喜村,町字名がない地域,,unmatched,国勢調査(令和2年)の町丁・字と一致しません
 渡嘉敷村,字前島,字前島,matched,
 渡嘉敷村,字渡嘉敷,字渡嘉敷,matched,
 渡嘉敷村,字阿波連,字阿波連,matched,

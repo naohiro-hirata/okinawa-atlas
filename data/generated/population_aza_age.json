@@ -76903,12 +76903,6 @@
  },
  {
   "municipality": "渡名喜村",
-  "aza": "※",
-  "status": "unmatched",
-  "pyramid": null
- },
- {
-  "municipality": "渡名喜村",
   "aza": "字粟苅",
   "status": "unmatched",
   "pyramid": null
@@ -76922,6 +76916,12 @@
  {
   "municipality": "渡名喜村",
   "aza": "字西兼久",
+  "status": "unmatched",
+  "pyramid": null
+ },
+ {
+  "municipality": "渡名喜村",
+  "aza": "町字名がない地域",
   "status": "unmatched",
   "pyramid": null
  },
