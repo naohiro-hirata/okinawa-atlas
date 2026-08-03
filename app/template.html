@@ -41,14 +41,34 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .app{display:flex; flex-direction:column; height:100%}
 header.top{
   border-bottom:1px solid var(--line); background:var(--surface);
-  padding:14px 20px 12px; display:flex; align-items:baseline; gap:20px; flex-wrap:wrap;
+  padding:12px 20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
 }
 .brand{font-weight:700; font-size:15px; letter-spacing:.04em}
 .brand span{color:var(--ai)}
-nav.crumb{display:flex; align-items:center; gap:6px; font-family:var(--num); font-size:12px; letter-spacing:.06em}
-nav.crumb button{color:var(--ai); text-decoration:underline; text-underline-offset:3px}
-nav.crumb .sep{color:var(--ink3)}
-nav.crumb .cur{font-weight:700}
+
+/* 「県全体に戻る」。header.top は main の外にあり section.stage だけがスクロールするので、
+   position:sticky を使わなくても常時見えている。県レイヤーでも消さずに無効表示で残す
+   （消すとヘッダーの幅が変わり、階層を移動するたびにパンくずの位置がずれるため）。 */
+.backall{
+  display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+  background:var(--ai); border:1px solid var(--ai); color:#F7F6F2;
+  padding:7px 13px; font:500 12.5px/1.2 var(--jp); letter-spacing:.03em;
+}
+.backall:hover{background:var(--ai2); border-color:var(--ai2)}
+.backall .ar{font-family:var(--num); font-size:14px; line-height:1}
+.backall[aria-disabled="true"]{
+  background:var(--surface2); border-color:var(--line); color:var(--ink3);
+  cursor:default; pointer-events:none;
+}
+
+nav.crumb{display:flex; align-items:center; gap:5px; flex-wrap:wrap}
+nav.crumb button,nav.crumb .cur{
+  display:inline-block; padding:6px 12px; font:500 13px/1.25 var(--jp);
+  border:1px solid var(--line); background:var(--surface2); color:var(--ink);
+}
+nav.crumb button:hover{background:var(--surface); border-color:var(--ai); color:var(--ai)}
+nav.crumb .cur{background:var(--ai); border-color:var(--ai); color:#F7F6F2; font-weight:700}
+nav.crumb .sep{color:var(--ink3); font-family:var(--num)}
 
 .banner{
   margin-left:auto; display:flex; align-items:center; gap:8px;
@@ -151,7 +171,7 @@ table.tbl th{
 table.tbl td{border-bottom:1px solid var(--line2); padding:6px 8px 6px 0; vertical-align:top}
 table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-align:right; padding-right:14px}
 
-/* ---------- hanablock grid (signature) ---------- */
+/* ---------- 横棒グラフ一覧（このサイトの一覧表現） ---------- */
 .blockwrap{border:1px solid var(--line); background:var(--surface); padding:14px 15px 16px}
 .blockhead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px}
 .blockhead h2{margin:0; font:700 11px/1 var(--num); letter-spacing:.14em; text-transform:uppercase; color:var(--ink2)}
@@ -159,41 +179,61 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
   font:400 12px var(--jp); padding:3px 6px; background:var(--surface2);
   border:1px solid var(--line); color:var(--ink);
 }
-.hana{display:grid; grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:5px}
-.cell{position:relative; padding:0; border:1px solid var(--line2); background:var(--surface2); aspect-ratio:1/1}
-.cell:hover{border-color:var(--ai)}
-/* 最終確認状況が未確認の市町村。花ブロック内の点線は「回答なし」に使っているので、
-   混同しないようセットの枠と左上の角で示す。 */
-.cell.unconf{border-style:dashed; border-color:var(--sand)}
-.cell.unconf::before{
-  content:""; position:absolute; top:0; left:0; z-index:1;
-  border-width:9px 9px 0 0; border-style:solid;
-  border-color:var(--sand) transparent transparent transparent;
+.blockhead label{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; color:var(--ink3)}
+
+.bars{display:flex; flex-direction:column}
+.bar-row{
+  display:grid; grid-template-columns:8.5em 1fr 6em; align-items:center; gap:10px;
+  width:100%; text-align:left; padding:5px 8px 5px 5px;
+  border-bottom:1px solid var(--line2); border-left:3px solid transparent;
 }
-.unconf-key{
-  display:inline-block; width:15px; height:15px; vertical-align:-3px; margin:0 1px 0 5px;
-  position:relative; border:1px dashed var(--sand); background:var(--surface);
+/* 値の右に基準年などを併記する一覧（推定空家数）と、字の一覧はもう1列使う */
+.bars.meta .bar-row{grid-template-columns:8.5em 1fr 6em 7.5em}
+.bars.aza .bar-row{grid-template-columns:10em 1fr 6.5em 7em}
+.bar-row:hover{background:var(--surface2)}
+.bar-row:hover .bar-name{color:var(--ai)}
+/* 最終確認状況が未確認の市町村。トラックの点線は「回答なし」に使っているので、
+   混同しないよう行の左端で示す。 */
+.bar-row.unconf{border-left-style:dashed; border-left-color:var(--sand)}
+.bar-name{font-size:12.5px; line-height:1.35; overflow-wrap:anywhere}
+
+/* トラック。「回答なし」「実測0」「正の値」の描き分けはこの中だけで完結させる。 */
+.bar-track{position:relative; display:block; height:14px}
+.bar-fill{position:absolute; left:0; top:0; bottom:0; min-width:2px}
+/* 実測のゼロ。バーは無いが、原点に実線のマークを置く（形はあるが量がゼロ） */
+.bar-zero{position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ink3)}
+/* 回答なし。値が分かっていないので、原点のマークすら置かず点線のトラックだけにする */
+.bar-none{position:absolute; left:0; right:0; top:50%; height:0; border-top:1.5px dotted var(--line)}
+
+.bar-val{
+  font:700 12px/1.2 var(--num); font-variant-numeric:tabular-nums;
+  text-align:right; white-space:nowrap;
 }
-.unconf-key::before{
-  content:""; position:absolute; top:0; left:0;
-  border-width:6px 6px 0 0; border-style:solid;
-  border-color:var(--sand) transparent transparent transparent;
+.bar-val small{font-size:10px; font-weight:400; color:var(--ink2); margin-left:1px}
+.bar-val.na{font:400 11px/1.2 var(--jp); color:var(--ink3)}
+.bar-val.zero{font-weight:400; color:var(--ink2)}
+.bar-meta{font-size:10.5px; color:var(--ink3); white-space:nowrap; text-align:right}
+.bar-yr{
+  font:400 10px/1.6 var(--num); color:var(--ink2);
+  border:1px solid var(--line); background:var(--surface2); padding:0 5px; white-space:nowrap;
 }
-.cell svg{position:absolute; inset:0; width:100%; height:100%}
-.cell .cl{
-  position:absolute; left:0; right:0; bottom:5px; text-align:center;
-  font-size:10.5px; line-height:1.3; font-weight:500; padding:0 3px;
-  text-shadow:0 0 4px var(--surface2),0 0 4px var(--surface2);
+.bar-yr.unk{color:#6E2E19; border-color:var(--kawara); background:#F6EAE4}
+.bar-dir{font:400 10.5px/1.2 var(--num); font-variant-numeric:tabular-nums;
+  white-space:nowrap; text-align:right}
+/* 「回答なし」をまとめた区切り。並べ替えても空欄の行が先頭を埋めないようにする。 */
+.bar-sep{
+  display:flex; align-items:center; gap:9px; margin:12px 0 2px;
+  font:700 9.5px/1 var(--num); letter-spacing:.12em; color:var(--ink3);
 }
-.cell .cv{
-  position:absolute; left:0; right:0; top:6px; text-align:center;
-  font:700 11px/1 var(--num); color:var(--ink2);
+.bar-sep::after{content:""; flex:1; border-top:1px solid var(--line2)}
+
+/* 注記に埋め込む見本。行と同じ barTrack() で描いて、文言と実際の描画がズレないようにする。 */
+.lgdbar{display:inline-block; width:30px; height:12px; vertical-align:-2px; margin:0 2px 0 6px}
+.lgdbar .bar-track{height:100%}
+.lgdunconf{
+  display:inline-block; width:16px; height:12px; vertical-align:-2px; margin:0 2px 0 6px;
+  border-left:3px dashed var(--sand); background:var(--surface2);
 }
-.legend{margin-top:11px; display:flex; align-items:center; gap:8px; font-size:10.5px; color:var(--ink3)}
-.legend .bar{flex:1; height:7px; max-width:170px; background:linear-gradient(90deg,#E7E4DA,var(--ai))}
-/* 注記に埋め込む花ブロックの見本（回答なし／実測0の描き分けを文章の中で示す） */
-.lgd{display:inline-block; width:19px; height:19px; vertical-align:-5px; margin:0 1px 0 5px}
-.lgd svg{width:100%; height:100%; display:block}
 
 /* ---------- map slot ---------- */
 .mapslot{
@@ -205,8 +245,17 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
 
 /* ---------- map (MapLibre) ---------- */
 #map{height:480px; border:1px solid var(--line); background:var(--ground)}
+/* 市町村ページの地図（その市町村の字だけ）。県全体より低くする。 */
+#map[data-scope]{height:380px}
 .maplibregl-ctrl-attrib{font-size:10px}
 .maplibregl-ctrl-attrib a{color:var(--ai2)}
+/* 市町村ページの地図のホバー吹き出し。遷移できない理由を出す .mapnotice（赤瓦色の警告）
+   とは役割が違うので、混同しないよう地の濃色だけの落ち着いた見た目にする。 */
+.maptip .maplibregl-popup-content{
+  background:var(--ink); color:#F7F6F2; border-radius:0; padding:5px 9px;
+  font:500 11.5px/1.5 var(--jp); box-shadow:0 1px 5px rgba(21,31,35,.28);
+}
+.maptip .maplibregl-popup-tip{display:none}
 .mapnotice .maplibregl-popup-content{
   background:var(--surface); border:1px solid var(--kawara); border-left-width:4px;
   border-radius:0; padding:10px 24px 11px 12px; font:400 11.5px/1.6 var(--jp); color:var(--ink);
@@ -223,8 +272,15 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
   .list{max-height:34vh}
   .banner{margin-left:0}
 }
-@media (prefers-reduced-motion:no-preference){
-  .cell svg .petal{transition:fill .18s ease}
+/* 狭い画面では戻るボタンを1行目に、パンくずをその下の行全体に置く。 */
+@media (max-width:640px){
+  header.top{gap:10px}
+  .backall{order:2}
+  nav.crumb{order:3; width:100%}
+  .banner{order:4}
+  .bars .bar-row{grid-template-columns:6.5em 1fr 5.5em; gap:7px}
+  .bars.meta .bar-row{grid-template-columns:6.5em 1fr 5.5em 6.5em}
+  .bars.aza .bar-row{grid-template-columns:7.5em 1fr 5.5em 6em}
 }
 </style>
 </head>
@@ -232,6 +288,7 @@ table.tbl td.n{font-family:var(--num); font-variant-numeric:tabular-nums; text-a
 <div class="app">
   <header class="top">
     <div class="brand">沖縄 <span>地域データアトラス</span></div>
+    <button class="backall" id="backall" data-go="pref"><span class="ar">←</span>沖縄県全体に戻る</button>
     <nav class="crumb" id="crumb" aria-label="階層"></nav>
     <div class="banner">
       <div>
@@ -357,44 +414,52 @@ for(const m of MUNI){
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>n==null?"—":n.toLocaleString("ja-JP");
 
-/** 花ブロック1枚。CLAUDE.md原則3のとおり「回答なし」と「実測0」を見た目で必ず分ける。
- *   t == null → 回答なし。点線の輪郭だけ（形が確定していないことを示す）
- *   t === 0   → 実測ゼロ。実線の輪郭＋中央の小さな点（形はあるが花弁がゼロ）
- *   t > 0     → 花弁が t(0..1) の割合だけ下から満ちる
- *  この3状態は凡例・注記の文言と必ず対応させること。 */
-let hanaSeq=0;
-const HANA_PETALS=`<circle cx="50" cy="28" r="20"/><circle cx="72" cy="50" r="20"/>`+
-                  `<circle cx="50" cy="72" r="20"/><circle cx="28" cy="50" r="20"/>`;
-const HANA_FRAME=`<rect x="4" y="4" width="92" height="92" fill="var(--surface)" stroke="var(--line2)"/>`;
-/* zeroColor を渡すと、実測ゼロの中央の点にその色を使う。花弁が無いと増減の向きが
-   消えてしまうため（500人→0 と ずっと0 が同じ見た目になる）、字の一覧で使う。
-   指標の一覧では向きの概念が無いので渡さず、灰色のままにする。 */
-function hanaSVG(t,color,zeroColor){
-  if(t==null)return `<svg viewBox="0 0 100 100" aria-hidden="true">${HANA_FRAME}
-    <g fill="none" stroke="var(--line)" stroke-width="1.1" stroke-dasharray="2.5 3.5"
-       opacity=".55">${HANA_PETALS}</g></svg>`;
-  const v=Math.max(0,Math.min(1,t));
-  if(v===0)return `<svg viewBox="0 0 100 100" aria-hidden="true">${HANA_FRAME}
-    <g fill="none" stroke="var(--line)" stroke-width="1.1">${HANA_PETALS}</g>
-    <circle cx="50" cy="50" r="3.6" fill="${zeroColor||"var(--ink3)"}" opacity=".75"/></svg>`;
-  const cid="hb"+(++hanaSeq);
-  return `<svg viewBox="0 0 100 100" aria-hidden="true">${HANA_FRAME}
-    <clipPath id="${cid}"><rect x="0" y="${100-100*v}" width="100" height="${100*v}"/></clipPath>
-    <g class="petal" fill="${color}" opacity="${.28+.62*v}" clip-path="url(#${cid})">${HANA_PETALS}</g>
-    <g fill="none" stroke="var(--line)" stroke-width="1.1">${HANA_PETALS}</g></svg>`;
+/** 一覧の横棒1本ぶんのトラック。CLAUDE.md原則3のとおり「回答なし」と「実測0」を
+ *  見た目で必ず分ける。
+ *   v == null → 回答なし。点線のトラックだけ（値が分かっていないので原点の印も置かない）
+ *   v === 0   → 実測ゼロ。原点に実線の縦マーク（形はあるが量がゼロ）
+ *   v > 0     → max に対する割合ぶんのバー
+ *  凡例の見本もこの関数で描くこと（文言と実際の描画がズレないようにするため）。 */
+function barTrack(v,max,color){
+  if(v==null)return `<span class="bar-track"><span class="bar-none"></span></span>`;
+  if(v===0)return `<span class="bar-track"><span class="bar-zero"></span></span>`;
+  const w=Math.max(1.5,Math.min(100,v/(max||1)*100));
+  return `<span class="bar-track"><span class="bar-fill" style="width:${w.toFixed(2)}%;background:${color}"></span></span>`;
+}
+/** バーの右に出す値。0を「回答なし」と読ませないため、実測のゼロには必ず「（実測）」を付ける。 */
+function barValue(v,unit){
+  if(v==null)return `<span class="bar-val na">回答なし</span>`;
+  if(v===0)return `<span class="bar-val zero">0<small>（実測）</small></span>`;
+  return `<span class="bar-val">${fmt(v)}<small>${esc(unit)}</small></span>`;
+}
+/** 一覧の並び替え。null（回答なし・人口不明）は昇順・降順のどちらでも必ず末尾に
+ *  まとめる（昇順で空欄の行が先頭を埋めると一覧が読めなくなるため）。もとの並び
+ *  （市町村コード順など）のときは位置を動かさないので blanks は空で返す。 */
+function orderRows(items,valueOf,mode){
+  if(mode!=="desc"&&mode!=="asc")return{ranked:items.slice(),blanks:[]};
+  const ranked=items.filter(i=>valueOf(i)!=null);
+  const blanks=items.filter(i=>valueOf(i)==null);
+  ranked.sort((a,b)=>mode==="desc"?valueOf(b)-valueOf(a):valueOf(a)-valueOf(b));
+  return{ranked,blanks};
 }
 
 function pyramidSVG(rows){
   if(!rows||!rows.length)return `<p class="note">データなし</p>`;
-  const W=440,H=270,mid=W/2,gap=34,bh=(H-24)/rows.length-1.6;
-  const max=Math.max(...rows.map(r=>Math.max(r.male,r.female)))||1;
+  // 年少層を下に置く（人口ピラミッドの慣習）。データ側は市町村・字・サンプル値の
+  // いずれも 0-4 → 85+ の昇順で渡ってくるので、描画のときだけ逆順にする。
+  // 3経路ともこの関数を通るので、ここだけで向きが揃う。
+  const ord=rows.slice().reverse();
+  const W=440,H=270,mid=W/2,gap=34,bh=(H-24)/ord.length-1.6;
+  const max=Math.max(...ord.map(r=>Math.max(r.male,r.female)))||1;
   const sc=(mid-gap/2-14)/max;
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="年齢5歳階級別の男女人口">`;
-  rows.forEach((r,i)=>{
-    const y=12+i*((H-24)/rows.length);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="年齢5歳階級別の男女人口（下が年少）">`;
+  ord.forEach((r,i)=>{
+    const y=12+i*((H-24)/ord.length);
     s+=`<rect x="${mid-gap/2-r.male*sc}" y="${y}" width="${r.male*sc}" height="${bh}" fill="var(--ai)" opacity=".82"/>`;
     s+=`<rect x="${mid+gap/2}" y="${y}" width="${r.female*sc}" height="${bh}" fill="var(--kawara)" opacity=".72"/>`;
-    if(i%2===0)s+=`<text x="${mid}" y="${y+bh*.82}" text-anchor="middle" font-size="7.6" font-family="Roboto Condensed" fill="var(--ink3)">${r.age}</text>`;
+    // ラベルは1つおきだが、最下段（0-4）と最上段（85+）は必ず出す。
+    if(i===0||i===ord.length-1||(ord.length-1-i)%2===0)
+      s+=`<text x="${mid}" y="${y+bh*.82}" text-anchor="middle" font-size="7.6" font-family="Roboto Condensed" fill="var(--ink3)">${r.age}</text>`;
   });
   s+=`<text x="${mid-gap/2-4}" y="8" text-anchor="end" font-size="8.4" font-family="Roboto Condensed" fill="var(--ai)">男</text>`;
   s+=`<text x="${mid+gap/2+4}" y="8" font-size="8.4" font-family="Roboto Condensed" fill="var(--kawara)">女</text></svg>`;
@@ -467,14 +532,22 @@ const JUKI_2020_CAVEAT=`<p class="caveat"><b>注意</b>　2019→2020年にか�
   この区間の増減はそのまま読まないでください。</p>`;
 
 /* ============================ 画面 ============================ */
-let view={layer:"pref",code:null,aza:null,indicator:"pop_total"};
+/** sort は一覧ごとに別で持つ。指標や市町村を切り替えても並び順を保持するため。
+ *  pref の既定が "code"（市町村コード順）なのは、推定空家数のように基準年が
+ *  混在する指標で、既定を値順にすると年度をまたいだ順位表として読まれるため。 */
+let view={layer:"pref",code:null,aza:null,indicator:"pop_total",
+          sort:{pref:"code",aza:"desc"}};
+const PREF_SORTS={code:"市町村コード順",desc:"値の大きい順",asc:"値の小さい順"};
+const AZA_SORTS={desc:"人口の多い順",asc:"人口の少ない順",orig:"もとの並び"};
+const sortOptions=(opts,cur)=>Object.entries(opts).map(([k,v])=>
+  `<option value="${k}" ${k===cur?"selected":""}>${esc(v)}</option>`).join("");
 
 function render(){
   renderCrumb();renderList();
   // 地図はDOMの外側でWebGLコンテキスト等を持つため、innerHTMLで
   // #map ごと消してしまう前に明示的に破棄する（コンテナが外れた後に
   // remove()を呼ぶと内部で例外になりうるため）。
-  if(mapInstance){try{mapInstance.remove();}catch(e){/* noop */}mapInstance=null;mapPopup=null;}
+  if(mapInstance){try{mapInstance.remove();}catch(e){/* noop */}mapInstance=null;mapPopup=null;mapTip=null;}
   const st=document.getElementById("stage");
   st.innerHTML = view.layer==="pref"?prefView()
                : view.layer==="muni"?muniView(find(view.code))
@@ -487,6 +560,12 @@ const find=code=>MUNI.find(m=>m.code===code);
 function renderCrumb(){
   const c=document.getElementById("crumb");
   const m=view.code?find(view.code):null;
+  // 県レイヤーでも戻るボタンは消さず無効表示にする。消すとヘッダーの幅が変わり、
+  // 階層を移動するたびにパンくずの位置がずれるため。
+  const back=document.getElementById("backall");
+  const atPref=view.layer==="pref";
+  back.setAttribute("aria-disabled",String(atPref));
+  back.tabIndex=atPref?-1:0;
   let h=view.layer==="pref"
     ?`<span class="cur">沖縄県 41市町村</span>`
     :`<button data-go="pref">沖縄県</button>`;
@@ -527,18 +606,34 @@ function prefView(){
   const zeros=vals.filter(v=>v===0).length;
   const max=Math.max(...vals,1);
   const answered=vals.length;
-  // 最終確認状況が未確認の市町村は、値そのものが古い可能性があるのでセットに印を付ける。
-  // 花ブロック側の点線は「回答なし」に使っているので、印はセットの枠と角の三角で出す。
+  // 最終確認状況が未確認の市町村は、値そのものが古い可能性があるので行に印を付ける。
+  // トラックの点線は「回答なし」に使っているので、印は行の左端の破線で出す。
   const unconf=MUNI.filter(m=>ind.unconfirmed(m)).length;
-  const cells=MUNI.map(m=>{
+  // 推定空家数だけは市町村ごとに数値の基準年が違う。「R7調査」はヒアリングの実施年
+  // であって数値の基準年ではないので、行ごとに基準年を出し、備考に年の記載が無い
+  // 回答は「基準年不明」と明示する（CLAUDE.md「既知の未完了」参照）。
+  const hasYear=view.indicator==="estimated_vacant";
+  const yearTag=m=>{
+    const a=m.akiya;
+    if(!a||a.estimated_vacant==null)return "";
+    return a.estimated_vacant_base_year
+      ?`<span class="bar-yr">基準 ${esc(a.estimated_vacant_base_year)}</span>`
+      :`<span class="bar-yr unk">基準年不明</span>`;
+  };
+  const row=m=>{
     const v=ind.get(m);
     const u=ind.unconfirmed(m);
     const state=v==null?"回答なし":v===0?"0（実測）":fmt(v)+ind.unit;
-    return `<button class="cell${u?" unconf":""}" data-kind="muni" data-code="${m.code}"
-      title="${esc(m.name)}｜${ind.label}: ${esc(state)}${u?"｜R7回答 未確認（R6以前の値が残っている可能性）":""}">
-      ${hanaSVG(v==null?null:v/max,"var(--ai)")}
-      <span class="cv">${v==null?"":fmt(v)}</span>
-      <span class="cl">${esc(m.name)}</span></button>`;}).join("");
+    return `<button class="bar-row${u?" unconf":""}" data-kind="muni" data-code="${m.code}"
+      title="${esc(m.name)}｜${esc(ind.label)}: ${esc(state)}${u?"｜R7回答 未確認（R6以前の値が残っている可能性）":""}">
+      <span class="bar-name">${esc(m.name)}</span>
+      ${barTrack(v,max,"var(--ai)")}
+      ${barValue(v,ind.unit)}
+      ${hasYear?`<span class="bar-meta">${yearTag(m)}</span>`:""}</button>`;
+  };
+  const {ranked,blanks}=orderRows(MUNI,m=>ind.get(m),view.sort.pref);
+  const rows=ranked.map(row).join("")
+    +(blanks.length?`<div class="bar-sep">回答なし ${blanks.length}市町村</div>`+blanks.map(row).join(""):"");
   return `
   <div class="stage-head">
     <div class="eyebrow">Layer 1 — 市町村</div>
@@ -550,15 +645,17 @@ function prefView(){
       <h2>指標で見る</h2>
       <select id="indsel">${Object.entries(INDICATORS).map(([k,v])=>
         `<option value="${k}" ${k===view.indicator?"selected":""}>${esc(v.label)}</option>`).join("")}</select>
+      <label>並び順 <select id="sortsel">${sortOptions(PREF_SORTS,view.sort.pref)}</select></label>
       <span class="eyebrow">${ind.real?`回答あり ${answered}/41${zeros?`（うち実測0が${zeros}）`:""}`:"サンプル値"}</span>
     </div>
-    <div class="hana">${cells}</div>
-    <div class="legend"><span>0</span><span class="bar"></span><span class="num">${fmt(max)}${ind.unit}</span></div>
-    <p class="note">花ブロックの花弁が指標値。
-      <span class="lgd">${hanaSVG(null)}</span><b>点線の輪郭</b>＝回答なし（値が分かっていない）、
-      <span class="lgd">${hanaSVG(0)}</span><b>中央に点</b>＝実測のゼロ。この2つは別のものとして扱っています。
-      ${unconf?`<span class="unconf-key"></span><b>破線の枠＋角の印</b>＝最終確認状況が未確認の${unconf}市町村。
+    <div class="bars${hasYear?" meta":""}">${rows}</div>
+    <p class="note">バーの長さが指標値（全長＝${fmt(max)}${esc(ind.unit)}）。
+      <span class="lgdbar">${barTrack(null,1)}</span><b>点線のトラック</b>＝回答なし（値が分かっていない）、
+      <span class="lgdbar">${barTrack(0,1)}</span><b>原点の実線マーク</b>＝実測のゼロ。この2つは別のものとして扱っています。
+      ${unconf?`<span class="lgdunconf"></span><b>行の左端が破線</b>＝最終確認状況が未確認の${unconf}市町村。
         令和6年度以前の回答が残っている可能性があります。`:""}
+      ${hasYear?`右端は<strong>その数値の基準年</strong>です。指標名の「ヒアリング調査」は調査の実施年（令和7年度）であって、
+        数値の基準年ではありません。基準年の異なる市町村どうしを並べて比較しないでください。`:""}
       クリックで市町村レイヤーへ。</p>
   </div>
   <div class="grid2" style="margin-top:16px">
@@ -574,7 +671,10 @@ function prefView(){
 function muniView(m){
   const d=m.pop||{pyramid:null,pyramidYear:null,trend:[]}, p=m.policy||{}, a=m.akiya||{};
   const reconciledYears=d.trend.filter(t=>t.boundary==="reconciled").map(t=>t.year);
-  const azaCells=m.aza.map(z=>{
+  // バー長はその市町村内の最大人口を基準にする（市町村をまたいだ比較はしない）。
+  const azaLast=z=>z.trend[z.trend.length-1].pop;
+  const azaMax=Math.max(...m.aza.map(z=>azaLast(z)??0),1);
+  const azaRow=z=>{
     const last=z.trend[z.trend.length-1], first=z.trend[0];
     // 増減の向きは差で判断する。初年も最終年も0なら「変化なし」であって増加ではない
     // （以前はrate=nullを増加色にフォールバックし、人口0の字を緑で塗っていた）。
@@ -582,13 +682,20 @@ function muniView(m){
     const diff=known?last.pop-first.pop:null;
     const color=diff==null?"var(--ink3)"
                :diff>0?"var(--basho)":diff<0?"var(--kawara)":"var(--ink3)";
-    // 人口0の字は花弁を塗らず、実測ゼロとして空で見せる。人口不明はnull（点線）。
-    const t=last.pop==null?null:last.pop>0?.15+Math.min(1,last.pop/2800)*.85:0;
     const dirText=diff==null?"増減不明":diff>0?`増加 +${fmt(diff)}人`:diff<0?`減少 ${fmt(diff)}人`:"変化なし";
-    return `<button class="cell" data-kind="aza" data-code="${z.id}" data-muni="${m.code}"
+    // 色だけで増減を示さない（色覚や印刷で落ちるため）。矢印と符号付きの数値を必ず出す。
+    const dirMark=diff==null?"— 不明":diff>0?`↑ +${fmt(diff)}`:diff<0?`↓ ${fmt(diff)}`:"→ ±0";
+    return `<button class="bar-row" data-kind="aza" data-code="${z.id}" data-muni="${m.code}"
       title="${esc(z.name)}｜${last.pop==null?"人口不明":fmt(last.pop)+"人"}（${last.year}年・${esc(last.date||"")}現在）｜${esc(first.year)}年比 ${esc(dirText)}">
-      ${hanaSVG(t,color,color)}
-      <span class="cv">${fmt(last.pop)}</span><span class="cl">${esc(z.name)}</span></button>`;}).join("");
+      <span class="bar-name">${esc(z.name)}</span>
+      ${barTrack(last.pop,azaMax,color)}
+      ${barValue(last.pop,"人")}
+      <span class="bar-dir" style="color:${color}">${dirMark}</span></button>`;
+  };
+  const azaOrder=orderRows(m.aza,azaLast,view.sort.aza);
+  const azaRows=azaOrder.ranked.map(azaRow).join("")
+    +(azaOrder.blanks.length?`<div class="bar-sep">人口不明 ${azaOrder.blanks.length}字</div>`
+      +azaOrder.blanks.map(azaRow).join(""):"");
 
   const desc=[["移住施策の内容",p.policy_detail],["取り組まない理由",p.policy_none_reason],
               ["相談窓口",p.desk_contact||p.desk_status_other],["中間支援組織",p.intermediary_detail],
@@ -667,15 +774,27 @@ function muniView(m){
     </div>`:""}
   </div>
 
+  <div class="grid2" style="margin-top:16px">
+    <div class="card wide">
+      <h2>字の地図</h2>
+      <div id="map" data-scope="${esc(m.code)}" role="img" aria-label="${esc(m.name)}の字の境界地図"></div>
+      <p class="chartnote">${esc(m.name)}の字だけを塗っています（周辺の市町村は位置の手がかりとして薄く表示）。カーソルを重ねると市町村名と字名、クリックで字レイヤーへ。<br>
+      出典：e-Stat 統計地理情報システム 令和2年国勢調査 小地域（町丁・字等）（JGD2000）。<strong>境界は国勢調査の調査区をもとにしているため、住居表示上の町丁・字と一致しないことがあります。</strong>また境界は令和2年（2020年）時点のもので、人口データ（令和7年住民基本台帳）より古いため、2020年より後に新設された丁目には対応する区域がありません。</p>
+    </div>
+  </div>
+
   <div class="blockwrap" style="margin-top:16px">
     <div class="blockhead">
       <h2>Layer 2 — 字を選ぶ</h2>
+      <label>並び順 <select id="azasortsel">${sortOptions(AZA_SORTS,view.sort.aza)}</select></label>
       <span class="eyebrow">${m.aza.length} 字</span>
     </div>
-    <div class="hana">${azaCells}</div>
+    <div class="bars aza">${azaRows}</div>
     ${JUKI_2020_CAVEAT}
-    <p class="note">緑＝期間内で増加、赤瓦色＝減少、灰＝変化なし。花弁の量は人口規模で、
-      <span class="lgd">${hanaSVG(0)}</span><b>中央に点だけ</b>の字は人口が0（実測）です。
+    <p class="note">バーの長さは最新年の人口（全長＝${fmt(azaMax)}人）。右端は初年（${m.aza[0]?.trend[0]?.year??""}年）からの増減で、
+      緑＝増加、赤瓦色＝減少、灰＝変化なし。
+      <span class="lgdbar">${barTrack(0,1)}</span><b>原点の実線マーク</b>の字は人口が0（実測）、
+      <span class="lgdbar">${barTrack(null,1)}</span><b>点線のトラック</b>は人口が分かっていない字です。
       出典：沖縄県「市町村の町字別住民基本台帳人口及び世帯数」（平成23年〜令和7年）。平成23〜25年は3月31日、平成26年以降は1月1日現在で基準日が異なる。年齢構成は対応が取れた字のみ実データ（字を開くと表示）。</p>
   </div>`;
 }
@@ -758,8 +877,32 @@ function matchAzaName(m,sname){
   return candidates.length===1?candidates[0].name:null;
 }
 
+/** タイルに載っているポリゴンの外接矩形。タイル境界で分割されて複数の地物として
+ *  返ることがあるので全件を舐める。1件も無ければ null。 */
+function featureBounds(feats){
+  let w=Infinity,s=Infinity,e=-Infinity,n=-Infinity;
+  const walk=c=>{
+    if(typeof c[0]==="number"){
+      if(c[0]<w)w=c[0];
+      if(c[0]>e)e=c[0];
+      if(c[1]<s)s=c[1];
+      if(c[1]>n)n=c[1];
+      return;
+    }
+    for(const x of c)walk(x);
+  };
+  for(const f of feats)if(f.geometry&&f.geometry.coordinates)walk(f.geometry.coordinates);
+  return isFinite(w)&&isFinite(s)&&isFinite(e)&&isFinite(n)?[[w,s],[e,n]]:null;
+}
+/* 沖縄県の全域（与那国島から南北大東島まで）。市町村ページの地図は、まずこの範囲で
+   読み込んでから該当市町村に寄せる。muniレイヤーは41件・-Z0 -z10 なので低ズームでも
+   全件がタイルに載り、離島を取りこぼさない。 */
+const OKINAWA_BOUNDS=[[122.9,24.0],[131.4,27.9]];
+
 let mapInstance=null, mapProtocolRegistered=false;
-function initMap(){
+/** scopeCode を渡すと、その市町村の字だけを塗った地図になる（市町村ページ用）。
+ *  省略すると県全体（市町村→字をズームで切り替え）。 */
+function initMap(scopeCode){
   const el=document.getElementById("map");
   if(!el)return;
   if(typeof maplibregl==="undefined"||typeof pmtiles==="undefined"){
@@ -771,11 +914,30 @@ function initMap(){
     maplibregl.addProtocol("pmtiles",protocol.tile);
     mapProtocolRegistered=true;
   }
+  const scoped=!!scopeCode;
+  const scopeMuni=scoped?find(scopeCode):null;
+  // PREF・CITYの型（文字列／数値）に依存しないよう、連結して市町村コードと比べる。
+  const scopeFilter=scoped
+    ?["==",["concat",["to-string",["get","PREF"]],["to-string",["get","CITY"]]],scopeCode]
+    :null;
   const cv=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   const style={
     version:8,
     sources:{okinawa:{type:"vector",url:"pmtiles://tiles/okinawa.pmtiles"}},
-    layers:[
+    layers:scoped?[
+      {id:"bg",type:"background",paint:{"background-color":cv("--ground")}},
+      // 周辺の市町村。位置の手がかりとして薄く残すだけで、操作の対象にはしない。
+      {id:"ctx-fill",type:"fill",source:"okinawa","source-layer":"muni",
+        paint:{"fill-color":cv("--surface2"),"fill-opacity":0.45}},
+      {id:"ctx-line",type:"line",source:"okinawa","source-layer":"muni",
+        paint:{"line-color":cv("--line"),"line-width":0.8}},
+      {id:"aza-fill",type:"fill",source:"okinawa","source-layer":"aza",filter:scopeFilter,
+        paint:{"fill-color":cv("--surface"),"fill-opacity":0.95}},
+      {id:"aza-line",type:"line",source:"okinawa","source-layer":"aza",filter:scopeFilter,
+        paint:{"line-color":cv("--ai2"),"line-width":0.7}},
+      {id:"scope-line",type:"line",source:"okinawa","source-layer":"muni",filter:scopeFilter,
+        paint:{"line-color":cv("--ai"),"line-width":1.8}},
+    ]:[
       {id:"bg",type:"background",paint:{"background-color":cv("--ground")}},
       {id:"muni-fill",type:"fill",source:"okinawa","source-layer":"muni",maxzoom:10,
         paint:{"fill-color":cv("--surface2"),"fill-opacity":0.9}},
@@ -787,21 +949,52 @@ function initMap(){
         paint:{"line-color":cv("--line"),"line-width":0.6}},
     ],
   };
+  // 市町村ページは最初に県全域を表示してタイルを読ませる。minZoomを先に7にすると
+  // 表示が県中央のズーム7に丸められ、与那国町・大東村など遠い離島のタイルが
+  // 読まれずbboxが取れなくなるので、寄せ終わってからminZoomを上げる。
   mapInstance=new maplibregl.Map({
-    container:"map",style,center:[127.7,26.35],zoom:9,minZoom:8,maxZoom:16,
-    attributionControl:true,
+    container:"map",style,
+    ...(scoped?{bounds:OKINAWA_BOUNDS}:{center:[127.7,26.35],zoom:9}),
+    minZoom:scoped?4:8, maxZoom:16, attributionControl:true,
   });
   mapInstance.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
-  for(const layer of ["muni-fill","aza-fill"]){
+  for(const layer of scoped?["aza-fill"]:["muni-fill","aza-fill"]){
     mapInstance.on("mouseenter",layer,()=>{mapInstance.getCanvas().style.cursor="pointer";});
     mapInstance.on("mouseleave",layer,()=>{mapInstance.getCanvas().style.cursor="";});
   }
-  mapInstance.on("click","muni-fill",e=>{
-    const f=e.features&&e.features[0];if(!f)return;
-    const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
-    if(find(code))go("muni",code);
-    else mapNotice(e.lngLat,`この区域（コード ${esc(code)}）に対応する市町村データがありません。`);
-  });
+  if(scoped){
+    // 市町村ごとの外接矩形を持っていないので、県全域を一度読み込んでから、
+    // タイルに載ったmuniポリゴンでbboxを出して寄せる。取れなければ県全域のまま
+    // （字レイヤーは絞られているのでどの市町村かは分かる）。例外にはしない。
+    mapInstance.once("idle",()=>{
+      if(!mapInstance)return;
+      let feats=[];
+      try{feats=mapInstance.querySourceFeatures("okinawa",{sourceLayer:"muni",filter:scopeFilter});}
+      catch(err){feats=[];}
+      const b=featureBounds(feats);
+      if(!b)return;  // 取れなければ県全域のまま（字レイヤーは絞られている）
+      mapInstance.fitBounds(b,{padding:26,duration:0,maxZoom:14});
+      mapInstance.setMinZoom(7);
+    });
+    // ホバーで市町村名・字名を出す。県全体の地図には付けない。
+    mapInstance.on("mousemove","aza-fill",e=>{
+      const f=e.features&&e.features[0];if(!f)return;
+      const sname=String(f.properties.S_NAME||"").trim();
+      if(!mapTip)mapTip=new maplibregl.Popup(
+        {closeButton:false,closeOnClick:false,className:"maptip",offset:12,maxWidth:"220px"});
+      mapTip.setLngLat(e.lngLat)
+        .setHTML(`${esc(scopeMuni?scopeMuni.name:"")}／${esc(sname||"（名称なし）")}`)
+        .addTo(mapInstance);
+    });
+    mapInstance.on("mouseleave","aza-fill",()=>{if(mapTip)mapTip.remove();});
+  }else{
+    mapInstance.on("click","muni-fill",e=>{
+      const f=e.features&&e.features[0];if(!f)return;
+      const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
+      if(find(code))go("muni",code);
+      else mapNotice(e.lngLat,`この区域（コード ${esc(code)}）に対応する市町村データがありません。`);
+    });
+  }
   mapInstance.on("click","aza-fill",e=>{
     const f=e.features&&e.features[0];if(!f)return;
     const code=`${f.properties.PREF||""}${f.properties.CITY||""}`;
@@ -822,6 +1015,8 @@ function initMap(){
 }
 /** 遷移できないときに、その場で理由を出す。推測で別の字に飛ばさないための代替。 */
 let mapPopup=null;
+/** 市町村ページの地図のホバー吹き出し（市町村名／字名）。上の警告とは別物。 */
+let mapTip=null;
 function mapNotice(lngLat,html){
   if(!mapInstance)return;
   if(mapPopup)mapPopup.remove();
@@ -838,7 +1033,12 @@ function go(kind,code,muniCode){
 function bindStage(){
   const sel=document.getElementById("indsel");
   if(sel)sel.onchange=e=>{view.indicator=e.target.value;render();};
+  const ps=document.getElementById("sortsel");
+  if(ps)ps.onchange=e=>{view.sort={...view.sort,pref:e.target.value};render();};
+  const as=document.getElementById("azasortsel");
+  if(as)as.onchange=e=>{view.sort={...view.sort,aza:e.target.value};render();};
   if(view.layer==="pref")initMap();
+  else if(view.layer==="muni")initMap(view.code);
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-kind]");

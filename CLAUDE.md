@@ -10,11 +10,12 @@
 
 1. **人口の数値を推測で作らない。** 出典を確認できない値は `null` にして、画面には「回答なし」または空状態を出す。もっともらしい数値を埋めるのは、このプロジェクトで最悪の失敗。
 2. **サンプル値は必ず視覚的に区別する。** `.dummy` クラス（斜線）と `.dummy-tag`（「ダミー」バッジ）を外さない。実データが入ったら要素ごと消す。半端に外さない。
-3. **`0` と「回答なし」を混同しない。** 花ブロック（`hanaSVG`）は3状態で描き分ける。
-   **点線の輪郭＝回答なし（`null`）／実線の輪郭＋中央の点＝実測のゼロ／花弁が満ちる＝正の値**。
+3. **`0` と「回答なし」を混同しない。** 一覧の横棒（`barTrack`）は3状態で描き分ける。
+   **点線のトラックだけ＝回答なし（`null`）／原点に実線の縦マーク＝実測のゼロ／バーが伸びる＝正の値**。
+   値ラベル（`barValue`）も「回答なし」「0（実測）」で必ず書き分ける。
    指標・凡例・集計すべてで区別する。集計の「回答あり N/41」には実測0を含める
    （`v!=null` で数え、`v||null` のような真偽値判定で0を落とさない）。
-   注記の文言は必ず実際の描画と一致させること（凡例中の見本は `hanaSVG()` で描いてズレを防ぐ）。
+   注記の文言は必ず実際の描画と一致させること（凡例中の見本は `barTrack()` で描いてズレを防ぐ）。
 4. **備考欄からの数値抽出は、取れなければ `null` のまま `quality_report.json` に回す。** 正規表現を無理に緩めて誤検出を作らない。
 5. **`data/raw/` の原本は加工しない。** 変換結果は `data/generated/` にのみ書く。
 6. **個人情報の伏字化は、生成物への手作業ではなく変換コードに組み込む。**
@@ -44,8 +45,14 @@ python scripts/fetch_census.py                               # e-Stat API取得 
 python scripts/fetch_census.py --normalize-only              # 再取得なしでキャッシュから再構築
 python scripts/build_app.py --outfile public/index.html      # 単一HTMLをビルド
 python scripts/build_quality_page.py                         # 品質レポートの案内ページをビルド
-python -m http.server -d public 8000                         # 確認
+python scripts/serve.py                                      # 確認（http://127.0.0.1:8000/）
 ```
+
+**確認用サーバーに `python -m http.server` を使わないこと。** Rangeリクエストに対応しておらず
+`206 Partial Content` を返さないため、`public/tiles/okinawa.pmtiles` を読めず**地図だけが
+表示されない**（pmtiles.js が `Check that your storage backend supports HTTP Byte Serving.` で
+失敗する）。他の部分は正常に見えるので気づきにくい。`scripts/serve.py` はこれに対応するためだけの
+確認用サーバー。GitHub Pages は Range に対応しているので**本番では起きない**。
 
 `parse_survey.py` は毎回 `data/generated/quality_report.json` を出す。作業後は必ずこれを読んで、
 `needs_manual_review` と `code_join_failures` が増えていないか確認する。
@@ -88,9 +95,11 @@ data/raw/census_aza/             小地域集計CSVのキャッシュ（gitignor
 data/generated/                  正規化済みJSON（Actionsが生成／population_muni.json・population_aza_age.jsonは手元で生成しコミット）
 data/aza_crosswalk.csv           字名の名寄せ辞書（手で育てる）
 data/aza_census_crosswalk.csv    住基側の字と国勢調査小地域の対応表（fetch_aza_census.pyが機械的に生成）
-app/template.html                UI本体。1ファイル。花ブロック等の図はSVG自前描画（外部ライブラリなし）。
-                                  マップのみMapLibre GL JS + pmtiles（CDN経由）を使う
+app/template.html                UI本体。1ファイル。一覧は横棒グラフ（CSS）、ピラミッド・推移グラフは
+                                  SVG自前描画（外部ライブラリなし）。マップのみMapLibre GL JS +
+                                  pmtiles（CDN経由）を使い、県全体と市町村ごとの2種類を出す
 scripts/                         ETLとビルド
+scripts/serve.py                 確認用サーバー（Range対応。http.serverだと地図が出ない）
 public/tiles/okinawa.pmtiles     地図タイル（build_tiles.shの生成物。artifactを人が確認してコミット）
 public/quality.html              品質レポートの案内ページ（build_quality_page.pyの生成物）
 public/reports/*.json            品質レポートの生ファイル（build_quality_page.pyがコピー）
@@ -171,10 +180,19 @@ e-Statのマーカー `-`／`***` は「値がないもの」＝**実測値の0*
   しかも全市町村で一様。那覇市・宜野湾市・久米島町では字合計と県公表の市町村計が
   全年一致しているため二重計上ではない。原因未確認のため注記は付けていない
 - マップは実装済み・`public/tiles/okinawa.pmtiles` もコミット済み（2026-08）。境界の目視確認は
-  pmtiles.io で4市町村（うるま市・南城市・今帰仁村・浦添市）まで実施済み。**サイト上での
-  実描画は未確認**（自動操作タブは `visibilityState:"hidden"` で `requestAnimationFrame` が
-  発火せずMapLibreの初期化が完了しないため、ブラウザ自動操作では検証できない）。人が実際に
-  ブラウザで開いて確認すること
+  pmtiles.io で4市町村（うるま市・南城市・今帰仁村・浦添市）まで実施済み。**県全体・市町村ページの
+  どちらもサイト上での実描画を人がブラウザで確認済み**（県全体は2026-08-03、市町村ページの字の地図は
+  うるま市・竹富町・那覇市・渡名喜村で同日）。
+  **指標セレクタに連動したコロプレス塗り分け（「回答なし」のハッチング表現）は未実装**
+- **地図の動作確認をブラウザ自動操作で代行できていない。** ヘッドレスChromeでもWebGLは使えて
+  canvasも生成されるが、`--virtual-time-budget` とMapLibreのワーカースレッドの相性で
+  `isSourceLoaded()` が `true` にならず `idle` が発火しないまま止まる（2026-08-03実測。
+  以前ここに書いていた「`visibilityState:"hidden"` で `requestAnimationFrame` が発火しない」は
+  原因として正しくなかった）。突破するにはCDPを直接叩いて実時間で待つ必要がある。
+  **地図に触る変更をしたら、人がブラウザで開いて確認すること。**
+- **URLでの画面指定ができない。** `app/template.html` に `location.hash` / `pushState` の類は無く、
+  階層はメモリ上の `view` だけで管理している。市町村ページ・字ページを直接指すURLは作れないので、
+  確認や共有のときは検索欄から辿ってもらうことになる
 - 推定空家数は41市町村中**10件**しか数値化できていない（2026-08 時点の実測）。しかも
   **数値の基準年が混在している**。備考欄に年が書かれているのは浦添市198件＝R6調査、
   南城市360件＝令和6年度調査、うるま市881件＝令和6年度全軒調査、座間味村42戸＝令和7年度調査の4件だけで、
@@ -188,7 +206,15 @@ e-Statのマーカー `-`／`***` は「値がないもの」＝**実測値の0*
 ## UIの方針
 
 配色・書体は決定済みで、`:root` のCSS変数から外れないこと。琉球藍 `--ai`、赤瓦 `--kawara`、
-石灰岩の地色 `--ground`。花ブロック（`hanaSVG`）がこのサイトの識別要素なので、
-汎用のカード並べや棒グラフ一覧に置き換えない。花ブロック・人口ピラミッド・人口推移グラフの
-SVGは外部ライブラリを使わず自前で描く方針を維持する（マップのみMapLibre GL JS + pmtilesを
-CDNから読み込む例外。地図の配色も`:root`のCSS変数から取得しズレないようにする）。
+石灰岩の地色 `--ground`。人口ピラミッド・人口推移グラフのSVGは外部ライブラリを使わず
+自前で描く方針を維持する（マップのみMapLibre GL JS + pmtilesをCDNから読み込む例外。
+地図の配色も`:root`のCSS変数から取得しズレないようにする）。
+
+**一覧表現は横棒グラフ（`.bars` / `barTrack` / `barValue`）に統一する。** 県ページの指標一覧と
+市町村ページの字一覧の両方がこれを使う。2026-08にそれまでの花ブロック（`hanaSVG`）から
+置き換えた。**数値を図に重ねて置かない**（花ブロックは値ラベルを図の上に絶対配置していて
+読めなかった。これが置き換えの理由なので、元に戻さない）。原則3の3状態の符号を崩さないこと。
+
+**人口ピラミッドは年少層が下。** データ側は市町村・字・サンプル値のいずれも `0-4` → `85+` の
+昇順で渡ってくるので、`pyramidSVG()` が描画時に反転している。データの並びを変えて対応しない
+（3経路すべてがこの1関数を通るので、向きの調整はここだけで完結させる）。
